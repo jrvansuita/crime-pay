@@ -5,15 +5,15 @@
         <img src="thief-head.jpg" class="card-img-top" alt="thief head">
         <div class="card-body">
             <h5 class="card-title text-end">
-                <%=data.player.name%>
+                <%=player.name%>
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">
                 Intoxication
             </h6>
             <div class="progress">
                 <div class="progress-bar progress-bar-striped" role="progressbar"
-                    style="width: <%=data.player.intoxication%>%" aria-valuenow="<%=data.player.intoxication%>"
-                    aria-valuemin="0" aria-valuemax="100"></div>
+                    style="width: <%=player.intoxication%>%" aria-valuenow="<%=player.intoxication%>" aria-valuemin="0"
+                    aria-valuemax="100"></div>
             </div>
             <h6 class="card-subtitle mb-2 text-muted" style="margin-top: .5rem!important;">
                 Attributes
@@ -21,11 +21,11 @@
         </div>
 
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Brains <%=data.player.intelligence%>
+            <li class="list-group-item">Brains <%=player.intelligence%>
             </li>
-            <li class="list-group-item">Skill <%=data.player.dexterity%>
+            <li class="list-group-item">Skill <%=player.dexterity%>
             </li>
-            <li class="list-group-item">Strength <%=data.player.strength%>
+            <li class="list-group-item">Strength <%=player.strength%>
             </li>
         </ul>
 
@@ -34,7 +34,7 @@
                 Weapons
             </h6>
 
-            <% for(let [index, weapon] of data.weapons.entries() || []){ %>
+            <% for(let [index, weapon] of weapons.entries() || []){ %>
                 <img class="img-thumbnail" style="width: 120px;" src="<%=weapon.img%>" alt="">
 
                 <%} %>

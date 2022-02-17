@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Making a Robbery</h5>
+        <p class="card-text">Select a target and try your lucky!</p>
+
+
+
+        <% for(let [index, place] of places.entries() || []){ %>
+            <div class="card" style="width: 18rem;">
+                <img src="<%=place.img%>" class="card-img-top" alt="..." style="width: 80px;" />
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%=place.name%>
+                    </h5>
+                </div>
+            </div>
+            <%} %>
+
+    </div>
+
+
+
+</div>

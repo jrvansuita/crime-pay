@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "---APP---": "...",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "app.js",
     "---GIT---": "...",
     "git": "git add . && git commit -m",
     "postgit": "git pull && git push"
@@ -16,6 +18,7 @@
     "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
-    "mongojs": "^3.1.0"
+    "mongojs": "^3.1.0",
+    "nodemon": "^2.0.15"
   }
 }
