@@ -1,0 +1,47 @@
+<div>
+
+
+    <div class="card" style="width: 18rem;">
+        <img src="thief-head.jpg" class="card-img-top" alt="thief head">
+        <div class="card-body">
+            <h5 class="card-title text-end">
+                <%=data.player.name%>
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                Intoxication
+            </h6>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped" role="progressbar"
+                    style="width: <%=data.player.intoxication%>%" aria-valuenow="<%=data.player.intoxication%>"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <h6 class="card-subtitle mb-2 text-muted" style="margin-top: .5rem!important;">
+                Attributes
+            </h6>
+        </div>
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Brains <%=data.player.intelligence%>
+            </li>
+            <li class="list-group-item">Skill <%=data.player.dexterity%>
+            </li>
+            <li class="list-group-item">Strength <%=data.player.strength%>
+            </li>
+        </ul>
+
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted" style="margin-top: .5rem!important;">
+                Weapons
+            </h6>
+
+            <% for(let [index, weapon] of data.weapons.entries() || []){ %>
+                <img class="img-thumbnail" style="width: 120px;" src="<%=weapon.img%>" alt="">
+
+                <%} %>
+
+        </div>
+
+
+    </div>
+
+</div>
