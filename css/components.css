@@ -1,0 +1,25 @@
+
+.bg-purple {
+    --bs-bg-opacity: 1;
+    --bs-purple-rgb: 102,16,242;
+    background-color: rgba(var(--bs-purple-rgb),var(--bs-bg-opacity))!important;
+}
+
+.label-sub-title{
+        color: #6c757d!important;
+        font-size: 1rem;
+        font-weight: 500;
+    line-height: 1.2;
+}
+
+.progress:not(:last-child) {
+    margin-bottom: 2em;
+}
+
+.float-right{
+    float: right;
+}
+
+.robbery-places-holder .translate-middle {
+    transform: translate(-80%,-30%)!important;
+}

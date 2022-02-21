@@ -20,7 +20,7 @@ module.exports = class Player {
             if (player) {
                 const weapon = new Weapon();
                 weapon.findAll(player.equipedWeapons, (err, weapons) => {
-                    callback(err, { player, weapons });
+                    callback(err, { ...player, weapons });
                 })
             }
         });

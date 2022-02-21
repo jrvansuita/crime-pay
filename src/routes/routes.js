@@ -13,7 +13,7 @@ module.exports = class Routes {
         this.app.get('/robbery', function (req, res) {
 
             robberyPage.load((data) => {
-                console.log(data);
+
                 res.render('pages/robbery', data);
             });
 

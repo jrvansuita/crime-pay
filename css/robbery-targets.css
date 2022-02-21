@@ -1,0 +1,59 @@
+
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: stretch;
+    align-items: stretch;
+}
+
+.flex-left:nth-child(1) {
+  order: 0;
+  flex: 1 1 auto;
+  align-self: auto;
+  margin-right: 0;
+  margin-right: 1em;
+}
+
+.flex-painel:nth-child(2) {
+  order: 0;
+  flex: 3 1 auto;
+  align-self: auto;
+  margin-left: 0;
+  
+}
+
+
+
+.robbery-places-holder{
+  padding-top: 10px;
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.robbery-places-holder > .card{
+  flex-grow: 0;
+  margin-right: 14px;
+}
+
+.robbery-places-holder .card-title{
+  font-size: 0.9em;
+    font-weight: 400;
+}
+
+.cash-display{
+  
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.coin-cash{
+  vertical-align: text-bottom;
+    width: 25px;
+}

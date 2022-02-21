@@ -2,39 +2,78 @@
 
 
     <div class="card" style="width: 18rem;">
-        <img src="thief-head.jpg" class="card-img-top" alt="thief head">
+        <img src="/img/thief-head.jpg" class="card-img-top" alt="thief head">
         <div class="card-body">
-            <h5 class="card-title text-end">
+            <h5 class="card-title ">
                 <%=player.name%>
+                    <span class="cash-display  float-right">
+                        <img class="coin-cash" src="/img/coin.png" alt="">
+                        <%=Intl.NumberFormat().format(player.cash)%>
+                    </span>
+
             </h5>
-            <h6 class="card-subtitle mb-2 text-muted">
+
+            <h6 class="label-sub-title">
+                Stamina
+            </h6>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                    style="width: <%=player.stamina%>%" aria-valuenow="<%=player.stamina%>" aria-valuemin="0"
+                    aria-valuemax="100">
+                    <%=player.stamina%>%
+                </div>
+            </div>
+
+            <h6 class="label-sub-title">
                 Intoxication
             </h6>
             <div class="progress">
-                <div class="progress-bar progress-bar-striped" role="progressbar"
+                <div class="progress-bar progress-bar-striped bg-purple" role="progressbar"
                     style="width: <%=player.intoxication%>%" aria-valuenow="<%=player.intoxication%>" aria-valuemin="0"
-                    aria-valuemax="100"></div>
+                    aria-valuemax="100">
+                    <%=player.intoxication%>%
+                </div>
             </div>
-            <h6 class="card-subtitle mb-2 text-muted" style="margin-top: .5rem!important;">
+
+
+
+
+        </div>
+
+
+        <div class="card-body">
+            <h6 class="label-sub-title">
                 Attributes
             </h6>
         </div>
-
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Brains <%=player.intelligence%>
+            <li class="list-group-item">Brains
+                <span class="float-right">
+
+                    <%=player.intelligence%>
+                </span>
             </li>
-            <li class="list-group-item">Skill <%=player.dexterity%>
+            <li class="list-group-item">Skill
+                <span class="float-right">
+                    <%=player.dexterity%>
+                </span>
             </li>
-            <li class="list-group-item">Strength <%=player.strength%>
+            <li class="list-group-item">Strength
+                <span class="float-right">
+                    <%=player.strength%>
+                </span>
+
             </li>
         </ul>
 
+
+
         <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted" style="margin-top: .5rem!important;">
+            <h6 class="label-sub-title" style="margin-top: .5rem!important;">
                 Weapons
             </h6>
 
-            <% for(let [index, weapon] of weapons.entries() || []){ %>
+            <% for(let [index, weapon] of player.weapons.entries() || []){ %>
                 <img class="img-thumbnail" style="width: 120px;" src="<%=weapon.img%>" alt="">
 
                 <%} %>
