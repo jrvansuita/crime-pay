@@ -13,10 +13,11 @@
         <div class="container">
             <div class="robbery-places-holder">
                 <% for(let [index, place] of places.entries() || []){ %>
-                    <div class="card position-relative" style="width: 18rem;">
+                    <div class="robbery-place-item card position-relative" style="width: 18rem;" tabindex="-1"
+                        data-key="<%=place._id%>">
                         <span
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
-                            <%=place.chance%>%
+                            <%=place.successChance%>%
                         </span>
 
 
@@ -26,10 +27,17 @@
                                 <%=place.name%>
 
                             </h5>
+
+                            <span class="stamina">
+                                <%=place.staminaCost%> Stamina
+                            </span>
+
                         </div>
                     </div>
                     <%} %>
             </div>
+
+            <div class="robbery-form-holder list-group-item"></div>
         </div>
     </div>
 

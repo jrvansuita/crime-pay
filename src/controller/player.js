@@ -1,7 +1,7 @@
 const mongojs = require('mongojs');
 const playerData = require('../db/db').player;
 
-const Weapon = require('../data/weapon');
+const Weapon = require('../controller/weapon');
 
 
 

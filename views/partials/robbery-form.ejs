@@ -1,0 +1,44 @@
+<head>
+    <link rel="stylesheet" href="/css/robbery-form.css">
+</head>
+
+<form class="row align-items-center ">
+
+
+    <h6 class="card-title">
+        <%=place.name%> Robbery Attempt
+    </h6 s>
+
+    <div class="mb-3 row">
+        <div class="input-group">
+            <span class="form-control">Max Coins Reward</span>
+            <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt=""></span>
+            <span class="input-group-text">
+                <%=Intl.NumberFormat().format(place.coinsReward)%>
+            </span>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="input-group">
+            <span class="form-control">Stamina Cost</span>
+            <span class="input-group-text"><img class="mini-img" src="/img/stamina.png" alt=""></span>
+            <span class="input-group-text">
+                <%=place.staminaCost%>%
+            </span>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="input-group">
+            <span class="form-control">Success Chance</span>
+            <span class="input-group-text"><img class="mini-img" src="/img/lucky.png" alt=""></span>
+
+            <span class="input-group-text">
+                <%=place.successChance%>%
+            </span>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Go Now</button>
+    </div>
+</form>

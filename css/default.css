@@ -3,4 +3,9 @@ body {
     margin-top: 5em;
     margin-left: 8em;
     margin-right: 8em;
+    background-image: url("/img/city-bg.png");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-color: #b8c8e0;
+
 }

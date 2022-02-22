@@ -11,12 +11,15 @@ module.exports = class Routes {
         const robberyPage = new RobberyPage();
 
         this.app.get('/robbery', function (req, res) {
-
-            robberyPage.load((data) => {
-
+            robberyPage.loadPage((data) => {
                 res.render('pages/robbery', data);
             });
+        });
 
+        this.app.get('/robbery-form', function (req, res) {
+            robberyPage.getPlaceDetails(req.query._id, (data) => {
+                res.render('partials/robbery-form', data);
+            })
         });
 
     }

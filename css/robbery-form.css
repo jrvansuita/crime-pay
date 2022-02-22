@@ -1,0 +1,9 @@
+.robbery-form-holder{
+    padding-top: 1em;
+    width: fit-content;
+    max-width: 50em;
+}
+
+.robbery-form-holder .card-title{
+    padding-bottom: 1em;
+}
