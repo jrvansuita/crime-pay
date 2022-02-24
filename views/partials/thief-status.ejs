@@ -1,8 +1,17 @@
+<head>
+    <link rel="stylesheet" href="/css/thief-status.css">
+</head>
+
 <div>
 
 
     <div class="card" style="width: 18rem;">
-        <img src="/img/thief-head.jpg" class="card-img-top" alt="thief head">
+        <img src="<%=player.img%>" class="card-img-top" alt="thief head">
+        <span class="badge rounded-pill respect-badge">
+            <img src="/img/respect-star.png" class="respect-star-img">
+            <%=player.respect%>
+        </span>
+
         <div class="card-body">
             <h5 class="card-title ">
                 <%=player.name%>

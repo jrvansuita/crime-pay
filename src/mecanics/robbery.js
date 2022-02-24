@@ -32,32 +32,49 @@ module.exports = class RobberyMecanics {
 
 
     calculatePlaceAttributes(player, place) {
+
+        /* Defining Weapons Intelligence and Dexterity Multiplier Bonus */
         var intelligenceMultiplier = player.weapons.reduce((p, c) => p + c.intelligence, 0)
         var dexterityMultiplier = player.weapons.reduce((p, c) => p + c.dexterity, 0)
 
+        /* Defining Player Attributes */
         var intelligence = player.intelligence * intelligenceMultiplier;
         var dexterity = player.dexterity * dexterityMultiplier;
         var strength = player.strength;
 
-        var calc = (intelligence + dexterity + strength) / place.dificulty;
-        var successChance = Math.trunc(calc * 100);
-        successChance = Math.min(successChance, 100);
+        /* Defining Robbery Success Chance */
+        var successPoints = (intelligence + dexterity + strength);
+        var failPoints = place.dificulty + (player.respect * 10);
+
+        var successChance = successPoints / failPoints;
+
+        successChance = Math.min(Math.trunc(successChance * 100), 100);
         place.successChance = successChance;
 
+        /* Defining Stamina Cost */
         var staminaCost = Math.trunc((100 / place.successChance) * 7.5);
         staminaCost = Math.min(staminaCost, 100);
         place.staminaCost = staminaCost;
 
-        var coinsReward = (((place.dificulty / 2) * staminaCost * (intelligence + dexterity + strength)) / Math.max(successChance, 1)) / 550;
-
-        var decreaseReward = (100 + (player.intoxication * 5)) / Math.max(player.stamina, 20)
+        /* Defining Coins Reward */
+        var coinsReward = (((place.dificulty * .001) * (staminaCost * .01) * (intelligence + dexterity + strength)) / Math.max(successChance, 1));
+        var decreaseReward = ((100 + (player.intoxication * 5)) / Math.max(player.stamina, 20)) * place.dificulty;
         decreaseReward = Math.min(Math.max(decreaseReward, 1.01), 9.25);
 
         if (decreaseReward > 1) {
             coinsReward = coinsReward * (1 - (decreaseReward / 10));
         }
 
-        place.coinsReward = Math.max(Math.trunc(coinsReward), 1);
+        coinsReward = Math.max(Math.trunc(coinsReward), 1);
+        place.coinsReward = coinsReward;
+
+
+        /* Defining Respect Increse Bonus */
+
+        var respect = ((coinsReward / 2) * ((place.dificulty / player.respect) * .001) / (staminaCost * .2));
+        respect = Math.max(Math.trunc(respect, 1), 1);
+        place.respect = respect;
+
 
         return place;
     }

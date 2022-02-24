@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="/css/robbery-form.css">
 </head>
 
-<form class="row align-items-center ">
+<div class="row align-items-center">
 
 
     <h6 class="card-title">
@@ -11,13 +11,25 @@
 
     <div class="mb-3 row">
         <div class="input-group">
-            <span class="form-control">Max Coins Reward</span>
+            <span class="form-control">Coins Reward</span>
             <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt=""></span>
             <span class="input-group-text">
-                <%=Intl.NumberFormat().format(place.coinsReward)%>
+                + <%=Intl.NumberFormat().format(place.coinsReward)%>
             </span>
         </div>
     </div>
+
+    <div class="mb-3 row">
+        <div class="input-group">
+            <span class="form-control">Respect Increase</span>
+            <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png" alt=""></span>
+
+            <span class="input-group-text">
+                + <%=place.respect%>
+            </span>
+        </div>
+    </div>
+
     <div class="mb-3 row">
         <div class="input-group">
             <span class="form-control">Stamina Cost</span>
@@ -38,7 +50,9 @@
         </div>
     </div>
 
+
+
     <div class="col-12">
-        <button type="submit" class="btn btn-primary">Go Now</button>
+        <button id="robbery-submit" class="btn btn-primary">Go Now</button>
     </div>
-</form>
+</div>

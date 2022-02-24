@@ -1,0 +1,31 @@
+
+.cash-display{
+  font-size: 11pt;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.progress-num{
+    font-size: 10pt;
+  }
+  
+
+.respect-star-img{
+  width: 20px;
+  margin-right: 6px;
+}
+
+.respect-badge{
+  width: fit-content;
+    align-self: center;
+    margin-top: -40px;
+    position: static;
+    font-size: 10pt;
+    vertical-align: middle;
+    white-space: normal;
+    word-break: break-word;
+    display: flex;
+    align-items: center;
+    padding-right: 14px;
+    background-color: rgb(11 110 253 / 60%) !important;
+}
