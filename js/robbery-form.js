@@ -20,6 +20,6 @@ function onRobberySubmit() {
     var id = $(".robbery-form-holder").data('place');
 
     $.post("/robbery-submit", { placeId: id }).done(function (data) {
-        alert("Data Loaded: " + data);
+        console.log(data);
     });
 }

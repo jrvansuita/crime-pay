@@ -23,7 +23,9 @@ module.exports = class Routes {
         });
 
         this.app.post('/robbery-submit', function (req, res) {
-            console.log(req.body);
+            robberyPage.makeRobbery(req.body.placeId, (result) => {
+                res.send(result);
+            });
         });
 
 

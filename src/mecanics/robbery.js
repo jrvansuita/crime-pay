@@ -1,5 +1,6 @@
 const RobberyPlace = require("../controller/place");
 const Player = require("../controller/player");
+const RobberyResult = require("../model/robbert-result");
 
 const USERID = '620bd7d3167e2e95193329e1';
 
@@ -26,6 +27,15 @@ module.exports = class RobberyMecanics {
             this.robberyPlaces.find(placeId, (err, place) => {
                 place = this.calculatePlaceAttributes(player, place);
                 callback({ place: place, player: player });
+            });
+        });
+    }
+
+    makeRobbery(placeId, callback) {
+        this.player.get(USERID, (err, player) => {
+            this.robberyPlaces.find(placeId, (err, place) => {
+                place = this.calculatePlaceAttributes(player, place);
+                this.executeRobbery(player, place, callback);
             });
         });
     }
@@ -79,5 +89,34 @@ module.exports = class RobberyMecanics {
         return place;
     }
 
+
+    executeRobbery(player, place, callback) {
+
+        const num = Math.floor(Math.random() * (100 - 1 + 1) + 1);
+        const success = num <= place.successChance;
+        const difficult = Math.max(1, 100 - place.successChance);
+
+        /* Defining Weapons Intelligence and Dexterity Multiplier Bonus */
+        var intelligenceMultiplier = player.weapons.reduce((p, c) => p + c.intelligence, 0)
+        var dexterityMultiplier = player.weapons.reduce((p, c) => p + c.dexterity, 0)
+
+        /* Defining New Player Attributes */
+        var intelligence = Math.max(1, (Math.trunc(((player.intelligence * .05) * (intelligenceMultiplier * .25)) + (difficult * .1))));
+        var dexterity = Math.max(1, Math.trunc((((player.dexterity * .05) * (dexterityMultiplier * .25)) + (difficult * .1))));
+        var strength = Math.max(1, Math.trunc((player.strength * .05) + (difficult * .015)));
+
+        const result = new RobberyResult(success);
+
+        result.setStats(place.coinsReward, place.respect, place.staminaCost)
+        result.setAttributes(intelligence, dexterity, strength)
+        result.apply(player);
+        this.player.save(player, function (err, doc) {
+            callback(result);
+        })
+
+
+
+
+    }
 
 }
