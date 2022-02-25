@@ -20,6 +20,25 @@ function onRobberySubmit() {
     var id = $(".robbery-form-holder").data('place');
 
     $.post("/robbery-submit", { placeId: id }).done(function (data) {
-        console.log(data);
+        thiefStatusUpdate(data.player);
+
+        $(".robbery-result-holder").empty();
+        $(".robbery-result-holder").load("/robbery-result?_id=" + data.result._id, function () {
+            $(".robbery-result-holder").hide().fadeIn();
+
+
+        });
+
     });
+}
+
+
+function thiefStatusUpdate(player) {
+    $('#coins').text(player.coins);
+    $('#stamina-percent').text(player.stamina + '%');
+    $('#stamina').css('width', player.stamina + '%').attr('aria-valuenow', player.stamina);
+
+    $('#intelligence').text(player.intelligence);
+    $('#dexterity').text(player.dexterity);
+    $('#strength').text(player.strength);
 }

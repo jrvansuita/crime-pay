@@ -17,19 +17,21 @@
                 <%=player.name%>
                     <span class="coin-display  float-right">
                         <img class="mini-img" src="/img/coin.png" alt="">
-                        <%=Intl.NumberFormat().format(player.coins)%>
+                        <span id="coins">
+                            <%=Intl.NumberFormat().format(player.coins)%>
+                        </span>
                     </span>
 
             </h5>
 
             <h6 class="label-sub-title">
                 Stamina
-                <span class="progress-num float-right">
+                <span id="stamina-percent" class="progress-num float-right">
                     <%=player.stamina%>%
                 </span>
             </h6>
             <div class="progress">
-                <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                <div id="stamina" class="progress-bar progress-bar-striped bg-success" role="progressbar"
                     style="width: <%=player.stamina%>%" aria-valuenow="<%=player.stamina%>" aria-valuemin="0"
                     aria-valuemax="100">
                 </div>
@@ -62,18 +64,18 @@
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">Intelligence
-                <span class="float-right">
+                <span id="intelligence" class="float-right">
 
                     <%=player.intelligence%>
                 </span>
             </li>
             <li class="list-group-item">Dexterity
-                <span class="float-right">
+                <span id="dexterity" class="float-right">
                     <%=player.dexterity%>
                 </span>
             </li>
             <li class="list-group-item">Strength
-                <span class="float-right">
+                <span id="strength" class="float-right">
                     <%=player.strength%>
                 </span>
 

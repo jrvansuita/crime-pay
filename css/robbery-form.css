@@ -1,4 +1,5 @@
 .robbery-form-holder{
+    border-radius: 0.25rem !important;
     padding-top: 1em;
     width: fit-content;
     max-width: 50em;
@@ -7,3 +8,11 @@
 .robbery-form-holder .card-title{
     padding-bottom: 1em;
 }
+
+.robbery-result-holder{
+    border-radius: 0.25rem !important;
+    padding-top: 1em;
+    
+    
+}
+

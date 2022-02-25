@@ -28,6 +28,11 @@ module.exports = class Routes {
             });
         });
 
+        this.app.get('/robbery-result', function (req, res) {
+            robberyPage.getRobberyResult(req.query._id, (data) => {
+                res.render('partials/robbery-result', data);
+            });
+        });
 
 
     }

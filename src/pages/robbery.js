@@ -25,6 +25,10 @@ module.exports = class RobberyPage {
         this.mecanics.getPlaceDetails(placeId, callback);
     }
 
+    getRobberyResult(id, callback) {
+        this.mecanics.getRobberyResult(id, callback);
+    }
+
 
 
 

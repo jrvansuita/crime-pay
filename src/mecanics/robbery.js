@@ -1,6 +1,7 @@
 const RobberyPlace = require("../controller/place");
 const Player = require("../controller/player");
-const RobberyResult = require("../model/robbert-result");
+const RobberyResult = require("../model/robbery-result");
+const RobberyResultController = require("../controller/robbery-result");
 
 const USERID = '620bd7d3167e2e95193329e1';
 
@@ -10,6 +11,7 @@ module.exports = class RobberyMecanics {
     constructor() {
         this.robberyPlaces = new RobberyPlace();
         this.player = new Player();
+        this.robberyResultController = new RobberyResultController();
     }
 
     getPlayerAndAllPlacesList(callback) {
@@ -40,6 +42,14 @@ module.exports = class RobberyMecanics {
         });
     }
 
+    getRobberyResult(id, callback) {
+        this.player.get(USERID, (err, player) => {
+            this.robberyResultController.find(id, (err, result) => {
+                callback({ result: result, player: player })
+            });
+        });
+    }
+
 
     calculatePlaceAttributes(player, place) {
 
@@ -63,7 +73,7 @@ module.exports = class RobberyMecanics {
 
         /* Defining Stamina Cost */
         var staminaCost = Math.trunc((100 / place.successChance) * 7.5);
-        staminaCost = Math.min(staminaCost, 100);
+        staminaCost = Math.max(5, Math.min(staminaCost, 100));
         place.staminaCost = staminaCost;
 
         /* Defining Coins Reward */
@@ -110,9 +120,13 @@ module.exports = class RobberyMecanics {
         result.setStats(place.coinsReward, place.respect, place.staminaCost)
         result.setAttributes(intelligence, dexterity, strength)
         result.apply(player);
-        this.player.save(player, function (err, doc) {
-            callback(result);
-        })
+        this.player.save(player, (err, doc) => {
+
+            this.robberyResultController.save(result, (err, resultData) => {
+                callback({ result: resultData, player: player });
+            });
+        });
+
 
 
 

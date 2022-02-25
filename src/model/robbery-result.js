@@ -23,8 +23,6 @@ module.exports = class RobberyResult {
     }
 
     apply(player) {
-        this.player = player;
-
         player.intelligence += this.intelligence;
         player.dexterity += this.dexterity;
         player.strength += this.strength;
