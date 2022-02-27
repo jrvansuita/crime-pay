@@ -1,19 +1,43 @@
 
 $(document).ready(function () {
-    $(".robbery-place-item").on("click", function () {
+    reloadRobberyPlaces();
+});
+
+
+
+
+
+
+
+function reloadRobberyPlaces() {
+    $(".robbery-places-holder .robbery-place-item").remove();
+    $(".robbery-places-holder .robbery-place-item-ph").show();
+
+    setTimeout(() => {
+        $(".robbery-places-holder").load("/robbery-places", function () {
+            $(".robbery-places-holder .robbery-place-item-ph").hide();
+            $(".robbery-places-holder").hide().fadeIn();
+
+            $(".robbery-place-item").on("click", onRobberyPlaceItemClick());
+            $(".robbery-place-item").first().click().focus();
+        });
+    }, 1400);
+}
+
+
+
+function onRobberyPlaceItemClick() {
+    return function () {
         var placeId = $(this).data('key');
-        $(this).focus();
-        $(".robbery-form-holder").empty();
+
         $(".robbery-form-holder").load("/robbery-form?_id=" + placeId, function () {
             $(".robbery-form-holder").hide().fadeIn();
+
             $(".robbery-form-holder").data('place', placeId)
             $('#robbery-submit').click(onRobberySubmit);
         });
-    });
-
-    $(".robbery-place-item").first().click().focus()
-});
-
+    }
+}
 
 
 function onRobberySubmit() {
@@ -27,11 +51,10 @@ function onRobberySubmit() {
             $(".robbery-result-holder").hide().fadeIn();
 
 
+            reloadRobberyPlaces();
         });
-
     });
 }
-
 
 function thiefStatusUpdate(player) {
     $('#coins').text(player.coins);

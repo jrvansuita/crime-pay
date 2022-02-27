@@ -1,0 +1,26 @@
+<div class="robbery-place-item card" tabindex="-1" data-key="<%=place._id%>">
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
+        <%=place.successChance%>%
+    </span>
+
+
+    <img src="/img/places/<%=place.name.toLowerCase().replace(' ','-')%>.jpg" class="card-img-top" alt="..." />
+    <div class="card-body ">
+        <h5 class="card-title">
+            <%=place.name%>
+
+        </h5>
+
+        <span class="stamina">
+            <%=place.staminaCost%> Stamina
+        </span>
+        <!-- <span class="stamina">
+                            <%=place.respect%> respect
+                        </span>
+
+                        <span class="stamina">
+                            <%=place.coinsReward%> coins
+                        </span> -->
+
+    </div>
+</div>

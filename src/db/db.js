@@ -9,7 +9,6 @@ db.on('error', function (err) {
 })
 
 db.on('connect', function () {
-
     console.log('database connected')
 })
 

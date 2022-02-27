@@ -1,4 +1,5 @@
 
+
 .bg-purple {
     --bs-bg-opacity: 1;
     --bs-purple-rgb: 102,16,242;
@@ -20,30 +21,30 @@
     float: right;
 }
 
+.container{
+    margin-top: 5em;
+}
 
-
-
-.flex-container {
+.flex-container-h {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
-    align-content: stretch;
-    align-items: stretch;
+    
 }
 
-.flex-left:nth-child(1) {
+.flex-left {
   flex: 1 1 auto;
   align-self: auto;
   margin-right: 1em;
 }
 
-.flex-painel:nth-child(2) {
+.flex-painel{
   flex: 3 1 auto;
   align-self: auto;
   margin-left: 0;
+  width: -webkit-fill-available;
 }
-
 
 .flex-right{
   flex: 1 1 auto;
@@ -52,7 +53,20 @@
 }
 
 
+
+.card-body .max{
+    min-width: max-content;
+}
+
+
+
 .mini-img{
     vertical-align: text-bottom;
     width: 20px;
+}
+
+.card-img-top.ph{
+    background-color: #9da0a3;
+    min-width: 125px;
+    min-height: 125px;
 }

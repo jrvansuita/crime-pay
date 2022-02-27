@@ -1,26 +1,15 @@
-const mongojs = require('mongojs')
-const weaponData = require('../db/db').weapon;
+const Controller = require("./controlle");
 
+module.exports = class WeaponController extends Controller {
 
-module.exports = class Weapon {
-
-    find(id, callback) {
-        weaponData.findOne({
-            _id: mongojs.ObjectId(id)
-        }, callback);
+    constructor() {
+        super('weapon');
     }
 
-    findAll(ids, callback) {
-        weaponData.find({
-            '_id': { $in: ids.map((each) => mongojs.ObjectId(each)) }
-        }, callback);
-
-    }
-
-    findAllByUser(userId, callback) {
-        weaponData.find({
+    findByUser(userId) {
+        return this.findByQuery({
             userId: userId
-        }, callback);
+        });
     }
 
 }

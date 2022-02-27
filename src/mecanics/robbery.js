@@ -1,22 +1,25 @@
-const RobberyPlace = require("../controller/place");
-const Player = require("../controller/player");
+const RobberyPlaceController = require("../controller/robbery-place");
+const Player = require("../controller/player.old");
 const RobberyResult = require("../model/robbery-result");
 const RobberyResultController = require("../controller/robbery-result");
 
 const USERID = '620bd7d3167e2e95193329e1';
 
 
+
+
+
 module.exports = class RobberyMecanics {
 
     constructor() {
-        this.robberyPlaces = new RobberyPlace();
         this.player = new Player();
         this.robberyResultController = new RobberyResultController();
+        this.robberyPlaceController = new RobberyPlaceController();
     }
 
     getPlayerAndAllPlacesList(callback) {
         this.player.get(USERID, (err, player) => {
-            this.robberyPlaces.findAll((err, places) => {
+            this.robberyPlaceController.findAll((err, places) => {
                 places = places.map((each) => { return this.calculatePlaceAttributes(player, each) })
                 callback({ places: places, player: player });
             })
@@ -26,7 +29,7 @@ module.exports = class RobberyMecanics {
 
     getPlaceDetails(placeId, callback) {
         this.player.get(USERID, (err, player) => {
-            this.robberyPlaces.find(placeId, (err, place) => {
+            this.robberyPlaceController.find(placeId, (err, place) => {
                 place = this.calculatePlaceAttributes(player, place);
                 callback({ place: place, player: player });
             });
@@ -35,7 +38,7 @@ module.exports = class RobberyMecanics {
 
     makeRobbery(placeId, callback) {
         this.player.get(USERID, (err, player) => {
-            this.robberyPlaces.find(placeId, (err, place) => {
+            this.robberyPlaceController.find(placeId, (err, place) => {
                 place = this.calculatePlaceAttributes(player, place);
                 this.executeRobbery(player, place, callback);
             });

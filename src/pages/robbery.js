@@ -17,6 +17,7 @@ module.exports = class RobberyPage {
         });
     }
 
+
     makeRobbery(placeId, callback) {
         this.mecanics.makeRobbery(placeId, callback);
     }

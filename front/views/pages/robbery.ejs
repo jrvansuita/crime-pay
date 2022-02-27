@@ -1,0 +1,64 @@
+<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Robbery</title>
+    <%- include('../default/head'); %>
+
+        <link rel="stylesheet" href="/css/robbery.css">
+        <script src="/js/robbery.js"></script>
+</head>
+
+
+<body>
+
+
+
+    <div class="container">
+        <div class="flex-container-h">
+
+            <div class="flex-left">
+                <%- include('../partials/thief-status'); %>
+            </div>
+
+            <div class="flex-painel">
+
+                <div class="card max">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">Making a Robbery</h5>
+                        <p class="card-text">Select a target and try your lucky! Each target places has a specific
+                            difficultand costs some amount of stamina to rober.</p>
+
+                        <div class="robbery-places-scroll-attributes">
+                            <div class="robbery-places-holder">
+
+                                <% [...Array(12).keys()].slice(1).forEach(()=>{ %>
+                                    <%- include('../placeholders/robbery-place-item.html'); %>
+
+                                        <% }) %>
+                            </div>
+
+                        </div>
+                        <div class="flex-container-h">
+
+                            <div class="flex-painel">
+                                <div class="robbery-form-holder"></div>
+                            </div>
+
+                            <div class="flex-right">
+                                <div class="robbery-result-holder"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+
+</html>

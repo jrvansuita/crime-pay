@@ -22,6 +22,12 @@ module.exports = class Routes {
             })
         });
 
+        this.app.get('/robbery-places', function (req, res) {
+            robberyPage.loadPage((data) => {
+                res.render('partials/robbery-places', data);
+            });
+        });
+
         this.app.post('/robbery-submit', function (req, res) {
             robberyPage.makeRobbery(req.body.placeId, (result) => {
                 res.send(result);
