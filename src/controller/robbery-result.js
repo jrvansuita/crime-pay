@@ -1,21 +1,15 @@
-const mongojs = require('mongojs');
-const robberyResultData = require('../db/db').robberyresult;
+const Controller = require("./controlle");
 
 
+module.exports = class RobberyResultController extends Controller {
 
 
-module.exports = class RobberyResultController {
-
-    find(id, callback) {
-        robberyResultData.findOne({
-            _id: mongojs.ObjectId(id)
-        }, callback);
+    constructor() {
+        super('robberyresult');
     }
 
-
-    save(result, callback) {
-        robberyResultData.save(result, callback)
+    save(data) {
+        return super.save(data);
     }
 
 }
-

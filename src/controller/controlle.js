@@ -31,6 +31,21 @@ module.exports = class Controller {
         });
     }
 
+    all() {
+        return this.findByQuery({});
+    }
+
+    modify(_id, data) {
+        return new Promise((resolve, reject) => {
+            this.dataAccess.findAndModify({
+                query: { _id: mongojs.ObjectId(_id) },
+                update: { ...data },
+                new: true
+            }, this.promiseHandler(resolve, reject));
+        });
+
+    }
+
     save(instance) {
         return new Promise((resolve, reject) => {
             this.dataAccess.save(instance, this.promiseHandler(resolve, reject));

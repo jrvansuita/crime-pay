@@ -7,9 +7,9 @@
 }
 
 .label-sub-title{
-        color: #6c757d!important;
-        font-size: 1rem;
-        font-weight: 500;
+    color: #6c757d!important;
+    font-size: 1rem;
+    font-weight: 500;
     line-height: 1.2;
 }
 
@@ -20,17 +20,19 @@
 .float-right{
     float: right;
 }
+.placeholder.btn{
+    height: 35px;
+}
 
 .container{
     margin-top: 5em;
 }
 
-.flex-container-h {
+.flex-container {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
-    
 }
 
 .flex-left {
@@ -43,7 +45,6 @@
   flex: 3 1 auto;
   align-self: auto;
   margin-left: 0;
-  width: -webkit-fill-available;
 }
 
 .flex-right{
@@ -58,7 +59,10 @@
     min-width: max-content;
 }
 
-
+.medium-img{
+    vertical-align: text-bottom;
+    width: 100px;
+}
 
 .mini-img{
     vertical-align: text-bottom;

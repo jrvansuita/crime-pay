@@ -1,3 +1,5 @@
+const { ROBBERY_SUCCESS, ROBBERY_FAIL } = require("../const/constants");
+
 module.exports = class RobberyResult {
 
     constructor(success) {
@@ -22,14 +24,13 @@ module.exports = class RobberyResult {
         this.strength = this.success ? strength : -strength;;
     }
 
-    apply(player) {
-        player.intelligence += this.intelligence;
-        player.dexterity += this.dexterity;
-        player.strength += this.strength;
-        player.coins += this.coins;
-        player.respect += this.respect;
-        player.stamina += this.stamina;
+    static parse(result) {
+        var items = result.success ? ROBBERY_SUCCESS : ROBBERY_FAIL;
+        result.msg = items[Math.floor(Math.random() * items.length)];
 
-        return player;
+        return result;
     }
+
+
+
 }

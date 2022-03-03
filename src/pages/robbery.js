@@ -1,37 +1,33 @@
 
 const RobberyMecanics = require("../mecanics/robbery");
+const ThiefController = require("../controller/complex/thief");
+const RobberyPlaceController = require("../controller/robbery-place");
 
 
 
 module.exports = class RobberyPage {
 
     constructor() {
-        this.mecanics = new RobberyMecanics();
+        this.robberyMecanics = new RobberyMecanics();
+        this.thiefController = new ThiefController();
+        this.robberyPlaceController = new RobberyPlaceController();
     }
 
-
-    loadPage(callback) {
-        this.mecanics.getPlayerAndAllPlacesList((data) => {
-            data.places = data.places.sort(function (a, b) { return a.dificulty - b.dificulty });
-            callback(data);
-        });
+    load() {
+        return this.thiefController.get(process.env.USER_ID);
     }
 
-
-    makeRobbery(placeId, callback) {
-        this.mecanics.makeRobbery(placeId, callback);
+    place(placeId, thief) {
+        return this.robberyPlaceController.placesDetails(placeId, thief);
     }
 
-    getPlaceDetails(placeId, callback) {
-        this.mecanics.getPlaceDetails(placeId, callback);
+    places(thief) {
+        return this.robberyPlaceController.placesFor(thief);
     }
 
-    getRobberyResult(id, callback) {
-        this.mecanics.getRobberyResult(id, callback);
+    submit(placeId, thief) {
+        return this.robberyMecanics.submit(placeId, thief);
     }
-
-
-
 
 }
 

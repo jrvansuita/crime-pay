@@ -6,19 +6,19 @@
 
 
     <div class="card" style="width: 18rem;">
-        <img src="<%=player.img%>" class="card-img-top" alt="thief head">
+        <img src="<%=thief.img%>" class="card-img-top" alt="thief head">
         <span class="badge rounded-pill respect-badge">
             <img src="/img/respect-star.png" class="respect-star-img">
-            <%=player.respect%>
+            <%=thief.respect%>
         </span>
 
         <div class="card-body">
             <h5 class="card-title ">
-                <%=player.name%>
+                <%=thief.name%>
                     <span class="coin-display  float-right">
                         <img class="mini-img" src="/img/coin.png" alt="">
                         <span id="coins">
-                            <%=Intl.NumberFormat().format(player.coins)%>
+                            <%=Intl.NumberFormat().format(thief.coins)%>
                         </span>
                     </span>
 
@@ -27,12 +27,12 @@
             <h6 class="label-sub-title">
                 Stamina
                 <span id="stamina-percent" class="progress-num float-right">
-                    <%=player.stamina%>%
+                    <%=thief.stamina%>%
                 </span>
             </h6>
             <div class="progress">
                 <div id="stamina" class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                    style="width: <%=player.stamina%>%" aria-valuenow="<%=player.stamina%>" aria-valuemin="0"
+                    style="width: <%=thief.stamina%>%" aria-valuenow="<%=thief.stamina%>" aria-valuemin="0"
                     aria-valuemax="100">
                 </div>
             </div>
@@ -40,12 +40,12 @@
             <h6 class="label-sub-title">
                 Intoxication
                 <span class="progress-num float-right">
-                    <%=player.intoxication%>%
+                    <%=thief.intoxication%>%
                 </span>
             </h6>
             <div class="progress">
                 <div class="progress-bar progress-bar-striped bg-purple" role="progressbar"
-                    style="width: <%=player.intoxication%>%" aria-valuenow="<%=player.intoxication%>" aria-valuemin="0"
+                    style="width: <%=thief.intoxication%>%" aria-valuenow="<%=thief.intoxication%>" aria-valuemin="0"
                     aria-valuemax="100">
 
                 </div>
@@ -66,17 +66,17 @@
             <li class="list-group-item">Intelligence
                 <span id="intelligence" class="float-right">
 
-                    <%=player.intelligence%>
+                    <%=thief.intelligence%>
                 </span>
             </li>
             <li class="list-group-item">Dexterity
                 <span id="dexterity" class="float-right">
-                    <%=player.dexterity%>
+                    <%=thief.dexterity%>
                 </span>
             </li>
             <li class="list-group-item">Strength
                 <span id="strength" class="float-right">
-                    <%=player.strength%>
+                    <%=thief.strength%>
                 </span>
 
             </li>
@@ -89,7 +89,7 @@
                 Weapons
             </h6>
 
-            <% for(let [index, weapon] of player.weapons.entries() || []){ %>
+            <% for(let [index, weapon] of thief.weapons.entries() || []){ %>
                 <img class="img-thumbnail" style="width: 120px;" src="<%=weapon.img%>" alt="">
 
                 <%} %>

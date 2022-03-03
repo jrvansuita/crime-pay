@@ -17,11 +17,18 @@ module.exports = class ThiefController extends PlayerController {
                 if (!thief) throw new Error(constants.THIEF_NOT_FOUND);
 
                 return this.weaponController.findByIds(thief.equipedWeapons).then(weapons => {
-                    return { thief, weapons }
+                    thief.weapons = weapons;
+                    return thief;
                 });
             });
     }
 
+
+    update(thief, robberyResult) {
+        const data = ['intelligence', 'dexterity', 'strength', 'coins', 'respect', 'stamina'].reduce((a, e) => (a[e] = robberyResult[e], a), {});
+
+        return this.modify(thief._id, { $inc: data });
+    }
 
 
 

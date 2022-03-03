@@ -11,35 +11,23 @@ module.exports = class Routes {
         const robberyPage = new RobberyPage();
 
         this.app.get('/robbery', function (req, res) {
-            robberyPage.loadPage((data) => {
-                res.render('pages/robbery', data);
+            robberyPage.load().then(thief => {
+                req.session.player = thief;
+                res.render('pages/robbery', { thief })
             });
-        });
-
-        this.app.get('/robbery-form', function (req, res) {
-            robberyPage.getPlaceDetails(req.query._id, (data) => {
-                res.render('partials/robbery-form', data);
-            })
         });
 
         this.app.get('/robbery-places', function (req, res) {
-            robberyPage.loadPage((data) => {
-                res.render('partials/robbery-places', data);
-            });
+            robberyPage.places(req.session.player).then((places) => res.render('partials/robbery-places', { places }));
+        });
+
+        this.app.get('/robbery-form', function (req, res) {
+            robberyPage.place(req.query._id, req.session.player).then(place => res.render('partials/robbery-form', { place }));
         });
 
         this.app.post('/robbery-submit', function (req, res) {
-            robberyPage.makeRobbery(req.body.placeId, (result) => {
-                res.send(result);
-            });
+            robberyPage.submit(req.body.placeId, req.session.player).then(result => res.send(result));
         });
-
-        this.app.get('/robbery-result', function (req, res) {
-            robberyPage.getRobberyResult(req.query._id, (data) => {
-                res.render('partials/robbery-result', data);
-            });
-        });
-
 
     }
 
