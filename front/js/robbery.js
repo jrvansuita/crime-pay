@@ -56,7 +56,7 @@ class RobberyLayoutManager {
                 this.onTerminateLoadPlaces();
                 this.getPlaceItems().on("click", this.onRobberyPlaceItemSelected()).first().click().focus();
             });
-        }, 1400);
+        }, 800);
     }
 
     onRobberyPlaceItemSelected() {
@@ -73,20 +73,29 @@ class RobberyLayoutManager {
         }
     }
 
+    onRobberyPlaceSubmitButtonPressed() {
+        $('#robbery-submit').attr('disabled', '');
+        $('#robbery-submit .no-display').css('display', 'inherit');
+        $('#robbery-submit .robbery-submit-text').hide();
+    }
+
     onRobberyPlaceSubmit() {
         const _this = this;
         return () => {
-            $('#robbery-submit').attr('disabled', '');
-            $.post("/robbery-submit", { placeId: _this.getFormHolder().data('place') }).done((data) => {
-                $('#result-police').hide();
+            this.onRobberyPlaceSubmitButtonPressed();
 
-                setTimeout(() => {
+            setTimeout(() => {
+                $.post("/robbery-submit", { placeId: _this.getFormHolder().data('place') }).done((data) => {
+                    $('#result-police').hide();
+
+
                     _this.reloadPlaces();
-                }, 2000);
 
-                _this.updateRobberyResult(data.result)
-                _this.updateThiedStatus(data.thief);
-            });
+
+                    _this.updateRobberyResult(data.result)
+                    _this.updateThiedStatus(data.thief);
+                });
+            }, 2000);
         }
     }
 
