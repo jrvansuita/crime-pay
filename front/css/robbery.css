@@ -1,11 +1,4 @@
 
-body{    
-  background-image: url("/img/city-bg.png");
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-color: #b8c8e0;
-}
-
 .robbery-places-holder .translate-middle {
   transform: translate(-80%,-30%)!important;
 }
@@ -16,9 +9,9 @@ body{
 
 .robbery-places-scroll-attributes{
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 25px;
-  margin-bottom: 30px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
   overflow-x: auto;
   overflow-y: hidden;
 }
@@ -33,7 +26,7 @@ body{
 .robbery-places-holder > .card{
   flex-grow: 0;
   margin-right: 14px;
-  min-width: 125px;
+  min-width: 137px;
 }
 
 .robbery-places-holder .card-title{

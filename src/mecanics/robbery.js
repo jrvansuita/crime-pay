@@ -14,12 +14,12 @@ module.exports = class RobberyMecanics {
         this.robberyResultController = new RobberyResultController();
     }
 
-    submit(placeId, thief) {
+    submit(placeId, thief, testing) {
         return this.robberyPlaceController.placesDetails(placeId, thief).then((place) => {
             var result = executeRobbery(place, thief);
 
             return this.thiefController.update(thief, result).then((updatedThief) => {
-                return this.robberyResultController.save(result).then((resultData) => {
+                return testing ? result : this.robberyResultController.save(result).then((resultData) => {
                     return { result: RobberyResult.parse(resultData), thief: updatedThief }
                 })
             })
@@ -39,6 +39,8 @@ var executeRobbery = (place, player) => {
     /* Defining New Player Attributes */
     var intelligence = Math.max(1, (Math.trunc(((player.intelligence * .05) * (intelligenceMultiplier * .25)) + (difficult * .1))));
     var dexterity = Math.max(1, Math.trunc((((player.dexterity * .05) * (dexterityMultiplier * .25)) + (difficult * .1))));
+
+
     var strength = Math.max(1, Math.trunc((player.strength * .05) + (difficult * .015)));
 
     const result = new RobberyResult(success);

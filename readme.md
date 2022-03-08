@@ -21,13 +21,15 @@ The player is challenged to live a day-to-day life of a character who can be a p
 -----
 
 Next implementations:
+- [x] tab menu with : Robbery, Prison, Club and Settings
+- [x] reset player setting
 - [ ] go to prison on failed robbery
 - [ ] prevent make robbery when out of stamina
 - [ ] on reaload page, auto select last robbery place
 - [ ] remove visibility of 0% chance robberies
 - [ ] fix strength ups (beyond other stats)
 - [ ] install code optmization github plugin 
-- [ ] tab menu with : Robbery, Prison and Club
+
 
 #
 

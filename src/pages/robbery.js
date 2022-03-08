@@ -13,21 +13,25 @@ module.exports = class RobberyPage {
         this.robberyPlaceController = new RobberyPlaceController();
     }
 
-    load() {
-        return this.thiefController.get(process.env.USER_ID);
-    }
+    bind(app) {
+        app.get('/robbery', (req, res) => {
+            this.thiefController.get(process.env.USER_ID).then(thief => {
+                req.session.player = thief;
+                res.render('pages/robbery', { thief })
+            });
+        });
 
-    place(placeId, thief) {
-        return this.robberyPlaceController.placesDetails(placeId, thief);
-    }
+        app.get('/robbery-places', (req, res) => {
+            this.robberyPlaceController.placesFor(req.session.player).then((places) => res.render('partials/robbery-places', { places }));
+        });
 
-    places(thief) {
-        return this.robberyPlaceController.placesFor(thief);
-    }
+        app.get('/robbery-form', (req, res) => {
+            this.robberyPlaceController.placesDetails(req.query._id, req.session.player).then(place => res.render('partials/robbery-form', { place }));
+        });
 
-    submit(placeId, thief) {
-        return this.robberyMecanics.submit(placeId, thief);
+        app.post('/robbery-submit', (req, res) => {
+            this.robberyMecanics.submit(req.body.placeId, req.session.player).then(result => res.send(result));
+        });
     }
-
 }
 

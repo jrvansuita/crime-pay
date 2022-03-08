@@ -38,8 +38,8 @@ app.use(sessions({
 //==========//
 
 
-const Routes = require('./src/routes/routes');
-new Routes(app).init();
+
+(require('./src/routes/routes')).bind(app);
 
 app.listen(3001);
 

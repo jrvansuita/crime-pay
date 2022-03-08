@@ -1,5 +1,16 @@
+.nav-tabs{
+    background-color: #f8f8f8;
+}
 
 
+body{    
+    background-image: url("/img/city-bg.png");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-color: #b8c8e0;
+  }
+
+  
 .bg-purple {
     --bs-bg-opacity: 1;
     --bs-purple-rgb: 102,16,242;
@@ -62,8 +73,9 @@
 
 
 
-.card-body .max{
+.card-body.max{
     min-width: max-content;
+    min-height: 50em;
 }
 
 .medium-img{
@@ -76,7 +88,12 @@
     width: 20px;
 }
 
+.player-head{
+    min-height: 290px;
+}
+
 .card-img-top.ph{
+    
     background-color: #9da0a3;
     min-width: 125px;
     min-height: 125px;
