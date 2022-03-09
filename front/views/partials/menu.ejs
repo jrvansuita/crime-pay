@@ -1,18 +1,15 @@
 <ul class="nav nav-tabs">
-    <li class="nav-item">
-        <a class="nav-link <%=locals.nav_robbery? 'active' : ''%>" aria-current="page" href="/robbery"
-            onclick="return location.href != this.href">Robbery</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link <%=locals.nav_prison? 'active' : ''%>" href="/prison"
-            onclick="return location.href != this.href">Prison</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link <%=locals.nav_club? 'active' : ''%>" href="/club"
-            onclick="return location.href != this.href">Club</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link <%=locals.nav_settings? 'active' : ''%>" href="/settings"
-            onclick="return location.href != this.href">Settings</a>
-    </li>
+
+    <%['Robbery', 'Prison' , 'Club' , 'Market' , 'Settings' ].forEach((each)=>{ %>
+
+        <li class="nav-item">
+            <a class="nav-link <%=locals['nav_'+ each.toLowerCase()] ? 'active' : ''%>" aria-current="page"
+                href="/<%=each.toLowerCase()%>" onclick="return location.href != this.href">
+                <%=each%>
+            </a>
+        </li>
+
+        <%})%>
+
+
 </ul>

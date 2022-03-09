@@ -9,6 +9,8 @@
 
         <link rel="stylesheet" href="/css/robbery.css">
         <script src="/js/robbery.js"></script>
+
+        <script> window.lastSelectedPlaceId = '<%= session.lastSelectedPlaceId %>' </script>
 </head>
 
 
@@ -26,7 +28,7 @@
                 <%- include('../partials/thief-status'); %>
             </div>
 
-            <div class="flex-painel" style="width: 100%">
+            <div class="flex-painel content">
 
 
 
@@ -42,7 +44,7 @@
                             <div class="robbery-places-scroll-attributes">
                                 <div class="robbery-places-holder">
 
-                                    <% [...Array(12).keys()].slice(1).forEach(()=>{ %>
+                                    <% [...Array(9).keys()].slice(1).forEach(()=>{ %>
                                         <%- include('../placeholders/robbery-place-item.html'); %>
 
                                             <% }) %>

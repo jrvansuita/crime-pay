@@ -1,3 +1,4 @@
+const { resetWatchers } = require("nodemon/lib/monitor/watch");
 const Controller = require("./controlle");
 
 module.exports = class RobberyPlaceController extends Controller {
@@ -16,7 +17,10 @@ module.exports = class RobberyPlaceController extends Controller {
     placesFor(player) {
         return this.all().then((places) => {
             return places.sort((a, b) => { return a.dificulty - b.dificulty })
-                .map((each) => { return calculatePlaceAttributes(player, each) });
+                //Handle all calculated attributes
+                .map(each => { return calculatePlaceAttributes(player, each) })
+                //Remove places with zero success chances
+                .filter(each => { return each.successChance > 0 });
         });
     }
 

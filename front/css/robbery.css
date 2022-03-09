@@ -26,7 +26,16 @@
 .robbery-places-holder > .card{
   flex-grow: 0;
   margin-right: 14px;
-  min-width: 137px;
+  min-width: 139px;
+}
+
+.robbery-places-holder  .card-body{
+  min-height: 79px;
+}
+
+.robbery-places-holder .card-img-top{
+  width: 137px;
+  height: 137px;
 }
 
 .robbery-places-holder .card-title{
@@ -34,10 +43,16 @@
   font-weight: 400;
 }
 
+.robbery-place-item:hover{
+  cursor: pointer;
+  background-color: rgb(240 236 236 / 46%);
+}
 
-.robbery-place-item:hover,  .robbery-place-item:focus{
-cursor: pointer;
-background-color: rgb(240, 236, 236);
+.robbery-place-item.selected{
+  background-color: rgb(240 236 236 / 46%);
+  outline: none;
+  border: 2px solid #599cff;
+  outline: none;
 }
 
 
@@ -76,4 +91,9 @@ background-color: rgb(240, 236, 236);
 
 #result-info{
   display: none;
+}
+
+
+.card-img-top.ph{
+  background-color: #9da0a3;
 }

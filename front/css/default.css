@@ -1,6 +1,4 @@
-.nav-tabs{
-    background-color: #f8f8f8;
-}
+
 
 
 body{    
@@ -8,7 +6,17 @@ body{
     background-repeat: repeat-x;
     background-position: bottom;
     background-color: #b8c8e0;
-  }
+}
+
+
+.container{
+    margin-top: 5em;
+    min-width: 70%;
+}
+
+.nav-tabs{
+    background-color: #f8f8f8;
+}
 
   
 .bg-purple {
@@ -39,8 +47,9 @@ body{
     display: none;
 }
 
-.container{
-    margin-top: 5em;
+.flex-painel.content{
+    width: 100%;
+    min-width: 80em;
 }
 
 .flex-container {
@@ -51,7 +60,9 @@ body{
 }
 
 .flex-left {
-  flex: 1  auto;
+  display: flex;
+  flex-direction: column; 
+  flex: 1;
   flex-basis: 100%;
   margin-right: 1em;
 }
@@ -59,8 +70,9 @@ body{
 .flex-painel{
   display: flex;
   flex-direction: column;
-  flex: 3  ;
+  flex: 3;
   flex-basis: 100%;
+  
 }
 
 .flex-right{
@@ -90,11 +102,4 @@ body{
 
 .player-head{
     min-height: 290px;
-}
-
-.card-img-top.ph{
-    
-    background-color: #9da0a3;
-    min-width: 125px;
-    min-height: 125px;
 }

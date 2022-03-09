@@ -26,7 +26,10 @@ module.exports = class RobberyPage {
         });
 
         app.get('/robbery-form', (req, res) => {
-            this.robberyPlaceController.placesDetails(req.query._id, req.session.player).then(place => res.render('partials/robbery-form', { place }));
+            this.robberyPlaceController.placesDetails(req.query._id, req.session.player).then(place => {
+                req.session.lastSelectedPlaceId = place._id;
+                res.render('partials/robbery-form', { place })
+            });
         });
 
         app.post('/robbery-submit', (req, res) => {

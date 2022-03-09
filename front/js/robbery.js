@@ -4,9 +4,6 @@ $(document).ready(function () {
 });
 
 class RobberyLayoutManager {
-    constructor() {
-
-    }
 
     getPlaceItemsHolders() {
         return $(".robbery-places-holder .robbery-place-item-ph");
@@ -54,7 +51,10 @@ class RobberyLayoutManager {
         setTimeout(() => {
             this.getPlacesHolder().load("/robbery-places", () => {
                 this.onTerminateLoadPlaces();
-                this.getPlaceItems().on("click", this.onRobberyPlaceItemSelected()).first().click().focus();
+                this.getPlaceItems().on("click", this.onRobberyPlaceItemSelected());
+
+                //Select the last place clicked or the first one
+                this.getPlaceItems().first().add("[data-key='" + lastSelectedPlaceId + "']").last().click();
             });
         }, 800);
     }
@@ -62,7 +62,9 @@ class RobberyLayoutManager {
     onRobberyPlaceItemSelected() {
         const _this = this;
         return function () {
-            var placeId = $(this).data('key');
+            _this.getPlaceItems().removeClass('selected');
+            var placeId = $(this).addClass('selected').data('key');
+            lastSelectedPlaceId = placeId;
 
             _this.getFormHolder().load("/robbery-form?_id=" + placeId, function () {
                 _this.getFormHolder().hide().fadeIn();
@@ -88,9 +90,7 @@ class RobberyLayoutManager {
                 $.post("/robbery-submit", { placeId: _this.getFormHolder().data('place') }).done((data) => {
                     $('#result-police').hide();
 
-
                     _this.reloadPlaces();
-
 
                     _this.updateRobberyResult(data.result)
                     _this.updateThiedStatus(data.thief);

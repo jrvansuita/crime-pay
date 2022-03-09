@@ -35,9 +35,16 @@ app.use(sessions({
     resave: false
 }));
 
+
+
+
+//Making session visible in all ejs files
+app.use(function (req, res, next) {
+    res.locals.session = req.session;
+    next();
+});
+
 //==========//
-
-
 
 (require('./src/routes/routes')).bind(app);
 
