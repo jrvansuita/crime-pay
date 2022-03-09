@@ -1,13 +1,9 @@
-<span align="right" width="50" height="50"> 
- 
- ![](https://komarev.com/ghpvc/?username=crime-pay&color=green&style=flat&label=Visits) 
+<img src="/front/img/thief-head.jpg" align="left" hspace="1" vspace="1" style="width:250px;">
 
+![](https://komarev.com/ghpvc/?username=crime-pay&color=green&style=flat&label=Visits) 
 [![CodeFactor](https://www.codefactor.io/repository/github/jrvansuita/crime-pay/badge)](https://www.codefactor.io/repository/github/jrvansuita/crime-pay)
-
-</span>
-
-<img src="/front/img/thief-head.jpg" alt="Thief Head" align="left" style="width:200px;"/>
-
+ 
+ 
 # Crime Pay
 
 #### It's a play to earn game (P2E) in development phase that mixes the crime world with pixel art and comical elements.
@@ -18,13 +14,13 @@ The player is challenged to live a day-to-day life of a character who can be a p
 -----
 
 *I need help! Do you want to help me out? Need a pixel art artist to help with some graphics and a bsc blockchain expert to give some tips and clarify the path.*
-
+Just hit the issues.
 
 -----
 
 Next implementations:
 
-### Layouts
+#### Layouts
 - [x] tab menu with : Robbery, Prison, Club, Market and Settings
 - [ ] Login page (Metamask integration)
 - [ ] prison page 
@@ -33,7 +29,7 @@ Next implementations:
 - [ ] history page (activities log for player) 
 - [x] settings page (as developing demand) 
 
-### Mecanis
+#### Mecanis
 - [x] reset player setting
 - [x] on reaload page, auto select last robbery place
 - [x] fix strength ups (beyond other stats)
@@ -42,14 +38,14 @@ Next implementations:
 - [ ] prevent make robbery when out of stamina
 - [ ] refresh stamina when take drugs or get a hooker
 
-### Visual
+#### Visual
 - [x] remove visibility of 0% chance robberies
 - [ ] remove visibility of 100% chance robberies (keep only 1)
 - [ ] respect badge animation on win or loss points
 - [x] cool pixel img when success or fail robbery
 - [ ] pixel art fonttypes
 
-### Code
+#### Code
 - [x] install code optmization github plugin 
 - [ ] teste automation with jest
 
