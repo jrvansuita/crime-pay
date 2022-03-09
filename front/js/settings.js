@@ -5,7 +5,7 @@ $(document).ready(function () {
         $('#reset span').last().hide();
 
         setTimeout(() => {
-            $.post("/settings-reset").done((data) => {
+            $.post("/settings-reset").done(() => {
                 $('#reset .no-display').css('display', 'none');
                 $('#reset span').last().show();
             });

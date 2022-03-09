@@ -50,7 +50,6 @@
 
 .robbery-place-item.selected{
   background-color: rgb(240 236 236 / 46%);
-  outline: none;
   border: 2px solid #599cff;
   outline: none;
 }

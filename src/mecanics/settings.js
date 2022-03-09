@@ -1,5 +1,3 @@
-
-const ThiefController = require("../controller/complex/thief");
 const PlayerController = require("../controller/player");
 
 

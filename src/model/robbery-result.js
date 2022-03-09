@@ -20,8 +20,8 @@ module.exports = class RobberyResult {
 
     setAttributes(intelligence, dexterity, strength) {
         this.intelligence = this.success ? intelligence : -intelligence;
-        this.dexterity = this.success ? dexterity : -dexterity;;
-        this.strength = this.success ? strength : -strength;;
+        this.dexterity = this.success ? dexterity : -dexterity;
+        this.strength = this.success ? strength : -strength;
     }
 
     static parse(result) {

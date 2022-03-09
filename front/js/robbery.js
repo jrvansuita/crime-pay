@@ -42,7 +42,7 @@ class RobberyLayoutManager {
         this.getPlaceItems().hide().fadeIn();
 
         this.getFormPlaceHolder().hide();
-        this.getFormHolder().hide().fadeIn();;
+        this.getFormHolder().hide().fadeIn();
     }
 
     reloadPlaces() {
