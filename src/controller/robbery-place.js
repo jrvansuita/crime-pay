@@ -70,7 +70,7 @@ const calculatePlaceAttributes = (player, place) => {
 
     /* Defining Respect Increse Bonus */
 
-    var respect = ((coinsReward / 2) * ((place.dificulty / player.respect) * .001) / (staminaCost * .2));
+    var respect = (((coinsReward / 2) * ((place.dificulty / player.respect) * .001)) / (staminaCost * .2));
     respect = Math.max(Math.trunc(respect, 1), 1);
     place.respect = respect;
 

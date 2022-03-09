@@ -12,7 +12,7 @@ module.exports = class SettingsPage {
         });
 
         app.post('/settings-reset', (req, res) => {
-            this.settingsMecanics.reset(req.session.player._id).then(result => res.send(result));
+            this.settingsMecanics.reset(req.session.playerId).then(result => res.send(result));
         });
 
 

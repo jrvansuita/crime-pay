@@ -17,6 +17,8 @@
 }
 
 .robbery-places-holder{
+  padding-left: 3px;
+  padding-right: 3px;
   align-items: stretch;
   display: flex;
   flex-direction: row;
@@ -43,6 +45,8 @@
   font-weight: 400;
 }
 
+
+
 .robbery-place-item:hover{
   cursor: pointer;
   background-color: rgb(240 236 236 / 46%);
@@ -50,8 +54,9 @@
 
 .robbery-place-item.selected{
   background-color: rgb(240 236 236 / 46%);
-  border: 2px solid #599cff;
-  outline: none;
+  /* border: 2px solid #599cff; */
+  /* outline: none; */
+  outline: 2px solid #599cff;
 }
 
 
@@ -81,18 +86,27 @@
 }
 
 .robbery-result-holder{
+  display: none;
   border-radius: 0.25rem !important;
   padding-top: 1em;
   max-width: 40em;
   min-width: 20em;
-  
+  width: fit-content;
+  height: 100%;
 }
 
 #result-info{
   display: none;
+  min-width: 30em;
 }
 
 
 .card-img-top.ph{
   background-color: #9da0a3;
+}
+
+
+#result-police {
+  align-items: center;
+  height: 100%;
 }

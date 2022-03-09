@@ -2,6 +2,8 @@
  
  ![](https://komarev.com/ghpvc/?username=crime-pay&color=green&style=flat&label=Visits) 
 
+[![CodeFactor](https://www.codefactor.io/repository/github/jrvansuita/crime-pay/badge)](https://www.codefactor.io/repository/github/jrvansuita/crime-pay)
+
 </span>
 
 <img src="/front/img/thief-head.jpg" alt="Thief Head" align="left" style="width:200px;"/>
@@ -21,17 +23,35 @@ The player is challenged to live a day-to-day life of a character who can be a p
 -----
 
 Next implementations:
+
+### Layouts
 - [x] tab menu with : Robbery, Prison, Club, Market and Settings
-- [x] reset player setting
-- [ ] go to prison on failed robbery
-- [ ] prevent make robbery when out of stamina
-- [x] on reaload page, auto select last robbery place
-- [x] remove visibility of 0% chance robberies
-- [ ] fix strength ups (beyond other stats)
-- [ ] install code optmization github plugin 
+- [ ] Login page (Metamask integration)
+- [ ] prison page 
+- [ ] club page (hookers and drugs)
+- [ ] market (weapons and special items)
 - [ ] history page (activities log for player) 
+- [x] settings page (as developing demand) 
 
+### Mecanis
+- [x] reset player setting
+- [x] on reaload page, auto select last robbery place
+- [x] fix strength ups (beyond other stats)
+- [ ] go to prison on failed robbery
+- [ ] free from prison (Timing or bribe)
+- [ ] prevent make robbery when out of stamina
+- [ ] refresh stamina when take drugs or get a hooker
 
+### Visual
+- [x] remove visibility of 0% chance robberies
+- [ ] remove visibility of 100% chance robberies (keep only 1)
+- [ ] respect badge animation on win or loss points
+- [x] cool pixel img when success or fail robbery
+- [ ] pixel art fonttypes
+
+### Code
+- [x] install code optmization github plugin 
+- [ ] teste automation with jest
 
 #
 

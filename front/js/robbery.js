@@ -43,6 +43,8 @@ class RobberyLayoutManager {
 
         this.getFormPlaceHolder().hide();
         this.getFormHolder().hide().fadeIn();
+
+        setTimeout(() => { $('.robbery-result-holder').show() }, 400);
     }
 
     reloadPlaces() {
@@ -101,9 +103,11 @@ class RobberyLayoutManager {
 
     updateRobberyResult(result) {
         var sign = n => { return n > 0 ? '+ ' + n : n }
-        $('#result-info').hide().fadeIn();
+        $('#result-info').hide().fadeIn().css('display', 'flex');
         $('#result-info .card-text').text(result.msg)
 
+
+        $('#result-img').attr('src', result.success ? '/img/bag-and-coins.png' : '/img/busted.png')
         $('#result-coins').text(sign(result.coins)).parent().toggle(!!result.coins);
         $('#result-respect').text(sign(result.respect)).parent().toggle(!!result.respect);
         $('#result-intelligence').text(sign(result.intelligence));
@@ -112,13 +116,14 @@ class RobberyLayoutManager {
     }
 
     updateThiedStatus(thief) {
-        $('#coins').text(thief.coins);
-        $('#stamina-percent').text(thief.stamina + '%');
-        $('#stamina').css('width', thief.stamina + '%').attr('aria-valuenow', thief.stamina);
+        $('#stats-respect').text(thief.respect);
+        $('#stats-coins').text(thief.coins);
+        $('#stats-stamina-percent').text(thief.stamina + '%');
+        $('#stats-stamina').css('width', thief.stamina + '%').attr('aria-valuenow', thief.stamina);
 
-        $('#intelligence').text(thief.intelligence);
-        $('#dexterity').text(thief.dexterity);
-        $('#strength').text(thief.strength);
+        $('#stats-intelligence').text(thief.intelligence);
+        $('#stats-dexterity').text(thief.dexterity);
+        $('#stats-strength').text(thief.strength);
     }
 }
 

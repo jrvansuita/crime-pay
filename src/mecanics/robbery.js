@@ -41,7 +41,7 @@ var executeRobbery = (place, player) => {
     var dexterity = Math.max(1, Math.trunc((((player.dexterity * .05) * (dexterityMultiplier * .25)) + (difficult * .1))));
 
 
-    var strength = Math.max(1, Math.trunc((player.strength * .05) + (difficult * .015)));
+    var strength = Math.max(1, Math.trunc((player.strength * .031) + (difficult * .013)));
 
     const result = new RobberyResult(success);
 

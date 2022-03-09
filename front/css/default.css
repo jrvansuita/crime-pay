@@ -14,10 +14,6 @@ body{
     min-width: 70%;
 }
 
-.nav-tabs{
-    background-color: #f8f8f8;
-}
-
   
 .bg-purple {
     --bs-bg-opacity: 1;
@@ -95,6 +91,11 @@ body{
     width: 100px;
 }
 
+.big-img{
+    vertical-align: text-bottom;
+    width: 170px;
+}
+
 .mini-img{
     vertical-align: text-bottom;
     width: 20px;
@@ -102,4 +103,20 @@ body{
 
 .player-head{
     min-height: 290px;
+}
+
+
+.nav-link.active {
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+    font-weight: 500;
+}
+
+.nav-link {
+    color: gray;    
+}
+
+
+.nav-tabs{
+    background-color: #f8f8f8;
 }
