@@ -91,11 +91,11 @@ class RobberyLayoutManager {
             setTimeout(() => {
                 $.post("/robbery-submit", { placeId: _this.getFormHolder().data('place') }).done((data) => {
                     $('#result-police').hide();
-
                     _this.reloadPlaces();
-
                     _this.updateRobberyResult(data.result)
                     _this.updateThiedStatus(data.thief);
+                }).fail(function (r) {
+                    window.toast.error(r.responseText)
                 });
             }, 2000);
         }
@@ -107,7 +107,12 @@ class RobberyLayoutManager {
         $('#result-info .card-text').text(result.msg)
 
 
-        $('#result-img').attr('src', result.success ? '/img/bag-and-coins.png' : '/img/busted.png')
+        let randImg = (n) => {
+            return Math.floor((Math.random() * n) + 1);
+        };
+
+
+        $('#result-img').attr('src', (result.success ? '/img/robbed' + randImg(2) : '/img/busted' + + randImg(4)) + '.png');
         $('#result-coins').text(sign(result.coins)).parent().toggle(!!result.coins);
         $('#result-respect').text(sign(result.respect)).parent().toggle(!!result.respect);
         $('#result-intelligence').text(sign(result.intelligence));

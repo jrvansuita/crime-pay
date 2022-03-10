@@ -28,14 +28,16 @@ module.exports = class RobberyPage {
             this.thiefController.get(req.session.playerId).then(thief => {
                 this.robberyPlaceController.placesDetails(req.query._id, thief).then(place => {
                     req.session.lastSelectedPlaceId = place._id;
-                    res.render('partials/robbery-form', { place })
+                    res.render('partials/robbery-form', { place, thief })
                 });
             });
         });
 
         app.post('/robbery-submit', (req, res) => {
             this.thiefController.get(req.session.playerId).then(thief => {
-                this.robberyMecanics.submit(req.body.placeId, thief).then(result => res.send(result));
+                this.robberyMecanics.submit(req.body.placeId, thief)
+                    .then(result => res.send(result))
+                    .catch((e) => res.status(500).send(e.message))
             });
         });
     }

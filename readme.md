@@ -35,12 +35,12 @@ Next implementations:
 - [x] fix strength ups (beyond other stats)
 - [ ] go to prison on failed robbery
 - [ ] free from prison (Timing or bribe)
-- [ ] prevent make robbery when out of stamina
+- [x] prevent make robbery when out of stamina
 - [ ] refresh stamina when take drugs or get a hooker
 
 #### Visual
 - [x] remove visibility of 0% chance robberies
-- [ ] remove visibility of 100% chance robberies (keep only 1)
+- [x] remove visibility of 100% chance robberies (keep only 1)
 - [ ] respect badge animation on win or loss points
 - [x] cool pixel img when success or fail robbery
 - [ ] pixel art fonttypes

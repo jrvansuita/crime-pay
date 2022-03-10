@@ -47,11 +47,19 @@
 
 
     <div class="col-12">
-        <button class="btn btn-primary" type="button" id="robbery-submit">
-            <span class="spinner-border spinner-border-sm no-display" role="status" aria-hidden="true"></span>
-            <span class="no-display">Loading...</span>
-            <span class="robbery-submit-text">Carry Out Theft</span>
-        </button>
+        <%if (thief.stamina < place.staminaCost){%>
+            <button class="btn btn-danger" type="button" disabled>
+                <span class="robbery-submit-text">Out Of Stamina!</span>
+            </button>
+
+            <%}else{%>
+                <button class="btn btn-primary" type="button" id="robbery-submit">
+                    <span class="spinner-border spinner-border-sm no-display" role="status" aria-hidden="true"></span>
+                    <span class="no-display">Loading...</span>
+                    <span class="robbery-submit-text">Carry Out Theft</span>
+                </button>
+
+                <%}%>
 
     </div>
 </div>

@@ -1,6 +1,6 @@
 module.exports = Object.freeze({
     THIEF_NOT_FOUND: "Thief not found!",
-
+    OUT_OF_STAMINA: "You're out of stamina!",
     ROBBERY_SUCCESS: [
         "You are the best thief in the world!",
         "You got it so fast!",

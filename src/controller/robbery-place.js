@@ -16,11 +16,21 @@ module.exports = class RobberyPlaceController extends Controller {
 
     placesFor(player) {
         return this.all().then((places) => {
-            return places.sort((a, b) => { return a.dificulty - b.dificulty })
+            return places
+                //Sort by difficulty asc
+                .sort((a, b) => { return a.difficulty - b.difficulty })
                 //Handle all calculated attributes
                 .map(each => { return calculatePlaceAttributes(player, each) })
                 //Remove places with zero success chances
-                .filter(each => { return each.successChance > 0 });
+                .filter(each => { return each.successChance > 0 })
+                //Remove more than 1 places with 100% success chances
+                .filter((each, index, arr) => {
+                    return !arr.some(e => {
+                        return (e._id != each._id)
+                            && (e.successChance == each.successChance)
+                            && (each.successChance == 100 ? (each.difficulty < e.difficulty) : (each.difficulty > e.difficulty))
+                    })
+                });
         });
     }
 
@@ -43,7 +53,7 @@ const calculatePlaceAttributes = (player, place) => {
 
     /* Defining Robbery Success Chance */
     var successPoints = (intelligence + dexterity + strength);
-    var failPoints = place.dificulty + (player.respect * 10);
+    var failPoints = place.difficulty + (player.respect * 10);
 
     var successChance = successPoints / failPoints;
 
@@ -56,8 +66,8 @@ const calculatePlaceAttributes = (player, place) => {
     place.staminaCost = staminaCost;
 
     /* Defining Coins Reward */
-    var coinsReward = (((place.dificulty * .001) * (staminaCost * .01) * (intelligence + dexterity + strength)) / Math.max(successChance, 1));
-    var decreaseReward = ((100 + (player.intoxication * 5)) / Math.max(player.stamina, 20)) * place.dificulty;
+    var coinsReward = (((place.difficulty * .001) * (staminaCost * .01) * (intelligence + dexterity + strength)) / Math.max(successChance, 1));
+    var decreaseReward = ((100 + (player.intoxication * 5)) / Math.max(player.stamina, 20)) * place.difficulty;
     decreaseReward = Math.min(Math.max(decreaseReward, 1.01), 9.25);
 
     if (decreaseReward > 1) {
@@ -70,7 +80,7 @@ const calculatePlaceAttributes = (player, place) => {
 
     /* Defining Respect Increse Bonus */
 
-    var respect = (((coinsReward / 2) * ((place.dificulty / player.respect) * .001)) / (staminaCost * .2));
+    var respect = (((coinsReward / 2) * ((place.difficulty / (player.respect || 1)) * .001)) / (staminaCost * .2));
     respect = Math.max(Math.trunc(respect, 1), 1);
     place.respect = respect;
 
