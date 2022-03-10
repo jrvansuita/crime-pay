@@ -1,4 +1,5 @@
-require('dotenv').config()
+require('dotenv').config();
+require('./src/schedule/jobs');
 
 var express = require('express');
 
@@ -53,4 +54,5 @@ app.use(function (req, res, next) {
 (require('./src/routes/routes')).bind(app);
 
 app.listen(3000);
+
 

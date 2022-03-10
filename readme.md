@@ -37,6 +37,7 @@ Next implementations:
 - [ ] free from prison (Timing or bribe)
 - [x] prevent make robbery when out of stamina
 - [ ] refresh stamina when take drugs or get a hooker
+- [x] restore 1 stamina point every hour
 
 #### Visual
 - [x] remove visibility of 0% chance robberies

@@ -8,6 +8,11 @@ module.exports = class PlayerController extends Controller {
     }
 
 
+    restoreStamina(points) {
+        return this.update({ stamina: { $lt: 100 } }, { $inc: { stamina: points } }, true)
+    }
+
+
 
 }
 

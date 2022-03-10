@@ -43,7 +43,16 @@ module.exports = class Controller {
                 new: true
             }, this.promiseHandler(resolve, reject));
         });
+    }
 
+    update(query, data, multi) {
+        return new Promise((resolve, reject) => {
+            this.dataAccess.update(
+                query,
+                data,
+                { multi: multi }
+                , this.promiseHandler(resolve, reject));
+        });
     }
 
     save(instance) {
