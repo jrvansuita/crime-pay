@@ -1,15 +1,23 @@
+const moment = require("moment");
 const { ROBBERY_SUCCESS, ROBBERY_FAIL } = require("../const/constants");
+
+
 
 module.exports = class RobberyResult {
 
     constructor(success) {
         this.success = success;
+
         this.coins = 0;
         this.intelligence = 0;
         this.dexterity = 0;
         this.strength = 0;
         this.respect = 0;
         this.stamina = 0;
+        this.date = moment().toDate();
+
+        this.arrested = !success;
+        if (this.arrested) this.arrestRelease = moment().add(1, 'days').minutes(0).seconds(0).toDate();
     }
 
 
@@ -32,7 +40,6 @@ module.exports = class RobberyResult {
 
         return this;
     }
-
 
     createRespect() {
         if (this.success) {
@@ -58,9 +65,9 @@ module.exports = class RobberyResult {
     }
 
     build() {
-        this.playerId = this.thief._id;
-        this.placeId = this.place._id;
-        delete this.player;
+        this.playerId = this.thief._id.toString();
+        this.placeId = this.place._id.toString();
+        delete this.thief;
         delete this.place;
 
         return this

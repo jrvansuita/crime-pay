@@ -110,3 +110,11 @@
   align-items: center;
   height: 100%;
 }
+
+#result-arrest-release{
+  margin-top: -5px;
+    margin-left: 12px;
+    font-size: 10pt;
+    word-break: break-word;
+    width: 120px;
+}

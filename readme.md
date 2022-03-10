@@ -33,7 +33,7 @@ Next implementations:
 - [x] reset player setting
 - [x] on reaload page, auto select last robbery place
 - [x] fix strength ups (beyond other stats)
-- [ ] go to prison on failed robbery
+- [x] go to prison on failed robbery
 - [ ] free from prison (Timing or bribe)
 - [x] prevent make robbery when out of stamina
 - [ ] refresh stamina when take drugs or get a hooker
@@ -48,7 +48,7 @@ Next implementations:
 
 #### Code
 - [x] install code optmization github plugin 
-- [ ] teste automation with jest
+- [ ] test automation with jest
 
 #
 

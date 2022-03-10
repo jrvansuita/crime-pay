@@ -1,4 +1,5 @@
 
+
 $(document).ready(function () {
     new RobberyLayoutManager().reloadPlaces();
 });
@@ -104,7 +105,8 @@ class RobberyLayoutManager {
     updateRobberyResult(result) {
         var sign = n => { return n > 0 ? '+ ' + n : n }
         $('#result-info').hide().fadeIn().css('display', 'flex');
-        $('#result-info .card-text').text(result.msg)
+        $('#result-title').text(result.arrested ? "You're under arrest!" : 'You were successful!')
+        $('#result-message').text(result.msg)
 
 
         let randImg = (n) => {
@@ -118,6 +120,8 @@ class RobberyLayoutManager {
         $('#result-intelligence').text(sign(result.intelligence));
         $('#result-dexterity').text(sign(result.dexterity));
         $('#result-strength').text(sign(result.strength));
+        $('#result-arrest-release').text(result.arrested ? 'Released ' + moment(result.arrestRelease).calendar() : '');
+
     }
 
     updateThiedStatus(thief) {

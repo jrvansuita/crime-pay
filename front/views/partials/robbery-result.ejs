@@ -5,7 +5,7 @@
         </h6>
         <p class="card-text">Behave yourself and I'll leave you alone.</p>
 
-        <a href="#" class="btn btn-primary">Bribe</a>
+        <a href="/prison" class="btn btn-primary">Prison</a>
     </div>
     <div class="col">
         <img src="/img/police.png" class="card-img-top medium-img" alt="police">
@@ -16,11 +16,11 @@
 <div id="result-info" class="row align-items-center">
     <div class="col">
 
-        <h6 class="card-title">
+        <h6 class="card-title" id="result-title">
             Last Robbery Result
         </h6>
 
-        <p class="card-text">
+        <p class="card-text" id="result-message">
             Success
         </p>
 
@@ -46,7 +46,15 @@
 
         </ul>
     </div>
-    <div class="col">
+    <div class="col" style="width: min-content;">
         <img id="result-img" class="card-img-top big-img" alt="...">
+
+        <div style="display: -webkit-inline-box;">
+            <a href="#" class="btn btn-primary">Prison</a>
+
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer" id="result-arrest-release"></footer>
+            </blockquote>
+        </div>
     </div>
 </div>

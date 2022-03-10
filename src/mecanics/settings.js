@@ -17,7 +17,9 @@ module.exports = class SettingsMecanics {
                 coins: 15,
                 respect: 1,
                 stamina: 100,
-                intoxication: 0
+                intoxication: 0,
+                arrested: false,
+                arrestRelease: null
             }
         });
     }

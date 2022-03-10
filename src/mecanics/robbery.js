@@ -37,8 +37,13 @@ class RobberyMecanicsHandler {
     }
 
     validations() {
+        if (this.player.arrested) {
+            throw new Error(constants.THIEF_ARRESTED);
+        }
+
         if (this.player.stamina < this.place.staminaCost)
             throw new Error(constants.OUT_OF_STAMINA);
+
 
         return this;
     }
