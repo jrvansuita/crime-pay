@@ -10,12 +10,12 @@
   }
   
 
-.respect-star-img{
+.player-badge-img{
   width: 20px;
   margin-right: 6px;
 }
 
-.respect-badge{
+.player-badge{
   width: fit-content;
     align-self: center;
     margin-top: -40px;
@@ -27,5 +27,6 @@
     display: flex;
     align-items: center;
     padding-right: 14px;
-    background-color: rgb(11 110 253 / 60%) !important;
+    text-transform: uppercase;
+    background-color: rgb(11 110 253 / 60%) ;
 }

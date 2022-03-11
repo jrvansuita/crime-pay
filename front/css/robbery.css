@@ -3,9 +3,6 @@
   transform: translate(-80%,-30%)!important;
 }
 
-.flex-painel .card{
-  height: 100%;
-}
 
 .robbery-places-scroll-attributes{
   width: 100%;
@@ -81,6 +78,7 @@
 .robbery-form-placeholder{
   max-width: 40em;
   min-width: 20em;
+  width: 40em;
   padding-top: 1em;
   border-radius: 0.25rem !important;
 }

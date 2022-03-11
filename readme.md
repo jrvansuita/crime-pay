@@ -37,7 +37,9 @@ Next implementations:
 - [ ] free from prison (Timing or bribe)
 - [x] prevent make robbery when out of stamina
 - [ ] refresh stamina when take drugs or get a hooker
+- [ ] use full stamina option on robbery
 - [x] restore 1 stamina point every hour
+- [ ] settings option for player avatar and name update
 
 #### Visual
 - [x] remove visibility of 0% chance robberies
@@ -46,9 +48,10 @@ Next implementations:
 - [x] cool pixel img when success or fail robbery
 - [ ] pixel art fonttypes
 
-#### Code
+#### Code & Deploy
 - [x] install code optmization github plugin 
 - [ ] test automation with jest
+- [ ] heroku instance for preview and tests
 
 #
 

@@ -121,18 +121,7 @@ class RobberyLayoutManager {
         $('#result-dexterity').text(sign(result.dexterity));
         $('#result-strength').text(sign(result.strength));
         $('#result-arrest-release').text(result.arrested ? 'Released ' + moment(result.arrestRelease).calendar() : '');
-
     }
 
-    updateThiedStatus(thief) {
-        $('#stats-respect').text(thief.respect);
-        $('#stats-coins').text(thief.coins);
-        $('#stats-stamina-percent').text(thief.stamina + '%');
-        $('#stats-stamina').css('width', thief.stamina + '%').attr('aria-valuenow', thief.stamina);
-
-        $('#stats-intelligence').text(thief.intelligence);
-        $('#stats-dexterity').text(thief.dexterity);
-        $('#stats-strength').text(thief.strength);
-    }
 }
 

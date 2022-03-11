@@ -48,11 +48,17 @@ body{
     min-width: 80em;
 }
 
+
 .flex-container {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
+}
+
+
+.flex-inline{
+    justify-content: start;
 }
 
 .flex-left {
@@ -77,13 +83,6 @@ body{
   flex: 1  ;
   flex-basis: 100%;
   margin-left: 1em;
-}
-
-
-
-.card-body.max{
-    min-width: max-content;
-    min-height: 50em;
 }
 
 .medium-img{
@@ -119,4 +118,24 @@ body{
 
 .nav-tabs{
     background-color: #f8f8f8;
+}
+
+
+.mini-card-flat{
+    border-radius: 0.25rem !important;
+    max-width: 40em;
+    min-width: 20em;
+    width: fit-content;
+    position: relative;
+    padding: 0.5rem 1rem;
+    padding-top: 1em;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+ 
+}
+
+.flex-painel .card {
+    height: 100%;
 }

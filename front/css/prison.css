@@ -1,0 +1,15 @@
+#escape-holder, #jailer-holder{
+    width: 30em;
+}
+
+.mini-card-flat{
+    margin-top: 1em;
+}
+
+.mini-card-flat:first-child{
+    margin-right: 1.5em;
+}
+
+.img-holder{
+    text-align: center;
+}

@@ -1,5 +1,6 @@
 <head>
     <link rel="stylesheet" href="/css/thief-status.css">
+    <script src="/js/thief-status.js"></script>
 </head>
 
 <div>
@@ -7,17 +8,18 @@
 
     <div class="card" style="width: 18rem;">
         <img src="<%=thief.img%>" class="card-img-top player-head" alt="thief head">
-        <span class="badge rounded-pill respect-badge">
-            <img src="/img/respect-star.png" class="respect-star-img">
-            <span id="stats-respect">
-                <%=thief.respect%>
+
+        <span class="badge rounded-pill player-badge <%=thief.arrested?'bg-danger' : ''%>">
+            <img src="/img/<%=thief.arrested? 'lock' : 'respect-star'%>.png" class="player-badge-img">
+            <span id="player-badge-text">
+                <%=thief.arrested? 'Arrested' : thief.respect%>
             </span>
         </span>
 
         <div class="card-body">
             <h5 class="card-title">
                 <%=thief.name%>
-                    <span class="coin-display  float-right">
+                    <span class="coin-display float-right">
                         <img class="mini-img" src="/img/coin.png" alt="">
                         <span id="stats-coins">
                             <%=Intl.NumberFormat().format(thief.coins)%>
@@ -52,9 +54,6 @@
 
                 </div>
             </div>
-
-
-
 
         </div>
 

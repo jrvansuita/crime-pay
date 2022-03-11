@@ -1,0 +1,84 @@
+<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Prison</title>
+    <%- include('../default/head'); %>
+
+        <link rel="stylesheet" href="/css/prison.css">
+        <script src="/js/prison.js"></script>
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <div class="flex-container">
+
+            <div class="flex-left">
+                <%- include('../partials/thief-status'); %>
+            </div>
+
+            <div class="flex-painel content">
+
+
+
+                <div class="card max">
+                    <%- include('../partials/menu', {nav_prison:true}); %>
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">Welcome to Prison</h5>
+                            <p class="card-text text-secondary">Prison is a place for weak criminals, who didn't succeed
+                                and got caught
+                                by the cops. If you are arrested, pay your jail time and be released. </br>Or try your
+                                luck
+                                bribing a jailer to let you go.</p>
+
+                            <div class="flex-container flex-inline">
+                                <div class="mini-card-flat">
+                                    <div id="escape-holder" class="row">
+                                        <div class="col">
+                                            <h6 class="card-title">
+                                                Why not try to escape?
+                                            </h6>
+                                            <p class="card-text">You can try escape from prison.</p>
+
+                                            <a href="/prison" class="btn btn-primary">Escape</a>
+                                        </div>
+                                        <div class="col img-holder">
+                                            <img src=" /img/prisoner.png" class="card-img-top medium-img" alt="police">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="mini-card-flat">
+                                    <div id="jailer-holder" class="row">
+                                        <div class="col">
+                                            <h6 class="card-title">
+                                                What are you looking for?
+                                            </h6>
+                                            <p class="card-text">How much coins do you have? Let's make it easy?.
+                                            </p>
+
+                                            <a href="/prison" class="btn btn-primary">Bribe</a>
+                                        </div>
+                                        <div class="col img-holder">
+                                            <img src=" /img/police.png" class="card-img-top medium-img" alt="police">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+</body>
+
+
+</html>
