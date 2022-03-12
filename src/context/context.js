@@ -8,7 +8,7 @@ module.exports = class Context {
         this.bindJobs();
         this.startExpress();
         this.bindBodyParser();
-
+        this.defineFavIcon();
         this.bindCompression();
         this.bindLocalLibs();
         this.bindMinify();
@@ -42,6 +42,11 @@ module.exports = class Context {
         this.app.use(bodyParser.json())
     }
 
+    defineFavIcon() {
+        const favicon = require('serve-favicon');
+        this.app.use(favicon(this.dir + '/front/img/favicon.ico'));
+    }
+
     bindCompression() {
         const compression = require('compression');
         this.app.use(compression({
@@ -70,8 +75,8 @@ module.exports = class Context {
         this.app.use('/js', this.express.static('front/js'));
         this.app.use('/pages', this.express.static('front/js'));
 
-        var path = require('path')
-        this.app.set('views', path.join(this.dir, '/front/views'))
+
+        this.app.set('views', this.dir + '/front/views')
         this.app.set('view engine', 'ejs');
     }
 
