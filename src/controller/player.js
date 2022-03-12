@@ -1,4 +1,4 @@
-const moment = require("moment");
+
 const Controller = require("./controlle");
 
 module.exports = class PlayerController extends Controller {

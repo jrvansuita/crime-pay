@@ -34,7 +34,8 @@ Next implementations:
 - [x] on reaload page, auto select last robbery place
 - [x] fix strength ups (beyond other stats)
 - [x] go to prison on failed robbery
-- [ ] free from prison (Timing or bribe)
+- [x] free from prison (Escape or bribe)
+- [ ] free from prison (Waiting release time)
 - [x] prevent make robbery when out of stamina
 - [ ] refresh stamina when take drugs or get a hooker
 - [ ] use full stamina option on robbery
