@@ -62,7 +62,7 @@ class PrisonLayoutManager {
                     _this.toggleLoadingButton(button, false);
                     window.toast.error(r.responseText)
                 });
-            }, 1000);
+            }, 400);
         }
     }
 

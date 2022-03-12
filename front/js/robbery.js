@@ -59,7 +59,7 @@ class RobberyLayoutManager {
                 //Select the last place clicked or the first one
                 this.getPlaceItems().first().add("[data-key='" + lastSelectedPlaceId + "']").last().click();
             });
-        }, 800);
+        }, 400);
     }
 
     onRobberyPlaceItemSelected() {
@@ -97,7 +97,7 @@ class RobberyLayoutManager {
                 }).fail(function (r) {
                     window.toast.error(r.responseText)
                 });
-            }, 2000);
+            }, 600);
         }
     }
 

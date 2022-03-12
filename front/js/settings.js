@@ -16,7 +16,7 @@ $(document).ready(() => {
 
             setTimeout(() => {
                 $.post(path).done(onFinished);
-            }, 2000);
+            }, 400);
         }
     }
 
