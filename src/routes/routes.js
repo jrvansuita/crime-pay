@@ -8,6 +8,11 @@ const MarketPage = require('../pages/market');
 
 module.exports = {
     bind(app) {
+
+        app.get('/', (req, res) => {
+            res.redirect('/robbery');
+        });
+
         new RobberyPage().bind(app);
         new SettingsPage().bind(app);
         new PrisonPage().bind(app);
