@@ -29,16 +29,15 @@ app.set('view engine', 'ejs');
 
 
 //== Session ==//
-var sessions = require('express-session')
+const cookieSession = require('cookie-session');
 const tenDays = 1000 * 60 * 60 * 24 * 10;
-app.use(sessions({
+
+app.use(cookieSession({
+    name: 'crime-pay',
     secret: process.env.SESS,
-    saveUninitialized: true,
-    cookie: { maxAge: tenDays },
-    resave: false
-}));
-
-
+    maxAge: tenDays
+})
+);
 
 
 //Making session visible in all ejs files
@@ -55,6 +54,6 @@ app.use(function (req, res, next) {
 
 (require('./src/routes/routes')).bind(app);
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 
 
