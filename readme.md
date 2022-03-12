@@ -2,7 +2,8 @@
 
 ![](https://komarev.com/ghpvc/?username=crime-pay&color=green&style=flat&label=Visits) 
 [![CodeFactor](https://www.codefactor.io/repository/github/jrvansuita/crime-pay/badge)](https://www.codefactor.io/repository/github/jrvansuita/crime-pay)
- 
+ <a href='https://crime-pay.herokuapp.com' target='_blank' >
+ <img src='https://img.shields.io/badge/Game%20Preview-Click%20Here-blue.svg' alt='Try now!' /></a>
  
 # Crime Pay
 
@@ -17,6 +18,11 @@ The player is challenged to live a day-to-day life of a character who can be a p
 Just hit the issues.
 
 -----
+
+#### Game Preview
+
+The game preview is live and everyone can try it. As the development is being done all the steps are getting marked as complete and the game preview is automatic updated. Click here to check it out: [Game Preview](https://crime-pay.herokuapp.com).
+
 
 Next implementations:
 
