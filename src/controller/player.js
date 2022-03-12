@@ -13,6 +13,10 @@ module.exports = class PlayerController extends Controller {
         return this.update({ stamina: { $lt: 100 } }, { $inc: { stamina: points } }, true)
     }
 
+    releasePrisoners() {
+        return this.update({ arrestRelease: { $lte: new Date() } }, { $set: { arrested: false, arrestRelease: null } }, true)
+    }
+
 
 
     releasePrisonAttempt(player, releaseAttempt) {
