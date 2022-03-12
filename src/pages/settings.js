@@ -15,6 +15,9 @@ module.exports = class SettingsPage {
             this.settingsMecanics.reset(req.session.playerId).then(result => res.send(result));
         });
 
+        app.post('/settings-reset-prisoner', (req, res) => {
+            this.settingsMecanics.prisoner(req.session.playerId).then(result => res.send(result));
+        });
 
 
     }

@@ -1,5 +1,5 @@
 const PlayerController = require("../controller/player");
-
+const moment = require("moment");
 
 
 module.exports = class SettingsMecanics {
@@ -8,7 +8,8 @@ module.exports = class SettingsMecanics {
         this.playerController = new PlayerController();
     }
 
-    reset(playerId) {
+    reset(playerId, extra) {
+
         return this.playerController.modify(playerId, {
             $set: {
                 intelligence: 25,
@@ -19,8 +20,13 @@ module.exports = class SettingsMecanics {
                 stamina: 100,
                 intoxication: 0,
                 arrested: false,
-                arrestRelease: null
+                arrestRelease: null,
+                ...extra,
             }
         });
+    }
+
+    prisoner(playerId) {
+        return this.reset(playerId, { arrested: true, arrestRelease: moment(new Date()).add(1, 'days').minutes(0).toDate() });
     }
 }

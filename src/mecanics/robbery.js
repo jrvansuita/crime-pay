@@ -19,7 +19,7 @@ module.exports = class RobberyMecanics {
 
             var result = new RobberyMecanicsHandler(thief, place).run();
 
-            return this.thiefController.update(thief, result).then((updatedThief) => {
+            return this.thiefController.updateFromRobbery(thief, result).then((updatedThief) => {
                 return this.robberyResultController.save(result).then((resultData) => {
                     return { result: RobberyResult.parse(resultData), thief: updatedThief }
                 })
@@ -49,8 +49,8 @@ class RobberyMecanicsHandler {
     }
 
     execute() {
-        const num = Math.floor(Math.random() * (100 - 1 + 1) + 1);
-        const success = num <= this.place.successChance;
+        const luckyNumber = Math.floor(Math.random() * 100);
+        const success = luckyNumber <= this.place.successChance;
         const difficult = Math.max(1, 100 - this.place.successChance);
 
         /* Defining Weapons Intelligence and Dexterity Multiplier Bonus */

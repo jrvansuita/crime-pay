@@ -21,7 +21,7 @@
                 <%=thief.name%>
                     <span class="coin-display float-right">
                         <img class="mini-img" src="/img/coin.png" alt="">
-                        <span id="stats-coins">
+                        <span id="status-coins">
                             <%=Intl.NumberFormat().format(thief.coins)%>
                         </span>
                     </span>
@@ -30,12 +30,12 @@
 
             <h6 class="label-sub-title">
                 Stamina
-                <span id="stats-stamina-percent" class="progress-num float-right">
+                <span id="status-stamina-percent" class="progress-num float-right">
                     <%=thief.stamina%>%
                 </span>
             </h6>
             <div class="progress">
-                <div id="stats-stamina" class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                <div id="status-stamina" class="progress-bar progress-bar-striped bg-success" role="progressbar"
                     style="width: <%=thief.stamina%>%" aria-valuenow="<%=thief.stamina%>" aria-valuemin="0"
                     aria-valuemax="100">
                 </div>
@@ -43,12 +43,12 @@
 
             <h6 class="label-sub-title">
                 Intoxication
-                <span id="stats-intoxication-percent" class="progress-num float-right">
+                <span id="status-intoxication-percent" class="progress-num float-right">
                     <%=thief.intoxication%>%
                 </span>
             </h6>
             <div class="progress">
-                <div id="stats-intoxication" class="progress-bar progress-bar-striped bg-purple" role="progressbar"
+                <div id="status-intoxication" class="progress-bar progress-bar-striped bg-purple" role="progressbar"
                     style="width: <%=thief.intoxication%>%" aria-valuenow="<%=thief.intoxication%>" aria-valuemin="0"
                     aria-valuemax="100">
 
@@ -65,18 +65,18 @@
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">Intelligence
-                <span id="stats-intelligence" class="float-right">
+                <span id="status-intelligence" class="float-right">
 
                     <%=thief.intelligence%>
                 </span>
             </li>
             <li class="list-group-item">Dexterity
-                <span id="stats-dexterity" class="float-right">
+                <span id="status-dexterity" class="float-right">
                     <%=thief.dexterity%>
                 </span>
             </li>
             <li class="list-group-item">Strength
-                <span id="stats-strength" class="float-right">
+                <span id="status-strength" class="float-right">
                     <%=thief.strength%>
                 </span>
 

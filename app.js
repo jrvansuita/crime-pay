@@ -5,6 +5,8 @@ var express = require('express');
 
 var app = express();
 
+app.locals.moment = require('moment');
+
 //== Body Parser Post ==//
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }))

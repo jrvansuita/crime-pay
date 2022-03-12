@@ -17,7 +17,7 @@ module.exports = class RobberyResult {
         this.date = moment().toDate();
 
         this.arrested = !success;
-        if (this.arrested) this.arrestRelease = moment().add(1, 'days').minutes(0).seconds(0).toDate();
+        if (this.arrested) this.arrestRelease = moment().add(1, 'days').minutes(0).toDate();
     }
 
 
@@ -74,8 +74,7 @@ module.exports = class RobberyResult {
     }
 
     static parse(result) {
-        var items = result.success ? ROBBERY_SUCCESS : ROBBERY_FAIL;
-        result.msg = items[Math.floor(Math.random() * items.length)];
+        result.msg = result.success ? ROBBERY_SUCCESS.randomOne() : ROBBERY_FAIL.randomOne();
 
         return result;
     }

@@ -88,14 +88,9 @@
   border-radius: 0.25rem !important;
   padding-top: 1em;
   max-width: 40em;
-  min-width: 20em;
+  min-width: 30em;
   width: fit-content;
   height: 100%;
-}
-
-#result-info{
-  display: none;
-  min-width: 30em;
 }
 
 
@@ -103,16 +98,24 @@
   background-color: #9da0a3;
 }
 
-
-#result-police {
-  align-items: center;
-  height: 100%;
+#result-list, #result-prison{
+  display: none;
 }
+
+#result-prison{
+  margin-top: 15px;
+}
+
+
 
 #result-arrest-release{
   margin-top: -5px;
     margin-left: 12px;
-    font-size: 10pt;
-    word-break: break-word;
     width: 120px;
+}
+
+
+.robbery-result-holder > .row{
+  align-items: center;
+  height: 100%;
 }

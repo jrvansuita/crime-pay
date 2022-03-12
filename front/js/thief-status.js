@@ -1,11 +1,39 @@
 
-updateThiedStatus(thief) {
-    $('#player-badge-text').text(thief.respect);
-    $('#stats-coins').text(thief.coins);
-    $('#stats-stamina-percent').text(thief.stamina + '%');
-    $('#stats-stamina').css('width', thief.stamina + '%').attr('aria-valuenow', thief.stamina);
+class ThiefStatusUpdater {
 
-    $('#stats-intelligence').text(thief.intelligence);
-    $('#stats-dexterity').text(thief.dexterity);
-    $('#stats-strength').text(thief.strength);
+    constructor(thief) {
+        this.thief = thief;
+    }
+
+    badge() {
+        $('#player-badge-text').text(this.thief.respect);
+        $('.player-badge-img').attr('src', '/img/respect-star.png')
+        $('#player-badge-text').parent().removeClass('bg-danger');
+        return this;
+    }
+
+    coins() {
+        $('#status-coins').text(this.thief.coins);
+        return this;
+    }
+
+    bars() {
+        $('#status-stamina-percent').text(this.thief.stamina + '%');
+        $('#status-stamina').css('width', this.thief.stamina + '%').attr('aria-valuenow', this.thief.stamina);
+        $('#status-intoxication-percent').text(this.thief.stamina + '%');
+        $('#status-intoxication').css('width', this.thief.stamina + '%').attr('aria-valuenow', this.thief.stamina);
+
+        return this;
+    }
+
+    attributes() {
+        $('#status-intelligence').text(this.thief.intelligence);
+        $('#status-dexterity').text(this.thief.dexterity);
+        $('#status-strength').text(this.thief.strength);
+        return this;
+    }
+
+    all() {
+        this.badge().coins().bars().attributes();
+    }
 }

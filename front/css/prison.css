@@ -1,5 +1,6 @@
-#escape-holder, #jailer-holder{
-    width: 30em;
+#escape-holder, #bribe-holder{
+    width: -webkit-fill-available;
+    min-width: 30em;
 }
 
 .mini-card-flat{
@@ -10,6 +11,17 @@
     margin-right: 1.5em;
 }
 
-.img-holder{
-    text-align: center;
+
+.button-holder{
+    display:-webkit-box;
+    margin-top: 15px;
+    
+    width: -webkit-fill-available;
+    max-width: min-content;
+}
+
+
+.button-holder blockquote{
+    margin-left: 12px;
+    margin-top: 8px;
 }

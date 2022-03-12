@@ -34,45 +34,34 @@
                             <h5 class="card-title">Welcome to Prison</h5>
                             <p class="card-text text-secondary">Prison is a place for weak criminals, who didn't succeed
                                 and got caught
-                                by the cops. If you are arrested, pay your jail time and be released. </br>Or try your
+                                by the cops. </br>If you are arrested, pay your jail time and be released. Or try your
                                 luck
                                 bribing a jailer to let you go.</p>
 
+                            <p class="card-text text-secondary">
+                                <%if (thief.arrested){%>
+                                    You got arrested and will be released from prison
+                                    <span id="releaseTime">
+                                        <%=moment(thief.arrestRelease).calendar()%>.
+                                    </span>
+                                    <%}else{%>
+                                        Enjoy your time out of prison. Be careful not to get caught and end up here.
+                                        <%}%>
+                            </p>
+
                             <div class="flex-container flex-inline">
-                                <div class="mini-card-flat">
-                                    <div id="escape-holder" class="row">
-                                        <div class="col">
-                                            <h6 class="card-title">
-                                                Why not try to escape?
-                                            </h6>
-                                            <p class="card-text">You can try escape from prison.</p>
+                                <%if (thief.arrested){%>
 
-                                            <a href="/prison" class="btn btn-primary">Escape</a>
-                                        </div>
-                                        <div class="col img-holder">
-                                            <img src=" /img/prisoner.png" class="card-img-top medium-img" alt="police">
-                                        </div>
-                                    </div>
-                                </div>
+                                    <%- include('../partials/prison-escape'); %>
+                                        <%- include('../partials/prison-bribe'); %>
+
+
+                                            <%}%>
+
+                                                <%- include('../partials/prison-free'); %>
 
 
 
-                                <div class="mini-card-flat">
-                                    <div id="jailer-holder" class="row">
-                                        <div class="col">
-                                            <h6 class="card-title">
-                                                What are you looking for?
-                                            </h6>
-                                            <p class="card-text">How much coins do you have? Let's make it easy?.
-                                            </p>
-
-                                            <a href="/prison" class="btn btn-primary">Bribe</a>
-                                        </div>
-                                        <div class="col img-holder">
-                                            <img src=" /img/police.png" class="card-img-top medium-img" alt="police">
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                 </div>

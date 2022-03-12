@@ -5,11 +5,11 @@ const db = mongojs(process.env.CONN_DB, [])
 
 
 db.on('error', function (err) {
-    console.log('database error', err)
+    //Not implemented
 })
 
 db.on('connect', function () {
-    console.log('database connected')
+    //Not implemented
 })
 
 

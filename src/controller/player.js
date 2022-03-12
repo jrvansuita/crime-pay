@@ -1,3 +1,4 @@
+const moment = require("moment");
 const Controller = require("./controlle");
 
 module.exports = class PlayerController extends Controller {
@@ -13,6 +14,13 @@ module.exports = class PlayerController extends Controller {
     }
 
 
+
+    releasePrisonAttempt(player, releaseAttempt) {
+        const inc = ['coins', 'respect', 'stamina'].reduce((a, e) => (a[e] = releaseAttempt[e], a), {});
+        const set = { arrested: !releaseAttempt.success, arrestRelease: releaseAttempt.success ? null : releaseAttempt.arrestRelease };
+
+        return this.modify(player._id, { $inc: inc, $set: set });
+    }
 
 }
 

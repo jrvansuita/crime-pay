@@ -29,7 +29,7 @@ Next implementations:
 - [ ] history page (activities log for player) 
 - [x] settings page (as developing demand) 
 
-#### Mecanis
+#### Mecanics
 - [x] reset player setting
 - [x] on reaload page, auto select last robbery place
 - [x] fix strength ups (beyond other stats)

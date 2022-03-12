@@ -28,15 +28,33 @@
 
 
                             <div class="col-md-2">
+                                <label class="form-label">Reset Player Stats (Testing Porpouses)</label>
 
-                                <label for="reset" class="form-label">Reset Player Stats (Testing Porpouses)</label>
+                                <div class="dropdown">
+                                    <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                        id="reset-player-dropdown" aria-expanded="false">
+                                        <span class="spinner-border spinner-border-sm no-display" role="status"
+                                            aria-hidden="true"></span>
+                                        <span class="no-display">Loading...</span>
+                                        <span class="button-text">Reset Player</span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="reset-player-dropdown">
+                                        <li><button class="dropdown-item" type="button" id="reset">Initial
+                                                State</button>
+                                        </li>
+                                        <li><button class="dropdown-item" type="button"
+                                                id="reset-prisoner">Prisoner</button>
+                                        </li>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                                <button class="btn btn-dark" type="button" id="reset">
-                                    <span class="spinner-border spinner-border-sm no-display" role="status"
-                                        aria-hidden="true"></span>
-                                    <span class="no-display">Loading...</span>
-                                    <span>Reset</span>
-                                </button>
+
+
+
+
+
+
 
                             </div>
 

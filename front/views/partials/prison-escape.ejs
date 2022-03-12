@@ -1,0 +1,76 @@
+<div class="mini-card-flat">
+    <div id="escape-holder" class="row">
+        <div class="col-4">
+            <h6 class="card-title">
+                Why not try to escape?
+            </h6>
+            <p class="card-text">Hi Buddy, I can help you get out from here!</p>
+
+            <img src=" /img/prisoner.png" class="card-img-top medium-img" alt="police">
+
+
+        </div>
+
+        <div class="col-8">
+
+            <div class="input-group">
+                <span class="form-control">Coins Cost</span>
+                <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt="Coin"></span>
+                <span id="escape-coins" class="input-group-text">
+                    <%=stats.escape.coins%>
+                </span>
+            </div>
+
+            <%if (Math.abs(stats.escape.stamina)> 0){%>
+                <div class="input-group">
+                    <span class="form-control">Stamina Cost</span>
+                    <span class="input-group-text"><img class="mini-img" src="/img/stamina.png"></span>
+                    <span id="escape-stamina" class="input-group-text">
+                        <%=Math.abs(stats.escape.stamina)%> %
+                    </span>
+                </div>
+                <%}%>
+
+                    <%if (stats.escape.respect> 0){%>
+                        <div class="input-group">
+                            <span class="form-control">Respect Reward</span>
+                            <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png"></span>
+                            <span id="escape-respect" class="input-group-text">
+                                + <%=stats.escape.respect%>
+                            </span>
+                        </div>
+                        <%}%>
+
+                            <div class="input-group">
+                                <span class="form-control">Escape Chance</span>
+                                <span class="input-group-text"><img class="mini-img" src="/img/lucky.png"></span>
+                                <span id="escape-chance" class="input-group-text">
+                                    <%=stats.escape.escapeChance%> %
+                                </span>
+                            </div>
+
+                            <div class="button-holder">
+                                <button class="btn btn-primary" type="button" id="escape">
+                                    <span class="spinner-border spinner-border-sm no-display" role="status"
+                                        aria-hidden="true"></span>
+                                    <span class="no-display">Loading...</span>
+                                    <span class="button-text">Escape</span>
+                                </button>
+
+
+
+
+                                <blockquote class="blockquote mb-0">
+                                    <footer class="blockquote-footer">
+                                        Adding + <span id="escape-inc-days">
+                                            <%=stats?.escape?.daysIncOnFail%>
+                                        </span> jail day
+                                        when
+                                        fail.
+                                    </footer>
+                                </blockquote>
+                            </div>
+        </div>
+
+    </div>
+</div>

@@ -24,7 +24,7 @@ module.exports = class ThiefController extends PlayerController {
     }
 
 
-    update(thief, robberyResult) {
+    updateFromRobbery(thief, robberyResult) {
         const inc = ['intelligence', 'dexterity', 'strength', 'coins', 'respect', 'stamina'].reduce((a, e) => (a[e] = robberyResult[e], a), {});
         const set = ['arrested', 'arrestRelease'].reduce((a, e) => (a[e] = robberyResult[e], a), {});
 

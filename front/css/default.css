@@ -87,7 +87,7 @@ body{
 
 .medium-img{
     vertical-align: text-bottom;
-    width: 100px;
+    width: 110px;
 }
 
 .big-img{
@@ -139,3 +139,15 @@ body{
 .flex-painel .card {
     height: 100%;
 }
+
+
+.blockquote-footer{
+    margin-top: 0;
+      font-size: 10pt;
+      word-break: break-word;
+      min-width: 120px;
+  }
+
+  .input-group{
+      margin-bottom: 8px;
+  }
