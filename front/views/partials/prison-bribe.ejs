@@ -21,22 +21,25 @@
                 </span>
             </div>
 
-            <%if (Math.abs(stats.bribe.stamina)> 0){%>
+
+
+            <%if (stats.bribe.respect> 0){%>
                 <div class="input-group">
-                    <span class="form-control">Stamina Cost</span>
-                    <span class="input-group-text"><img class="mini-img" src="/img/stamina.png" alt="Coin"></span>
-                    <span id="bribe-stamina" class="input-group-text">
-                        <%=Math.abs(stats.bribe.stamina)%> %
+                    <span class="form-control">Respect Reward</span>
+                    <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png"></span>
+                    <span id="bribe-respect" class="input-group-text">
+                        + <%=stats.bribe.respect%>
                     </span>
                 </div>
                 <%}%>
 
-                    <%if (stats.bribe.respect> 0){%>
+                    <%if (Math.abs(stats.bribe.stamina)> 0){%>
                         <div class="input-group">
-                            <span class="form-control">Respect Reward</span>
-                            <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png"></span>
-                            <span id="bribe-respect" class="input-group-text">
-                                + <%=stats.bribe.respect%>
+                            <span class="form-control">Stamina Cost</span>
+                            <span class="input-group-text"><img class="mini-img" src="/img/stamina.png"
+                                    alt="Coin"></span>
+                            <span id="bribe-stamina" class="input-group-text">
+                                <%=Math.abs(stats.bribe.stamina)%> %
                             </span>
                         </div>
                         <%}%>

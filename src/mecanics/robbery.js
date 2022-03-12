@@ -3,7 +3,7 @@ const ThiefController = require("../controller/complex/thief");
 const RobberyPlaceController = require("../controller/robbery-place");
 const RobberyResultController = require("../controller/robbery-result");
 const RobberyResult = require("../model/robbery-result");
-
+const Num = require('../lib/num');
 
 
 module.exports = class RobberyMecanics {

@@ -28,13 +28,13 @@ class PrisonLayoutManager {
     attemptHasFailed(attempt, newStats) {
         $('#releaseTime').text(moment(attempt.arrestRelease).calendar());
         $('#escape-coins').text(newStats.escape.coins);
-        $('#escape-stamina').text(newStats.escape.stamina + ' %').parent().toggle(Math.abs(newStats.escape.stamina) > 0);
+        $('#escape-stamina').text(Math.abs(newStats.escape.stamina) + ' %').parent().toggle(Math.abs(newStats.escape.stamina) > 0);
         $('#escape-respect').text("+ " + newStats.escape.respect);
         $('#escape-chance').text(newStats.escape.escapeChance + ' %');
         $('#escape-inc-days').text(newStats.escape.daysIncOnFail);
 
         $('#bribe-coins').text(newStats.bribe.coins);
-        $('#bribe-stamina').text(newStats.bribe.stamina).parent().toggle(Math.abs(newStats.bribe.stamina) > 0);
+        $('#bribe-stamina').text(Math.abs(newStats.bribe.stamina) + ' %').parent().toggle(Math.abs(newStats.bribe.stamina) > 0);
         $('#bribe-respect').text("+ " + newStats.bribe.respect);
 
     }
@@ -42,11 +42,12 @@ class PrisonLayoutManager {
     onReleaseFromPrisonAttempt(path) {
         const _this = this;
         return function () {
-            _this.toggleLoadingButton(this, true);
+            var button = this;
+            _this.toggleLoadingButton(button, true);
 
             setTimeout(() => {
                 $.post(path).done((data) => {
-                    _this.toggleLoadingButton(this, false);
+                    _this.toggleLoadingButton(button, false);
 
                     if (data.attempt.success) {
                         window.toast.success(data.attempt.msg)
@@ -58,6 +59,7 @@ class PrisonLayoutManager {
                         window.toast.error(data.attempt.msg)
                     }
                 }).fail(function (r) {
+                    _this.toggleLoadingButton(button, false);
                     window.toast.error(r.responseText)
                 });
             }, 1000);

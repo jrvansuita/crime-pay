@@ -21,34 +21,36 @@
                 </span>
             </div>
 
-            <%if (Math.abs(stats.escape.stamina)> 0){%>
+
+
+            <%if (stats.escape.respect> 0){%>
                 <div class="input-group">
-                    <span class="form-control">Stamina Cost</span>
-                    <span class="input-group-text"><img class="mini-img" src="/img/stamina.png"></span>
-                    <span id="escape-stamina" class="input-group-text">
-                        <%=Math.abs(stats.escape.stamina)%> %
+                    <span class="form-control">Respect Reward</span>
+                    <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png"></span>
+                    <span id="escape-respect" class="input-group-text">
+                        + <%=stats.escape.respect%>
                     </span>
                 </div>
                 <%}%>
 
-                    <%if (stats.escape.respect> 0){%>
+                    <div class="input-group">
+                        <span class="form-control">Escape Chance</span>
+                        <span class="input-group-text"><img class="mini-img" src="/img/lucky.png"></span>
+                        <span id="escape-chance" class="input-group-text">
+                            <%=stats.escape.escapeChance%> %
+                        </span>
+                    </div>
+
+
+                    <%if (Math.abs(stats.escape.stamina)> 0){%>
                         <div class="input-group">
-                            <span class="form-control">Respect Reward</span>
-                            <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png"></span>
-                            <span id="escape-respect" class="input-group-text">
-                                + <%=stats.escape.respect%>
+                            <span class="form-control">Stamina Cost</span>
+                            <span class="input-group-text"><img class="mini-img" src="/img/stamina.png"></span>
+                            <span id="escape-stamina" class="input-group-text">
+                                <%=Math.abs(stats.escape.stamina)%> %
                             </span>
                         </div>
                         <%}%>
-
-                            <div class="input-group">
-                                <span class="form-control">Escape Chance</span>
-                                <span class="input-group-text"><img class="mini-img" src="/img/lucky.png"></span>
-                                <span id="escape-chance" class="input-group-text">
-                                    <%=stats.escape.escapeChance%> %
-                                </span>
-                            </div>
-
                             <div class="button-holder">
                                 <button class="btn btn-primary" type="button" id="escape">
                                     <span class="spinner-border spinner-border-sm no-display" role="status"

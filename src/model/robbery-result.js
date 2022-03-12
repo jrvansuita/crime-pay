@@ -1,6 +1,6 @@
 const moment = require("moment");
 const { ROBBERY_SUCCESS, ROBBERY_FAIL } = require("../const/constants");
-
+const Num = require('../lib/num');
 
 
 module.exports = class RobberyResult {
@@ -35,7 +35,7 @@ module.exports = class RobberyResult {
         } else {
             let loss = Math.trunc((Math.abs(this.intelligence) / this.thief.intelligence) * this.thief.coins);
 
-            this.coins = -noNegativeResult(this.thief.coins, loss);
+            this.coins = -Num.greaterFrom(this.thief.coins, loss);
         }
 
         return this;
@@ -45,21 +45,21 @@ module.exports = class RobberyResult {
         if (this.success) {
             this.respect = this.place.respect;
         } else {
-            this.respect = -noNegativeResult(this.thief.respect, this.place.respect);
+            this.respect = -Num.greaterFrom(this.thief.respect, this.place.respect);
         }
 
         return this;
     }
 
     createStamina() {
-        this.stamina = -noNegativeResult(this.thief.stamina, this.place.staminaCost);
+        this.stamina = -Num.greaterFrom(this.thief.stamina, this.place.staminaCost);
         return this;
     }
 
     setAttributes(intelligence, dexterity, strength) {
-        this.intelligence = this.success ? intelligence : -noNegativeResult(this.thief.intelligence, intelligence);
-        this.dexterity = this.success ? dexterity : -noNegativeResult(this.thief.dexterity, dexterity);
-        this.strength = this.success ? strength : -noNegativeResult(this.thief.strength, strength);
+        this.intelligence = this.success ? intelligence : -Num.greaterFrom(this.thief.intelligence, intelligence);
+        this.dexterity = this.success ? dexterity : -Num.greaterFrom(this.thief.dexterity, dexterity);
+        this.strength = this.success ? strength : -Num.greaterFrom(this.thief.strength, strength);
 
         return this;
     }
@@ -81,8 +81,4 @@ module.exports = class RobberyResult {
 
 
 
-}
-
-const noNegativeResult = (greater, dec) => {
-    return (greater - Math.abs(dec)) < 0 ? greater : dec;
 }

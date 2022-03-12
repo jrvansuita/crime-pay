@@ -23,7 +23,7 @@ Next implementations:
 #### Layouts
 - [x] tab menu with : Robbery, Prison, Club, Market and Settings
 - [ ] Login page (Metamask integration)
-- [ ] prison page 
+- [x] prison page 
 - [ ] club page (hookers and drugs)
 - [ ] market (weapons and special items)
 - [ ] history page (activities log for player) 
@@ -45,14 +45,13 @@ Next implementations:
 #### Visual
 - [x] remove visibility of 0% chance robberies
 - [x] remove visibility of 100% chance robberies (keep only 1)
-- [ ] respect badge animation on win or loss points
 - [x] cool pixel img when success or fail robbery
 - [ ] pixel art fonttypes
 
 #### Code & Deploy
 - [x] install code optmization github plugin 
 - [ ] test automation with jest
-- [ ] heroku instance for preview and tests
+- [x] heroku instance for preview and tests
 
 #
 

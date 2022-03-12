@@ -20,8 +20,8 @@ class ThiefStatusUpdater {
     bars() {
         $('#status-stamina-percent').text(this.thief.stamina + '%');
         $('#status-stamina').css('width', this.thief.stamina + '%').attr('aria-valuenow', this.thief.stamina);
-        $('#status-intoxication-percent').text(this.thief.stamina + '%');
-        $('#status-intoxication').css('width', this.thief.stamina + '%').attr('aria-valuenow', this.thief.stamina);
+        $('#status-intoxication-percent').text(this.thief.intoxication + '%');
+        $('#status-intoxication').css('width', this.thief.intoxication + '%').attr('aria-valuenow', this.thief.intoxication);
 
         return this;
     }
