@@ -56,8 +56,10 @@ Next implementations:
 
 #### Code & Deploy
 - [x] install code optmization github plugin 
-- [ ] test automation with jest
 - [x] heroku instance for preview and tests
+- [ ] test automation with jest
+- [x] minify and compress static files
+
 
 #
 
