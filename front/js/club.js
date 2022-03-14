@@ -14,11 +14,13 @@ $(document).ready(() => {
                 return { hookerId: key }
             },
             success: (data) => {
-                //new RobberyLayoutManager().update(data.result)
+                if (data.event.success) {
+                    window.toast.success(data.event.message)
+                } else {
+                    window.toast.error(data.event.message)
+                }
 
-                console.log(data);
-                window.toast.success(data.event.message)
-                new PlayerStatusUpdater(data.player).all();
+                new PlayerStatusUpdater(data.player).coins().bars();
                 miniCards.load();
             }
         })

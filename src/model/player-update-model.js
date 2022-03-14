@@ -23,14 +23,19 @@ module.exports = class PlayerUpdateModel {
         return this;
     }
 
-    setPlayerAttr(attr, value, add = true, min = 1, minOnDecrease = false, checkPlayerOnDecrease = true) {
+    setPlayerAttr(attr, value, adding = true, min = 1, minOnDecrease = false, checkPlayerLimit = true, max = 999) {
         value = Math.trunc(Math.abs(value));
         value = Math.max(min, value);
+        value = Math.min(max, value);
 
-        if (!add) {
+        if (adding) {
+            if (checkPlayerLimit) {
+                value = Math.min(value, max - this.player[attr]);
+            }
+        } else {
             if (minOnDecrease) value = min;
 
-            if (checkPlayerOnDecrease) {
+            if (checkPlayerLimit) {
                 value = Math.min(value, this.player[attr]);
             }
 

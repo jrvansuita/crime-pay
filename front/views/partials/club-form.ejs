@@ -54,7 +54,7 @@
   %>
 
 
-  <%- include('../single/button', { buttonId: 'submit', buttonText: 'Enjoy the Vibe',  quoteText: failMessage, loadingButton:true}); %>
+  <%- include('../single/button', { buttonId: 'submit', buttonText: 'Enjoy the Vibe',  quoteText: failMessage, loadingButton:true, arrested: player.arrested, fullStamina: player.stamina ==100, fullIntoxicated: player.intoxication == 100}); %>
 
 
 </div>

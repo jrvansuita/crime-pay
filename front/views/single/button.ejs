@@ -1,9 +1,21 @@
 <div class="button-holder">
 
-  <%if (locals?.noStamina || locals?.arrested){%>
+  <%
+  
+  var disableText = null;
+
+  if (locals?.noStamina) disableText = 'Out Of Stamina!';
+  if (locals?.fullStamina) disableText = "Full Of Stamina";
+  if (locals?.fullIntoxicated) disableText = "Full Intoxicated";
+  if (locals?.arrested) disableText = "Arrested";
+  
+  %>
+
+
+  <%if (disableText){%>
   <button class="btn btn-danger" type="button" disabled>
     <span class="button-text">
-      <%=locals?.arrested ? "You're Arrested" : 'Out Of Stamina!' %>
+      <%=disableText%>
     </span>
   </button>
 

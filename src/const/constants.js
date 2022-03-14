@@ -2,6 +2,8 @@ module.exports = Object.freeze({
     PLAYER_NOT_FOUND: "Player not found!",
     OUT_OF_STAMINA: "You're out of stamina!",
     INSUFFICIENT_COINS: "You don't have sufficient coins!",
+    FULL_STAMINA: "You're full of stamina.",
+    FULL_INTOXICATION: "You're full intoxicated.",
     PLAYER_ARRESTED: "You're under arrest!",
     PLAYER_NOT_ARRESTED: "You're not arrested!",
 

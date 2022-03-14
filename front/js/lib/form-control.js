@@ -37,10 +37,10 @@ class FormControl {
 
     }
 
-    onBeforeSubmit() {
-        $(this.submitSelector).attr('disabled', '');
-        $(this.submitSelector + ' .no-display').css('display', 'inherit');
-        $(this.submitSelector + ' .button-text').hide();
+    toggleLoadingButton(show) {
+        $(this.submitSelector).prop('disabled', show);
+        $(this.submitSelector + ' .no-display').css('display', show ? 'inherit' : 'none');
+        $(this.submitSelector + ' .button-text').toggle(!show);
     }
 
 
@@ -72,16 +72,18 @@ class FormControl {
 
     onSubmit() {
         return () => {
-            this.onBeforeSubmit();
+            this.toggleLoadingButton(true);
 
             setTimeout(() => {
                 var data = this.onBuildSubmitPayload(this.key);
 
                 $.post(this.resultUrl, data).done((data) => {
+                    this.toggleLoadingButton(false);
                     this.showPlaceholder()
                     if (this.onSuccess) this.onSuccess(data);
 
-                }).fail(function (r) {
+                }).fail((r) => {
+                    this.toggleLoadingButton(false);
                     window.toast.error(r.responseText)
 
                     if (this.onFailed) this.onFailed(r);
