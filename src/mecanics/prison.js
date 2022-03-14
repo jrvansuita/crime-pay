@@ -1,38 +1,48 @@
 const moment = require("moment");
 const constants = require('../const/constants');
-const Num = require('../lib/num');
-const PlayerController = require("../controller/player");
 
+const PlayerController = require("../controller/player");
+const PlayerUpdateModel = require('../model/player-update-model');
+const EventController = require('../controller/event');
+const { EventTypes, EventModel } = require("../model/event-model");
+const { PRISON_ESCAPE, PRISON_BRIBE } = require("../const/constants");
+const { Num } = require("../lib/util");
 
 
 module.exports = class PrisonMecanics {
 
     constructor() {
         this.playerController = new PlayerController();
+        this.eventController = new EventController();
     }
 
     statsFor(player) {
         return player.arrested ? {
-            escape: new ReleaseAttempt(player).escape().get(),
-            bribe: new ReleaseAttempt(player).bribe().get()
+            escape: new Escape(player).get(),
+            bribe: new Bribe(player).get()
         } : {};
     }
 
-    releaseAttempt(player, attempt) {
-        return this.playerController.releasePrisonAttempt(player, attempt).then((updatedPlayer) => {
-            return { player: updatedPlayer, attempt, newStats: this.statsFor(updatedPlayer) };
+    makeAttempt(player, attempt, msg) {
+        attempt.make();
+
+        return this.playerController.update(player._id, attempt.data).then((updatedPlayer) => {
+
+            return EventController.save(attempt.enventType, player._id, attempt.data, '', attempt.success, msg).then((event) => {
+                return { player: updatedPlayer, event, newAttempt: this.statsFor(updatedPlayer) };
+            })
         });
     }
 
     escape(player) {
         return Promise.resolve().then(() => {
-            return this.releaseAttempt(player, new ReleaseAttempt(player).escape().make());
+            return this.makeAttempt(player, new Escape(player), PRISON_ESCAPE);
         });
     }
 
     bribe(player) {
         return Promise.resolve().then(() => {
-            return this.releaseAttempt(player, new ReleaseAttempt(player).bribe().make());
+            return this.makeAttempt(player, new Bribe(player), PRISON_BRIBE);
         });
     }
 
@@ -42,74 +52,71 @@ module.exports = class PrisonMecanics {
 
 
 
-
 class ReleaseAttempt {
-    constructor(player) {
+
+    constructor(player, enventType) {
+        this.enventType = enventType;
         this.player = player;
-    }
+        this.data = new PlayerUpdateModel(player);
 
-    validations() {
-        if (!this.player.arrested) {
-            throw new Error(constants.THIEF_NOT_ARRESTED);
-        }
-
-        if (this.player.stamina < Math.abs(this.stamina)) {
-            throw new Error(constants.OUT_OF_STAMINA);
-        }
-
-        return this;
-    }
-
-    messages(successMsgs, failedMgs) {
-        this.successMsgs = successMsgs;
-        this.failedMgs = failedMgs;
-        return this;
-    }
-
-    default(coinCost, respectReward) {
-        this.coins = Math.trunc(Math.max(1, this.player.coins * coinCost));
-        this.coins = -Num.greaterFrom(this.player.coins, this.coins)
-
-        this.respect = Math.trunc(Math.max(1, (this.player.respect * .05 * respectReward) + 5));
-
-        return this;
-    }
-
-    escape() {
-        this.escapeChance = Math.max(10, moment(this.player.arrestRelease).seconds());
-        this.daysIncOnFail = Math.trunc(Math.max(1, this.escapeChance / 20));
-        this.arrestRelease = moment(this.player.arrestRelease).add(this.daysIncOnFail, 'days').toDate();
-
-        this.stamina = -Math.trunc(Math.max(5, (this.escapeChance * .5 * 100) / 60));
-
-        return this.messages(constants.PRISON_ESCAPE_SUCCESS, constants.PRISON_ESCAPE_FAIL).default((this.escapeChance / 250), (100 / (100 - this.escapeChance)));
-    }
-
-    bribe() {
-        this.escapeChance = 100;
-        this.stamina = -Math.max(this.player.stamina, 50);
-
-        return this.messages(constants.PRISON_BRIBE_SUCCESS).default(.41, .7);
-    }
-
-
-    get() {
-        delete this.player;
-        return this;
+        this.data.validate((player, model) => {
+            model.check(!player.arrested, constants.PLAYER_NOT_ARRESTED)
+                .check(player.stamina < Math.abs(model.stamina), constants.OUT_OF_STAMINA)
+        })
     }
 
     make() {
-        this.validations();
 
-        const luckyNumber = Math.floor(Math.random() * 100 - 1);
+        this.success = Num.lucky(100) <= this.escapeChance;
+        this.get();
 
-        this.success = luckyNumber <= this.escapeChance;
-        this.respect = this.success ? this.respect : 0;
+        delete this.player;
 
-        this.msg = this.success ? this.successMsgs.randomOne() : this.failedMgs.randomOne();
-        delete this.successMsgs;
-        delete this.failedMgs;
+        this.data
+            .setArrested(!this.success, this.daysIncOnFail)
+            .build();
 
-        return this.get();
+        return this;
     }
 }
+
+class Escape extends ReleaseAttempt {
+
+    constructor(player) {
+        super(player, EventTypes.PRISON_ESCAPE);
+
+        this.escapeChance = Math.max(10, moment(this.player.arrestRelease).seconds());
+    }
+
+    get() {
+        this.daysIncOnFail = Math.trunc(Math.max(1, this.escapeChance / 20));
+
+        this.data
+            .setRespect((this.player.respect * .05 * (100 / (100 - this.escapeChance)) + 2), this.success, 0, true)
+            .setCoins(this.player.coins * (this.escapeChance / 250), false)
+            .setStamina(((this.escapeChance * .5 * 100) / 60), false, 5, false, false)
+
+        return this;
+    }
+}
+
+
+class Bribe extends ReleaseAttempt {
+
+    constructor(player) {
+        super(player, EventTypes.PRISON_BRIBE);
+        this.escapeChance = 100;
+    }
+
+    get() {
+        this.data
+            .setRespect((this.player.respect * .05 * .7) + 5, true, 0, true)
+            .setCoins(this.player.coins * .41, false)
+            .setStamina(this.player.stamina, false, 50, false, false)
+
+        return this;
+    }
+}
+
+
+

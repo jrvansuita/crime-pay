@@ -1,26 +1,27 @@
 
-const Controller = require("./controlle");
+const Controller = require("./controller");
+const PlayerController = require("./player");
 
-module.exports = class RobberyPlaceController extends Controller {
+module.exports = class PlaceController extends Controller {
 
 
     constructor() {
-        super('robberyplace');
+        super('place');
     }
 
-    placesDetails(placeId, player) {
+    details(placeId, player) {
         return this.findById(placeId).then((place) => {
-            return calculatePlaceAttributes(player, place);
+            return calculateAttributes(player, place);
         });
     }
 
-    placesFor(player) {
+    for(player) {
         return this.all().then((places) => {
             return places
                 //Sort by difficulty asc
                 .sort((a, b) => { return a.difficulty - b.difficulty })
                 //Handle all calculated attributes
-                .map(each => { return calculatePlaceAttributes(player, each) })
+                .map(each => { return calculateAttributes(player, each) })
                 //Remove places with zero success chances
                 .filter(each => { return each.successChance > 0 })
                 //Remove more than 1 places with 100% success chances
@@ -40,15 +41,13 @@ module.exports = class RobberyPlaceController extends Controller {
 }
 
 
-const calculatePlaceAttributes = (player, place) => {
-
+const calculateAttributes = (player, place) => {
     /* Defining Weapons Intelligence and Dexterity Multiplier Bonus */
-    var intelligenceMultiplier = player.weapons.reduce((p, c) => p + c.intelligence, 0)
-    var dexterityMultiplier = player.weapons.reduce((p, c) => p + c.dexterity, 0)
+    const multiplier = PlayerController.weaponsStatsMultiplier(player);
 
     /* Defining Player Attributes */
-    var intelligence = player.intelligence * intelligenceMultiplier;
-    var dexterity = player.dexterity * dexterityMultiplier;
+    var intelligence = player.intelligence * multiplier.intelligence;
+    var dexterity = player.dexterity * multiplier.dexterity;
     var strength = player.strength;
 
     /* Defining Robbery Success Chance */

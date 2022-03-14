@@ -1,27 +1,31 @@
 const constants = require('../const/constants');
-const ThiefController = require("../controller/complex/thief");
-const RobberyPlaceController = require("../controller/robbery-place");
-const RobberyResultController = require("../controller/robbery-result");
-const RobberyResult = require("../model/robbery-result");
-const Num = require('../lib/num');
+
+
+const PlaceController = require("../controller/place");
+const PlayerUpdateModel = require('../model/player-update-model');
+const PlayerController = require('../controller/player');
+const EventController = require('../controller/event');
+const { Num } = require('../lib/util');
 
 
 module.exports = class RobberyMecanics {
 
     constructor() {
-        this.thiefController = new ThiefController();
-        this.robberyPlaceController = new RobberyPlaceController();
-        this.robberyResultController = new RobberyResultController();
+        this.playerController = new PlayerController();
+        this.placeController = new PlaceController();
+        this.eventController = new EventController();
     }
 
-    submit(placeId, thief) {
-        return this.robberyPlaceController.placesDetails(placeId, thief).then((place) => {
+    submit(placeId, player) {
+        return this.placeController.details(placeId, player).then((place) => {
 
-            var result = new RobberyMecanicsHandler(thief, place).run();
+            var playerUpdate = buildPlayerUpdate(player, place);
 
-            return this.thiefController.updateFromRobbery(thief, result).then((updatedThief) => {
-                return this.robberyResultController.save(result).then((resultData) => {
-                    return { result: RobberyResult.parse(resultData), thief: updatedThief }
+            return this.playerController.update(player._id, playerUpdate).then((updatedPlayer) => {
+
+                return EventController.robbery(player._id, playerUpdate, placeId, !playerUpdate.arrested, constants.ROBBERY).then((event) => {
+
+                    return { event, player: updatedPlayer }
                 })
             })
         })
@@ -29,48 +33,31 @@ module.exports = class RobberyMecanics {
 }
 
 
+const buildPlayerUpdate = (player, place) => {
 
-class RobberyMecanicsHandler {
-    constructor(player, place) {
-        this.player = player;
-        this.place = place;
-    }
+    const success = Num.lucky(100) <= place.successChance;
+    const difficult = Math.max(1, 100 - place.successChance);
 
-    validations() {
-        if (this.player.arrested) {
-            throw new Error(constants.THIEF_ARRESTED);
-        }
+    const multiplier = PlayerController.weaponsStatsMultiplier(player);
 
-        if (this.player.stamina < this.place.staminaCost)
-            throw new Error(constants.OUT_OF_STAMINA);
+    /* Defining New Player Attributes */
+    const intelligence = ((player.intelligence * .05) * (multiplier.intelligence * .25)) + (difficult * .1);
+    const dexterity = (((player.dexterity * .05) * (multiplier.dexterity * .25)) + (difficult * .1));
+    const strength = (intelligence + dexterity) / 2;
 
+    const coins = success ? place.coinsReward : ((intelligence / player.intelligence) * player.coins);
 
-        return this;
-    }
-
-    execute() {
-        const luckyNumber = Math.floor(Math.random() * 100);
-        const success = luckyNumber <= this.place.successChance;
-        const difficult = Math.max(1, 100 - this.place.successChance);
-
-        /* Defining Weapons Intelligence and Dexterity Multiplier Bonus */
-        var intelligenceMultiplier = this.player.weapons.reduce((p, c) => p + c.intelligence, 0)
-        var dexterityMultiplier = this.player.weapons.reduce((p, c) => p + c.dexterity, 0)
-
-        /* Defining New Player Attributes */
-        var intelligence = Math.max(1, (Math.trunc(((this.player.intelligence * .05) * (intelligenceMultiplier * .25)) + (difficult * .1))));
-        var dexterity = Math.max(1, Math.trunc((((this.player.dexterity * .05) * (dexterityMultiplier * .25)) + (difficult * .1))));
-
-        var strength = Math.trunc(((intelligence + dexterity) / 2));
-
-        return new RobberyResult(success).setThiefAndPlace(this.player, this.place)
-            .setAttributes(intelligence, dexterity, strength)
-            .createCoins().createRespect().createStamina().build();
-    }
-
-    run() {
-        return this.validations().execute();
-    }
-
+    return new PlayerUpdateModel(player).validate((player, model) => {
+        model.check(player.arrested, constants.PLAYER_ARRESTED)
+            .check(player.stamina < place.staminaCost, constants.OUT_OF_STAMINA);
+    })
+        .setArrested(!success)
+        .setCoins(coins, success)
+        .setRespect(place.respect, success)
+        .setStamina(place.staminaCost, false)
+        .setIntelligence(intelligence, success)
+        .setDexterity(dexterity, success)
+        .setStrength(strength, success)
+        .build()
 }
 

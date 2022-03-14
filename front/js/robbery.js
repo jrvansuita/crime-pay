@@ -1,133 +1,69 @@
 
 
-$(document).ready(function () {
-    new RobberyLayoutManager().reloadPlaces();
+$(document).ready(() => {
+    var miniCards = new MiniCards();
+
+    var formControl = new FormControl()
+        .setFormUrl("/robbery-form")
+        .setResultUrl("/robbery-submit")
+        .setFormHoldersSelectors(".robbery-form-holder", ".robbery-form-placeholder")
+        .setSubmitOptions({
+            submit: '#submit',
+            payload: (key) => {
+                return { placeId: key }
+            },
+            success: (data) => {
+                new RobberyLayoutManager().update(data)
+                new PlayerStatusUpdater(data.player).all();
+                miniCards.load();
+            }
+        })
+        .showPlaceholder();
+
+
+    miniCards.setUrl("/robbery-places")
+        .setLastSelectedVar(lastPlaceItemSelected)
+        .setHolderSelector(".places-holder")
+        .setOnCardSelected(key => formControl.setKey(key).load())
+        .load();
+
+
+
 });
 
 class RobberyLayoutManager {
 
-    getPlaceItemsHolders() {
-        return $(".robbery-places-holder .robbery-place-item-ph");
-    }
+    update(data) {
+        this.toggleArrestInfo(data);
+        const event = data.event;
 
-    getPlaceItems() {
-        return $(".robbery-places-holder .robbery-place-item");
-    }
+        $('#result-list').hide().fadeIn();
+        $('#result-title').text(data.player.arrested ? "You're under arrest!" : 'You were successful!')
 
-    getPlacesHolder() {
-        return $(".robbery-places-holder");
-    }
-
-    getFormHolder() {
-        return $(".robbery-form-holder");
-    }
-
-    getFormPlaceHolder() {
-        return $(".robbery-form-placeholder");
-    }
-
-    getResultHolder() {
-        return $(".robbery-result-holder");
-    }
-
-    onBeginLoadPlaces() {
-        this.getPlaceItems().remove();
-        this.getPlaceItemsHolders().show();
-
-        this.getFormPlaceHolder().show();
-        this.getFormHolder().hide();
-    }
-
-    onTerminateLoadPlaces() {
-        this.getPlaceItemsHolders().hide();
-        this.getPlaceItems().hide().fadeIn();
-
-        this.getFormPlaceHolder().hide();
-        this.getFormHolder().hide().fadeIn();
-
-        setTimeout(() => { $('.robbery-result-holder').show() }, 400);
-    }
-
-    reloadPlaces() {
-        this.onBeginLoadPlaces();
-
-        setTimeout(() => {
-            this.getPlacesHolder().load("/robbery-places", () => {
-                this.onTerminateLoadPlaces();
-                this.getPlaceItems().on("click", this.onRobberyPlaceItemSelected());
-
-                //Select the last place clicked or the first one
-                this.getPlaceItems().first().add("[data-key='" + lastSelectedPlaceId + "']").last().click();
-            });
-        }, 400);
-    }
-
-    onRobberyPlaceItemSelected() {
-        const _this = this;
-        return function () {
-            _this.getPlaceItems().removeClass('selected');
-            var placeId = $(this).addClass('selected').data('key');
-            lastSelectedPlaceId = placeId;
-
-            _this.getFormHolder().load("/robbery-form?_id=" + placeId, () => {
-                _this.getFormHolder().hide().fadeIn();
-
-                _this.getFormHolder().data('place', placeId)
-                $('#robbery-submit').click(_this.onRobberyPlaceSubmit());
-            });
+        if (data.player.arrested) {
+            window.toast.error(data.event.message);
+        } else {
+            window.toast.success(data.event.message);
         }
-    }
 
-    onRobberyPlaceSubmitButtonPressed() {
-        $('#robbery-submit').attr('disabled', '');
-        $('#robbery-submit .no-display').css('display', 'inherit');
-        $('#robbery-submit .button-text').hide();
-    }
+        $('#result-message').text(event.message)
 
-    onRobberyPlaceSubmit() {
-        const _this = this;
-        return () => {
-            this.onRobberyPlaceSubmitButtonPressed();
+        let randImg = (n) => { return Math.floor((Math.random() * n) + 1); };
+        let sign = n => { return n > 0 ? '+ ' + n : n }
 
-            setTimeout(() => {
-                $.post("/robbery-submit", { placeId: _this.getFormHolder().data('place') }).done((data) => {
-                    _this.reloadPlaces();
-                    _this.updateRobberyResult(data.result)
-                    new ThiefStatusUpdater(data.thief).all();
-                }).fail(function (r) {
-                    window.toast.error(r.responseText)
-                });
-            }, 600);
-        }
+        $('#result-img').attr('src', (event.success ? '/img/robbed' + randImg(2) : '/img/busted' + + randImg(4)) + '.png');
+        $('#result-coins').text(sign(event.playerUpdate.coins)).parent().toggle(!!event.playerUpdate.coins);
+        $('#result-respect').text(sign(event.playerUpdate.respect)).parent().toggle(!!event.playerUpdate.respect);
+        $('#result-intelligence').text(sign(event.playerUpdate.intelligence));
+        $('#result-dexterity').text(sign(event.playerUpdate.dexterity));
+        $('#result-strength').text(sign(event.playerUpdate.strength));
     }
 
 
     toggleArrestInfo(data) {
         $('#result-list').parent().removeClass('text-end');
-        $('#result-prison').css('display', data.arrested ? '-webkit-box' : 'none');
-        $('#result-arrest-release').text(data.arrested ? 'Released ' + moment(data.arrestRelease).calendar() : '');
-    }
-
-    updateRobberyResult(result) {
-        this.toggleArrestInfo(result)
-
-
-        $('#result-list').hide().fadeIn();
-
-        $('#result-title').text(result.arrested ? "You're under arrest!" : 'You were successful!')
-        $('#result-message').text(result.msg)
-
-        let randImg = (n) => { return Math.floor((Math.random() * n) + 1); };
-        let sign = n => { return n > 0 ? '+ ' + n : n }
-
-        $('#result-img').attr('src', (result.success ? '/img/robbed' + randImg(2) : '/img/busted' + + randImg(4)) + '.png');
-        $('#result-coins').text(sign(result.coins)).parent().toggle(!!result.coins);
-        $('#result-respect').text(sign(result.respect)).parent().toggle(!!result.respect);
-        $('#result-intelligence').text(sign(result.intelligence));
-        $('#result-dexterity').text(sign(result.dexterity));
-        $('#result-strength').text(sign(result.strength));
-
-
+        $('#result-prison').css('display', data.player.arrested ? '-webkit-box' : 'none');
+        $('.robbery-result-holder').find('.blockquote-footer').text(data.player.arrested ? 'Released ' + moment(data.player.arrestRelease).calendar() : '');
     }
 
 }

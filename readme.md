@@ -43,9 +43,11 @@ Next implementations:
 - [x] free from prison (Escape or bribe)
 - [x] free from prison (Waiting release time)
 - [x] prevent make robbery when out of stamina
-- [ ] refresh stamina when take drugs or get a hooker
+- [x] events structure for history page
+- [x] refresh stamina when take drugs or get a hooker
 - [ ] use full stamina option on robbery
 - [x] restore 1 stamina point every hour
+- [x] clear 1 intoxication point every hour
 - [ ] settings option for player avatar and name update
 
 #### Visual

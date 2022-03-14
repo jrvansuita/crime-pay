@@ -1,67 +1,53 @@
-<div class="mini-card-flat">
-    <div id="bribe-holder" class="row">
-        <div class="col-5">
-            <h6 class="card-title">
-                What are you looking for?
-            </h6>
-            <p class="card-text">I can make it easy
-                for you. Give me some coins.
-            </p>
+<div class="card-flat">
+  <div id="bribe-holder" class="row">
+    <div class="col-5">
+      <h6 class="card-title">
+        What are you looking for?
+      </h6>
+      <p class="card-text">I can make it easy
+        for you. Give me some coins.
+      </p>
 
-            <img src=" /img/police.png" class="card-img-top medium-img" alt="police">
+      <img src=" /img/police.png" class="card-img-top medium-img" alt="police">
 
-        </div>
-        <div class="col">
-
-            <div class="input-group">
-                <span class="form-control">Coins Cost</span>
-                <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt="Coin"></span>
-                <span id="bribe-coins" class="input-group-text">
-                    <%=stats.bribe.coins%>
-                </span>
-            </div>
-
-
-
-            <%if (stats.bribe.respect> 0){%>
-                <div class="input-group">
-                    <span class="form-control">Respect Reward</span>
-                    <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png"></span>
-                    <span id="bribe-respect" class="input-group-text">
-                        + <%=stats.bribe.respect%>
-                    </span>
-                </div>
-                <%}%>
-
-                    <%if (Math.abs(stats.bribe.stamina)> 0){%>
-                        <div class="input-group">
-                            <span class="form-control">Stamina Cost</span>
-                            <span class="input-group-text"><img class="mini-img" src="/img/stamina.png"
-                                    alt="Coin"></span>
-                            <span id="bribe-stamina" class="input-group-text">
-                                <%=Math.abs(stats.bribe.stamina)%> %
-                            </span>
-                        </div>
-                        <%}%>
-
-                            <div class="button-holder">
-                                <button class="btn btn-primary" type="button" id="bribe">
-                                    <span class="spinner-border spinner-border-sm no-display" role="status"
-                                        aria-hidden="true"></span>
-                                    <span class="no-display">Loading...</span>
-                                    <span class="button-text">Bribe</span>
-                                </button>
-
-
-
-                                <blockquote class="blockquote mb-0">
-                                    <footer class="blockquote-footer">
-                                        100% chance to get out.
-                                    </footer>
-                                </blockquote>
-                            </div>
-
-
-        </div>
     </div>
+    <div class="col">
+
+      <div class="input-group">
+        <span class="form-control">Coins Cost</span>
+        <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt="Coin"></span>
+        <span id="bribe-coins" class="input-group-text">
+          <%=bribe.data.coins%>
+        </span>
+      </div>
+
+
+
+      <%if (bribe.data.respect> 0){%>
+      <div class="input-group">
+        <span class="form-control">Respect Reward</span>
+        <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png"></span>
+        <span id="bribe-respect" class="input-group-text">
+          + <%=bribe.data.respect%>
+        </span>
+      </div>
+      <%}%>
+
+                    <%if (Math.abs(bribe.data.stamina)> 0){%>
+      <div class="input-group">
+        <span class="form-control">Stamina Cost</span>
+        <span class="input-group-text"><img class="mini-img" src="/img/stamina.png" alt="Coin"></span>
+        <span id="bribe-stamina" class="input-group-text">
+          <%=Math.abs(bribe.data.stamina)%> %
+        </span>
+      </div>
+      <%}%>
+
+
+
+      <%- include('../single/button', { buttonId: 'bribe', buttonText: 'Bribe',  quoteText: "100% chance to get out.", loadingButton:true, noStamina: player.stamina < Math.abs(bribe.data.stamina)  }); %>
+
+
+    </div>
+  </div>
 </div>

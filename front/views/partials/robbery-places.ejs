@@ -1,4 +1,9 @@
-<% places.forEach((place)=>{ %>
-    <%- include('../single/robbery-place-item', {place: place}); %>
-        <%- include('../placeholders/robbery-place-item.html'); %>
-            <% }); %>
+<% places.forEach((place)=>{%>
+
+<%- include('../single/mini-card-item', { key : place._id, name : place.name, img : "/img/places/" +
+        place.name.toLowerCase().trim().replace(" ", "-") + ".jpg" , title:place.staminaCost + ' Stamina' , badgeText:
+        place.successChance + '%' }); %>
+
+<%- include('../placeholders/mini-card-item.html'); %>
+
+<% }); %>

@@ -3,25 +3,12 @@
     min-width: 30em;
 }
 
-.mini-card-flat{
+.card-flat{
     margin-top: 1em;
 }
 
-.mini-card-flat:first-child{
+.card-flat:first-child{
     margin-right: 1.5em;
 }
 
 
-.button-holder{
-    display:-webkit-box;
-    margin-top: 15px;
-    
-    width: -webkit-fill-available;
-    max-width: min-content;
-}
-
-
-.button-holder blockquote{
-    margin-left: 12px;
-    margin-top: 8px;
-}

@@ -1,0 +1,61 @@
+<div class="row align-items-center">
+  <h6 class="card-title">
+    Wanna try <%=data.name%>?
+  </h6 s>
+
+  <div class="input-group">
+    <span class="form-control">Coins Cost</span>
+    <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt=""></span>
+    <span class="input-group-text">
+      <%=Math.abs(data.coins) > 0 ? '- ' + Math.abs(data.coins) : 'Free'%>
+    </span>
+  </div>
+
+
+  <%if (Math.abs(data.respect)> 0){%>
+  <div class="input-group">
+    <span class="form-control">Respect Change</span>
+    <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png" alt=""></span>
+
+    <span class="input-group-text">
+      + <%=data.respect%>
+    </span>
+  </div>
+
+  <%}%>
+
+  <div class="input-group">
+    <span class="form-control">Stamina Restored</span>
+    <span class="input-group-text"><img class="mini-img" src="/img/stamina.png" alt=""></span>
+    <span class="input-group-text">
+      <%=data.stamina%>%
+  </span>
+</div>
+
+<div class="input-group">
+  <span class="form-control">Intoxication Increase</span>
+  <span class="input-group-text"><img class="mini-img" src="/img/intoxication.png" alt=""></span>
+  <span class="input-group-text">
+    <%=data.intoxication%>%
+  </span>
+</div>
+
+
+
+<div class="col-12">
+
+  <%
+        
+  var failMessage = 'Zero chances to fail';
+  if (data.failChance) failMessage = data.failChance +  '% chance to fail';
+  if (data.jailChance) failMessage += ' and ' + data.jailChance + '% chance to go arrasted';
+  
+  failMessage +='.';
+  %>
+
+
+  <%- include('../single/button', { buttonId: 'submit', buttonText: 'Enjoy the Vibe',  quoteText: failMessage, loadingButton:true}); %>
+
+
+</div>
+</div>

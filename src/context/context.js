@@ -16,8 +16,7 @@ module.exports = class Context {
 
         this.bindSession().bindSessionMidleware();
         this.defineRoutes();
-
-
+        this.definePrototypes();
 
         this.startListening();
     }
@@ -102,6 +101,10 @@ module.exports = class Context {
             res.locals.session = req.session;
             next();
         });
+    }
+
+    definePrototypes() {
+        require('../lib/util').Protos();
     }
 
     defineRoutes() {

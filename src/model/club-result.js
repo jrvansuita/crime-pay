@@ -1,29 +1,27 @@
 const moment = require("moment");
 const { ROBBERY_SUCCESS, ROBBERY_FAIL } = require("../const/constants");
-const Num = require('../lib/num');
+const { Num } = require("../lib/util");
 
 
-module.exports = class RobberyResult {
 
-    constructor(success) {
-        this.success = success;
+module.exports = class ClubResult {
+
+    constructor(failed, jailed) {
+        this.failed = failed;
+        this.arrested = jailed;
 
         this.coins = 0;
-        this.intelligence = 0;
-        this.dexterity = 0;
-        this.strength = 0;
         this.respect = 0;
         this.stamina = 0;
-        this.date = moment().toDate();
+        this.intoxication = 0;
 
-        this.arrested = !success;
         if (this.arrested) this.arrestRelease = moment().add(1, 'days').minutes(0).toDate();
     }
 
 
-    setThiefAndPlace(thief, place) {
-        this.thief = thief;
-        this.place = place;
+    setPlayerAndClubItem(player, data) {
+        this.player = player;
+        this.data = data;
 
         return this;
     }

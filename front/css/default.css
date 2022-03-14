@@ -1,6 +1,3 @@
-
-
-
 body{    
     background-image: url("/img/city-bg.png");
     background-repeat: repeat-x;
@@ -8,13 +5,11 @@ body{
     background-color: #b8c8e0;
 }
 
-
 .container{
     margin-top: 5em;
     min-width: 70%;
 }
 
-  
 .bg-purple {
     --bs-bg-opacity: 1;
     --bs-purple-rgb: 102,16,242;
@@ -36,7 +31,7 @@ body{
     float: right;
 }
 .placeholder.btn{
-    height: 35px;
+    height: 38px;
 }
 
 .no-display{
@@ -46,6 +41,22 @@ body{
 .flex-painel.content{
     width: 100%;
     min-width: 80em;
+}
+
+.badge.rounded-pill {
+  display: flex;
+}
+
+.badge.rounded-pill > .mini-img{
+  margin-right: 2px;
+  width: 16px;
+}
+
+.badge-text{
+  text-transform: uppercase;
+  vertical-align: middle;
+  text-align: center;
+  align-self: center;
 }
 
 
@@ -85,6 +96,71 @@ body{
   margin-left: 1em;
 }
 
+
+.mini-card-scroll-area{
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+
+.mini-card-scroll-items .translate-middle{
+    transform: translate(-80%,-25%)!important;
+  }
+
+.mini-card-scroll-items{
+    padding-left: 3px;
+    padding-right: 3px;
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .mini-card-scroll-items > .card{
+    flex-grow: 0;
+    margin-right: 14px;
+    min-width: 139px;
+  }
+  
+  .mini-card-scroll-items  .card-body{
+    min-height: 79px;
+  }
+  
+  .mini-card-scroll-items .card-img-top{
+    width: 137px;
+    height: 137px;
+  }
+  
+  .mini-card-scroll-items .card-title{
+    font-size: 0.9em;
+    font-weight: 400;
+  }
+
+  .mini-card:hover{
+    cursor: pointer;
+    background-color: rgb(240 236 236 / 46%);
+  }
+  
+  .mini-card.selected{
+    background-color: rgb(240 236 236 / 46%);
+    outline: 2px solid #599cff;
+  }
+
+  .mini-card .mini-card-title{
+      font-size: .875em;
+      color: #6c757d;
+  }
+
+
+.card-img-top.ph{
+    background-color: #9da0a3;
+  }
+  
+
 .medium-img{
     vertical-align: text-bottom;
     width: 110px;
@@ -121,13 +197,13 @@ body{
 }
 
 
-.mini-card-flat{
+.card-flat{
     border-radius: 0.25rem !important;
     max-width: 40em;
     min-width: 20em;
     width: fit-content;
     position: relative;
-    padding: 0.5rem 1rem;
+    padding: 1.5rem 1rem;
     padding-top: 1em;
     color: #212529;
     text-decoration: none;
@@ -135,6 +211,20 @@ body{
     border: 1px solid rgba(0,0,0,.125);
  
 }
+
+.card-flat .card-title{
+  margin-bottom: 12px;
+}
+
+.card-flat .card-title{
+  margin-bottom: 12px;
+}
+
+
+.card-flat button{
+  margin-top: 6px;
+}
+
 
 .flex-painel .card {
     height: 100%;
@@ -151,3 +241,15 @@ body{
   .input-group{
       margin-bottom: 8px;
   }
+
+
+.button-holder{
+  display:-webkit-box;
+  width: -webkit-fill-available;
+  max-width: fit-content;
+}
+
+.button-holder blockquote{
+  margin-left: 12px;
+  margin-top: 18px;
+}

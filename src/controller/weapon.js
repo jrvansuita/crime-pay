@@ -1,4 +1,4 @@
-const Controller = require("./controlle");
+const Controller = require("./controller");
 
 module.exports = class WeaponController extends Controller {
 

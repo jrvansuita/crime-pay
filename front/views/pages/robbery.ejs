@@ -4,13 +4,17 @@
 <html lang="en">
 
 <head>
-    <title>Crime Pay - Robbery</title>
-    <%- include('../default/head'); %>
+  <title>Crime Pay - Robbery</title>
+  <%- include('../default/head'); %>
 
-        <link rel="stylesheet" href="/css/robbery.css">
-        <script src="/js/robbery.js"></script>
+  <link rel="stylesheet" href="/css/robbery.css">
+  <script src="/js/lib/mini-cards.js"></script>
+  <script src="/js/lib/form-control.js"></script>
+  <script src="/js/robbery.js"></script>
 
-        <script> window.lastSelectedPlaceId = '<%= session.lastSelectedPlaceId %>' </script>
+  <script>
+    window.lastPlaceItemSelected = '<%= session.lastPlaceItemSelected %>'
+  </script>
 </head>
 
 
@@ -19,67 +23,64 @@
 
 
 
-    <div class="container">
+  <div class="container">
 
-        <div class="flex-container">
+    <div class="flex-container">
 
-            <div class="flex-left">
+      <div class="flex-left">
 
-                <%- include('../partials/thief-status'); %>
+        <%- include('../partials/player-status'); %>
+      </div>
+
+      <div class="flex-painel content">
+
+
+
+        <div class="card max">
+          <%- include('../partials/menu', {nav_robbery:true}); %>
+
+          <div class="card-body">
+
+            <h5 class="card-title">Making a Robbery</h5>
+            <p class="card-text text-secondary">Select a target and try your
+              lucky! Each target places has a specific
+              difficult and costs some amount of stamina to rober.
+              </br>Try not to get caught by the
+              police, otherwise you'll go straight to prison.
+            </p>
+
+            <div class="mini-card-scroll-area">
+              <div class="places-holder mini-card-scroll-items">
+                <%- include('../placeholders/mini-card-item.html', {count : 9}); %>
+              </div>
             </div>
 
-            <div class="flex-painel content">
 
+            <div class="flex-container">
 
+              <div class="flex-painel">
 
-                <div class="card max">
-                    <%- include('../partials/menu', {nav_robbery:true}); %>
-
-                        <div class="card-body">
-
-                            <h5 class="card-title">Making a Robbery</h5>
-                            <p class="card-text text-secondary">Select a target and try your
-                                lucky! Each target places has a specific
-                                difficult and costs some amount of stamina to rober.
-                                </br>Try not to get caught by the
-                                police, otherwise you'll go straight to prison.
-                            </p>
-
-                            <div class="robbery-places-scroll-attributes">
-                                <div class="robbery-places-holder">
-
-                                    <% [...Array(9).keys()].slice(1).forEach(()=>{ %>
-                                        <%- include('../placeholders/robbery-place-item.html'); %>
-
-                                            <% }) %>
-                                </div>
-
-                            </div>
-                            <div class="flex-container">
-
-                                <div class="flex-painel">
-
-                                    <div class="robbery-form-placeholder mini-card-flat">
-                                        <%- include('../placeholders/robbery-place-form.html'); %>
-                                    </div>
-
-                                    <div class="robbery-form-holder mini-card-flat">
-
-                                    </div>
-                                </div>
-
-                                <div class="flex-right">
-                                    <div class="robbery-result-holder mini-card-flat">
-
-                                        <%- include('../partials/robbery-result'); %>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="robbery-form-placeholder card-flat">
+                  <%- include('../placeholders/form.html'); %>
                 </div>
+
+                <div class="robbery-form-holder card-flat">
+
+                </div>
+              </div>
+
+              <div class="flex-right">
+                <div class="robbery-result-holder card-flat">
+
+                  <%- include('../partials/robbery-result'); %>
+
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
 
 </body>
 

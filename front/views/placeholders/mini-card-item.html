@@ -1,0 +1,30 @@
+<% 
+
+var items = [1];
+
+if (locals.count) {
+  items = [...Array(locals.count).keys()].slice(1)
+}
+
+items.forEach(()=>{ %>
+
+<div class="mini-card-ph card" aria-hidden="true" style="display: none;">
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  </span>
+
+  <span class="card-img-top ph"></span>
+
+  <div class="card-body">
+    <h3 class="card-title placeholder-glow">
+      <span class="placeholder col-12"></span>
+      </h5>
+
+      <h6 class="card-title placeholder-glow">
+        <span class="placeholder col-6"></span>
+        </h5>
+
+  </div>
+</div>
+
+<% }) %>

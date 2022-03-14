@@ -1,0 +1,11 @@
+<% hookers.forEach((hooker)=>{
+    
+    %>
+
+<%- include('../single/mini-card-item', { key : hooker._id, name : hooker.name, img : "/img/hookers/" +
+            hooker.name.toLowerCase().trim().replaceAll(" ", "-") + ".jpg" ,  title: "+" +hooker.stamina + ' Stamina' , badgeText:
+            hooker.coins ? Math.abs(hooker.coins) : 'Free', badgeImg:  hooker.coins ? "/img/coin.png" :null }); %>
+
+<%- include('../placeholders/mini-card-item.html'); %>
+
+<% }); %>

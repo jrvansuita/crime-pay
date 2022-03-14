@@ -1,102 +1,16 @@
 
-.robbery-places-holder .translate-middle {
-  transform: translate(-80%,-30%)!important;
-}
-
-
-.robbery-places-scroll-attributes{
-  width: 100%;
-  padding-top: 5px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
-.robbery-places-holder{
-  padding-left: 3px;
-  padding-right: 3px;
-  align-items: stretch;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-
-.robbery-places-holder > .card{
-  flex-grow: 0;
-  margin-right: 14px;
-  min-width: 139px;
-}
-
-.robbery-places-holder  .card-body{
-  min-height: 79px;
-}
-
-.robbery-places-holder .card-img-top{
-  width: 137px;
-  height: 137px;
-}
-
-.robbery-places-holder .card-title{
-  font-size: 0.9em;
-  font-weight: 400;
-}
-
-
-
-.robbery-place-item:hover{
-  cursor: pointer;
-  background-color: rgb(240 236 236 / 46%);
-}
-
-.robbery-place-item.selected{
-  background-color: rgb(240 236 236 / 46%);
-  /* border: 2px solid #599cff; */
-  /* outline: none; */
-  outline: 2px solid #599cff;
-}
-
-
-.robbery-place-item .stamina{
-    font-size: .875em;
-    color: #6c757d;
-}
-
-.robbery-form-holder{
-  display: none;
-  border-radius: 0.25rem !important;
-  padding-top: 1em;
-  max-width: 40em;
-  min-width: 20em;
-  border: 1px solid rgba(0,0,0,.125) !important;
-}
-
-.robbery-form-holder .card-title{
-  padding-bottom: 1em;
-}
-
-.robbery-form-placeholder{
-  max-width: 40em;
-  min-width: 20em;
+.robbery-form-holder,.robbery-form-placeholder {
   width: 40em;
-  padding-top: 1em;
-  border-radius: 0.25rem !important;
+  height: 100%;
 }
 
 .robbery-result-holder{
-  display: none;
-  border-radius: 0.25rem !important;
-  padding-top: 1em;
   max-width: 40em;
   min-width: 30em;
   width: fit-content;
   height: 100%;
 }
 
-
-.card-img-top.ph{
-  background-color: #9da0a3;
-}
 
 #result-list, #result-prison{
   display: none;
@@ -108,7 +22,7 @@
 
 
 
-#result-arrest-release{
+.robbery-result-holder blockquote{
   margin-top: -5px;
     margin-left: 12px;
     width: 120px;

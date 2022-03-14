@@ -1,0 +1,34 @@
+<div class="button-holder">
+
+  <%if (locals?.noStamina || locals?.arrested){%>
+  <button class="btn btn-danger" type="button" disabled>
+    <span class="button-text">
+      <%=locals?.arrested ? "You're Arrested" : 'Out Of Stamina!' %>
+    </span>
+  </button>
+
+  <%}else{%>
+
+  <%if (locals?.href){%>
+  <a href="<%=locals?.href%>" class="btn btn-primary"><%=locals?.buttonText%></a>
+  <%}else{%>
+  <button class="btn btn-primary" type="button" id="<%=locals?.buttonId%>">
+    <%if (locals?.loadingButton){%>
+    <span class="spinner-border spinner-border-sm no-display" role="status" aria-hidden="true"></span>
+    <span class="no-display">Loading...</span>
+    <%}%>
+              
+              <span class="button-text"><%=locals?.buttonText%></span>
+  </button>
+  <%}%>
+  <%}%>
+
+  <%if (locals?.quoteText){%>
+  <blockquote class="blockquote mb-0">
+    <footer class="blockquote-footer">
+      <%=locals?.quoteText%>
+    </footer>
+  </blockquote>
+  <%}%>
+
+</div>

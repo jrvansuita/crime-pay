@@ -1,0 +1,99 @@
+<head>
+  <link rel="stylesheet" href="/css/player-status.css">
+  <script src="/js/player-status.js"></script>
+</head>
+
+<div>
+
+
+  <div class="card" style="width: 18rem;">
+    <img src="<%=player.img%>" class="card-img-top player-head" alt="Player head">
+
+    <span class="badge rounded-pill player-badge <%=player.arrested?'bg-danger' : ''%>">
+      <img src="/img/<%=player.arrested? 'lock' : 'respect-star'%>.png" class="player-badge-img">
+      <span id="player-badge-text">
+        <%=player.arrested? 'Arrested' : player.respect%>
+      </span>
+    </span>
+
+    <div class="card-body">
+      <h5 class="card-title">
+        <%=player.name%>
+        <span class="coin-display float-right">
+          <img class="mini-img" src="/img/coin.png" alt="">
+          <span id="status-coins">
+            <%=player.coins%>
+          </span>
+        </span>
+
+      </h5>
+
+      <h6 class="label-sub-title">
+        Stamina
+        <span id="status-stamina-percent" class="progress-num float-right">
+          <%=player.stamina%>%
+        </span>
+      </h6>
+      <div class="progress">
+        <div id="status-stamina" class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%=player.stamina%>%" aria-valuenow="<%=player.stamina%>" aria-valuemin="0" aria-valuemax="100">
+        </div>
+      </div>
+
+      <h6 class="label-sub-title">
+        Intoxication
+        <span id="status-intoxication-percent" class="progress-num float-right">
+          <%=player.intoxication%>%
+        </span>
+      </h6>
+      <div class="progress">
+        <div id="status-intoxication" class="progress-bar progress-bar-striped bg-purple" role="progressbar" style="width: <%=player.intoxication%>%" aria-valuenow="<%=player.intoxication%>" aria-valuemin="0" aria-valuemax="100">
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="card-body">
+      <h6 class="label-sub-title">
+        Attributes
+      </h6>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Intelligence
+        <span id="status-intelligence" class="float-right">
+
+          <%=player.intelligence%>
+        </span>
+      </li>
+      <li class="list-group-item">Dexterity
+        <span id="status-dexterity" class="float-right">
+          <%=player.dexterity%>
+        </span>
+      </li>
+      <li class="list-group-item">Strength
+        <span id="status-strength" class="float-right">
+          <%=player.strength%>
+        </span>
+
+      </li>
+    </ul>
+
+
+
+    <div class="card-body">
+      <h6 class="label-sub-title" style="margin-top: .5rem!important;">
+        Weapons
+      </h6>
+
+      <% for(let [index, weapon] of player.weapons.entries() || []){ %>
+      <img class="img-thumbnail" style="width: 120px;" src="<%=weapon.img%>" alt="">
+
+      <%} %>
+
+    </div>
+
+
+  </div>
+
+</div>

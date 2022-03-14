@@ -25,17 +25,23 @@ class PrisonLayoutManager {
         $('#free-holder').parent().hide().fadeIn();
     }
 
-    attemptHasFailed(attempt, newStats) {
-        $('#releaseTime').text(moment(attempt.arrestRelease).calendar());
-        $('#escape-coins').text(newStats.escape.coins);
-        $('#escape-stamina').text(Math.abs(newStats.escape.stamina) + ' %').parent().toggle(Math.abs(newStats.escape.stamina) > 0);
-        $('#escape-respect').text("+ " + newStats.escape.respect);
-        $('#escape-chance').text(newStats.escape.escapeChance + ' %');
-        $('#escape-inc-days').text(newStats.escape.daysIncOnFail);
+    attemptHasFailed({ player, newAttempt }) {
 
-        $('#bribe-coins').text(newStats.bribe.coins);
-        $('#bribe-stamina').text(Math.abs(newStats.bribe.stamina) + ' %').parent().toggle(Math.abs(newStats.bribe.stamina) > 0);
-        $('#bribe-respect').text("+ " + newStats.bribe.respect);
+        const newArrestDate = player.arrestRelease;
+
+        const escapeData = newAttempt.escape.data;
+        const bribeData = newAttempt.bribe.data;
+
+        $('#releaseTime').text(moment(newArrestDate).calendar());
+        $('#escape-coins').text(escapeData.coins);
+        $('#escape-stamina').text(Math.abs(escapeData.stamina) + ' %').parent().toggle(Math.abs(escapeData.stamina) > 0);
+        $('#escape-respect').text("+ " + escapeData.respect);
+        $('#escape-chance').text(newAttempt.escape.escapeChance + ' %');
+        $('#escape-holder .blockquote-footer').text("Adding + " + newAttempt.escape.daysIncOnFail + " jail day when fail.");
+
+        $('#bribe-coins').text(bribeData.coins);
+        $('#bribe-stamina').text(Math.abs(bribeData.stamina) + ' %').parent().toggle(Math.abs(bribeData.stamina) > 0);
+        $('#bribe-respect').text("+ " + bribeData.respect);
 
     }
 
@@ -49,14 +55,14 @@ class PrisonLayoutManager {
                 $.post(path).done((data) => {
                     _this.toggleLoadingButton(button, false);
 
-                    if (data.attempt.success) {
-                        window.toast.success(data.attempt.msg)
+                    if (data.event.success) {
+                        window.toast.success(data.event.message)
                         _this.justReleasedFromPrison();
-                        new ThiefStatusUpdater(data.player).all();
+                        new PlayerStatusUpdater(data.player).all();
                     } else {
-                        _this.attemptHasFailed(data.attempt, data.newStats);
-                        new ThiefStatusUpdater(data.player).coins().bars();
-                        window.toast.error(data.attempt.msg)
+                        _this.attemptHasFailed(data);
+                        new PlayerStatusUpdater(data.player).coins().bars();
+                        window.toast.error(data.event.message)
                     }
                 }).fail(function (r) {
                     _this.toggleLoadingButton(button, false);

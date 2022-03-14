@@ -4,68 +4,68 @@
 <html lang="en">
 
 <head>
-    <title>Crime Pay - Prison</title>
-    <%- include('../default/head'); %>
+  <title>Crime Pay - Prison</title>
+  <%- include('../default/head'); %>
 
-        <link rel="stylesheet" href="/css/prison.css">
-        <script src="/js/prison.js"></script>
+  <link rel="stylesheet" href="/css/prison.css">
+  <script src="/js/prison.js"></script>
 </head>
 
 
 <body>
 
-    <div class="container">
+  <div class="container">
 
-        <div class="flex-container">
+    <div class="flex-container">
 
-            <div class="flex-left">
-                <%- include('../partials/thief-status'); %>
-            </div>
+      <div class="flex-left">
+        <%- include('../partials/player-status'); %>
+      </div>
 
-            <div class="flex-painel content">
+      <div class="flex-painel content">
 
 
 
-                <div class="card max">
-                    <%- include('../partials/menu', {nav_prison:true}); %>
+        <div class="card max">
+          <%- include('../partials/menu', {nav_prison:true}); %>
 
-                        <div class="card-body">
+          <div class="card-body">
 
-                            <h5 class="card-title">Welcome to Prison</h5>
-                            <p class="card-text text-secondary">Prison is a place for weak criminals, who didn't succeed
-                                and got caught
-                                by the cops. </br>If you are arrested, pay your jail time and be released. Or try your
-                                luck
-                                bribing a jailer to let you go.</p>
+            <h5 class="card-title">Welcome to Prison</h5>
+            <p class="card-text text-secondary">Prison is a place for weak criminals, who didn't succeed
+              and got caught
+              by the cops. </br>If you are arrested, pay your jail time and be released. Or try your
+              luck
+              bribing a jailer to let you go.</p>
 
-                            <p class="card-text text-secondary">
-                                <%if (thief.arrested){%>
-                                    You got arrested and will be released from prison
-                                    <span id="releaseTime">
-                                        <%=moment(thief.arrestRelease).calendar()%>.
-                                    </span>
-                                    <%}else{%>
-                                        Enjoy your time out of prison. Be careful not to get caught and end up here.
-                                        <%}%>
+            <p class="card-text text-secondary">
+              <%if (player.arrested){%>
+              You got arrested and will be released from prison
+              <span id="releaseTime">
+                <%=moment(player.arrestRelease).calendar()%>.
+              </span>
+              <%}else{%>
+              Enjoy your time out of prison. Be careful not to get caught and end up here.
+              <%}%>
                             </p>
 
                             <div class="flex-container flex-inline">
-                                <%if (thief.arrested){%>
+                                <%if (player.arrested){%>
 
-                                    <%- include('../partials/prison-escape'); %>
-                                        <%- include('../partials/prison-bribe'); %>
-
-
-                                            <%}%>
-
-                                                <%- include('../partials/prison-free'); %>
+              <%- include('../partials/prison-escape'); %>
+              <%- include('../partials/prison-bribe'); %>
 
 
+              <%}%>
 
-                            </div>
-                        </div>
-                </div>
-            </div>
+            <%- include('../partials/prison-free'); %>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
 
 </body>
 
