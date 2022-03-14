@@ -7,7 +7,7 @@
     <span class="form-control">Coins Cost</span>
     <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt=""></span>
     <span class="input-group-text">
-      <%=Math.abs(data.coins) > 0 ? '- ' + Math.abs(data.coins) : 'Free'%>
+      <%=Math.abs(data.coins) > 0 ? '- ' + new Intl.NumberFormat().format(Math.abs(data.coins)) : 'Free'%>
     </span>
   </div>
 
@@ -54,7 +54,14 @@
   %>
 
 
-  <%- include('../single/button', { buttonId: 'submit', buttonText: 'Enjoy the Vibe',  quoteText: failMessage, loadingButton:true, arrested: player.arrested, fullStamina: player.stamina ==100, fullIntoxicated: player.intoxication == 100}); %>
+  <%- include('../single/button', { buttonId: 'submit', 
+  buttonText: 'Enjoy the Vibe',  
+  quoteText: failMessage, 
+  loadingButton:true, 
+  arrested: player.arrested, 
+  insufficientCoins : player.coins < Math.abs(data.coins),
+  fullStamina: player.stamina ==100, 
+  fullIntoxicated: player.intoxication == 100}); %>
 
 
 </div>

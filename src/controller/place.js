@@ -65,7 +65,7 @@ const calculateAttributes = (player, place) => {
     place.staminaCost = staminaCost;
 
     /* Defining Coins Reward */
-    var coinsReward = (((place.difficulty * .001) * (staminaCost * .01) * (intelligence + dexterity + strength)) / Math.max(successChance, 1));
+    var coinsReward = (((place.difficulty * .005) * (staminaCost * .01) * ((intelligence + dexterity + strength) * 0.03)) / Math.max(successChance, 1));
     var decreaseReward = ((100 + (player.intoxication * 5)) / Math.max(player.stamina, 20)) * place.difficulty;
     decreaseReward = Math.min(Math.max(decreaseReward, 1.01), 9.25);
 

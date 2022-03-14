@@ -15,7 +15,7 @@
         <span class="form-control">Coins Cost</span>
         <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt="Coin"></span>
         <span id="escape-coins" class="input-group-text">
-          <%=escape.data.coins%>
+          <%=new Intl.NumberFormat().format(escape.data.coins)%>
         </span>
       </div>
 

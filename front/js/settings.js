@@ -23,4 +23,6 @@ $(document).ready(() => {
 
     $('#reset').click(onResetClick("/settings-reset"));
     $('#reset-prisoner').click(onResetClick("/settings-reset-prisoner"));
+    $('#reset-good-respect').click(onResetClick("/settings-reset-good"));
+
 });

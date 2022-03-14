@@ -1,5 +1,6 @@
 const PlayerController = require("../controller/player");
 const moment = require("moment");
+const PlayerUpdateModel = require('../model/player-update-model');
 
 
 module.exports = class SettingsMecanics {
@@ -8,25 +9,21 @@ module.exports = class SettingsMecanics {
         this.playerController = new PlayerController();
     }
 
-    reset(playerId, extra) {
-
-        return this.playerController.modify(playerId, {
-            $set: {
-                intelligence: 25,
-                dexterity: 25,
-                strength: 25,
-                coins: 15,
-                respect: 1,
-                stamina: 100,
-                intoxication: 0,
-                arrested: false,
-                arrestRelease: null,
-                ...extra,
-            }
-        });
+    setInicialState(playerId) {
+        return this.playerController.get(playerId).then((player) => {
+            return this.playerController.set(playerId, PlayerUpdateModel.build(player, 15, 5, 100, 0, 25, 25, 25).get());
+        })
     }
 
-    prisoner(playerId) {
-        return this.reset(playerId, { arrested: true, arrestRelease: moment(new Date()).add(1, 'days').minutes(0).toDate() });
+    setPrisoner(playerId) {
+        return this.playerController.get(playerId).then((player) => {
+            return this.playerController.set(playerId, PlayerUpdateModel.build(player, 15, 5, 100, 0, 25, 25, 25).setArrested(true, 1).get());
+        })
+    }
+
+    setGoodRespectPlayer(playerId) {
+        return this.playerController.get(playerId).then((player) => {
+            return this.playerController.set(playerId, PlayerUpdateModel.build(player, 1500, 900, 100, 0, 2240, 2170, 1850).get());
+        })
     }
 }

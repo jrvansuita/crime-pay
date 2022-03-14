@@ -15,6 +15,17 @@ module.exports = class PlayerUpdateModel {
         this.strength = 0;
     }
 
+    static build(player, coins, respect, stamina, intoxication, intelligence, dexterity, strength) {
+        return new PlayerUpdateModel(player)
+            .setCoins(coins)
+            .setRespect(respect)
+            .setStamina(stamina)
+            .setIntoxication(intoxication)
+            .setIntelligence(intelligence)
+            .setDexterity(dexterity)
+            .setStrength(strength)
+    }
+
     setArrested(arrested, arrestDays = 1) {
         this.arrested = arrested;
 
@@ -23,7 +34,7 @@ module.exports = class PlayerUpdateModel {
         return this;
     }
 
-    setPlayerAttr(attr, value, adding = true, min = 1, minOnDecrease = false, checkPlayerLimit = true, max = 999) {
+    setPlayerAttr(attr, value, adding = true, min = 1, minOnDecrease = false, checkPlayerLimit = true, max = 999999999) {
         value = Math.trunc(Math.abs(value));
         value = Math.max(min, value);
         value = Math.min(max, value);

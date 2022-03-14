@@ -2,7 +2,7 @@ const moment = require("moment");
 
 const EventModel = class {
     constructor(type) {
-        this.setType(type).setSuccess(true).setTypeItemId('');
+        this.setType(type).setSuccess(true);
         this.date = moment().toDate();
     }
 
@@ -22,7 +22,7 @@ const EventModel = class {
     }
 
     setTypeItemId(typeItemId) {
-        this.typeItemId = typeItemId != '0' ? typeItemId.toString() : '';
+        if (typeItemId && (typeItemId != '0')) this.typeItemId = typeItemId.toString();
         return this;
     }
 
@@ -30,17 +30,16 @@ const EventModel = class {
         this.success = success;
         return this;
     }
-
 }
 
 
 
 const EventTypes = {
-    ROB: 0,
-    CLUB_HOOKER: 1,
-    CLUB_DRUG: 2,
-    PRISON_BRIBE: 3,
-    PRISON_ESCAPE: 4,
+    ROB: 1,
+    CLUB_HOOKER: 2,
+    CLUB_DRUG: 3,
+    PRISON_BRIBE: 4,
+    PRISON_ESCAPE: 5,
 
 }
 

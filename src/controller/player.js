@@ -43,23 +43,28 @@ module.exports = class PlayerController extends Controller {
         return super.updateAll({ arrestRelease: { $lte: new Date() } }, { $set: { arrested: false, arrestRelease: null } }, true)
     }
 
-    //Remover o usar o method abaixo
-    oldreleasePrisonAttempt(player, releaseAttempt) {
-        const inc = ['coins', 'respect', 'stamina'].reduce((a, e) => (a[e] = releaseAttempt[e], a), {});
-        const set = { arrested: !releaseAttempt.success, arrestRelease: releaseAttempt.success ? null : releaseAttempt.arrestRelease };
-
-
-        return this.modify(player._id, { $inc: inc, $set: set });
+    update(playerId, model) {
+        const data = getDataFromModel(model);
+        return super.modify(playerId, { $inc: data.inc, $set: data.set });
     }
 
-    //New Method
-    update(playerId, updateModel) {
-        const inc = ['coins', 'respect', 'stamina', 'intoxication', 'intelligence', 'dexterity', 'strength'].reduce((a, e) => (a[e] = updateModel[e], a), {});
-        const set = ['arrested', 'arrestRelease'].reduce((a, e) => (a[e] = updateModel[e], a), {});
-
-        return this.modify(playerId, { $inc: inc, $set: set });
+    set(playerId, model) {
+        const data = getDataFromModel(model);
+        return super.modify(playerId, { $set: { ...data.set, ...data.inc } });
     }
+
+
 
 
 }
 
+
+
+const getDataFromModel = (model) => {
+    const data = {};
+
+    data.inc = ['coins', 'respect', 'stamina', 'intoxication', 'intelligence', 'dexterity', 'strength'].reduce((a, e) => (a[e] = model[e], a), {});
+    data.set = ['arrested', 'arrestRelease'].reduce((a, e) => (a[e] = model[e], a), {});
+
+    return data;
+}

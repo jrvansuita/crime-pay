@@ -4,66 +4,54 @@
 <html lang="en">
 
 <head>
-    <title>Crime Pay - Settings</title>
-    <%- include('../default/head'); %>
+  <title>Crime Pay - Settings</title>
+  <%- include('../default/head'); %>
 
-        <script src="/js/settings.js"></script>
+  <script src="/js/settings.js"></script>
 
 </head>
 
 <body>
-    <div class="container">
+  <div class="container">
 
-        <div class="flex-container">
+    <div class="flex-container">
 
-            <div class="flex-painel" style="width: 100%">
+      <div class="flex-painel" style="width: 100%">
 
-                <div class="card">
-                    <%- include('../partials/menu', {nav_settings:true}); %>
+        <div class="card">
+          <%- include('../partials/menu', {nav_settings:true}); %>
 
-                        <div class="card-body">
+          <div class="card-body">
 
-                            <h5 class="card-title">Settings</h5>
-
-
-
-                            <div class="col-md-2">
-                                <label class="form-label">Reset Player Stats (Testing Porpouses)</label>
-
-                                <div class="dropdown">
-                                    <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                        id="reset-player-dropdown" aria-expanded="false">
-                                        <span class="spinner-border spinner-border-sm no-display" role="status"
-                                            aria-hidden="true"></span>
-                                        <span class="no-display">Loading...</span>
-                                        <span class="button-text">Reset Player</span>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="reset-player-dropdown">
-                                        <li><button class="dropdown-item" type="button" id="reset">Initial
-                                                State</button>
-                                        </li>
-                                        <li><button class="dropdown-item" type="button"
-                                                id="reset-prisoner">Prisoner</button>
-                                        </li>
-                                        </li>
-                                    </ul>
-                                </div>
+            <h5 class="card-title">Settings</h5>
 
 
 
+            <div class="col-md-2">
+              <label class="form-label">Reset Player Stats (Testing Porpouses)</label>
 
-
-
-
-
-                            </div>
-
-
-                        </div>
-                </div>
+              <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" id="reset-player-dropdown" aria-expanded="false">
+                  <span class="spinner-border spinner-border-sm no-display" role="status" aria-hidden="true"></span>
+                  <span class="no-display">Loading...</span>
+                  <span class="button-text">Reset Player</span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="reset-player-dropdown">
+                  <li><button class="dropdown-item" type="button" id="reset">Initial
+                      State</button>
+                  </li>
+                  <li><button class="dropdown-item" type="button" id="reset-prisoner">Prisoner</button>
+                  </li>
+                  <li><button class="dropdown-item" type="button" id="reset-good-respect">Good Respect Player</button>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </body>
 
 

@@ -41,8 +41,8 @@ const buildPlayerUpdate = (player, place) => {
     const multiplier = PlayerController.weaponsStatsMultiplier(player);
 
     /* Defining New Player Attributes */
-    const intelligence = ((player.intelligence * .05) * (multiplier.intelligence * .25)) + (difficult * .1);
-    const dexterity = (((player.dexterity * .05) * (multiplier.dexterity * .25)) + (difficult * .1));
+    const intelligence = ((player.intelligence * .005) * (multiplier.intelligence * .25)) + (difficult * .1);
+    const dexterity = (((player.dexterity * .005) * (multiplier.dexterity * .25)) + (difficult * .1));
     const strength = (intelligence + dexterity) / 2;
 
     const coins = success ? place.coinsReward : ((intelligence / player.intelligence) * player.coins);

@@ -7,7 +7,7 @@
     <span class="form-control">Coins Reward</span>
     <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt=""></span>
     <span class="input-group-text">
-      + <%=place.coinsReward%>
+      + <%=new Intl.NumberFormat().format(place.coinsReward)%>
     </span>
   </div>
 
@@ -17,7 +17,7 @@
     <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png" alt=""></span>
 
     <span class="input-group-text">
-      + <%=place.respect%>
+      + <%=new Intl.NumberFormat().format(place.respect)%>
     </span>
   </div>
 
