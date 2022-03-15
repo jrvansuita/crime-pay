@@ -7,7 +7,7 @@
     <span class="form-control">Coins Cost</span>
     <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt=""></span>
     <span class="input-group-text">
-      <%=Math.abs(data.coins) > 0 ? '- ' + new Intl.NumberFormat().format(Math.abs(data.coins)) : 'Free'%>
+      <%=Math.abs(data.coins) > 0 ? '- ' + Math.abs(data.coins).format() : 'Free'%>
     </span>
   </div>
 
@@ -18,7 +18,7 @@
     <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png" alt=""></span>
 
     <span class="input-group-text">
-      + <%=data.respect%>
+      + <%=data.respect.format()%>
     </span>
   </div>
 

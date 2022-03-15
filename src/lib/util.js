@@ -8,7 +8,9 @@ const Num = {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min;
-    }
+    },
+
+
 }
 
 
@@ -32,11 +34,16 @@ const Protos = () => {
         return this[Math.floor(Math.random() * this.length)];
     }
 
+    Number.prototype.format = function () {
+        return new Intl.NumberFormat().format(this);
+    }
+
 }
 
-module.exports = { Util, Num, Protos };
 
-
-
-
+if (typeof module !== 'undefined') {
+    module.exports = { Util, Num, Protos };
+} else {
+    Protos();
+}
 

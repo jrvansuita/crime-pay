@@ -24,8 +24,6 @@
 
       <div class="flex-painel content">
 
-
-
         <div class="card max">
           <%- include('../partials/menu', {nav_prison:true}); %>
 
@@ -33,10 +31,8 @@
 
             <h5 class="card-title">Welcome to Prison</h5>
             <p class="card-text text-secondary">Prison is a place for weak criminals, who didn't succeed
-              and got caught
-              by the cops. </br>If you are arrested, pay your jail time and be released. Or try your
-              luck
-              bribing a jailer to let you go.</p>
+              and got caught by the cops. </br>If you are arrested, pay your jail time and be
+              released. Or try your luck bribing a jailer to let you go.</p>
 
             <p class="card-text text-secondary">
               <%if (player.arrested){%>
@@ -55,13 +51,9 @@
               <%- include('../partials/prison-escape'); %>
               <%- include('../partials/prison-bribe'); %>
 
-
               <%}%>
 
-            <%- include('../partials/prison-free'); %>
-
-
-
+              <%- include('../partials/prison-free'); %>
           </div>
         </div>
       </div>

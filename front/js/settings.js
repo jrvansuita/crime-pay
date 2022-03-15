@@ -11,18 +11,19 @@ $(document).ready(() => {
     }
 
     function onResetClick(path) {
-        return () => {
+        return function() {
             justClicked();
+            const multiplier = $(this).data('multiplier');
 
             setTimeout(() => {
-                $.post(path).done(onFinished);
+                $.post(path, { multiplier: multiplier || 1 }).done(onFinished);
             }, 400);
         }
     }
 
 
-    $('#reset').click(onResetClick("/settings-reset"));
-    $('#reset-prisoner').click(onResetClick("/settings-reset-prisoner"));
-    $('#reset-good-respect').click(onResetClick("/settings-reset-good"));
+    $('.reset').click(onResetClick("/settings-reset"));
+    $('.prisoner').click(onResetClick("/settings-reset-prisoner"));
+
 
 });

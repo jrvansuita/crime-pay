@@ -1,4 +1,3 @@
-
 const Controller = require("./controller");
 const { Num } = require("../lib/util");
 
@@ -16,7 +15,7 @@ module.exports = class HookerController extends Controller {
         });
     }
 
-    for(player) {
+    for (player) {
 
         return this.all().then((hookers) => {
 
@@ -24,16 +23,16 @@ module.exports = class HookerController extends Controller {
                 //Handle all calculated attributes
                 .map(each => { return calculateAttributes(player, each) })
 
-                //Filter hookers by rarity (Max Rarity 100 based on minuts)
-                .filter((hooker) => {
+            //Filter hookers by rarity (Max Rarity 100 based on minuts)
+            .filter((hooker) => {
                     return Num.lucky(100) >= hooker.rarity;
                 })
                 //Remove duplicate free
                 .filter((each, index, arr) => {
                     return !arr.some(e => {
-                        return (e._id != each._id)
-                            && (e.coins == each.coins)
-                            && (e.coins == 0)
+                        return (e._id != each._id) &&
+                            (e.coins == each.coins) &&
+                            (e.coins == 0)
                     })
                 })
                 .map(value => ({ value, sort: Math.random() }))
@@ -63,7 +62,7 @@ module.exports = class HookerController extends Controller {
 
 var calculateAttributes = (player, hooker) => {
 
-    hooker.coins = Math.trunc(((hooker.coinsFactor / 10) * player.coins) + (hooker.rarity * .1))
+    hooker.coins = Math.trunc(((hooker.coinsFactor / 10) * (player.coins * 0.07)) + (hooker.rarity * .5))
 
     if (hooker.coinsFactor <= 0) {
         hooker.coins = 0;

@@ -17,7 +17,7 @@
         <span class="form-control">Coins Cost</span>
         <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt="Coin"></span>
         <span id="bribe-coins" class="input-group-text">
-          <%=new Intl.NumberFormat().format(bribe.data.coins)%>
+          <%=bribe.data.coins.format()%>
         </span>
       </div>
 
@@ -28,7 +28,7 @@
         <span class="form-control">Respect Reward</span>
         <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png"></span>
         <span id="bribe-respect" class="input-group-text">
-          + <%=bribe.data.respect%>
+          + <%=bribe.data.respect.format()%>
         </span>
       </div>
       <%}%>

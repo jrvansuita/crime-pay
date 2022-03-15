@@ -49,6 +49,7 @@ Next implementations:
 - [x] restore 1 stamina point every hour
 - [x] clear 1 intoxication point every hour
 - [ ] settings option for player avatar and name update
+- [ ] Fix coins reward system
 
 #### Visual
 - [x] remove visibility of 0% chance robberies

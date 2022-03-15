@@ -15,7 +15,7 @@
         <span class="form-control">Coins Cost</span>
         <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt="Coin"></span>
         <span id="escape-coins" class="input-group-text">
-          <%=new Intl.NumberFormat().format(escape.data.coins)%>
+          <%=escape.data.coins.format()%>
         </span>
       </div>
 
@@ -24,7 +24,7 @@
         <span class="form-control">Respect Reward</span>
         <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png"></span>
         <span id="escape-respect" class="input-group-text">
-          + <%=escape.data.respect%>
+          + <%=escape.data.respect.format()%>
         </span>
       </div>
       <%}%>

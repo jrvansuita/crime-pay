@@ -4,15 +4,13 @@
 </head>
 
 <div>
-
-
   <div class="card" style="width: 18rem;">
     <img src="<%=player.img%>" class="card-img-top player-head" alt="Player head">
 
     <span class="badge rounded-pill player-badge <%=player.arrested?'bg-danger' : ''%>">
       <img src="/img/<%=player.arrested? 'lock' : 'respect-star'%>.png" class="player-badge-img">
       <span id="player-badge-text">
-        <%=player.arrested? 'Arrested' : player.respect%>
+        <%=player.arrested? 'Arrested' : player.respect.format()%>
       </span>
     </span>
 
@@ -22,7 +20,7 @@
         <span class="coin-display float-right">
           <img class="mini-img" src="/img/coin.png" alt="">
           <span id="status-coins">
-            <%=new Intl.NumberFormat().format(player.coins)%>
+            <%=player.coins.format()%>
           </span>
         </span>
 
@@ -63,17 +61,17 @@
       <li class="list-group-item">Intelligence
         <span id="status-intelligence" class="float-right">
 
-          <%=player.intelligence%>
+          <%=player.intelligence.format()%>
         </span>
       </li>
       <li class="list-group-item">Dexterity
         <span id="status-dexterity" class="float-right">
-          <%=player.dexterity%>
+          <%=player.dexterity.format()%>
         </span>
       </li>
       <li class="list-group-item">Strength
         <span id="status-strength" class="float-right">
-          <%=player.strength%>
+          <%=player.strength.format()%>
         </span>
 
       </li>

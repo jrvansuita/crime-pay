@@ -25,8 +25,6 @@
 
             <h5 class="card-title">Settings</h5>
 
-
-
             <div class="col-md-2">
               <label class="form-label">Reset Player Stats (Testing Porpouses)</label>
 
@@ -37,12 +35,20 @@
                   <span class="button-text">Reset Player</span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="reset-player-dropdown">
-                  <li><button class="dropdown-item" type="button" id="reset">Initial
+                  <li><button class="dropdown-item reset" type="button" data-multiplier="1">Initial
                       State</button>
                   </li>
-                  <li><button class="dropdown-item" type="button" id="reset-prisoner">Prisoner</button>
+                  <li><button class="dropdown-item prisoner" type="button">Prisoner</button>
                   </li>
-                  <li><button class="dropdown-item" type="button" id="reset-good-respect">Good Respect Player</button>
+                  <li><button class="dropdown-item reset" type="button" data-multiplier="10">10x
+                      Player</button>
+                  </li>
+
+                  <li><button class="dropdown-item reset" type="button" data-multiplier="100">100x
+                      Player</button>
+                  </li>
+
+                  <li><button class="dropdown-item reset" type="button" data-multiplier="1000">1000x Player</button>
                   </li>
                 </ul>
               </div>

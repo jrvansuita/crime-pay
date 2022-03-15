@@ -1,250 +1,238 @@
 body {
-  background-image: url("/img/city-bg.png");
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-color: #b8c8e0;
+    background-image: url("/img/city-bg.png");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-color: #b8c8e0;
 }
 
 .container {
-  margin-top: 5em;
-  min-width: 70%;
+    margin-top: 5em;
+    min-width: 70%;
 }
 
 .bg-purple {
-  --bs-bg-opacity: 1;
-  --bs-purple-rgb: 102, 16, 242;
-  background-color: rgba(var(--bs-purple-rgb), var(--bs-bg-opacity)) !important;
+    --bs-bg-opacity: 1;
+    --bs-purple-rgb: 102, 16, 242;
+    background-color: rgba(var(--bs-purple-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .label-sub-title {
-  color: #6c757d !important;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.2;
+    color: #6c757d !important;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
 }
 
 .progress:not(:last-child) {
-  margin-bottom: 2em;
+    margin-bottom: 2em;
 }
 
 .float-right {
-  float: right;
+    float: right;
 }
 
 .placeholder.btn {
-  height: 38px;
+    height: 38px;
 }
 
 .no-display {
-  display: none;
+    display: none;
 }
 
 .flex-painel.content {
-  width: 100%;
-  min-width: 80em;
+    width: 100%;
+    min-width: 80em;
 }
 
 .badge.rounded-pill {
-  display: flex;
+    display: flex;
 }
 
 .badge.rounded-pill>.mini-img {
-  margin-right: 2px;
-  width: 16px;
+    margin-right: 2px;
+    width: 16px;
 }
 
 .badge-text {
-  text-transform: uppercase;
-  vertical-align: middle;
-  text-align: center;
-  align-self: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    text-align: center;
+    align-self: center;
 }
-
 
 .flex-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
 }
 
-
 .flex-inline {
-  justify-content: start;
+    justify-content: start;
 }
 
 .flex-left {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  flex-basis: 100%;
-  margin-right: 1em;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    flex-basis: 100%;
+    margin-right: 1em;
 }
 
 .flex-painel {
-  display: flex;
-  flex-direction: column;
-  flex: 3;
-  flex-basis: 100%;
-
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    flex-basis: 100%;
 }
 
 .flex-right {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  flex-basis: 100%;
-  margin-left: 1em;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    flex-basis: 100%;
+    margin-left: 1em;
 }
-
 
 .mini-card-scroll-area {
-  width: 100%;
-  padding-top: 5px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  overflow-x: auto;
-  overflow-y: hidden;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
-
 .mini-card-scroll-items .translate-middle {
-  transform: translate(-80%, -25%) !important;
+    transform: translate(-80%, -25%) !important;
 }
 
 .mini-card-scroll-items {
-  padding-left: 3px;
-  padding-right: 3px;
-  align-items: stretch;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+    padding-left: 3px;
+    padding-right: 3px;
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 .mini-card-scroll-items>.card {
-  flex-grow: 0;
-  margin-right: 14px;
-  min-width: 139px;
+    flex-grow: 0;
+    margin-right: 14px;
+    min-width: 139px;
 }
 
 .mini-card-scroll-items .card-body {
-  min-height: 79px;
+    min-height: 79px;
+    max-width: 137px;
 }
 
 .mini-card-scroll-items .card-img-top {
-  width: 137px;
-  height: 137px;
+    width: 137px;
+    height: 137px;
 }
 
 .mini-card-scroll-items .card-title {
-  font-size: 0.9em;
-  font-weight: 400;
+    font-size: 0.9em;
+    font-weight: 400;
 }
 
 .mini-card:hover {
-  cursor: pointer;
-  background-color: rgb(240 236 236 / 46%);
+    cursor: pointer;
+    background-color: rgb(240 236 236 / 46%);
 }
 
 .mini-card.selected {
-  background-color: rgb(240 236 236 / 46%);
-  outline: 2px solid #599cff;
+    background-color: rgb(240 236 236 / 46%);
+    outline: 2px solid #599cff;
 }
 
 .mini-card .mini-card-title {
-  font-size: .875em;
-  color: #6c757d;
+    font-size: .875em;
+    color: #6c757d;
 }
-
 
 .card-img-top.ph {
-  background-color: #9da0a3;
+    background-color: #9da0a3;
 }
 
-
 .medium-img {
-  vertical-align: text-bottom;
-  width: 110px;
+    vertical-align: text-bottom;
+    width: 110px;
 }
 
 .big-img {
-  vertical-align: text-bottom;
-  width: 170px;
+    vertical-align: text-bottom;
+    width: 150px;
 }
 
 .mini-img {
-  vertical-align: text-bottom;
-  width: 20px;
+    vertical-align: text-bottom;
+    width: 20px;
 }
 
 .player-head {
-  min-height: 290px;
+    min-height: 290px;
 }
 
-
 .nav-link.active {
-  background-color: #fff;
-  border-color: #dee2e6 #dee2e6 #fff;
-  font-weight: 500;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+    font-weight: 500;
 }
 
 .nav-link {
-  color: gray;
+    color: gray;
 }
-
 
 .nav-tabs {
-  background-color: #f8f8f8;
+    background-color: #f8f8f8;
 }
 
-
 .card-flat {
-  border-radius: 0.25rem !important;
-  max-width: 40em;
-  min-width: 20em;
-  width: fit-content;
-  position: relative;
-  padding: 1.5rem 1rem;
-  padding-top: 1em;
-  color: #212529;
-  text-decoration: none;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem !important;
+    max-width: 40em;
+    min-width: 20em;
+    width: fit-content;
+    position: relative;
+    padding: 1.5rem 1rem;
+    padding-top: 1em;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .125);
 }
 
 .card-flat .card-title {
-  margin-bottom: 12px;
+    margin-bottom: 12px;
 }
 
 .card-flat button {
-  margin-top: 6px;
+    margin-top: 6px;
 }
-
 
 .flex-painel .card {
-  height: 100%;
+    height: 100%;
 }
 
-
 .blockquote-footer {
-  margin-top: 0;
-  font-size: 10pt;
-  word-break: break-word;
-  min-width: 120px;
+    margin-top: 0;
+    font-size: 10pt;
+    word-break: break-word;
+    min-width: 120px;
 }
 
 .input-group {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
-
 .button-holder {
-  display: -webkit-box;
-  width: -webkit-fill-available;
-  max-width: fit-content;
+    display: -webkit-box;
+    width: -webkit-fill-available;
+    max-width: fit-content;
 }
 
 .button-holder blockquote {
-  margin-left: 12px;
-  margin-top: 18px;
+    margin-left: 12px;
+    margin-top: 18px;
 }

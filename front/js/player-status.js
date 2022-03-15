@@ -6,14 +6,15 @@ class PlayerStatusUpdater {
     }
 
     badge() {
-        $('#player-badge-text').text(this.player.respect);
-        $('.player-badge-img').attr('src', '/img/respect-star.png')
-        $('#player-badge-text').parent().removeClass('bg-danger');
+        $('.player-badge-img').attr('src', this.player.arrested ? '/img/lock.png' : '/img/respect-star.png')
+        $('#player-badge-text').text(this.player.arrested ? 'Arrested' : this.player.respect.format());
+        $('#player-badge-text').parent().toggleClass('bg-danger', this.player.arrested);
+
         return this;
     }
 
     coins() {
-        $('#status-coins').text(this.player.coins);
+        $('#status-coins').text(this.player.coins.format());
         return this;
     }
 
@@ -27,13 +28,15 @@ class PlayerStatusUpdater {
     }
 
     attributes() {
-        $('#status-intelligence').text(this.player.intelligence);
-        $('#status-dexterity').text(this.player.dexterity);
-        $('#status-strength').text(this.player.strength);
+        $('#status-intelligence').text(this.player.intelligence.format());
+        $('#status-dexterity').text(this.player.dexterity.format());
+        $('#status-strength').text(this.player.strength.format());
         return this;
     }
 
+
+
     all() {
-        this.badge().coins().bars().attributes();
+        this.badge().coins().bars().attributes()
     }
 }

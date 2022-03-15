@@ -12,16 +12,11 @@ module.exports = class SettingsPage {
         });
 
         app.post('/settings-reset', (req, res) => {
-            this.settingsMecanics.setInicialState(req.session.playerId).then(result => res.send(result));
+            this.settingsMecanics.setInicialState(req.session.playerId, req.body.multiplier || 1).then(result => res.send(result));
         });
 
         app.post('/settings-reset-prisoner', (req, res) => {
             this.settingsMecanics.setPrisoner(req.session.playerId).then(result => res.send(result));
         });
-
-        app.post('/settings-reset-good', (req, res) => {
-            this.settingsMecanics.setGoodRespectPlayer(req.session.playerId).then(result => res.send(result));
-        });
-
     }
 }

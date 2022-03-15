@@ -46,7 +46,7 @@ class RobberyLayoutManager {
 
         $('#result-message').text(event.message)
 
-        let sign = n => { return n > 0 ? '+ ' + n : n }
+        let sign = n => { return n > 0 ? '+ ' + n.format() : n.format() }
 
         $('#result-img').attr('src', (event.success ? '/img/thief-success' : '/img/police-arrested') + '.png');
         $('#result-coins').text(sign(event.playerUpdate.coins)).parent().toggle(!!event.playerUpdate.coins);

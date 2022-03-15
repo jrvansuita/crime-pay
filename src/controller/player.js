@@ -1,4 +1,3 @@
-
 const Controller = require("./controller");
 const WeaponController = require("./weapon");
 const { PLAYER_NOT_FOUND } = require('../const/constants');
@@ -36,7 +35,7 @@ module.exports = class PlayerController extends Controller {
     }
 
     clearIntoxication(points) {
-        return super.updateAll({ intoxication: { $gte: 1 } }, { $dec: { intoxication: points } }, true)
+        return super.updateAll({ intoxication: { $gte: 1 } }, { $inc: { intoxication: -points } }, true)
     }
 
     releasePrisoners() {
@@ -50,7 +49,7 @@ module.exports = class PlayerController extends Controller {
 
     set(playerId, model) {
         const data = getDataFromModel(model);
-        return super.modify(playerId, { $set: { ...data.set, ...data.inc } });
+        return super.modify(playerId, { $set: {...data.set, ...data.inc } });
     }
 
 

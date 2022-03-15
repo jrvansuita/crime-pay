@@ -81,6 +81,9 @@ module.exports = class Context {
         applyUse('/img', 'front/img');
         applyUse('/css', 'front/css');
         applyUse('/js', 'front/js');
+        applyUse('/lib', 'src/lib');
+
+
 
 
         this.app.set('views', this.dir + '/front/views')
@@ -102,7 +105,7 @@ module.exports = class Context {
 
     bindSessionMidleware() {
         //Making session visible in all ejs files
-        this.app.use(function(req, res, next) {
+        this.app.use(function (req, res, next) {
             //Remove this line when login screen finished
             req.session.playerId = process.env.USER_ID
             res.locals.session = req.session;
