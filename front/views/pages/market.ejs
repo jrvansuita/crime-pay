@@ -1,0 +1,68 @@
+<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Crime Pay - Market</title>
+    <%- include('../default/head'); %>
+
+        <script src="/js/lib/mini-cards.js"></script>
+        <script src="/js/lib/form-control.js"></script>
+        <link rel="stylesheet" href="/css/market.css">
+        <script src="/js/market.js"></script>
+</head>
+
+<body>
+
+
+
+    <div class="container">
+
+        <div class="flex-container">
+
+            <div class="flex-left">
+
+                <%- include('../partials/player-status'); %>
+            </div>
+
+            <div class="flex-painel content">
+
+                <div class="card max">
+                    <%- include('../partials/menu', {nav_market:true}); %>
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">Welcome to the Dark Market</h5>
+                            <p class="card-text text-secondary">[Find the best description]
+                            </p>
+
+                            <div class="mini-card-scroll-area">
+                                <div class="weapons-holder mini-card-scroll-items">
+
+                                </div>
+
+                            </div>
+
+                            <div class="flex-container">
+
+                                <div class="flex-painel">
+
+                                </div>
+
+                                <div class="flex-right">
+
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
