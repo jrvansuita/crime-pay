@@ -1,45 +1,45 @@
 <div class="row align-items-center">
-  <div class="col text-end">
+    <div class="col text-end">
 
-    <h6 class="card-title" id="result-title">
-      I'm watching you!
-    </h6>
+        <h6 class="card-title" id="result-title">
+            I'm watching you!
+        </h6>
 
-    <p class="card-text" id="result-message">
-      <%=player.arrested? "You're paying your time in prison." : "Behave yourself and I'll leave you alone." %>
-    </p>
+        <p class="card-text" id="result-message">
+            <%=player.arrested? "You're paying your time in prison." : "Behave yourself and I'll leave you alone." %>
+        </p>
 
-    <ul id="result-list" class=" list-group list-group-flush">
-      <li class="list-group-item">
-        <span id="result-coins">0</span> Coins
-      </li>
+        <ul id="result-list" class=" list-group list-group-flush">
+            <li class="list-group-item">
+                <span id="result-coins">0</span> Coins
+            </li>
 
-      <li class="list-group-item">
-        <span id="result-respect">0</span> Respect
-      </li>
+            <li class="list-group-item">
+                <span id="result-respect">0</span> Respect
+            </li>
 
-      <li class="list-group-item">
-        <span id="result-intelligence">0</span> Intelligence
-      </li>
-      <li class="list-group-item">
-        <span id="result-dexterity">0</span> Dexterity
-      </li>
-      <li class="list-group-item">
-        <span id="result-strength">0</span> Strength
-      </li>
-
-
-    </ul>
-  </div>
-  <div class="col" style="width: min-content;">
+            <li class="list-group-item">
+                <span id="result-intelligence">0</span> Intelligence
+            </li>
+            <li class="list-group-item">
+                <span id="result-dexterity">0</span> Dexterity
+            </li>
+            <li class="list-group-item">
+                <span id="result-strength">0</span> Strength
+            </li>
 
 
-    <img src="/img/police.png" id="result-img" class="card-img-top medium-img" alt="Police">
-
-    <div id="result-prison" style="display:<%=player.arrested ? '-webkit-box' : 'none'%>">
-
-      <%- include('../single/button', { href: '/prison', buttonText: 'Prison',  quoteText: "Released " + moment(player.arrestRelease).calendar() }); %>
-
+        </ul>
     </div>
-  </div>
+    <div class="col" style="width: min-content;">
+
+
+        <img src="/img/police.png" id="result-img" class="card-img-top big-img" alt="Police">
+
+        <div id="result-prison" style="display:<%=player.arrested ? '-webkit-box' : 'none'%>">
+
+            <%- include('../single/button', { href: '/prison', buttonText: 'Prison',  quoteText: "Released " + moment(player.arrestRelease).calendar() }); %>
+
+        </div>
+    </div>
 </div>

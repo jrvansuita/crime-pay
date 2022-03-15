@@ -1,5 +1,3 @@
-
-
 $(document).ready(() => {
     var miniCards = new MiniCards();
 
@@ -48,10 +46,9 @@ class RobberyLayoutManager {
 
         $('#result-message').text(event.message)
 
-        let randImg = (n) => { return Math.floor((Math.random() * n) + 1); };
         let sign = n => { return n > 0 ? '+ ' + n : n }
 
-        $('#result-img').attr('src', (event.success ? '/img/robbed' + randImg(3) : '/img/busted' + + randImg(4)) + '.png');
+        $('#result-img').attr('src', (event.success ? '/img/thief-success' : '/img/police-arrested') + '.png');
         $('#result-coins').text(sign(event.playerUpdate.coins)).parent().toggle(!!event.playerUpdate.coins);
         $('#result-respect').text(sign(event.playerUpdate.respect)).parent().toggle(!!event.playerUpdate.respect);
         $('#result-intelligence').text(sign(event.playerUpdate.intelligence));
@@ -67,4 +64,3 @@ class RobberyLayoutManager {
     }
 
 }
-

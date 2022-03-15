@@ -69,7 +69,7 @@ module.exports = class Context {
 
     getCacheTime() {
         //Ten Days
-        return 1000 * 60 * 60 * 24 * 10;
+        return process.env.NODE_ENV ? 1000 * 60 * 60 * 24 * 10 : 0;
     }
 
 
