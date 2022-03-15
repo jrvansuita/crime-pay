@@ -67,27 +67,34 @@ module.exports = class Context {
         this.app.locals.moment = require('moment');
     }
 
+    getCacheTime() {
+        //Ten Days
+        return 1000 * 60 * 60 * 24 * 10;
+    }
+
 
     exposeStaticFiles() {
-        this.app.use('/img', this.express.static('front/img'));
-        this.app.use('/css', this.express.static('front/css'));
-        this.app.use('/js', this.express.static('front/js'));
-        this.app.use('/pages', this.express.static('front/js'));
+        const applyUse = (path, folder) => {
+            this.app.use(path, this.express.static(folder, { maxAge: this.getCacheTime() }));
+        }
+
+        applyUse('/img', 'front/img');
+        applyUse('/css', 'front/css');
+        applyUse('/js', 'front/js');
 
 
         this.app.set('views', this.dir + '/front/views')
         this.app.set('view engine', 'ejs');
     }
 
+
     bindSession() {
         const cookieSession = require('cookie-session');
-
-        const tenDays = 1000 * 60 * 60 * 24 * 10;
 
         this.app.use(cookieSession({
             name: 'crime-pay',
             secret: process.env.SESS,
-            maxAge: tenDays
+            maxAge: this.getCacheTime()
         }));
 
         return this;
@@ -95,7 +102,7 @@ module.exports = class Context {
 
     bindSessionMidleware() {
         //Making session visible in all ejs files
-        this.app.use(function (req, res, next) {
+        this.app.use(function(req, res, next) {
             //Remove this line when login screen finished
             req.session.playerId = process.env.USER_ID
             res.locals.session = req.session;
@@ -111,8 +118,17 @@ module.exports = class Context {
         (require('../routes/routes')).bind(this.app);
     }
 
+    getPort() {
+        return process.env.PORT || 3000;
+    }
+
     startListening() {
-        this.app.listen(process.env.PORT || 3000);
+        this.app.set('port', this.getPort());
+        this.app.listen().setTimeout(120000); // 2 min
+
+        this.app.listen(this.getPort(), () => {
+            // console.log('Node is running on port ', this.getPort())
+        });
     }
 
 

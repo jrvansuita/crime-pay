@@ -4,15 +4,14 @@ const HookerController = require("../controller/hooker");
 const PlayerUpdateModel = require('../model/player-update-model');
 const EventController = require('../controller/event');
 const PlayerController = require("../controller/player");
-const { EventModel } = require("../model/event-model");
 const constants = require('../const/constants');
-const { Num } = require("../lib/util");
+const { Num } = require("../lib/util");  
 
-
+      
 module.exports = class ClubMecanics {
 
     constructor() {
-        this.playerController = new PlayerController();
+        this.playerController = new PlayerController(); 
         this.hookerController = new HookerController();
     }
 

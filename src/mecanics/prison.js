@@ -4,7 +4,7 @@ const constants = require('../const/constants');
 const PlayerController = require("../controller/player");
 const PlayerUpdateModel = require('../model/player-update-model');
 const EventController = require('../controller/event');
-const { EventTypes, EventModel } = require("../model/event-model");
+const { EventTypes } = require("../model/event-model");
 const { PRISON_ESCAPE, PRISON_BRIBE } = require("../const/constants");
 const { Num } = require("../lib/util");
 
