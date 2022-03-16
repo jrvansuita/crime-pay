@@ -36,28 +36,19 @@ module.exports = class RobberyMecanics {
 const buildPlayerUpdate = (player, place) => {
 
     const success = Num.lucky(100) <= place.successChance;
-    const difficult = Math.max(1, 100 - place.successChance);
-
-    const multiplier = PlayerController.weaponsStatsMultiplier(player);
-
-    /* Defining New Player Attributes */
-    const intelligence = ((player.intelligence * .005) * (multiplier.intelligence * .25)) + (difficult * .1);
-    const dexterity = (((player.dexterity * .005) * (multiplier.dexterity * .25)) + (difficult * .1));
-    const strength = (intelligence + dexterity) / 2;
-
-    const coins = success ? place.coinsReward : ((intelligence / player.intelligence) * player.coins);
 
     return new PlayerUpdateModel(player).validate((player, model) => {
         model.check(player.arrested, constants.PLAYER_ARRESTED)
-            .check(player.stamina < place.staminaCost, constants.OUT_OF_STAMINA);
+            .check(player.stamina < place.staminaCost, constants.OUT_OF_STAMINA)
+            .check(place.successChance == 0, constants.ROBBERY_ZERO_CHANCES)
     })
         .setArrested(!success)
-        .setCoins(coins, success)
+        .setCoins(success ? place.coinsReward : place.coinsLoss, success)
         .setRespect(place.respect, success)
         .setStamina(place.staminaCost, false)
-        .setIntelligence(intelligence, success)
-        .setDexterity(dexterity, success)
-        .setStrength(strength, success)
+        .setIntelligence(place.intelligence, success)
+        .setDexterity(place.dexterity, success)
+        .setStrength(place.strength, success)
         .build()
 }
 

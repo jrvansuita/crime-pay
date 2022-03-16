@@ -37,8 +37,15 @@ module.exports = class Context {
 
     bindBodyParser() {
         const bodyParser = require('body-parser');
-        this.app.use(bodyParser.urlencoded({ extended: false }))
-        this.app.use(bodyParser.json())
+
+        this.app.use(bodyParser.urlencoded({ extended: false }));
+        this.app.use(bodyParser.json());
+
+        const boolQueryParser = require('express-query-boolean');
+        this.app.use(boolQueryParser());
+
+        var intQueryParser = require('express-query-int');
+        this.app.use(intQueryParser());
     }
 
     defineFavIcon() {

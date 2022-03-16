@@ -1,6 +1,5 @@
 
 const RobberyMecanics = require("../mecanics/robbery");
-
 const PlaceController = require("../controller/place");
 const PlayerController = require("../controller/player");
 
@@ -40,6 +39,11 @@ module.exports = class RobberyPage {
                     .then(result => res.send(result))
                     .catch((e) => res.status(500).send(e.message))
             });
+        });
+
+        app.get('/dev/robberies', (req, res) => {
+            const PlayerEvolution = require("../dev/player-evolution");
+            new PlayerEvolution(req.query).make().then(result => { return res.render('dev/robberies', result); })
         });
     }
 }

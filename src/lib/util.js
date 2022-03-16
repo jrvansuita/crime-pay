@@ -10,6 +10,15 @@ const Num = {
         return Math.floor(Math.random() * (max - min)) + min;
     },
 
+    assert(value, trunc, min, max) {
+        if (trunc) value = Math.trunc(value)
+        if (min !== undefined) value = Math.max(min, value)
+        if (max !== undefined) value = Math.min(max, value)
+
+        return value;
+    }
+
+
 
 }
 
@@ -37,6 +46,12 @@ const Protos = () => {
     Number.prototype.format = function () {
         return new Intl.NumberFormat().format(this);
     }
+
+    Number.prototype.between = function (a, b) {
+        var min = Math.min.apply(Math, [a, b]),
+            max = Math.max.apply(Math, [a, b]);
+        return this > min && this < max;
+    };
 
 }
 

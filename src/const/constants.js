@@ -6,6 +6,7 @@ module.exports = Object.freeze({
     FULL_INTOXICATION: "You're full intoxicated.",
     PLAYER_ARRESTED: "You're under arrest!",
     PLAYER_NOT_ARRESTED: "You're not arrested!",
+    ROBBERY_ZERO_CHANCES: "You can't rob this place yet.",
 
     ROBBERY: {
         SUCCESS: [

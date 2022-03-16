@@ -24,10 +24,10 @@ module.exports = class PlayerController extends Controller {
 
     static weaponsStatsMultiplier(player) {
         /* Defining Weapons Intelligence and Dexterity Multiplier Bonus */
-        var intelligenceMultiplier = player.weapons.reduce((p, c) => p + c.intelligence, 0)
-        var dexterityMultiplier = player.weapons.reduce((p, c) => p + c.dexterity, 0)
+        var intelligenceMultiplier = player?.weapons?.reduce((p, c) => p + c.intelligence, 0);
+        var dexterityMultiplier = player?.weapons?.reduce((p, c) => p + c.dexterity, 0);
 
-        return { intelligence: intelligenceMultiplier, dexterity: dexterityMultiplier };
+        return { intelligence: intelligenceMultiplier || 1, dexterity: dexterityMultiplier || 1 };
     }
 
     restoreStamina(points) {
@@ -49,7 +49,7 @@ module.exports = class PlayerController extends Controller {
 
     set(playerId, model) {
         const data = getDataFromModel(model);
-        return super.modify(playerId, { $set: {...data.set, ...data.inc } });
+        return super.modify(playerId, { $set: { ...data.set, ...data.inc } });
     }
 
 
