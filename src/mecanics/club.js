@@ -1,25 +1,21 @@
-
-
 const HookerController = require("../controller/hooker");
-const PlayerUpdateModel = require('../model/player-update-model');
 const EventController = require('../controller/event');
 const PlayerController = require("../controller/player");
 const constants = require('../const/constants');
-const { Num } = require("../lib/util");  
+const HookerAttempt = require("../actions/hooker-attempt");
 
-      
+
 module.exports = class ClubMecanics {
 
     constructor() {
-        this.playerController = new PlayerController(); 
+        this.playerController = new PlayerController();
         this.hookerController = new HookerController();
     }
-
 
     submit(hookerId, player) {
         return this.hookerController.details(hookerId, player).then((hooker) => {
 
-            var playerUpdate = buildPlayerUpdate(player, hooker);
+            var playerUpdate = new HookerAttempt(player, hooker).make();
 
             return this.playerController.update(player._id, playerUpdate).then((updatedPlayer) => {
 
@@ -32,29 +28,3 @@ module.exports = class ClubMecanics {
         })
     }
 }
-
-const buildPlayerUpdate = (player, hooker) => {
-
-    var lucky = Num.lucky(100, 1);
-
-    const failed = lucky <= hooker.failChance;
-    const jailed = lucky <= hooker.jailChance;
-    const succeed = !failed && !jailed;
-
-    return new PlayerUpdateModel(player)
-        .validate((player, model) => {
-            model.check(player.arrested, constants.PLAYER_ARRESTED)
-                .check(player.coins < hooker.coins, constants.INSUFFICIENT_COINS)
-                .check(player.stamina == 100, constants.FULL_STAMINA)
-                .check(player.intoxication == 100, constants.FULL_INTOXICATION)
-        })
-        .setArrested(jailed)
-        .setCoins(hooker.coins, false, 0, false, true)
-        .setRespect(hooker.respect, succeed, 0, true)
-        .setStamina(hooker.stamina, succeed, 0, true, true, 100)
-        .setIntoxication(hooker.intoxication, succeed, 0, true, true, 100)
-        .build()
-}
-
-
-

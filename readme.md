@@ -27,13 +27,15 @@ The game preview is live and everyone can try it. As the development is being do
 Next implementations:
 
 #### Layouts
-- [x] tab menu with : Robbery, Prison, Club, Market and Settings
 - [ ] Login page (Metamask integration)
+- [x] tab menu with : Robbery, Prison, Club, Market and Settings
 - [x] prison page 
-- [ ] club page (hookers and drugs)
+- [x] settings page (as developing demand) 
+- [x] club page (hookers)
+- [ ] club page (drugs)
 - [ ] market (weapons and special items)
 - [ ] history page (activities log for player) 
-- [x] settings page (as developing demand) 
+
 
 #### Mecanics
 - [x] reset player setting
@@ -45,17 +47,22 @@ Next implementations:
 - [x] prevent make robbery when out of stamina
 - [x] events structure for history page
 - [x] refresh stamina when take drugs or get a hooker
-- [ ] use full stamina option on robbery
 - [x] restore 1 stamina point every hour
 - [x] clear 1 intoxication point every hour
+- [x] the player gets for life prison when all attributes became 0 (Character loss)
+- [ ] Keep Player data on session
+- [ ] Same Hookers need to stay in club for at least 3 min
+- [ ] auto redirect to prison when in life imprisionament (Need Fix Player Session First)
 - [ ] settings option for player avatar and name update
-- [ ] Fix coins reward system
+- [ ] use full stamina option on robbery
+
 
 #### Visual
 - [x] remove visibility of 0% chance robberies
 - [x] remove visibility of 100% chance robberies (keep only 1)
 - [x] cool pixel img when success or fail robbery
 - [ ] pixel art fonttypes
+- [ ] Tooltip on intoxication and stamina showing clearing rates
 
 #### Code & Deploy
 - [x] install code optmization github plugin 

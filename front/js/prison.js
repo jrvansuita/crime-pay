@@ -33,15 +33,15 @@ class PrisonLayoutManager {
         const bribeData = newAttempt.bribe.data;
 
         $('#releaseTime').text(moment(newArrestDate).calendar());
-        $('#escape-coins').text(escapeData.coins);
+        $('#escape-coins').text(escapeData.coins?.format());
         $('#escape-stamina').text(Math.abs(escapeData.stamina) + ' %').parent().toggle(Math.abs(escapeData.stamina) > 0);
-        $('#escape-respect').text("+ " + escapeData.respect);
+        $('#escape-respect').text("+ " + escapeData.respect?.format());
         $('#escape-chance').text(newAttempt.escape.escapeChance + ' %');
-        $('#escape-holder .blockquote-footer').text("Adding + " + newAttempt.escape.daysIncOnFail + " jail day when fail.");
+        $('#escape-holder .blockquote-footer').text("Adding + " + newAttempt.escape.daysIncOnFail + " jail day when fail.").toggle(newAttempt.escape.daysIncOnFail);
 
-        $('#bribe-coins').text(bribeData.coins);
+        $('#bribe-coins').text(bribeData.coins?.format());
         $('#bribe-stamina').text(Math.abs(bribeData.stamina) + ' %').parent().toggle(Math.abs(bribeData.stamina) > 0);
-        $('#bribe-respect').text("+ " + bribeData.respect);
+        $('#bribe-respect').text("+ " + bribeData.respect?.format());
 
     }
 

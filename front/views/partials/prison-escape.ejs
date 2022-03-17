@@ -11,6 +11,7 @@
 
     <div class="col-8">
 
+      <%if (Math.abs(escape.data.coins)> 0){%>
       <div class="input-group">
         <span class="form-control">Coins Cost</span>
         <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt="Coin"></span>
@@ -18,6 +19,7 @@
           <%=escape.data.coins.format()%>
         </span>
       </div>
+      <%}%>
 
       <%if (escape.data.respect> 0){%>
       <div class="input-group">
@@ -49,7 +51,9 @@
     <%}%>
 
 
-    <%- include('../single/button', { buttonId: 'escape', buttonText: 'Escape',  quoteText: "Adding + " + escape?.daysIncOnFail + " jail day when fail.", loadingButton:true, noStamina: player.stamina < Math.abs(escape.data.stamina) }); %>
+    <%const daysIncText = escape?.daysIncOnFail ? "Adding + " + escape?.daysIncOnFail + " jail day when fail." : null; %>
+
+    <%- include('../single/button', { buttonId: 'escape', buttonText: 'Escape',  quoteText: daysIncText, loadingButton:true, insufficientCoins: player.coins < Math.abs(escape.data.coins), noStamina: player.stamina < Math.abs(escape.data.stamina), forLifePrison: (player.arrested && !player.arrestRelease)  }); %>
 
 
   </div>

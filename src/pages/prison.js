@@ -15,7 +15,7 @@ module.exports = class PrisonPage {
         app.get('/prison', (req, res) => {
             this.playerController.get(req.session.playerId)
                 .then((player) => {
-                    res.render('pages/prison', { player, ...this.prisonMecanics.statsFor(player) });
+                    res.render('pages/prison', { player, ...this.prisonMecanics.for(player) });
                 })
         });
 

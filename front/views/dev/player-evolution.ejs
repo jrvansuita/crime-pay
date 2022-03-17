@@ -1,0 +1,51 @@
+<style>
+  table {
+    border: 1px solid black;
+    margin: 25px 0px;
+    font-size: 11pt;
+    font-family: sans-serif;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  td {
+    padding: 2px 5px;
+  }
+</style>
+
+
+
+<%data.forEach((eachData)=>{%>
+
+
+<table>
+  <tr>
+    <td> <%=eachData.player.name%></td>
+
+    <%eachData.group.forEach((each)=>{%>
+    <td> <%=each.name%></td>
+    <%})%>
+  </tr>
+
+  <%attributes.forEach((attr, attrIndex)=>{%>
+
+  <tr>
+    <td><%=attr%></td>
+
+    <%eachData.group.forEach((each)=>{%>
+    <td> <%=each[attr]?.format()%></td>
+    <%})%>
+  </tr>
+
+  <%})%>
+
+
+
+</table>
+
+
+
+
+<%})%>

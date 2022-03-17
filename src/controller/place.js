@@ -1,7 +1,7 @@
 
-const RobberyStatsMath = require("../math/robbery-stats");
+const RobberyMath = require("../math/robbery-math");
 const Controller = require("./controller");
-const PlayerController = require("./player");
+
 
 module.exports = class PlaceController extends Controller {
 
@@ -12,7 +12,7 @@ module.exports = class PlaceController extends Controller {
 
     details(placeId, player) {
         return this.findById(placeId).then((place) => {
-            return new RobberyStatsMath(player, place).make();
+            return new RobberyMath(player, place).make();
         });
     }
 
@@ -25,7 +25,7 @@ module.exports = class PlaceController extends Controller {
             if (!loadAll) {
                 places = places
                     //Calculate the success chance for each place
-                    .map(each => { return new RobberyStatsMath(player, each).makeSuccess() })
+                    .map(each => { return new RobberyMath(player, each).preview() })
                     //Remove places with zero success chances
                     .filter(each => { return each.successChance > 0 })
                     //Remove more than 1 places with 100% success chances
@@ -39,7 +39,7 @@ module.exports = class PlaceController extends Controller {
                     .slice(0, 7)
             }
 
-            return places.map(each => { return new RobberyStatsMath(player, each)[analytcs ? 'analytcs' : 'make']() });
+            return places.map(each => { return new RobberyMath(player, each)[analytcs ? 'analytcs' : 'make']() });
         });
     }
 }

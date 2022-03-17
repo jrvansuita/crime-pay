@@ -7,6 +7,7 @@ module.exports = Object.freeze({
     PLAYER_ARRESTED: "You're under arrest!",
     PLAYER_NOT_ARRESTED: "You're not arrested!",
     ROBBERY_ZERO_CHANCES: "You can't rob this place yet.",
+    FOR_LIFE_PRISON: "You are serving life imprisonment!",
 
     ROBBERY: {
         SUCCESS: [

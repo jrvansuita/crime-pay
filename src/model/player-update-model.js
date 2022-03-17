@@ -29,8 +29,9 @@ module.exports = class PlayerUpdateModel {
     setArrested(arrested, arrestDays = 1) {
         this.arrested = arrested;
 
-        const date = this.player?.arrestRelease || new Date();
-        this.arrestRelease = this.arrested ? moment(date).add(arrestDays, 'days').minutes(0).toDate() : null;
+        const lastDate = this.player?.arrestRelease || new Date();
+
+        this.arrestRelease = this.arrested ? moment(lastDate).add(arrestDays, 'days').minutes(0).toDate() : null;
         return this;
     }
 
@@ -86,8 +87,27 @@ module.exports = class PlayerUpdateModel {
     }
 
     validate(validations) {
-        this.validations = validations;
+
+        this.validations = () => {
+
+            if (validations) validations(this.player, this)
+
+            this.checkForLifePrison();
+        };
+
         return this;
+    }
+
+    checkForLifePrison() {
+        if (this.arrested) {
+            //This player just lost the character. Took for life prison.
+            const intelligence = this.player.intelligence + this.intelligence;
+            const dexterity = this.player.dexterity + this.dexterity;
+            const strength = this.player.strength + this.strength;
+
+            if ((intelligence + dexterity + strength) <= 1)
+                this.arrestRelease = null;
+        }
     }
 
     check(condition, errorMessage) {
@@ -103,7 +123,7 @@ module.exports = class PlayerUpdateModel {
     }
 
     build() {
-        if (this.validations) this.validations(this.player, this)
+        this.validations()
 
         return this.get()
     }

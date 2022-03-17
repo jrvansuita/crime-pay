@@ -1,11 +1,8 @@
 const constants = require('../const/constants');
-
-
 const PlaceController = require("../controller/place");
-const PlayerUpdateModel = require('../model/player-update-model');
 const PlayerController = require('../controller/player');
 const EventController = require('../controller/event');
-const { Num } = require('../lib/util');
+const RobberyAttempt = require('../actions/robbery-attempt');
 
 
 module.exports = class RobberyMecanics {
@@ -19,7 +16,7 @@ module.exports = class RobberyMecanics {
     submit(placeId, player) {
         return this.placeController.details(placeId, player).then((place) => {
 
-            var playerUpdate = buildPlayerUpdate(player, place);
+            var playerUpdate = new RobberyAttempt(player, place).make();
 
             return this.playerController.update(player._id, playerUpdate).then((updatedPlayer) => {
 
@@ -31,24 +28,3 @@ module.exports = class RobberyMecanics {
         })
     }
 }
-
-
-const buildPlayerUpdate = (player, place) => {
-
-    const success = Num.lucky(100) <= place.successChance;
-
-    return new PlayerUpdateModel(player).validate((player, model) => {
-        model.check(player.arrested, constants.PLAYER_ARRESTED)
-            .check(player.stamina < place.staminaCost, constants.OUT_OF_STAMINA)
-            .check(place.successChance == 0, constants.ROBBERY_ZERO_CHANCES)
-    })
-        .setArrested(!success)
-        .setCoins(success ? place.coinsReward : place.coinsLoss, success)
-        .setRespect(place.respect, success)
-        .setStamina(place.staminaCost, false)
-        .setIntelligence(place.intelligence, success)
-        .setDexterity(place.dexterity, success)
-        .setStrength(place.strength, success)
-        .build()
-}
-

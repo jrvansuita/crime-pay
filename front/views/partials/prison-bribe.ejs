@@ -13,6 +13,7 @@
     </div>
     <div class="col">
 
+      <%if (Math.abs(bribe.data.coins) > 0){%>
       <div class="input-group">
         <span class="form-control">Coins Cost</span>
         <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt="Coin"></span>
@@ -20,7 +21,7 @@
           <%=bribe.data.coins.format()%>
         </span>
       </div>
-
+      <%}%>
 
 
       <%if (bribe.data.respect> 0){%>
@@ -45,7 +46,7 @@
 
 
 
-      <%- include('../single/button', { buttonId: 'bribe', buttonText: 'Bribe',  quoteText: "100% chance to get out.", loadingButton:true, noStamina: player.stamina < Math.abs(bribe.data.stamina)  }); %>
+      <%- include('../single/button', { buttonId: 'bribe', buttonText: 'Bribe',  quoteText: bribe.escapeChance + "% chance to get out.", loadingButton:true, insufficientCoins: player.coins < Math.abs(bribe.data.coins),noStamina: player.stamina < Math.abs(bribe.data.stamina), forLifePrison: (player.arrested && !player.arrestRelease)  }); %>
 
 
     </div>

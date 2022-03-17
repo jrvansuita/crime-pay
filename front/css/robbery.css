@@ -1,10 +1,9 @@
-
-.robbery-form-holder,.robbery-form-placeholder {
+.robbery-form-holder, .robbery-form-placeholder {
   width: 40em;
   height: 100%;
 }
 
-.robbery-result-holder{
+.robbery-result-holder {
   max-width: 40em;
   min-width: 30em;
   width: fit-content;
@@ -12,24 +11,24 @@
 }
 
 
-#result-list, #result-prison{
+#result-list, #result-prison {
   display: none;
 }
 
-#result-prison{
+#result-prison {
   margin-top: 15px;
 }
 
 
 
-.robbery-result-holder blockquote{
+.robbery-result-holder blockquote {
   margin-top: -5px;
-    margin-left: 12px;
-    width: 120px;
+  margin-left: 12px;
+  width: 120px;
 }
 
 
-.robbery-result-holder > .row{
+.robbery-result-holder>.row {
   align-items: center;
   height: 100%;
 }

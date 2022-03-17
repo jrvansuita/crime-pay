@@ -1,5 +1,6 @@
 const PlayerController = require("../controller/player");
 const PlaceController = require("../controller/place");
+const HookerController = require("../controller/hooker");
 
 module.exports = class PlayerEvolution {
 
@@ -7,10 +8,13 @@ module.exports = class PlayerEvolution {
     constructor({ all, stats, id }) {
         this.modelPlayerId = id || "6230c97f40a4ff252550104f";
         this.playerController = new PlayerController();
-        this.placeController = new PlaceController();
 
         this.showAll = all;
         this.mStats = stats;
+
+        if (typeof stats === 'number')
+            this.mStats = stats.toString();
+
     }
 
     multiplyStats(player, multiplier) {
@@ -23,27 +27,72 @@ module.exports = class PlayerEvolution {
         return player;
     }
 
-    make() {
-
+    findPlayers() {
         return this.playerController.get(this.modelPlayerId).then(player => {
-
-            var data = [];
             var players = [player];
 
-            this.mStats.split('-').forEach(m => {
+            this.mStats?.split('-').forEach(m => {
                 players.push(this.multiplyStats({ ...player }, m));
             });
 
-            const getPlaces = (index) => {
-                return this.placeController.for(players[index], this.showAll, true).then((places) => {
-                    data.push({ player: players[index], places: places })
-                    return (++index) < players.length ? getPlaces(index) : data;
-                })
-            }
+            return players;
+        });
+    }
 
-            return getPlaces(0).then(data => { return { data: data } });
+    findData(controller, players) {
+        var data = [];
+
+        const execute = (index) => {
+            return controller.for(players[index], this.showAll, true).then((eachGroup) => {
+                data.push({ player: players[index], group: eachGroup })
+                return (++index) < players.length ? execute(index) : data;
+            })
+        }
+
+        return execute(0).then(data => { return { data: data } });
+    }
+
+    load(controller, attributes) {
+        return this.findPlayers().then(players => {
+            return this.findData(controller, players);
+        }).then((result) => {
+            return { ...result, attributes }
         })
+    }
 
+
+    hookers() {
+        const attributes = [
+            'rarity',
+            'coinsFactor',
+            'coins',
+            'respect',
+            'stamina',
+            'intoxication',
+            'failChance',
+            'jailChance',
+        ];
+
+        return this.load(new HookerController(), attributes);
+    }
+
+    places() {
+        const attributes = [
+            'difficulty',
+            'successChance',
+            'playerFactor',
+            'successFactor',
+            'coinsHolderBonus',
+            'coinsReward',
+            'coinsLoss',
+            'respect',
+            'staminaCost',
+            'intelligence',
+            'dexterity',
+            'strength',
+        ];
+
+        return this.load(new PlaceController(), attributes);
     }
 
 

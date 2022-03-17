@@ -1,6 +1,7 @@
 
 const mongojs = require('mongojs')
-const command = require('nodemon/lib/config/command')
+const PlaceScripts = require('./scripts/places');
+
 const Command = require('./commands')
 
 const db = mongojs(process.env.CONN_DB, [])
@@ -16,7 +17,12 @@ db.on('connect', function () {
     // console.log('Command OK');
     // new Command(db).renameField('place', 'x', 'name')
 
+    //new PlaceScripts().assertDifficulties()
+
+
 })
+
+
 
 
 

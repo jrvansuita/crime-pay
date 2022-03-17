@@ -1,9 +1,8 @@
 const Controller = require("./controller");
 const { Num } = require("../lib/util");
-
+const HookerMath = require("../math/hooker-math");
 
 module.exports = class HookerController extends Controller {
-
 
     constructor() {
         super('hooker');
@@ -11,81 +10,45 @@ module.exports = class HookerController extends Controller {
 
     details(hookerId, player) {
         return this.findById(hookerId).then((hooker) => {
-            return calculateAttributes(player, hooker);
+            return new HookerMath(player, hooker).make()
         });
     }
 
-    for (player) {
+    for(player, loadAll = false) {
 
         return this.all().then((hookers) => {
 
-            return hookers
-                //Handle all calculated attributes
-                .map(each => { return calculateAttributes(player, each) })
-
-            //Filter hookers by rarity (Max Rarity 100 based on minuts)
-            .filter((hooker) => {
-                    return Num.lucky(100) >= hooker.rarity;
-                })
-                //Remove duplicate free
-                .filter((each, index, arr) => {
-                    return !arr.some(e => {
-                        return (e._id != each._id) &&
-                            (e.coins == each.coins) &&
-                            (e.coins == 0)
+            if (!loadAll) {
+                hookers = hookers
+                    //Draw positions based on rarity 
+                    .filter((hooker) => { return Num.lucky(100) >= hooker.rarity; })
+                    //Handle all calculated attributes
+                    .map(hooker => { return new HookerMath(player, hooker).preview() })
+                    //Remove duplicate free positions
+                    .filter((each, index, arr) => {
+                        return !arr.some(e => {
+                            return (e._id != each._id) &&
+                                (e.coins == each.coins) &&
+                                (e.coins == 0)
+                        })
                     })
-                })
-                .map(value => ({ value, sort: Math.random() }))
-                .sort((a, b) => a.sort - b.sort)
-                .map(({ value }) => value)
-                .slice(0, 7)
-                //Sort By Coins asc
-                .sort((a, b) => { return a.coins - b.coins })
+                    //Shuffle the array
+                    .sort(() => Math.random() - 0.5)
+                    //Get only firsts positions
+                    .slice(0, 7)
+            }
 
-
-            // .reduce((data, current) => {
-            //     return data[current.coins]
-            // }, {})
-
-
-
-
-
-
+            return hookers
+                //Load all attributes
+                .map(hooker => { return new HookerMath(player, hooker).make() })
+                //Sort by coins cost
+                .sort((a, b) => { return a.coins - b.coins });
         });
     }
-
-
 }
 
 
 
-var calculateAttributes = (player, hooker) => {
-
-    hooker.coins = Math.trunc(((hooker.coinsFactor / 10) * (player.coins * 0.07)) + (hooker.rarity * .5))
-
-    if (hooker.coinsFactor <= 0) {
-        hooker.coins = 0;
-    }
-
-    hooker.respect = Math.trunc((hooker.coinsFactor * hooker.rarity * .01) * player.respect * .05);
-    hooker.intoxication = hooker.intoxication;
-
-    var bonusStamina = (Math.max(1, player.stamina) / 50) / 10;
-    hooker.stamina = Math.min(100, Math.trunc(hooker.stamina + (bonusStamina * hooker.stamina)));
 
 
-    hooker.jailChance = hooker.failChance = 0
-    var hasFailChance = (hooker.rarity > 40) && ((hooker.coinsFactor > 0) || (hooker.rarity > 80)) && (hooker.intoxication > 0);
 
-    if (hasFailChance) {
-        hooker.jailChance = Math.trunc(Math.min(75, (hooker.rarity + hooker.stamina) / (hooker.intoxication * 1.7)));
-        hooker.failChance = Math.trunc(Math.min(90, hooker.jailChance * 1.3));
-
-        if ((hooker.failChance - hooker.jailChance) <= 5) {
-            hooker.jailChance = 0;
-        }
-    }
-
-    return hooker;
-}

@@ -45,6 +45,7 @@ module.exports = class Controller {
         });
     }
 
+
     updateAll(query, data, multi) {
         return new Promise((resolve, reject) => {
             this.dataAccess.update(

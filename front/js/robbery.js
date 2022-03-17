@@ -24,9 +24,6 @@ $(document).ready(() => {
         .setHolderSelector(".places-holder")
         .setOnCardSelected(key => formControl.setKey(key).load())
         .load();
-
-
-
 });
 
 class RobberyLayoutManager {
@@ -60,7 +57,22 @@ class RobberyLayoutManager {
     toggleArrestInfo(data) {
         $('#result-list').parent().removeClass('text-end');
         $('#result-prison').css('display', data.player.arrested ? '-webkit-box' : 'none');
-        $('.robbery-result-holder').find('.blockquote-footer').text(data.player.arrested ? 'Released ' + moment(data.player.arrestRelease).calendar() : '');
+
+        let quoteText = ''
+
+        if (data.player.arrested) {
+            if (!data.player.arrestRelease) {
+                quoteText = 'You got life imprisonment!';
+                $('.robbery-form-placeholder').remove();
+            } else {
+                quoteText = 'Released ' + moment(data.player.arrestRelease).calendar();
+            }
+        }
+
+
+        $('.robbery-result-holder').find('.blockquote-footer').text(quoteText)
+
+
     }
 
 }

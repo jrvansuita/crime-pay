@@ -43,7 +43,7 @@ module.exports = class RobberyPage {
 
         app.get('/dev/robberies', (req, res) => {
             const PlayerEvolution = require("../dev/player-evolution");
-            new PlayerEvolution(req.query).make().then(result => { return res.render('dev/robberies', result); })
+            new PlayerEvolution(req.query).places().then(result => { return res.render('dev/player-evolution', result); })
         });
     }
 }

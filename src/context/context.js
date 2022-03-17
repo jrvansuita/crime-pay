@@ -14,7 +14,7 @@ module.exports = class Context {
         this.bindMinify();
         this.exposeStaticFiles();
 
-        this.bindSession().bindSessionMidleware();
+        this.bindSession()
         this.defineRoutes();
         this.definePrototypes();
 
@@ -110,15 +110,6 @@ module.exports = class Context {
         return this;
     }
 
-    bindSessionMidleware() {
-        //Making session visible in all ejs files
-        this.app.use(function (req, res, next) {
-            //Remove this line when login screen finished
-            req.session.playerId = process.env.USER_ID
-            res.locals.session = req.session;
-            next();
-        });
-    }
 
     definePrototypes() {
         require('../lib/util').Protos();

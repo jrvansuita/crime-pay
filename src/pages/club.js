@@ -42,5 +42,11 @@ module.exports = class ClubPage {
             });
         });
 
+
+        app.get('/dev/hookers', (req, res) => {
+            const PlayerEvolution = require("../dev/player-evolution");
+            new PlayerEvolution(req.query).hookers().then(result => { return res.render('dev/player-evolution', result); })
+        });
+
     }
 }

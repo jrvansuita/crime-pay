@@ -1,7 +1,7 @@
 const PlayerController = require("../controller/player");
 const { Num } = require("../lib/util");
 
-module.exports = class RobberyStatsMath {
+module.exports = class RobberyMath {
 
     constructor(player, place) {
         this.player = player;
@@ -65,7 +65,7 @@ module.exports = class RobberyStatsMath {
     getSuccessChance() {
         if (this.successChance === undefined) {
             //Dedine the place success chance. Based on the success factor and each place difficulty
-            const successChance = this.getSuccessFactor() / this.place.difficulty;
+            const successChance = (this.getSuccessFactor() / this.place.difficulty) || 0;
 
             this.successChance = Num.assert(successChance, true, 0, 100);
         }
@@ -124,8 +124,11 @@ module.exports = class RobberyStatsMath {
 
     getStaminaCost() {
         if (this.staminaCost === undefined) {
+
+            const intoxicationIncrease = (this.player.intoxication * .33);
+
             //Define Stamina cost based on place success chance
-            const staminaCost = (100 / this.getSuccessChance()) * 7.1;
+            const staminaCost = ((100 - this.getSuccessChance()) * .75) + intoxicationIncrease;
 
             //Define min and max values
             this.staminaCost = Num.assert(staminaCost, true, 12, 100);
@@ -155,16 +158,16 @@ module.exports = class RobberyStatsMath {
             const attributes = this.getPlayerWeaponBasedAttibutes();
 
             //Defining attribute points
-            const attributePoints = (100 - this.getSuccessChance()) * this.place.difficulty * .05;
+            const attributePoints = (100 - this.getSuccessChance()) * this.place.difficulty * .033;
 
             //Defining as min bonus, the weapons stats
-            const minBonus = attributes.weaponStats[attributeName] * 1.7;
+            const minBonus = attributes.weaponStats[attributeName] * 1.6;
 
             //Definig as max bonus a player attribute percentage
             const maxBonus = attributes[attributeName] * 0.05;
 
             //Defining the bonus for keep playing
-            const bonus = Math.min(minBonus, minBonus, maxBonus);
+            const bonus = Math.min(minBonus, maxBonus);
 
             //Define the increase points this attribute will take
             const value = Math.max(3, attributePoints) + bonus;
@@ -179,7 +182,7 @@ module.exports = class RobberyStatsMath {
     getStrength() {
         if ((this.getSuccessChance() > 0) && this.strength === undefined) {
 
-            const strength = (this.getPlayerAttributeValue('intelligence') + this.getPlayerAttributeValue('dexterity')) / 2;
+            const strength = (this.getPlayerAttributeValue('intelligence') + this.getPlayerAttributeValue('dexterity')) / 2.1;
 
             this.strength = Num.assert(strength, true);
         }
@@ -187,7 +190,7 @@ module.exports = class RobberyStatsMath {
         return this.strength || 0;
     }
 
-    makeSuccess() {
+    preview() {
         this.place.successChance = this.getSuccessChance();
 
         return this.place;
