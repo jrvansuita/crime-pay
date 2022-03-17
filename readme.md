@@ -71,6 +71,11 @@ Next implementations:
 - [x] minify and compress static files
 
 
+### Screenshot
+<img src='/screenshots/6.png'  /></a>
+
+
+
 #
 
 
