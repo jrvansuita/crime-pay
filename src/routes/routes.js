@@ -8,13 +8,12 @@ const MiddleRules = require('./middle-rules');
 
 
 module.exports = {
+
     bind(app) {
 
-        new MiddleRules().bind(app);
+        const rules = new MiddleRules(app);
 
-        app.get('/', (req, res) => {
-            res.redirect('/robbery');
-        });
+        rules.begin();
 
         new RobberyPage().bind(app);
         new SettingsPage().bind(app);
@@ -22,7 +21,7 @@ module.exports = {
         new ClubPage().bind(app);
         new MarketPage().bind(app);
 
-
+        rules.end();
     }
 
 }

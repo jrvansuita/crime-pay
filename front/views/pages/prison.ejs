@@ -44,7 +44,7 @@
               <%}else{%>
               You got arrested and will be released from prison
               <span id="releaseTime">
-                <%=moment(player.arrestRelease).calendar()%>.
+                <%=player.arrestRelease.toDateDisplay()%>.
               </span>
 
               <%}}else{%>

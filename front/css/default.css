@@ -236,3 +236,18 @@ body {
     margin-left: 12px;
     margin-top: 18px;
 }
+
+.min-fit, .min-fit .card, .min-fit .card-body, .min-fit .row, .min-fit .col {
+    width: fit-content;
+    height: fit-content;
+}
+
+.middle-absolute {
+    margin: auto;
+    position: absolute;
+    margin-top: 10%;
+}
+
+.rounded-corners {
+    border-radius: 5px;
+}

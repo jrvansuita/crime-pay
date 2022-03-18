@@ -1,3 +1,6 @@
+const moment = typeof require !== 'undefined' ? require("moment") : window.moment;
+
+
 const Num = {
 
     greaterFrom: (max, dec) => {
@@ -18,8 +21,6 @@ const Num = {
         return value;
     }
 
-
-
 }
 
 
@@ -29,8 +30,14 @@ const Util = {
         Object.keys(obj).forEach(key => {
             if (!obj[key]) delete obj[key]
         })
+    },
+
+    dateFormat: (value, concatString = '', defaultString = '') => {
+        return value && moment ? concatString + moment(value).calendar() : defaultString;
     }
 }
+
+
 
 
 const Protos = () => {
@@ -52,6 +59,14 @@ const Protos = () => {
             max = Math.max.apply(Math, [a, b]);
         return this > min && this < max;
     };
+
+    String.prototype.toDateDisplay = function (...params) {
+        return Util.dateFormat(this, ...params)
+    }
+
+    Date.prototype.toDateDisplay = function (...params) {
+        return Util.dateFormat(this, ...params)
+    }
 
 }
 

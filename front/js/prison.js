@@ -27,12 +27,12 @@ class PrisonLayoutManager {
 
     attemptHasFailed({ player, newAttempt }) {
 
-        const newArrestDate = player.arrestRelease;
+        const newArrestDate = ;
 
         const escapeData = newAttempt.escape.data;
         const bribeData = newAttempt.bribe.data;
 
-        $('#releaseTime').text(moment(newArrestDate).calendar());
+        $('#releaseTime').text(player.arrestRelease.toDateDisplay());
         $('#escape-coins').text(escapeData.coins?.format());
         $('#escape-stamina').text(Math.abs(escapeData.stamina) + ' %').parent().toggle(Math.abs(escapeData.stamina) > 0);
         $('#escape-respect').text("+ " + escapeData.respect?.format());

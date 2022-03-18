@@ -68,6 +68,7 @@ Next implementations:
 - [x] install code optmization github plugin 
 - [x] heroku instance for preview and tests
 - [ ] test automation with jest
+- [x] custom not found page
 - [x] minify and compress static files
 
 
