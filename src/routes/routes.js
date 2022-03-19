@@ -3,7 +3,7 @@ const PrisonPage = require('../pages/prison');
 const RobberyPage = require('../pages/robbery');
 const SettingsPage = require('../pages/settings');
 const MarketPage = require('../pages/market');
-const MiddleRules = require('./middle-rules');
+const RouteRules = require('./rules');
 
 
 
@@ -11,7 +11,7 @@ module.exports = {
 
     bind(app) {
 
-        const rules = new MiddleRules(app);
+        const rules = new RouteRules(app);
 
         rules.begin();
 

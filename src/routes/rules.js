@@ -1,4 +1,4 @@
-module.exports = class MiddleRules {
+module.exports = class RouteRules {
 
     constructor(app) {
         this.app = app;
