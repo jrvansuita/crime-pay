@@ -10,14 +10,20 @@ module.exports = class PlayerController extends Controller {
         this.weaponController = new WeaponController();
     }
 
+    setVirtualAttributes(player, weapons) {
+        player.weapons = weapons;
+        player.lifeImprisonment = player.arrested && !player?.arrestRelease;
+
+        return player
+    }
+
     get(_id) {
         return this.findById(_id)
             .then(player => {
                 if (!player) throw new Error(PLAYER_NOT_FOUND);
 
                 return this.weaponController.findByIds(player.equipedWeapons).then(weapons => {
-                    player.weapons = weapons;
-                    return player;
+                    return this.setVirtualAttributes(player, weapons);
                 });
             });
     }

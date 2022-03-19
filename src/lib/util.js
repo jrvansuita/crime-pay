@@ -50,6 +50,11 @@ const Protos = () => {
         return this[Math.floor(Math.random() * this.length)];
     }
 
+    // Array.prototype.contains = (a, str) => {
+    //     str = str.toString().toLowerCase();
+    //     return a.some(each => { return str.includes(each.toString().toLowerCase()); });
+    // }
+
     Number.prototype.format = function () {
         return new Intl.NumberFormat().format(this);
     }
@@ -64,9 +69,14 @@ const Protos = () => {
         return Util.dateFormat(this, ...params)
     }
 
+    String.prototype.containsAnyOf = function (arr, match) {
+        return arr.some(each => { return match ? this == each.toString() : this.includes(each.toString()) });
+    }
+
     Date.prototype.toDateDisplay = function (...params) {
         return Util.dateFormat(this, ...params)
     }
+
 
 }
 
