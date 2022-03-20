@@ -1,51 +1,21 @@
 <div class="row align-items-center">
   <h6 class="card-title">
-    <%=place.name%> Robbery Attempt
-  </h6 s>
+    <%=place.name.concat(word.ROBBERY_ATTEMPT)%>
+  </h6>
 
-  <div class="input-group">
-    <span class="form-control">Coins Reward</span>
-    <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt=""></span>
-    <span class="input-group-text">
-      + <%=place.coinsReward.format()%>
-    </span>
-  </div>
+  <%- include('../single/label-item', { text: word.COINS_REWARD,  icon: 'coin', value: place.coinsReward.sign()}); %>
 
+  <%- include('../single/label-item', { text: word.RESPECT_INCREASE,  icon: 'respect-star', value: place.respect.sign()}); %>
 
-  <div class="input-group">
-    <span class="form-control">Respect Increase</span>
-    <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png" alt=""></span>
+  <%- include('../single/label-item', { text: word.STAMINA_COST,  icon: 'stamina', value: place.staminaCost.percent()}); %>
 
-    <span class="input-group-text">
-      + <%=place.respect.format()%>
-    </span>
-  </div>
+  <%- include('../single/label-item', { text: word.SUCCESS_CHANCE,  icon: 'lucky', value: place.successChance.percent()}); %>
 
-  <div class="input-group">
-    <span class="form-control">Stamina Cost</span>
-    <span class="input-group-text"><img class="mini-img" src="/img/stamina.png" alt=""></span>
-    <span class="input-group-text">
-      <%=place.staminaCost%>%
-    </span>
-  </div>
+  <%- include('../single/button', {id: 'submit', 
+                                   text: text.ROBBERY.ACTION_BUTTON, 
+                                   noStamina: player.stamina.smaller(place.staminaCost), 
+                                   arrested: player.arrested, 
+                                   loadingButton: true
+                                   }); %>
 
-  <div class="input-group">
-    <span class="form-control">Success Chance</span>
-    <span class="input-group-text"><img class="mini-img" src="/img/lucky.png" alt=""></span>
-
-    <span class="input-group-text">
-      <%=place.successChance%>%
-    </span>
-  </div>
-</div>
-
-
-
-<div class="col-12">
-
-
-  <%- include('../single/button', {buttonId: 'submit', buttonText: 'Carry Out Theft', noStamina: player.stamina < place.staminaCost, arrested: player.arrested, loadingButton: true}); %>
-
-
-</div>
 </div>

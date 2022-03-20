@@ -1,19 +1,13 @@
 <div class="card-flat" style="display:<%=player.arrested? 'none' : 'flex' %>">
   <div id="free-holder" class="row">
     <div class="col-7">
-      <h6 class="card-title">
-        You are a free man!
-      </h6>
-      <p class="card-text">What are you waiting for? Get out of
-        here!
-      </p>
-      <a href="/robbery" class="btn btn-primary">Robberies</a>
-      <a href="/club" class="btn btn-primary">Night Club</a>
+      <h6 class="card-title"><%=text.PRISON.FREE_MAN%></h6>
+      <p class="card-text"><%=text.PRISON.WAITING_FREE%></p>
+      <a href="/robbery" class="btn btn-primary"><%=word.ROBBERIES%></a>
+      <a href="/club" class="btn btn-primary"><%=word.NIGHT_CLUB%></a>
     </div>
     <div class="col img-holder">
-      <img src=" /img/police-head.png" class="card-img-top medium-img" alt="police">
-
-
+      <img src=" /img/police-head.png" class="card-img-top medium-img">
     </div>
   </div>
 </div>

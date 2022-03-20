@@ -1,72 +1,41 @@
-<html>
-
-<!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <title>Crime Pay - Prison</title>
-  <%- include('../default/head'); %>
-
-  <link rel="stylesheet" href="/css/prison.css">
-  <script src="/js/prison.js"></script>
-</head>
-
+<%- include('../default/head', {pageTitle: word.PRISON, css: 'prison', js:'prison'}); %>
 
 <body>
-
   <div class="container">
-
     <div class="flex-container">
-
       <div class="flex-left">
         <%- include('../partials/player-status'); %>
       </div>
 
       <div class="flex-painel content">
-
         <div class="card max">
           <%- include('../partials/menu', {nav_prison:true}); %>
-
           <div class="card-body">
-
-            <h5 class="card-title">Welcome to Prison</h5>
-            <p class="card-text text-secondary">Prison is a place for weak criminals, who didn't succeed
-              and got caught by the cops. </br>If you are arrested, pay your jail time and be
-              released. Or try your luck bribing a jailer to let you go.</p>
-
+            <h5 class="card-title"><%=text.PRISON.PAGE_TITLE%></h5>
+            <p class="card-text text-secondary"><%=player.lifeImprisonment ? text.PRISON.LIFE_IMPRESIONMENT_EXPLANATION : text.PRISON.DEFAULT_EXPLANATION %></p>
             <p class="card-text text-secondary">
-
-
-              <%if (player.arrested){
-                
-                if (!player.arrestRelease){%>
-              You got for life prison. It was a pleasure to capture you and lock you in forever. The streets are at peace without you.
-              <%}else{%>
-              You got arrested and will be released from prison
+              <%=!player.lifeImprisonment ? player.arrested ? text.PRISON.ARRESTED_TEXT: text.PRISON.NOT_ARRESTED_TEXT : ''%>
               <span id="releaseTime">
-                <%=player.arrestRelease.toDateDisplay()%>.
+                <%=player.arrestRelease?.toDateDisplay()%>
               </span>
+            </p>
 
-              <%}}else{%>
-              Enjoy your time out of prison. Be careful not to get caught and end up here.
-              <%}%>
-                            </p>
-
-                            <div class="flex-container flex-inline">
-                                <%if (player.arrested){%>
+            <div class="flex-container flex-inline">
+              <%if (player.arrested){%>
+              <%if (player.lifeImprisonment){%>
+              <%- include('../partials/prison-for-life'); %>
+              <%}else{%>
 
               <%- include('../partials/prison-escape'); %>
               <%- include('../partials/prison-bribe'); %>
 
-              <%}%>
-
+              <%}}%>
               <%- include('../partials/prison-free'); %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
 </body>
-
 
 </html>

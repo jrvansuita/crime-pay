@@ -4,12 +4,12 @@
   
   var disableText = null;
 
-  if (locals?.noStamina) disableText = 'Out Of Stamina!';
-  if (locals?.fullStamina) disableText = "Full Of Stamina";
-  if (locals?.fullIntoxicated) disableText = "Full Intoxicated";
-  if (locals?.arrested) disableText = "Arrested";
-  if (locals?.insufficientCoins) disableText = "Insufficient Coins";
-  if (locals?.forLifePrison) disableText = "Life Imprisonment";
+  if (locals?.noStamina) disableText = word.OUT_OF_STAMINA;
+  if (locals?.fullStamina) disableText = word.FULL_OF_STAMINA;
+  if (locals?.intoxicated) disableText = word.INTOXICATED;
+  if (locals?.arrested) disableText = word.ARRESTED;
+  if (locals?.insufficientCoins) disableText = word.INSUFFICIENT_COINS;
+  if (locals?.lifeImprisonment) disableText = word.LIFE_IMPRISONMENT;
 
   %>
 
@@ -24,22 +24,21 @@
   <%}else{%>
 
   <%if (locals?.href){%>
-  <a href="<%=locals?.href%>" class="btn btn-primary"><%=locals?.buttonText%></a>
+  <a href="<%=locals?.href%>" class="btn btn-primary"><%=locals?.text%></a>
   <%}else{%>
-  <button class="btn btn-primary" type="button" id="<%=locals?.buttonId%>">
+  <button class="btn btn-primary" type="button" id="<%=locals?.id%>">
     <%if (locals?.loadingButton){%>
     <span class="spinner-border spinner-border-sm no-display" role="status" aria-hidden="true"></span>
     <span class="no-display">Loading...</span>
     <%}%>
-              
-              <span class="button-text"><%=locals?.buttonText%></span>
+              <span class="button-text"><%=locals?.text%></span>
   </button>
   <%}%>
   <%}%>
 
   <%if (locals?.showQuote || locals?.quoteText){%>
   <blockquote class="blockquote mb-0">
-    <footer class="blockquote-footer">
+    <footer class="blockquote-footer" data-def="<%=locals?.quoteDefault%>">
       <%=locals?.quoteText%>
     </footer>
   </blockquote>

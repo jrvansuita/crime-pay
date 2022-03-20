@@ -26,21 +26,21 @@ class PrisonLayoutManager {
     }
 
     attemptHasFailed({ player, newAttempt }) {
-
-        const newArrestDate = ;
-
         const escapeData = newAttempt.escape.data;
         const bribeData = newAttempt.bribe.data;
 
         $('#releaseTime').text(player.arrestRelease.toDateDisplay());
-        $('#escape-coins').text(escapeData.coins?.format());
-        $('#escape-stamina').text(Math.abs(escapeData.stamina) + ' %').parent().toggle(Math.abs(escapeData.stamina) > 0);
-        $('#escape-respect').text("+ " + escapeData.respect?.format());
-        $('#escape-chance').text(newAttempt.escape.escapeChance + ' %');
-        $('#escape-holder .blockquote-footer').text("Adding + " + newAttempt.escape.daysIncOnFail + " jail day when fail.").toggle(newAttempt.escape.daysIncOnFail);
+        $('#escape-coins').text(escapeData.coins?.sign());
+        $('#escape-stamina').text(escapeData.stamina.abs() + '%').parent().toggle(escapeData.stamina.abs().positive());
+        $('#escape-respect').text(escapeData.respect?.sign());
+        $('#escape-chance').text(newAttempt.escape.escapeChance + '%');
+
+        let quoteUnformated = $('#escape-holder .blockquote-footer').data('def');
+
+        $('#escape-holder .blockquote-footer').text(quoteUnformated.format(newAttempt.escape.daysIncOnFail)).toggle(newAttempt.escape.daysIncOnFail);
 
         $('#bribe-coins').text(bribeData.coins?.format());
-        $('#bribe-stamina').text(Math.abs(bribeData.stamina) + ' %').parent().toggle(Math.abs(bribeData.stamina) > 0);
+        $('#bribe-stamina').text(bribeData.stamina.abs() + '%').parent().toggle(bribeData.stamina.abs().positive());
         $('#bribe-respect').text("+ " + bribeData.respect?.format());
 
     }

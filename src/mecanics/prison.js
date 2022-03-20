@@ -1,6 +1,6 @@
 const PlayerController = require("../controller/player");
 const EventController = require('../controller/event');
-const { PRISON_ESCAPE, PRISON_BRIBE } = require("../const/constants");
+const { PRISON_ESCAPE, PRISON_BRIBE } = require("../const/phrase");
 const { EscapeAttempt, BribeAttempt } = require("../actions/prison-release-attempt");
 
 

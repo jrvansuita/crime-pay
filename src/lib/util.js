@@ -42,21 +42,96 @@ const Util = {
 
 const Protos = () => {
 
+    String.prototype.image = function (folder = '', extension = 'jpg') {
+        return "/img/" + folder + '/' + this.toLowerCase().trim().replaceAll(" ", "-") + '.' + extension;
+    }
+
+    String.prototype.plus = function () {
+        return '+' + this;
+    }
+
+    String.prototype.minus = function () {
+        return '-' + this;
+    }
+
+    String.prototype.percent = function () {
+        return this + '%';
+    }
+
     String.prototype.replaceAll = function (search, replacement) {
         return this.replace(new RegExp(search, 'g'), replacement)
+    }
+
+    String.prototype.joinBefore = function (str, n = 0) {
+        return str.toString().space(n) + this;
+    }
+
+    String.prototype.space = function (n = 1) {
+        return this + ' '.repeat(n)
+    }
+
+    String.prototype.concat = function (str, n = 1, char = ' ') {
+        return this.join(str, n = 1, char = ' ');
+    }
+
+    String.prototype.join = function (str, n = 0, char = ' ') {
+        return this + char.repeat(n) + str;
+    }
+
+    String.prototype.format = function () {
+        return [...arguments].reduce((p, c) => p.replace(/%s/, c), this);
+    };
+
+    String.prototype.array = function () {
+        return [this]
+    }
+
+    Array.prototype.array = function () {
+        return this;
     }
 
     Array.prototype.randomOne = function () {
         return this[Math.floor(Math.random() * this.length)];
     }
 
-    // Array.prototype.contains = (a, str) => {
-    //     str = str.toString().toLowerCase();
-    //     return a.some(each => { return str.includes(each.toString().toLowerCase()); });
-    // }
+    Number.prototype.positive = function () {
+        return this > 0;
+    }
 
-    Number.prototype.format = function () {
-        return new Intl.NumberFormat().format(this);
+    Number.prototype.negative = function () {
+        return this < 0;
+    }
+
+    Number.prototype.greater = function (n) {
+        return this > n;
+    }
+
+    Number.prototype.smaller = function (n) {
+        return this < n;
+    }
+
+    Number.prototype.plus = function () {
+        return '+' + this;
+    }
+
+    Number.prototype.minus = function () {
+        return '-' + this;
+    }
+
+    Number.prototype.percent = function () {
+        return this + '%';
+    }
+
+    Number.prototype.format = function (def = 0, pre = '', su = '') {
+        return this != 0 && !!this ? pre + new Intl.NumberFormat().format(this) + su : def;
+    }
+
+    Number.prototype.sign = function () {
+        return this > 0 ? this.format().plus() : this.format()
+    }
+
+    Number.prototype.abs = function () {
+        return Math.abs(this);
     }
 
     Number.prototype.between = function (a, b) {

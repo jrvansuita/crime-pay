@@ -1,7 +1,7 @@
 const HookerController = require("../controller/hooker");
 const EventController = require('../controller/event');
 const PlayerController = require("../controller/player");
-const constants = require('../const/constants');
+const Phrase = require('../const/phrase');
 const HookerAttempt = require("../actions/hooker-attempt");
 
 
@@ -19,7 +19,7 @@ module.exports = class ClubMecanics {
 
             return this.playerController.update(player._id, playerUpdate).then((updatedPlayer) => {
 
-                return EventController.clubHooker(player._id, playerUpdate, hookerId, playerUpdate.stamina > 0, constants.CLUB_HOOKER)
+                return EventController.clubHooker(player._id, playerUpdate, hookerId, playerUpdate.stamina > 0, Phrase.CLUB_HOOKER)
                     .then((event) => {
                         return { event: event, player: updatedPlayer }
                     })

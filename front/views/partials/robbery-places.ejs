@@ -1,8 +1,12 @@
 <% places.forEach((place)=>{%>
 
-<%- include('../single/mini-card-item', { key : place._id, name : place.name, img : "/img/places/" +
-        place.name.toLowerCase().trim().replaceAll(" ", "-") + ".jpg" , title:place.staminaCost + ' Stamina' , badgeText:
-        place.successChance + '%' }); %>
+
+<%- include('../single/mini-card-item', { key : place._id, 
+                                          name : place.name, 
+                                          img : place.name.image('places'), 
+                                          title: place.staminaCost.format().concat(word.STAMINA), 
+                                          badgeText: place.successChance.percent()
+                                        }); %>
 
 <%- include('../placeholders/mini-card-item.html'); %>
 

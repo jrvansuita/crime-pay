@@ -1,6 +1,5 @@
 class FormControl {
 
-
     setKey(key) {
         this.key = key
         return this;

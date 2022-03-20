@@ -1,83 +1,47 @@
-<html>
-
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>Crime Pay - Club</title>
-  <%- include('../default/head'); %>
+<%- include('../default/head', {pageTitle: word.CLUB, css: 'club', js:['club','lib/mini-cards','lib/form-control']}); %>
 
-  <script src="/js/lib/mini-cards.js"></script>
-  <script src="/js/lib/form-control.js"></script>
-  <link rel="stylesheet" href="/css/club.css">
-  <script src="/js/club.js"></script>
-
-  <script>
-    window.lastClubItemSelected = '<%= session.lastClubItemSelected %>'
-  </script>
-</head>
+<script>
+  window.lastClubItemSelected = '<%= session.lastClubItemSelected %>'
+</script>
 
 <body>
-
-
-
   <div class="container">
-
     <div class="flex-container">
-
       <div class="flex-left">
-
         <%- include('../partials/player-status'); %>
       </div>
 
       <div class="flex-painel content">
-
         <div class="card max">
           <%- include('../partials/menu', {nav_club:true}); %>
 
           <div class="card-body">
-
-            <h5 class="card-title">Welcome to the Night Club</h5>
-            <p class="card-text text-secondary">In the club everything is possible. Nobody cares for
-              you.
-              </br> You can fuck some chicks or drug yourself until you good.
-              Be careful, there are some fake and traitor hookers that
-              can steal you coins or even take you to prison.
-            </p>
+            <h5 class="card-title"><%=text.CLUB.PAGE_TITLE%></h5>
+            <p class="card-text text-secondary"><%=text.CLUB.DEFAULT_EXPLANATION%></p>
 
             <div class="mini-card-scroll-area">
-              <div class="hookers-holder mini-card-scroll-items">
-                <%- include('../placeholders/mini-card-item.html', {count : 6}); %>
-              </div>
-
+              <div class="hookers-holder mini-card-scroll-items"> <%- include('../placeholders/mini-card-item.html', {count : 6}); %> </div>
             </div>
 
             <div class="flex-container">
-
               <div class="flex-painel">
-
                 <div class="mini-card-scroll-area">
                   <div class="drugs-holder mini-card-scroll-items">
-
                     <%- include('../placeholders/mini-card-item.html', {count : 5}); %>
                   </div>
                 </div>
               </div>
 
               <div class="flex-right">
-
                 <div class="club-form-placeholder card-flat">
                   <%- include('../placeholders/form.html'); %>
                 </div>
 
-                <div class="club-form-holder card-flat">
-
-                </div>
-
-
+                <div class="club-form-holder card-flat"> </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>

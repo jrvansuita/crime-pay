@@ -19,7 +19,6 @@ module.exports = class RouteRules {
 
 
 
-
 class Rules {
 
     constructor(app) {

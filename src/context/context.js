@@ -1,3 +1,5 @@
+
+
 module.exports = class Context {
     constructor(dir) {
         this.dir = dir;
@@ -10,7 +12,7 @@ module.exports = class Context {
         this.bindBodyParser();
         this.defineFavIcon();
         this.bindCompression();
-        this.bindLocalLibs();
+        this.bindLocalsUtils();
         this.bindMinify();
         this.exposeStaticFiles();
 
@@ -70,8 +72,12 @@ module.exports = class Context {
         }
     }
 
-    bindLocalLibs() {
+    bindLocalsUtils() {
         this.app.locals.moment = require('moment');
+        this.app.locals.word = require('../const/word');
+        this.app.locals.phrase = require('../const/phrase');
+        this.app.locals.text = require('../const/text');
+
     }
 
     getCacheTime() {

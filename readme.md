@@ -50,9 +50,9 @@ Next implementations:
 - [x] restore 1 stamina point every hour
 - [x] clear 1 intoxication point every hour
 - [x] the player gets for life prison when all attributes became 0 (Character loss)
-- [ ] Keep Player data on session
+- [x] Keep Player data on session
 - [ ] Same Hookers need to stay in club for at least 3 min
-- [ ] auto redirect to prison when in life imprisionament (Need Fix Player Session First)
+- [x] auto redirect to prison when in life imprisionament (Need Fix Player Session First)
 - [ ] settings option for player avatar and name update
 - [ ] use full stamina option on robbery
 
@@ -67,6 +67,7 @@ Next implementations:
 #### Code & Deploy
 - [x] install code optmization github plugin 
 - [x] heroku instance for preview and tests
+- [x] centralized strings (Messages, texts, words, etc)
 - [ ] test automation with jest
 - [x] custom not found page
 - [x] minify and compress static files

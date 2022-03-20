@@ -1,4 +1,4 @@
-const constants = require('../const/constants');
+const phrase = require('../const/phrase');
 const PlayerUpdateModel = require('../model/player-update-model');
 const { Num } = require('../lib/util');
 
@@ -18,10 +18,10 @@ module.exports = class HookerAttempt {
 
         return new PlayerUpdateModel(this.player)
             .validate((player, model) => {
-                model.check(player.arrested, constants.PLAYER_ARRESTED)
-                    .check(player.coins < this.hooker.coins, constants.INSUFFICIENT_COINS)
-                    .check(player.stamina == 100, constants.FULL_STAMINA)
-                    .check(player.intoxication == 100, constants.FULL_INTOXICATION)
+                model.check(player.arrested, phrase.PLAYER_ARRESTED)
+                    .check(player.coins < this.hooker.coins, phrase.INSUFFICIENT_COINS)
+                    .check(player.stamina == 100, phrase.FULL_STAMINA)
+                    .check(player.intoxication == 100, phrase.FULL_INTOXICATION)
             })
             .setArrested(jailed)
             .setCoins(this.hooker.coins, false, 0, false, true)

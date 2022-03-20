@@ -25,6 +25,10 @@ class Toast {
         new bootstrap.Toast(_item).show();
     }
 
+    pop(msg, success) {
+        return success ? this.success(msg) : this.error(msg);
+    }
+
     error(msg) {
         this.show(msg, 'danger');
     }

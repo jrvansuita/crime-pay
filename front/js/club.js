@@ -1,6 +1,4 @@
 
-
-
 $(document).ready(() => {
     var miniCards = new MiniCards();
 

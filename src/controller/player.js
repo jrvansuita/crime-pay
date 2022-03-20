@@ -1,6 +1,6 @@
 const Controller = require("./controller");
 const WeaponController = require("./weapon");
-const { PLAYER_NOT_FOUND } = require('../const/constants');
+const { PLAYER_NOT_FOUND } = require('../const/phrase');
 
 
 module.exports = class PlayerController extends Controller {
@@ -50,7 +50,8 @@ module.exports = class PlayerController extends Controller {
 
     update(playerId, model) {
         const data = getDataFromModel(model);
-        return super.modify(playerId, { $inc: data.inc, $set: data.set });
+        return super.modify(playerId, { $inc: data.inc, $set: data.set })
+            .then(player => { return this.setVirtualAttributes(player) });
     }
 
     set(playerId, model) {

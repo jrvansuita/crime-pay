@@ -33,33 +33,27 @@ class RobberyLayoutManager {
         const event = data.event;
 
         $('#result-list').hide().fadeIn();
-        $('#result-title').text(data.player.arrested ? "You're under arrest!" : 'You were successful!')
+        $('#result-title').text(data.player.arrested ? $('#result-title').data('fail') : $('#result-title').data('success'))
 
-        if (data.player.arrested) {
-            window.toast.error(data.event.message);
-        } else {
-            window.toast.success(data.event.message);
-        }
+        window.toast.pop(data.event.message, !data.player.arrested);
 
         $('#result-message').text(event.message)
 
-        let sign = n => { return n > 0 ? '+ ' + n.format() : n.format() }
-
-        $('#result-img').attr('src', (event.success ? '/img/thief-success' : '/img/police-arrested') + '.png');
-        $('#result-coins').text(sign(event.playerUpdate.coins)).parent().toggle(!!event.playerUpdate.coins);
-        $('#result-respect').text(sign(event.playerUpdate.respect)).parent().toggle(!!event.playerUpdate.respect);
-        $('#result-intelligence').text(sign(event.playerUpdate.intelligence));
-        $('#result-dexterity').text(sign(event.playerUpdate.dexterity));
-        $('#result-strength').text(sign(event.playerUpdate.strength));
+        $('#result-img').attr('src', ('/img/'.join(event.success ? 'thief-success' : 'police-arrested').join('.png')));
+        $('#result-coins').text(event.playerUpdate.coins.sign()).parent().toggle(!!event.playerUpdate.coins);
+        $('#result-respect').text(event.playerUpdate.respect.sign()).parent().toggle(!!event.playerUpdate.respect);
+        $('#result-intelligence').text(event.playerUpdate.intelligence.sign());
+        $('#result-dexterity').text(event.playerUpdate.dexterity.sign());
+        $('#result-strength').text(event.playerUpdate.strength.sign());
     }
 
 
     toggleArrestInfo(data) {
         $('#result-list').parent().removeClass('text-end');
         $('#result-prison').css('display', data.player.arrested ? '-webkit-box' : 'none');
-        $('.robbery-result-holder').find('.blockquote-footer').text(data.player.arrestRelease?.toDateDisplay('Released '))
+        const defQuote = $('.robbery-result-holder').find('.blockquote-footer').data('def');
 
-        if (data.player.arrested && !data.player.arrestRelease) window.location.replace("/prison");
+        $('.robbery-result-holder').find('.blockquote-footer').text(data.player.arrestRelease?.toDateDisplay(defQuote + ' '))
     }
 
 }

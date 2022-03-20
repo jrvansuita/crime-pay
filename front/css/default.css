@@ -251,3 +251,7 @@ body {
 .rounded-corners {
     border-radius: 5px;
 }
+
+.card-text.text-secondary {
+    max-width: 50em;
+}

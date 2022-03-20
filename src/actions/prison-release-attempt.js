@@ -1,5 +1,5 @@
 const moment = require("moment");
-const constants = require('../const/constants');
+const phrase = require('../const/phrase');
 const PlayerUpdateModel = require('../model/player-update-model');
 const { Num } = require('../lib/util');
 const { EventTypes } = require("../model/event-model");
@@ -17,10 +17,10 @@ class PrisonReleaseAttempt {
         this.stamina = 100;
 
         this.data.validate((player, model) => {
-            model.check(!player.arrested, constants.PLAYER_NOT_ARRESTED)
-                .check(player.arrestRelease == null, constants.FOR_LIFE_PRISON)
-                .check(player.stamina < Math.abs(model.stamina), constants.OUT_OF_STAMINA)
-                .check(player.coins < Math.abs(model.coins), constants.INSUFFICIENT_COINS)
+            model.check(!player.arrested, phrase.PLAYER_NOT_ARRESTED)
+                .check(player.arrestRelease == null, phrase.FOR_LIFE_PRISON)
+                .check(player.stamina < Math.abs(model.stamina), phrase.OUT_OF_STAMINA)
+                .check(player.coins < Math.abs(model.coins), phrase.INSUFFICIENT_COINS)
         })
     }
 

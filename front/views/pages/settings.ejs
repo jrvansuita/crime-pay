@@ -1,15 +1,6 @@
-<html>
-
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>Crime Pay - Settings</title>
-  <%- include('../default/head'); %>
-
-  <script src="/js/settings.js"></script>
-
-</head>
+<%- include('../default/head', {pageTitle: word.SETTINGS, js:'settings'}); %>
 
 <body>
   <div class="container">
@@ -23,7 +14,7 @@
 
           <div class="card-body">
 
-            <h5 class="card-title">Settings</h5>
+            <h5 class="card-title"><%=word.SETTINGS%></h5>
 
             <div class="col-md-2">
               <label class="form-label">Reset Player Stats (Testing Porpouses)</label>

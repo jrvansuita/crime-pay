@@ -1,4 +1,4 @@
-const constants = require('../const/constants');
+const prahse = require('../const/phrase');
 const PlayerUpdateModel = require('../model/player-update-model');
 const { Num } = require('../lib/util');
 
@@ -13,9 +13,9 @@ module.exports = class RobberyAttempt {
         const success = Num.lucky(100) <= this.place.successChance;
 
         return new PlayerUpdateModel(this.player).validate((player, model) => {
-            model.check(player.arrested, constants.PLAYER_ARRESTED)
-                .check(player.stamina < this.place.staminaCost, constants.OUT_OF_STAMINA)
-                .check(this.place.successChance == 0, constants.ROBBERY_ZERO_CHANCES)
+            model.check(player.arrested, prahse.PLAYER_ARRESTED)
+                .check(player.stamina < this.place.staminaCost, prahse.OUT_OF_STAMINA)
+                .check(this.place.successChance == 0, prahse.ROBBERY_ZERO_CHANCES)
         })
             .setArrested(!success)
             .setCoins(success ? this.place.coinsReward : this.place.coinsLoss, success)

@@ -1,62 +1,32 @@
 <div class="card-flat">
   <div id="escape-holder" class="row">
     <div class="col-4">
-      <h6 class="card-title">
-        Why not try to escape?
-      </h6>
-      <p class="card-text">Hi Buddy, I can help you get out from here!</p>
-
-      <img src=" /img/prisoner.png" class="card-img-top medium-img" alt="police">
+      <h6 class="card-title"><%=text.PRISON.TRY_ESCAPE%></h6>
+      <p class="card-text"><%=text.PRISON.SOME_GUY_HELP%></p>
+      <img src=" /img/prisoner.png" class="card-img-top medium-img" />
     </div>
 
     <div class="col-8">
+      <%- include('../single/label-item', { id: 'escape-coins', text: word.COINS_COST,  icon: 'coin', showOnlyIf : escape.data.coins.abs().positive(), value: escape.data.coins.format()}); %>
 
-      <%if (Math.abs(escape.data.coins)> 0){%>
-      <div class="input-group">
-        <span class="form-control">Coins Cost</span>
-        <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt="Coin"></span>
-        <span id="escape-coins" class="input-group-text">
-          <%=escape.data.coins.format()%>
-        </span>
-      </div>
-      <%}%>
+      <%- include('../single/label-item', { id: 'escape-respect', text: word.RESPECT_REWARD,  icon: 'respect-star', showOnlyIf : escape.data.respect.abs().positive(), value: escape.data.respect.sign()}); %>
 
-      <%if (escape.data.respect> 0){%>
-      <div class="input-group">
-        <span class="form-control">Respect Reward</span>
-        <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png"></span>
-        <span id="escape-respect" class="input-group-text">
-          + <%=escape.data.respect.format()%>
-        </span>
-      </div>
-      <%}%>
+      <%- include('../single/label-item', { id: 'escape-chance', text: word.ESCAPE_CHANCE,  icon: 'lucky', value: escape.escapeChance.percent()}); %>
 
-      <div class="input-group">
-      <span class="form-control">Escape Chance</span>
-      <span class="input-group-text"><img class="mini-img" src="/img/lucky.png"></span>
-      <span id="escape-chance" class="input-group-text">
-          <%=escape.escapeChance%> %
-      </span>
+      <%- include('../single/label-item', { id: 'escape-stamina', text: word.STAMINA_COST,  icon: 'stamina', showOnlyIf : escape.data.stamina.abs().positive(), value: escape.data.stamina.abs().percent()}); %>
+
+
+      <%- include('../single/button', { id: 'escape', 
+                                        text: word.ESCAPE,  
+                                        quoteText: text.PRISON.ADDING_DAYS_JAIL.format(escape?.daysIncOnFail, null), 
+                                        quoteDefault : text.PRISON.ADDING_DAYS_JAIL,
+                                        loadingButton : true, 
+                                        insufficientCoins: escape.data.coins.abs().greater(player.coins), 
+                                        noStamina: escape.data.stamina.abs().greater(player.stamina), 
+                                        lifeImprisonment: player.lifeImprisonment 
+                                     }); %>
+
     </div>
-
-
-    <%if (Math.abs(escape.data.stamina)> 0){%>
-    <div class="input-group">
-      <span class="form-control">Stamina Cost</span>
-      <span class="input-group-text"><img class="mini-img" src="/img/stamina.png"></span>
-      <span id="escape-stamina" class="input-group-text">
-        <%=Math.abs(escape.data.stamina)%> %
-      </span>
-    </div>
-    <%}%>
-
-
-    <%const daysIncText = escape?.daysIncOnFail ? "Adding + " + escape?.daysIncOnFail + " jail day when fail." : null; %>
-
-    <%- include('../single/button', { buttonId: 'escape', buttonText: 'Escape',  quoteText: daysIncText, loadingButton:true, insufficientCoins: player.coins < Math.abs(escape.data.coins), noStamina: player.stamina < Math.abs(escape.data.stamina), forLifePrison: (player.arrested && !player.arrestRelease)  }); %>
-
 
   </div>
-
-</div>
 </div>

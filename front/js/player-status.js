@@ -3,11 +3,15 @@ class PlayerStatusUpdater {
 
     constructor(player) {
         this.player = player;
+
+        if (player.lifeImprisonment) {
+            window.location.replace("/prison");
+        }
     }
 
     badge() {
         $('.player-badge-img').attr('src', this.player.arrested ? '/img/lock.png' : '/img/respect-star.png')
-        $('#player-badge-text').text(this.player.arrested ? 'Arrested' : this.player.respect.format());
+        $('#player-badge-text').text(this.player.arrested ? $('#player-badge-text').data('def') : this.player.respect.format());
         $('#player-badge-text').parent().toggleClass('bg-danger', this.player.arrested);
 
         return this;
@@ -33,8 +37,6 @@ class PlayerStatusUpdater {
         $('#status-strength').text(this.player.strength.format());
         return this;
     }
-
-
 
     all() {
         this.badge().coins().bars().attributes()

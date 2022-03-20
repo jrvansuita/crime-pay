@@ -1,68 +1,35 @@
 <div class="row align-items-center">
-  <h6 class="card-title">
-    Wanna try <%=data.name%>?
-  </h6 s>
+  <h6 class="card-title"><%=text.CLUB.WANNA_TRY.format(data.name)%></h6>
 
-  <div class="input-group">
-    <span class="form-control">Coins Cost</span>
-    <span class="input-group-text"><img class="mini-img" src="/img/coin.png" alt=""></span>
-    <span class="input-group-text">
-      <%=Math.abs(data.coins) > 0 ? '- ' + Math.abs(data.coins).format() : 'Free'%>
-    </span>
-  </div>
+  <%- include('../single/label-item', { text: word.COINS_COST,  icon: 'coin', value: data?.coins.format(word.FREE, '-')}); %>
+
+  <%- include('../single/label-item', { text: word.RESPECT_REWARD,  icon: 'respect-star', showOnlyIf : data?.respect.abs().positive(), value: data.respect.sign()}); %>
+
+  <%- include('../single/label-item', { text: word.STAMINA_RESTORED,  icon: 'stamina', value: data?.stamina.percent() }); %>
+
+  <%- include('../single/label-item', { text: word.INTOXICATION,  icon: 'intoxication', value: data?.intoxication.percent() }); %>
 
 
-  <%if (Math.abs(data.respect)> 0){%>
-  <div class="input-group">
-    <span class="form-control">Respect Change</span>
-    <span class="input-group-text"><img class="mini-img" src="/img/respect-star.png" alt=""></span>
+  <div class="col-12">
 
-    <span class="input-group-text">
-      + <%=data.respect.format()%>
-    </span>
-  </div>
-
-  <%}%>
-
-  <div class="input-group">
-    <span class="form-control">Stamina Restored</span>
-    <span class="input-group-text"><img class="mini-img" src="/img/stamina.png" alt=""></span>
-    <span class="input-group-text">
-      <%=data.stamina%>%
-  </span>
-</div>
-
-<div class="input-group">
-  <span class="form-control">Intoxication Increase</span>
-  <span class="input-group-text"><img class="mini-img" src="/img/intoxication.png" alt=""></span>
-  <span class="input-group-text">
-    <%=data.intoxication%>%
-  </span>
-</div>
-
-
-
-<div class="col-12">
-
-  <%
+    <%
         
-  var failMessage = 'Zero chances to fail';
-  if (data.failChance) failMessage = data.failChance +  '% chance to fail';
-  if (data.jailChance) failMessage += ' and ' + data.jailChance + '% chance to go arrasted';
+  var failMessage = text.CLUB.CANT_FAIL;
+  if (data.failChance) failMessage = text.CLUB.FAIL_CHANCE.format(data.failChance);
+  if (data.jailChance) failMessage += text.CLUB.AND_ARREST_CHANCE.format(data.jailChance);
   
   failMessage +='.';
   %>
 
 
-  <%- include('../single/button', { buttonId: 'submit', 
-  buttonText: 'Enjoy the Vibe',  
-  quoteText: failMessage, 
-  loadingButton:true, 
-  arrested: player.arrested, 
-  insufficientCoins : player.coins < Math.abs(data.coins),
-  fullStamina: player.stamina ==100, 
-  fullIntoxicated: player.intoxication == 100}); %>
-
-
-</div>
+    <%- include('../single/button', { id: 'submit', 
+                                      text: text.CLUB.ACTION_BUTTON,  
+                                      quoteText: failMessage, 
+                                      loadingButton : true, 
+                                      arrested: player.arrested, 
+                                      insufficientCoins : player.coins.smaller(data.coins.abs()),
+                                      fullStamina: player.stamina == 100, 
+                                      intoxicated: player.intoxication == 100
+                                    }); %>
+  </div>
 </div>

@@ -1,10 +1,10 @@
 <ul class="nav nav-tabs">
 
   <%
-  let menuItems = ['Robbery', 'Prison' , 'Club' , 'Market' , 'Settings' ];
+  let menuItems = [word.ROBBERY, word.PRISON , word.CLUB , word.MARKET , word.SETTINGS ];
 
   
-  if (locals?.player?.lifeImprisonment) menuItems = ['Prison' , 'Settings'];
+  if (locals?.player?.lifeImprisonment) menuItems = [word.PRISON , word.SETTINGS];
 %>
 
   <%menuItems.forEach((each)=>{ %>

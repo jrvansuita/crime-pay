@@ -1,45 +1,24 @@
 <div class="row align-items-center">
   <div class="col text-end">
 
-    <h6 class="card-title" id="result-title">
-      I'm watching you!
-    </h6>
+    <h6 class="card-title" id="result-title" data-success="<%=text.ROBBERY.SUCCESS.randomOne()%>" data-fail="<%=text.ROBBERY.FAIL.randomOne()%>"><%=text.ROBBERY.WATCHING_YOU%></h6>
 
     <p class="card-text" id="result-message">
-      <%=player.arrested? "You're paying your time in prison." : "Behave yourself and I'll leave you alone." %>
+      <%=player.arrested? text.ROBBERY.PAYING_TIME_IN_PRISON : text.ROBBERY.BEHAVE_YOURSELF %>
     </p>
 
     <ul id="result-list" class=" list-group list-group-flush">
-      <li class="list-group-item">
-        <span id="result-coins">0</span> Coins
-      </li>
-
-      <li class="list-group-item">
-        <span id="result-respect">0</span> Respect
-      </li>
-
-      <li class="list-group-item">
-        <span id="result-intelligence">0</span> Intelligence
-      </li>
-      <li class="list-group-item">
-        <span id="result-dexterity">0</span> Dexterity
-      </li>
-      <li class="list-group-item">
-        <span id="result-strength">0</span> Strength
-      </li>
-
-
+      <li class="list-group-item"><span id="result-coins"></span> <%=word.COINS%></li>
+      <li class="list-group-item"> <span id="result-respect"></span> <%=word.RESPECT%></li>
+      <li class="list-group-item"><span id="result-intelligence"></span> <%=word.INTELLIGENCE%></li>
+      <li class="list-group-item"> <span id="result-dexterity"></span> <%=word.DEXTERITY%></li>
+      <li class="list-group-item"><span id="result-strength"></span> <%=word.STRENGTH%></li>
     </ul>
   </div>
   <div class="col" style="width: min-content;">
-
-
-    <img src="/img/police.png" id="result-img" class="card-img-top big-img" alt="Police">
-
+    <img src="/img/police.png" id="result-img" class="card-img-top big-img" />
     <div id="result-prison" style="display:<%=player.arrested ? '-webkit-box' : 'none'%>">
-
-      <%- include('../single/button', { href: '/prison', buttonText: 'Prison', showQuote: true,  quoteText: player.arrestRelease?.toDateDisplay('Released ')}); %>
-
+      <%- include('../single/button', { href: '/prison', text: word.PRISON, showQuote: true, quoteDefault : word.RELEASED.space(),  quoteText: player.arrestRelease?.toDateDisplay(word.RELEASED.space())}); %>
     </div>
   </div>
 </div>
