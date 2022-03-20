@@ -1,8 +1,6 @@
-
 const mongojs = require('mongojs')
-const PlaceScripts = require('./scripts/places');
-
-const Command = require('./commands')
+//const PlaceScripts = require('./scripts/places');
+//const Command = require('./commands')
 
 const db = mongojs(process.env.CONN_DB, [])
 

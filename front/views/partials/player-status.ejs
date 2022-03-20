@@ -27,8 +27,8 @@
 
       </h5>
 
-      <%- include('../single/progress-bar', { textId: 'status-stamina-percent', barId:'status-stamina', title: word.STAMINA, value: player.stamina }); %>
-      <%- include('../single/progress-bar', { textId: 'status-intoxication-percent', barId:'status-intoxication', title: word.INTOXICATION, value: player.intoxication }); %>
+      <%- include('../single/progress-bar', { textId: 'status-stamina-percent', barId:'status-stamina', colorClass: 'bg-success', title: word.STAMINA, value: player.stamina }); %>
+      <%- include('../single/progress-bar', { textId: 'status-intoxication-percent', barId:'status-intoxication', colorClass: 'bg-purple', title: word.INTOXICATION, value: player.intoxication }); %>
     </div>
 
 

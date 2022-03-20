@@ -1,4 +1,3 @@
-const PlayerController = require("../controller/player");
 const { Num } = require("../lib/util");
 
 module.exports = class HookerMath {

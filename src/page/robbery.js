@@ -1,10 +1,7 @@
 
 const RobberyMecanics = require("../mecanics/robbery");
 const PlaceController = require("../controller/place");
-const PlayerController = require("../controller/player");
 const Page = require("./page");
-
-
 
 module.exports = class RobberyPage extends Page {
 

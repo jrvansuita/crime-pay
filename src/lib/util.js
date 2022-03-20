@@ -71,7 +71,7 @@ const Protos = () => {
     }
 
     String.prototype.concat = function (str, n = 1, char = ' ') {
-        return this.join(str, n = 1, char = ' ');
+        return this.join(str, n, char);
     }
 
     String.prototype.join = function (str, n = 0, char = ' ') {
@@ -93,6 +93,11 @@ const Protos = () => {
     Array.prototype.randomOne = function () {
         return this[Math.floor(Math.random() * this.length)];
     }
+
+    Array.prototype.deepCopy = function () {
+        return JSON.parse(JSON.stringify(this));
+    }
+
 
     Number.prototype.positive = function () {
         return this > 0;

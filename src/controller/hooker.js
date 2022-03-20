@@ -1,11 +1,14 @@
-const Controller = require("./controller");
 const { Num } = require("../lib/util");
+const Controller = require("./controller");
 const HookerMath = require("../math/hooker-math");
+const Cache = require("../cache/cache");
+var hookerCache = {};
 
 module.exports = class HookerController extends Controller {
 
     constructor() {
         super('hooker');
+        this.hookerCache = new Cache(hookerCache);
     }
 
     details(hookerId, player) {
@@ -14,11 +17,15 @@ module.exports = class HookerController extends Controller {
         });
     }
 
+    findHookers() {
+        return this.hookerCache.has() ? Promise.resolve(this.hookerCache.get()) : this.all();
+    }
+
     for(player, loadAll = false) {
 
-        return this.all().then((hookers) => {
+        return this.findHookers().then((hookers) => {
 
-            if (!loadAll) {
+            if (!loadAll && !this.hookerCache.has()) {
                 hookers = hookers
                     //Draw positions based on rarity 
                     .filter((hooker) => { return Num.lucky(100) >= hooker.rarity; })
@@ -36,9 +43,13 @@ module.exports = class HookerController extends Controller {
                     .sort(() => Math.random() - 0.5)
                     //Get only firsts positions
                     .slice(0, 7)
+
+                this.hookerCache.set(hookers)
             }
 
             return hookers
+                //Deep Copy the array, to keep primitive values stored on cache
+                .deepCopy()
                 //Load all attributes
                 .map(hooker => { return new HookerMath(player, hooker).make() })
                 //Sort by coins cost

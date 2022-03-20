@@ -51,7 +51,7 @@ Next implementations:
 - [x] clear 1 intoxication point every hour
 - [x] the player gets for life prison when all attributes became 0 (Character loss)
 - [x] Keep Player data on session
-- [ ] Same Hookers need to stay in club for at least 3 min
+- [x] Same Hookers need to stay in club for at least 10 min
 - [x] auto redirect to prison when in life imprisionament (Need Fix Player Session First)
 - [ ] settings option for player avatar and name update
 - [ ] use full stamina option on robbery

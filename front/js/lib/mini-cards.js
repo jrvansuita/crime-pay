@@ -55,12 +55,21 @@ class MiniCards {
     onInnerCardSelected() {
         const self = this;
         return function () {
-            $(self.cardsSelector).removeClass('selected');
-            self.lastSelected = $(this).addClass('selected').data('key');
+            const currentSelected = $(this).data('key');
 
-            if (self.onCardSelected) {
-                self.onCardSelected(self.lastSelected);
+            if ((self.lastSelected !== currentSelected) || ($(self.cardsSelector).find('.selected').length == 0)) {
+
+                $(self.cardsSelector).removeClass('selected');
+                $(this).addClass('selected')
+
+                self.lastSelected = currentSelected;
+
+                if (self.onCardSelected) {
+                    self.onCardSelected(self.lastSelected);
+                }
             }
+
+            return true;
         }
     }
 
