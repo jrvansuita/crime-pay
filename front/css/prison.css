@@ -1,14 +1,12 @@
-#escape-holder, #bribe-holder{
+#escape-holder, #bribe-holder {
     width: -webkit-fill-available;
     min-width: 30em;
 }
 
-.card-flat{
+.card-flat {
     margin-top: 1em;
 }
 
-.card-flat:first-child{
+.card-flat:first-child {
     margin-right: 1.5em;
 }
-
-

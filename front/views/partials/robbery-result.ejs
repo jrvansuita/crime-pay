@@ -18,7 +18,7 @@
   <div class="col" style="width: min-content;">
     <img src="/img/police.png" id="result-img" class="card-img-top big-img" />
     <div id="result-prison" style="display:<%=player.arrested ? '-webkit-box' : 'none'%>">
-      <%- include('../single/button', { href: '/prison', text: word.PRISON, showQuote: true, quoteDefault : word.RELEASED.space(),  quoteText: player.arrestRelease?.toDateDisplay(word.RELEASED.space())}); %>
+      <%- include('../single/buttons/button-group', { href: '/prison', text: word.PRISON, showQuote: true, quoteDefault : word.RELEASED.space(),  quoteText: player.arrestRelease?.toDateDisplay(word.RELEASED.space())}); %>
     </div>
   </div>
 </div>

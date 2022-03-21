@@ -33,7 +33,7 @@ const Util = {
     },
 
     dateFormat: (value, concatString = '', defaultString = '') => {
-        return value && moment ? concatString + moment(value).calendar() : defaultString;
+        return value && moment ? concatString + moment(new Date(value)).calendar() : defaultString;
     }
 }
 

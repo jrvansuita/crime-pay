@@ -53,24 +53,24 @@ Next implementations:
 - [x] Keep Player data on session
 - [x] Same Hookers need to stay in club for at least 10 min
 - [x] auto redirect to prison when in life imprisionament (Need Fix Player Session First)
+- [x] use full stamina option on robbery
 - [ ] settings option for player avatar and name update
-- [ ] use full stamina option on robbery
-
 
 #### Visual
 - [x] remove visibility of 0% chance robberies
 - [x] remove visibility of 100% chance robberies (keep only 1)
 - [x] cool pixel img when success or fail robbery
+- [x] Tooltip on intoxication and stamina showing clearing rates
 - [ ] pixel art fonttypes
-- [ ] Tooltip on intoxication and stamina showing clearing rates
+
 
 #### Code & Deploy
 - [x] install code optmization github plugin 
 - [x] heroku instance for preview and tests
 - [x] centralized strings (Messages, texts, words, etc)
-- [ ] test automation with jest
 - [x] custom not found page
 - [x] minify and compress static files
+- [ ] test automation with jest
 
 
 ### Screenshot

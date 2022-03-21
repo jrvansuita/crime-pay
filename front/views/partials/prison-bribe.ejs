@@ -13,7 +13,7 @@
 
       <%- include('../single/label-item', { id: 'bribe-stamina', text: word.STAMINA_COST,  icon: 'stamina', showOnlyIf : bribe.data.stamina.abs().positive(), value: bribe.data.stamina.abs().percent()}); %>
 
-      <%- include('../single/button', { id: 'bribe', 
+      <%- include('../single/buttons/button-group', { id: 'bribe', 
                                         text: word.BRIBE,  
                                         quoteText: text.PRISON.GET_OUT_CHANCE.format(bribe.escapeChance), 
                                         loadingButton: true, 

@@ -1,0 +1,7 @@
+<%if (locals?.showQuote || locals?.quoteText){%>
+<blockquote class="blockquote mb-0">
+  <footer class="blockquote-footer" data-def="<%=locals?.quoteDefault%>">
+    <%=locals?.quoteText%>
+  </footer>
+</blockquote>
+<%}%>

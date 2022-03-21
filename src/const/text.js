@@ -25,6 +25,9 @@ module.exports = Object.freeze({
         PAYING_TIME_IN_PRISON: "You're paying your time in prison.",
         BEHAVE_YOURSELF: "Behave yourself and I'll leave you alone.",
         ACTION_BUTTON: 'Carry Out Theft',
+        STAMINA_TOOLTIP: 'Recovery 1 point every hour.',
+        INTOXICATION_TOOLTIP: 'Regenerate 1 point every hour.',
+        USE_FULL_STAMINA: 'Use Full Stamina',
         SUCCESS: ["The heist was successful!", 'You were successful!'],
         FAIL: ["You're under arrest!", "You went to jail!", "The heist failed, you're in prison."],
 

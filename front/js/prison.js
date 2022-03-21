@@ -2,6 +2,8 @@
 
 $(document).ready(function () {
     new PrisonLayoutManager().initialize();
+
+
 });
 
 class PrisonLayoutManager {
@@ -37,7 +39,7 @@ class PrisonLayoutManager {
 
         let quoteUnformated = $('#escape-holder .blockquote-footer').data('def');
 
-        $('#escape-holder .blockquote-footer').text(quoteUnformated.format(newAttempt.escape.daysIncOnFail)).toggle(newAttempt.escape.daysIncOnFail);
+        $('#escape-holder .blockquote-footer').text(quoteUnformated.format(newAttempt.escape.daysIncOnFail));
 
         $('#bribe-coins').text(bribeData.coins?.format());
         $('#bribe-stamina').text(bribeData.stamina.abs() + '%').parent().toggle(bribeData.stamina.abs().positive());

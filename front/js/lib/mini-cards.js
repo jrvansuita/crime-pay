@@ -1,7 +1,7 @@
 class MiniCards {
 
     constructor() {
-        this.setLoadDelay(400);
+        this.setLoadDelay(200);
     }
 
     setLastSelectedVar(lastSelectedVar) {

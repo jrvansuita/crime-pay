@@ -1,0 +1,12 @@
+<div class="btn-group">
+  <%- include('./button'); %>
+
+  <button type="button" class="btn <%=(locals?.colorClass || 'btn-primary')%> dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <% locals?.options.forEach((option)=>{%>
+    <li><button id="<%=option.id%>" class="dropdown-item" type="button"><%=option.text%></button></li>
+    <% }); %>
+  </ul>
+</div>

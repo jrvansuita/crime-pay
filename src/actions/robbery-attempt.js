@@ -9,14 +9,18 @@ module.exports = class RobberyAttempt {
         this.place = place;
     }
 
-    make() {
+    make(fullStamina) {
         const success = Num.lucky(100) <= this.place.successChance;
 
-        return new PlayerUpdateModel(this.player).validate((player, model) => {
-            model.check(player.arrested, prahse.PLAYER_ARRESTED)
-                .check(player.stamina < this.place.staminaCost, prahse.OUT_OF_STAMINA)
-                .check(this.place.successChance == 0, prahse.ROBBERY_ZERO_CHANCES)
-        })
+        const thefts = fullStamina ? Math.trunc(this.player.stamina / this.place.staminaCost) : 1;
+
+        return new PlayerUpdateModel(this.player)
+            .setMultiplier(thefts)
+            .validate((player, model) => {
+                model.check(player.arrested, prahse.PLAYER_ARRESTED)
+                    .check(player.stamina < this.place.staminaCost, prahse.OUT_OF_STAMINA)
+                    .check(this.place.successChance == 0, prahse.ROBBERY_ZERO_CHANCES)
+            })
             .setArrested(!success)
             .setCoins(success ? this.place.coinsReward : this.place.coinsLoss, success)
             .setRespect(this.place.respect, success)

@@ -21,7 +21,6 @@ class FormControl {
         return this;
     }
 
-
     showPlaceholder() {
         this.formPlaceholder.show();
         this.holder.hide();
@@ -38,10 +37,9 @@ class FormControl {
 
     toggleLoadingButton(show) {
         $(this.submitSelector).prop('disabled', show);
-        $(this.submitSelector + ' .no-display').css('display', show ? 'inherit' : 'none');
+        $(this.submitSelector + ' .no-display').css('display', show ? 'inline-block' : 'none');
         $(this.submitSelector + ' .button-text').toggle(!show);
     }
-
 
     setSubmitOptions(options) {
         return this.setSubmitSelector(options.submit)
@@ -59,6 +57,10 @@ class FormControl {
         return this;
     }
 
+    addSubmitItem(buttonId, path = '', extraData = {}) {
+        $(buttonId).click(this.onSubmit(path, extraData));
+    }
+
     setOnSuccess(onSuccess) {
         this.onSuccess = onSuccess;
         return this;
@@ -69,36 +71,35 @@ class FormControl {
         return this;
     }
 
-    onSubmit() {
+    onSubmit(path = '', extraData = {}) {
         return () => {
             this.toggleLoadingButton(true);
 
-            setTimeout(() => {
-                var data = this.onBuildSubmitPayload(this.key);
+            var data = { ...extraData, ...this.onBuildSubmitPayload(this.key) };
 
-                $.post(this.resultUrl, data).done((data) => {
-                    this.toggleLoadingButton(false);
-                    this.showPlaceholder()
-                    if (this.onSuccess) this.onSuccess(data);
+            $.post(path || this.resultUrl, data).done((data) => {
+                this.toggleLoadingButton(false);
+                this.showPlaceholder()
+                if (this.onSuccess) this.onSuccess(data);
 
-                }).fail((r) => {
-                    this.toggleLoadingButton(false);
-                    window.toast.error(r.responseText)
+            }).fail((r) => {
+                this.toggleLoadingButton(false);
+                window.toast.error(r.responseText)
 
-                    if (this.onFailed) this.onFailed(r);
-                });
-            }, 400);
+                if (this.onFailed) this.onFailed(r);
+            });
+
         }
     }
 
 
-    load() {
-        setTimeout(() => {
-            this.holder.load(this.formUrl + "?_id=" + this.key, () => {
-                this.onAfterLoad();
-                $(this.submitSelector).click(this.onSubmit());
-            });
-        }, 0);
+    load(onLoaded) {
+        this.holder.load(this.formUrl + "?_id=" + this.key, () => {
+            this.onAfterLoad();
+            $(this.submitSelector).click(this.onSubmit());
+
+            if (onLoaded) onLoaded(this.key)
+        });
 
         return this;
     }

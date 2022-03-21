@@ -8,6 +8,12 @@ body {
 .container {
     margin-top: 5em;
     min-width: 70%;
+    min-height: 100%;
+}
+
+.img-thumbnail {
+    min-width: 120px;
+    min-height: 120px;
 }
 
 .bg-purple {
@@ -23,7 +29,16 @@ body {
     line-height: 1.2;
 }
 
-.progress:not(:last-child) {
+.dropdown-toggle {
+    outline: none !important;
+    box-shadow: none !important
+}
+
+.progress-holder {
+    cursor: pointer;
+}
+
+.progress-holder:not(:last-child) {
     margin-bottom: 2em;
 }
 
@@ -101,6 +116,7 @@ body {
     margin-bottom: 10px;
     overflow-x: auto;
     overflow-y: hidden;
+    min-height: 250px;
 }
 
 .mini-card-scroll-items .translate-middle {

@@ -13,10 +13,10 @@ module.exports = class RobberyMecanics {
         this.eventController = new EventController();
     }
 
-    submit(placeId, player) {
+    submit(placeId, player, fullStamina) {
         return this.placeController.details(placeId, player).then((place) => {
 
-            var playerUpdate = new RobberyAttempt(player, place).make();
+            var playerUpdate = new RobberyAttempt(player, place).make(fullStamina);
 
             return this.playerController.update(player._id, playerUpdate).then((updatedPlayer) => {
 
@@ -27,4 +27,5 @@ module.exports = class RobberyMecanics {
             })
         })
     }
+
 }

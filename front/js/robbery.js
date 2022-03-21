@@ -1,4 +1,6 @@
 $(document).ready(() => {
+
+
     var miniCards = new MiniCards();
 
     var formControl = new FormControl()
@@ -22,7 +24,9 @@ $(document).ready(() => {
     miniCards.setUrl("/robbery-places")
         .setLastSelectedVar(lastPlaceItemSelected)
         .setHolderSelector(".places-holder")
-        .setOnCardSelected(key => formControl.setKey(key).load())
+        .setOnCardSelected(key => formControl.setKey(key).load(() => {
+            formControl.addSubmitItem('#submit-full-stamina', '', { fullStamina: true });
+        }))
         .load();
 });
 

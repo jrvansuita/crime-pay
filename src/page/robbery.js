@@ -26,7 +26,7 @@ module.exports = class RobberyPage extends Page {
         });
 
         this.post('/robbery-submit').then(({ player, req, res }) => {
-            return this.robberyMecanics.submit(req.body.placeId, player).then(result => res.send(result))
+            return this.robberyMecanics.submit(req.body.placeId, player, req.body.fullStamina).then(result => res.send(result))
         });
 
         this.get('/dev/robberies', false).then(({ req, res }) => {

@@ -13,6 +13,8 @@ module.exports = class PlayerUpdateModel {
         this.intelligence = 0;
         this.dexterity = 0;
         this.strength = 0;
+
+        this.multiplier = 1;
     }
 
     static build(player, coins, respect, stamina, intoxication, intelligence, dexterity, strength) {
@@ -24,6 +26,12 @@ module.exports = class PlayerUpdateModel {
             .setIntelligence(intelligence)
             .setDexterity(dexterity)
             .setStrength(strength)
+    }
+
+
+    setMultiplier(multiplier) {
+        this.multiplier = multiplier;
+        return this;
     }
 
     setArrested(arrested, arrestDays = 1) {
@@ -44,6 +52,8 @@ module.exports = class PlayerUpdateModel {
             if (checkPlayerLimit) {
                 value = Math.min(value, max - this.player[attr]);
             }
+
+            value = value * this.multiplier;
         } else {
             if (minOnDecrease) value = min;
 
@@ -53,6 +63,8 @@ module.exports = class PlayerUpdateModel {
 
             value = -value;
         }
+
+
 
         this[attr] = value;
         return this;
@@ -119,6 +131,7 @@ module.exports = class PlayerUpdateModel {
     get() {
         delete this.player;
         delete this.validations;
+        delete this.multiplier;
         return this
     }
 

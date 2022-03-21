@@ -11,11 +11,14 @@
 
   <%- include('../single/label-item', { text: word.SUCCESS_CHANCE,  icon: 'lucky', value: place.successChance.percent()}); %>
 
-  <%- include('../single/button', {id: 'submit', 
+  <%- include('../single/buttons/button-group', {id: 'submit', 
                                    text: text.ROBBERY.ACTION_BUTTON, 
                                    noStamina: player.stamina.smaller(place.staminaCost), 
                                    arrested: player.arrested, 
-                                   loadingButton: true
+                                   loadingButton: true,
+                                   options: [{text: text.ROBBERY.USE_FULL_STAMINA, id: 'submit-full-stamina'}]
                                    }); %>
+
+
 
 </div>
