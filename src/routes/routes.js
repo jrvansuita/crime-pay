@@ -4,6 +4,7 @@ const RobberyPage = require('../page/robbery');
 const SettingsPage = require('../page/settings');
 const MarketPage = require('../page/market');
 const RouteRules = require('./rules');
+const HistoricPage = require('../page/historic');
 
 module.exports = {
 
@@ -16,6 +17,7 @@ module.exports = {
         new PrisonPage(app).routes();
         new ClubPage(app).routes();
         new MarketPage(app).routes();
+        new HistoricPage(app).routes();
         new SettingsPage(app).routes();
 
         rules.end();

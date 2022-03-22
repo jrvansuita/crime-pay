@@ -1,5 +1,5 @@
 const prahse = require('../const/phrase');
-const PlayerUpdateModel = require('../model/player-update-model');
+const PlayerUpdateModel = require('../model/player-update');
 const { Num } = require('../lib/util');
 
 module.exports = class RobberyAttempt {

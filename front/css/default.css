@@ -3,13 +3,35 @@ body {
     background-repeat: repeat-x;
     background-position: bottom;
     background-color: #b8c8e0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
-.container {
+.main-content {
     margin-top: 5em;
     min-width: 70%;
-    min-height: 100%;
+    min-height: 100%
 }
+
+.flex-painel.content {
+    width: 100%;
+    min-width: 80em;
+}
+
+.flex-painel .card, .card-body {
+    height: -webkit-fill-available;
+    position: relative;
+}
+
+.flex-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
 
 .img-thumbnail {
     min-width: 120px;
@@ -54,10 +76,7 @@ body {
     display: none;
 }
 
-.flex-painel.content {
-    width: 100%;
-    min-width: 80em;
-}
+
 
 .badge.rounded-pill {
     display: flex;
@@ -73,13 +92,6 @@ body {
     vertical-align: middle;
     text-align: center;
     align-self: center;
-}
-
-.flex-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
 }
 
 .flex-inline {
@@ -227,9 +239,8 @@ body {
     margin-top: 6px;
 }
 
-.flex-painel .card {
-    height: 100%;
-}
+
+
 
 .blockquote-footer {
     margin-top: 0;

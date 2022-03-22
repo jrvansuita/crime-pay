@@ -1,0 +1,73 @@
+.historic-holder {
+    height: 42em;
+    width: 100%;
+    padding-right: 20px;
+    display: block;
+    padding-top: 12px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.historic-items, .historic-items>div {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.card-flat {
+    padding: 0 !important;
+    display: inline-flex;
+    margin-bottom: 16px;
+    margin-right: 16px;
+    min-height: 110px;
+}
+
+.card-flat .container {
+    padding-top: 6px;
+    padding-right: 18px;
+}
+
+
+.mini-img {
+    width: 16px;
+    height: 16px;
+}
+
+.color-marker {
+    width: 6px;
+    height: auto;
+    border-top-left-radius: 0.21rem;
+    border-bottom-left-radius: 0.21rem;
+}
+
+.color-marker.green {
+    background-color: #22b822;
+}
+
+.color-marker.red {
+    background-color: #fb4545;
+}
+
+.player-info-holder {
+    display: block;
+    margin-top: 12px;
+    width: 500px;
+}
+
+.player-info {
+    display: inline-block;
+    border-radius: 30px;
+    font-size: 10pt;
+    padding: 0px 12px;
+    border: 1px solid #d8d1d1;
+    margin-bottom: 6px;
+}
+
+.historic-title {
+    width: max-content;
+    max-width: 400px;
+}
+
+.event-date {
+    font-size: 11pt;
+}

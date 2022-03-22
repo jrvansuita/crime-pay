@@ -2,14 +2,14 @@
 <%- include('../default/head', {pageTitle: word.PRISON, css: 'prison', js:'prison'}); %>
 
 <body>
-  <div class="container">
+  <div class="container main-content">
     <div class="flex-container">
       <div class="flex-left">
         <%- include('../partials/player-status'); %>
       </div>
 
       <div class="flex-painel content">
-        <div class="card max">
+        <div class="card">
           <%- include('../partials/menu', {nav_prison:true}); %>
           <div class="card-body">
             <h5 class="card-title"><%=text.PRISON.PAGE_TITLE%></h5>
@@ -36,6 +36,8 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
 </body>
 
 </html>

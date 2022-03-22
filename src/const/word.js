@@ -20,6 +20,7 @@ module.exports = Object.freeze({
     ESCAPE_CHANCE: 'Escape Chance',
 
     RELEASED: 'Released',
+    RELEASE: 'Release',
 
     PRISON: 'Prison',
     HOME_PAGE: 'Home Page',
@@ -28,6 +29,7 @@ module.exports = Object.freeze({
     MARKET: 'Market',
     CLUB: 'Club',
     NIGHT_CLUB: 'Night Club',
+    HISTORIC: 'Historic',
     SETTINGS: 'Settings',
     ROBBERY_ATTEMPT: 'Robbery Attempt',
     COINS_REWARD: 'Coins Reward',

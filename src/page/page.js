@@ -25,7 +25,10 @@ module.exports = class Page {
                         req.session.player = player;
                         return result.resolve({ player, req, res, session: req.session });
                     })
-                    .catch(handleReject ? (e) => res.status(500).send(e.message) : result.reject(e));
+                    .catch(handleReject ? (e) => {
+                        console.error(e);
+                        res.status(500).send(e.message)
+                    } : result.reject(e));
             } else {
                 result.resolve({ req, res });
             }

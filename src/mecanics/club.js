@@ -4,7 +4,7 @@ const PlayerController = require("../controller/player");
 const Phrase = require('../const/phrase');
 const ClubAttempt = require("../actions/club-attempt");
 const DrugController = require("../controller/drug");
-const { EventTypes } = require("../model/event-model");
+const { EventTypes } = require("../model/event");
 
 
 module.exports = class ClubMecanics {

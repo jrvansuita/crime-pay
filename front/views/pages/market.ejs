@@ -3,14 +3,14 @@
 <%- include('../default/head', {pageTitle: word.MARKET, css: 'market', js:['market','lib/mini-cards','lib/form-control']}); %>
 
 <body>
-  <div class="container">
+  <div class="container main-content">
     <div class="flex-container">
       <div class="flex-left">
         <%- include('../partials/player-status'); %>
       </div>
 
       <div class="flex-painel content">
-        <div class="card max">
+        <div class="card">
           <%- include('../partials/menu', {nav_market:true}); %>
 
           <div class="card-body">
@@ -32,8 +32,6 @@
               <div class="flex-right">
 
 
-
-
               </div>
             </div>
 
@@ -41,7 +39,7 @@
         </div>
       </div>
     </div>
-
+  </div>
 </body>
 
 </html>

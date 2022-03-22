@@ -10,6 +10,7 @@ module.exports = Object.freeze({
     FOR_LIFE_PRISON: "You are serving life imprisonment!",
     NO_CACHE_STORAGE: "No cache storage defined.",
     CANT_FIND_ANYMORE: ["You took a long time to choose.", "Cant't find anymore.", "You lost the chance!", "Just reload the page!"],
+    GOT_ARRESTED: 'Got Arrested',
 
     ROBBERY: {
         SUCCESS: [

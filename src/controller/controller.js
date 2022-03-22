@@ -68,5 +68,13 @@ module.exports = class Controller {
             this.dataAccess.remove(query, this.promiseHandler(resolve, reject));
         });
     }
+
+    page(filter = {}, sort = {}, page = 0, count = 10) {
+        return new Promise((resolve, reject) => {
+            this.dataAccess.find(filter).limit(count).skip(page * count).sort(sort).toArray(this.promiseHandler(resolve, reject))
+        });
+
+
+    }
 }
 

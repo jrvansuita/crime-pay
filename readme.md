@@ -32,9 +32,9 @@ Next implementations:
 - [x] prison page 
 - [x] settings page (as developing demand) 
 - [x] club page (hookers)
-- [ ] club page (drugs)
+- [x] club page (drugs)
+- [x] historic page (player crime historic) 
 - [ ] market (weapons and special items)
-- [ ] history page (activities log for player) 
 
 
 #### Mecanics
@@ -56,12 +56,18 @@ Next implementations:
 - [x] use full stamina option on robbery
 - [ ] settings option for player avatar and name update
 
+
+#### Features
+- [ ] Pison: Gym Session to upgrade Strength
+- [ ] Pison: Sports Session to upgrade Dexterity
+
+
 #### Visual
+- [ ] Create a pixel logo
 - [x] remove visibility of 0% chance robberies
 - [x] remove visibility of 100% chance robberies (keep only 1)
 - [x] cool pixel img when success or fail robbery
 - [x] Tooltip on intoxication and stamina showing clearing rates
-- [ ] pixel art fonttypes
 
 
 #### Code & Deploy

@@ -1,0 +1,34 @@
+<div class="card-flat" key="<%=item.id%>">
+  <div class="color-marker <%=item.success? 'green' : 'red'%>"></div>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col">
+        <p class="card-text historic-title"><%=item.message%></p>
+      </div>
+
+      <div class="col">
+        <p class="event-date card-text text-secondary text-end"> <%=item.date%></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="player-info-holder">
+        <%item.infos.forEach((info)=>{%>
+
+        <label class="player-info text-secondary">
+          <%if(info.image){%>
+          <img class="mini-img" src="/img/<%=info.image%>.png">
+          <% }%>
+          <%=info.text%>
+        </label>
+
+        <%})%>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

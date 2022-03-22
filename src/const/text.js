@@ -57,6 +57,37 @@ module.exports = Object.freeze({
 
     },
 
+    HISTORIC: {
+        PAGE_TITLE: 'Crime Historic',
+        DEFAULT_EXPLANATION: 'Here you find the true criminal who you are. All your recent crime historic is shown here.',
+
+        EVENT_TYPE: {
+            1: ['You tried to rob a place.',
+                'You attempted to make a robbery.',
+                'You tried a robbery.',
+                'You made a theft.',
+                'You tried to stealing something'
+            ],
+
+            2: ['You tried to fuck hooker at the bar.',
+                'You got horny by a pussy.',
+                'You attempted to get a bitch at the club.',
+                'The bitch bit you harder.',
+                'You fucked a random hooker at the club.'
+            ],
+
+            3: ['You got drugged as fuck.',
+                'You drugged yourself a lot.',
+                'You got drunk or drugged.',
+                'You attempted to get some drug at the club.',
+                'You drugged yourself.'
+            ],
+
+            4: ['You bribed a jailer at the prison.'],
+            5: ['You tried to escape from the prison.', 'You tried to escape with some dude from jail.'],
+        }
+    },
+
     SETTINGS: {
 
     }

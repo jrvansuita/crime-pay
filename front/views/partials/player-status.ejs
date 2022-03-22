@@ -7,7 +7,7 @@
   <img src="/img/thief-head.jpg" class="card-img-top player-head" />
 
   <span class="badge rounded-pill player-badge <%=player.arrested?'bg-danger' : ''%>">
-    <img src="/img/<%=player.arrested? 'lock' : 'respect-star'%>.png" class="player-badge-img">
+    <img src="/img/<%=player.arrested? 'lock' : 'respect'%>.png" class="player-badge-img">
     <span id="player-badge-text" data-def="<%=word.ARRESTED%>">
       <%=player.arrested? word.ARRESTED : player.respect.format()%>
     </span>

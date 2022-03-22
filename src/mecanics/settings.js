@@ -1,5 +1,5 @@
 const PlayerController = require("../controller/player");
-const PlayerUpdateModel = require('../model/player-update-model');
+const PlayerUpdateModel = require('../model/player-update');
 
 
 module.exports = class SettingsMecanics {

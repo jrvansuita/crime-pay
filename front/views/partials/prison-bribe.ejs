@@ -9,7 +9,7 @@
 
       <%- include('../single/label-item', { id: 'bribe-coins', text: word.COINS_COST,  icon: 'coin', showOnlyIf : bribe.data.coins.abs().positive(), value: bribe.data.coins.format()}); %>
 
-      <%- include('../single/label-item', { id: 'bribe-respect', text: word.RESPECT_REWARD,  icon: 'respect-star', showOnlyIf : bribe.data.respect.positive(), value: bribe.data.respect.sign()}); %>
+      <%- include('../single/label-item', { id: 'bribe-respect', text: word.RESPECT_REWARD,  icon: 'respect', showOnlyIf : bribe.data.respect.positive(), value: bribe.data.respect.sign()}); %>
 
       <%- include('../single/label-item', { id: 'bribe-stamina', text: word.STAMINA_COST,  icon: 'stamina', showOnlyIf : bribe.data.stamina.abs().positive(), value: bribe.data.stamina.abs().percent()}); %>
 

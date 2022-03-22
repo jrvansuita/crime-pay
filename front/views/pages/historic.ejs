@@ -1,0 +1,36 @@
+<html lang="en">
+
+<%- include('../default/head', {pageTitle: word.HISTORIC, js:'historic', css:'historic'}); %>
+
+<body>
+  <div class="container main-content">
+    <div class="flex-container">
+      <div class="flex-left">
+        <%- include('../partials/player-status'); %>
+      </div>
+
+      <div class="flex-painel content">
+        <div class="card">
+          <%- include('../partials/menu', {nav_historic:true}); %>
+
+          <div class="card-body">
+
+            <h5 class="card-title"><%=text.HISTORIC.PAGE_TITLE%></h5>
+            <p class="card-text text-secondary"><%=text.HISTORIC.DEFAULT_EXPLANATION%></p>
+
+            <div class="historic-holder">
+              <div class="historic-items">
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+
+</html>

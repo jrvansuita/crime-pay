@@ -1,4 +1,4 @@
-const { EventTypes, EventModel } = require("../model/event-model");
+const { EventTypes, EventModel } = require("../model/event");
 const Controller = require("./controller");
 const { Util } = require("../lib/util");
 

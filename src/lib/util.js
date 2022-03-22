@@ -46,6 +46,12 @@ const Protos = () => {
         return "/img/" + folder + '/' + this.toLowerCase().trim().replaceAll(" ", "-") + '.' + extension;
     }
 
+    String.prototype.capitalize = function () {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    }
+
+
+
     String.prototype.plus = function () {
         return '+' + this;
     }
