@@ -1,7 +1,7 @@
 class FormControl {
 
-    setKey(key) {
-        this.key = key
+    setRequestData(data) {
+        this.requestData = data
         return this;
     }
 
@@ -42,8 +42,8 @@ class FormControl {
     }
 
     setSubmitOptions(options) {
-        return this.setSubmitSelector(options.submit)
-            .setOnBuildSubmitPayload(options.payload)
+        return this
+            .setSubmitSelector(options.submit)
             .setOnSuccess(options.success)
             .setOnFailed(options.fail)
     }
@@ -52,13 +52,9 @@ class FormControl {
         this.submitSelector = selector;
         return this;
     }
-    setOnBuildSubmitPayload(onBuildSubmitPayload) {
-        this.onBuildSubmitPayload = onBuildSubmitPayload;
-        return this;
-    }
 
     addSubmitItem(buttonId, path = '', extraData = {}) {
-        $(buttonId).click(this.onSubmit(path, extraData));
+        $(buttonId).unbind().click(this.onSubmit(path, extraData));
     }
 
     setOnSuccess(onSuccess) {
@@ -72,10 +68,13 @@ class FormControl {
     }
 
     onSubmit(path = '', extraData = {}) {
-        return () => {
+        return (event) => {
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
             this.toggleLoadingButton(true);
 
-            var data = { ...extraData, ...this.onBuildSubmitPayload(this.key) };
+            var data = { ...extraData, ...this.requestData };
 
             $.post(path || this.resultUrl, data).done((data) => {
                 this.toggleLoadingButton(false);
@@ -94,11 +93,13 @@ class FormControl {
 
 
     load(onLoaded) {
-        this.holder.load(this.formUrl + "?_id=" + this.key, () => {
-            this.onAfterLoad();
-            $(this.submitSelector).click(this.onSubmit());
+        var query = Object.keys(this.requestData).reduce((c, e) => { return c + e + '=' + this.requestData[e] + '&' }, '');
 
-            if (onLoaded) onLoaded(this.key)
+        this.holder.load(this.formUrl + "?" + query, () => {
+            this.onAfterLoad();
+            $(this.submitSelector).unbind().click(this.onSubmit());
+
+            if (onLoaded) onLoaded(this.requestData)
         });
 
         return this;

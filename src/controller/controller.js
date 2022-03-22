@@ -56,11 +56,17 @@ module.exports = class Controller {
         });
     }
 
-    save(instance) {
+    save(data) {
         return new Promise((resolve, reject) => {
-            this.dataAccess.save(instance, this.promiseHandler(resolve, reject));
+            this.dataAccess.save(data, this.promiseHandler(resolve, reject));
         });
     }
 
+
+    remove(query) {
+        return new Promise((resolve, reject) => {
+            this.dataAccess.remove(query, this.promiseHandler(resolve, reject));
+        });
+    }
 }
 

@@ -2,12 +2,12 @@ const phrase = require("../const/phrase");
 
 module.exports = class Cache {
 
-    constructor(storage) {
+    constructor(storage, clearAfter = 10) {
         if (!storage) throw new Error(phrase.NO_CACHE_STORAGE);
 
         this.storage = storage;
         this.lastKey = null;
-        this.autoClear(true).clearAfter(10);
+        this.autoClear(true).clearAfter(clearAfter);
     }
 
     autoClear(clear) {
@@ -43,5 +43,16 @@ module.exports = class Cache {
     has(key = this.getDefaultKey()) {
         return !!this.storage[key];
     }
+
+
+    expired(cacheOrThrow, id) {
+        if (cacheOrThrow) {
+            if (!this.get()?.some((e) => { return e._id.toString() == id; })) {
+                return Promise.reject(new Error(phrase.CANT_FIND_ANYMORE.randomOne()));
+            }
+        }
+    }
+
+
 
 }

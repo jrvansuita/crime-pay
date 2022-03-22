@@ -1,6 +1,7 @@
 const PlayerController = require("../controller/player");
 const PlaceController = require("../controller/place");
 const HookerController = require("../controller/hooker");
+const DrugController = require("../controller/drug");
 
 module.exports = class PlayerEvolution {
 
@@ -74,6 +75,21 @@ module.exports = class PlayerEvolution {
         ];
 
         return this.load(new HookerController(), attributes);
+    }
+
+    drugs() {
+        const attributes = [
+            'rarity',
+            'coinsFactor',
+            'coins',
+            'respect',
+            'stamina',
+            'intoxication',
+            'failChance',
+            'jailChance',
+        ];
+
+        return this.load(new DrugController(), attributes);
     }
 
     places() {

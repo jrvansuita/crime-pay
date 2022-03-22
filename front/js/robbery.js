@@ -9,9 +9,6 @@ $(document).ready(() => {
         .setFormHoldersSelectors(".robbery-form-holder", ".robbery-form-placeholder")
         .setSubmitOptions({
             submit: '#submit',
-            payload: (key) => {
-                return { placeId: key }
-            },
             success: (data) => {
                 new RobberyLayoutManager().update(data)
                 new PlayerStatusUpdater(data.player).all();
@@ -24,9 +21,13 @@ $(document).ready(() => {
     miniCards.setUrl("/robbery-places")
         .setLastSelectedVar(lastPlaceItemSelected)
         .setHolderSelector(".places-holder")
-        .setOnCardSelected(key => formControl.setKey(key).load(() => {
-            formControl.addSubmitItem('#submit-full-stamina', '', { fullStamina: true });
-        }))
+        .setOnCardSelected(key => {
+
+            formControl.setRequestData({ id: key }).load(() => {
+                formControl.addSubmitItem('#submit-full-stamina', '', { fullStamina: true });
+            })
+
+        })
         .load();
 });
 

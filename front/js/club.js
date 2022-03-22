@@ -1,6 +1,7 @@
 
 $(document).ready(() => {
-    var miniCards = new MiniCards();
+    var hookerMiniCards = new MiniCards();
+    var drugsMiniCards = new MiniCards();
 
     var formControl = new FormControl()
         .setFormUrl("/club-form")
@@ -8,9 +9,6 @@ $(document).ready(() => {
         .setFormHoldersSelectors(".club-form-holder", ".club-form-placeholder")
         .setSubmitOptions({
             submit: '#submit',
-            payload: (key) => {
-                return { hookerId: key }
-            },
             success: (data) => {
                 if (data.event.success) {
                     window.toast.success(data.event.message)
@@ -18,19 +16,26 @@ $(document).ready(() => {
                     window.toast.error(data.event.message)
                 }
 
-                new PlayerStatusUpdater(data.player).coins().bars();
-                miniCards.load();
+                new PlayerStatusUpdater(data.player).all();
+
+                hookerMiniCards.load();
+                drugsMiniCards.load();
             }
         })
         .showPlaceholder();
 
 
-    miniCards.setUrl("/club-hookers")
+    hookerMiniCards.setUrl("/club-hookers")
         .setLastSelectedVar(lastClubItemSelected)
         .setHolderSelector(".hookers-holder")
-        .setOnCardSelected(key => formControl.setKey(key).load())
+        .setOnCardSelected(key => formControl.setRequestData({ id: key, type: 'hooker' }).load())
         .load();
 
+    drugsMiniCards.setUrl("/club-drugs")
+        .setLastSelectedVar(lastClubItemSelected)
+        .setHolderSelector(".drugs-holder")
+        .setOnCardSelected(key => formControl.setRequestData({ id: key, type: 'drug' }).load())
+        .load(false);
 
 
 });

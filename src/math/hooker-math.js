@@ -15,7 +15,7 @@ module.exports = class HookerMath {
         if ((this.hooker.coinsFactor > 0) && (this.coins === undefined)) {
 
             //Define the Rewards Factor
-            const factor = (this.hooker.coinsFactor / 10) * (this.player.coins * 0.07);
+            const factor = (this.hooker.coinsFactor / 10) * (this.player.coins * .07);
 
             //Define the Coins Bonus
             const rarityBonus = this.hooker.rarity * .5;
@@ -32,7 +32,7 @@ module.exports = class HookerMath {
     getRespect() {
         if (this.respect === undefined) {
             //Defining player respect bonus
-            const respectBonus = this.player.respect * .05;
+            const respectBonus = this.player.respect * .025;
 
             //Define the respect gain based on hooker rarity and coins factor plus player respect bonus
             const respect = (this.hooker.coinsFactor * this.hooker.rarity * .01) * respectBonus;
@@ -44,20 +44,20 @@ module.exports = class HookerMath {
     }
 
 
-    getStaminaCost() {
-        if (this.staminaCost === undefined) {
+    getStamina() {
+        if (this.stamina === undefined) {
 
             //Define Stamina Bonus
             const bonus = (Math.max(1, this.player.stamina) / 50) / 10;
 
             //Define Stamina Cost 
-            const staminaCost = this.hooker.stamina + (bonus * this.hooker.stamina);
+            const stamina = this.hooker.stamina + (bonus * this.hooker.stamina);
 
             //Define min and max values
-            this.staminaCost = Num.assert(staminaCost, true, 1, 100);
+            this.stamina = Num.assert(stamina, true, 1, 100);
         }
 
-        return this.staminaCost;
+        return this.stamina;
     }
 
 
@@ -110,7 +110,7 @@ module.exports = class HookerMath {
     make() {
         this.hooker.coins = this.getCoins();
         this.hooker.respect = this.getRespect();
-        this.hooker.stamina = this.getStaminaCost();
+        this.hooker.stamina = this.getStamina();
 
         if (this.canFail()) {
             this.hooker.jailChance = this.getJailChance()

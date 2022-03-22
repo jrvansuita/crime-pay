@@ -271,3 +271,7 @@ body {
 .card-text.text-secondary {
     max-width: 50em;
 }
+
+a .placeholder {
+    min-width: 80px
+}

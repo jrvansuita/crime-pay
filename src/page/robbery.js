@@ -19,14 +19,14 @@ module.exports = class RobberyPage extends Page {
         });
 
         this.get('/robbery-form').then(({ player, req, res, session }) => {
-            return this.placeController.details(req.query._id, player).then(place => {
+            return this.placeController.details(req.query.id, player).then(place => {
                 session.lastPlaceItemSelected = place._id;
                 res.render('partials/robbery-form', { place, player })
             });
         });
 
         this.post('/robbery-submit').then(({ player, req, res }) => {
-            return this.robberyMecanics.submit(req.body.placeId, player, req.body.fullStamina).then(result => res.send(result))
+            return this.robberyMecanics.submit(req.body.id, player, req.body.fullStamina).then(result => res.send(result))
         });
 
         this.get('/dev/robberies', false).then(({ req, res }) => {

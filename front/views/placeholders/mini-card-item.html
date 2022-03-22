@@ -3,7 +3,7 @@
 var items = [1];
 
 if (locals.count) {
-  items = [...Array(locals.count).keys()].slice(1)
+  items = [...Array(locals.count+1).keys()].slice(1)
 }
 
 items.forEach(()=>{ %>

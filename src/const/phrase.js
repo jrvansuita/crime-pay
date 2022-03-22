@@ -9,7 +9,7 @@ module.exports = Object.freeze({
     ROBBERY_ZERO_CHANCES: "You can't rob this place yet.",
     FOR_LIFE_PRISON: "You are serving life imprisonment!",
     NO_CACHE_STORAGE: "No cache storage defined.",
-
+    CANT_FIND_ANYMORE: ["You took a long time to choose.", "Cant't find anymore.", "You lost the chance!", "Just reload the page!"],
 
     ROBBERY: {
         SUCCESS: [
@@ -43,6 +43,11 @@ module.exports = Object.freeze({
     CLUB_HOOKER: {
         SUCCESS: ["It was an extreme pleasure!", "You have sexy appel!", "What a night!!!!", "You just hid the salami."],
         FAIL: ["What a terrible night.", "You can't get it hard?", "You believe in fairy tales.", "You fell into a trap."],
+    },
+
+    CLUB_DRUG: {
+        SUCCESS: ["You're drugged as fuck.", "Super drugged!", "You are a legend!", "The sky is your limit.", 'It feels you have super powers!'],
+        FAIL: ["Whata fuck just happened?", "You are out of control!", "A bad trip got you.", "You fell into a trap.", "Monkeys bite me.", 'Did not have any effect.'],
     }
 
 });

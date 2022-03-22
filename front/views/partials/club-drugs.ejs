@@ -1,0 +1,13 @@
+<% drugs.forEach((drug)=>{%>
+
+<%- include('../single/mini-card-item', { key : drug._id, 
+                                          name : drug.name, 
+                                          img :  drug.name.image('drugs'),  
+                                          title: drug.stamina.sign().concat(word.STAMINA), 
+                                          badgeText: drug.coins.abs().format(word.FREE), 
+                                          badgeImg:  drug.coins ? "/img/coin.png" :null 
+                                        }); %>
+
+<%- include('../placeholders/mini-card-item.html'); %>
+
+<% }); %>

@@ -31,7 +31,7 @@ module.exports = class PlaceController extends Controller {
                     //Remove more than 1 places with 100% success chances
                     .filter((each, index, arr) => {
                         return !arr.some(e => {
-                            return (e._id != each._id)
+                            return (e !== each)
                                 && (e.successChance == each.successChance)
                                 && (each.successChance == 100 ? (each.difficulty < e.difficulty) : (each.difficulty > e.difficulty))
                         })

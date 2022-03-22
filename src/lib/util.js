@@ -91,11 +91,15 @@ const Protos = () => {
     }
 
     Array.prototype.randomOne = function () {
-        return this[Math.floor(Math.random() * this.length)];
+        return this.random();
     }
 
     Array.prototype.deepCopy = function () {
         return JSON.parse(JSON.stringify(this));
+    }
+
+    Array.prototype.random = function (count = 1) {
+        return this.sort(() => Math.random() - 0.5).slice(0, count)
     }
 
 

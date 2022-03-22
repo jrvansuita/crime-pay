@@ -1,10 +1,9 @@
+.club-form-holder, .club-form-placeholder {
+  width: 25em;
+  height: 100%;
+}
 
-.club-form-holder, .club-form-placeholder{
-    width: 40em;
-    height: 100%;
-  }
-  
-.blockquote-footer{
-    
-      min-width: max-content
-  }
+.blockquote-footer {
+  min-width: inherit;
+  max-width: 190px;
+}

@@ -54,12 +54,15 @@ class MiniCards {
 
     onInnerCardSelected() {
         const self = this;
-        return function () {
+        return function (event) {
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
             const currentSelected = $(this).data('key');
 
             if ((self.lastSelected !== currentSelected) || ($(self.cardsSelector).find('.selected').length == 0)) {
 
-                $(self.cardsSelector).removeClass('selected');
+                $('.mini-card-scroll-items .mini-card').removeClass('selected');
                 $(this).addClass('selected')
 
                 self.lastSelected = currentSelected;
@@ -74,18 +77,19 @@ class MiniCards {
     }
 
 
-    load() {
+    load(autoSelect = true) {
         this.onBeforeLoad();
-
 
         setTimeout(() => {
             this.holder.load(this.url, () => {
                 this.onAfterLoad();
 
-                $(this.cardsSelector).click(this.onInnerCardSelected());
+                $(this.cardsSelector).unbind().click(this.onInnerCardSelected());
 
-                //Select the last clicked or the first one
-                $(this.cardsSelector).first().add("[data-key='" + this.lastSelected + "']").last().click();
+                if (autoSelect) {
+                    //Select the last chosen or the first one
+                    $(this.cardsSelector).first().add("[data-key='" + this.lastSelected + "']").last().click();
+                }
             });
         }, this.loadDelay);
     }

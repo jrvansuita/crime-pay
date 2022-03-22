@@ -1,6 +1,4 @@
 const mongojs = require('mongojs')
-//const PlaceScripts = require('./scripts/places');
-//const Command = require('./commands')
 
 const db = mongojs(process.env.CONN_DB, [])
 
@@ -10,20 +8,15 @@ db.on('error', function () {
 })
 
 db.on('connect', function () {
-    //Not implemented
+    //Create DataBase Elements
+    //new HookerScripts().createAll();
+    //new DrugScripts().createAll()
+    //new PlaceScripts().createAll();
 
-    // console.log('Command OK');
+
+    //Rename a collection field example
     // new Command(db).renameField('place', 'x', 'name')
-
-    //new PlaceScripts().assertDifficulties()
-
-
 })
-
-
-
-
-
 
 module.exports = db;
 

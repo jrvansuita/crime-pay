@@ -8,11 +8,11 @@ module.exports = class HookerController extends Controller {
 
     constructor() {
         super('hooker');
-        this.hookerCache = new Cache(hookerCache);
+        this.hookerCache = new Cache(hookerCache, 3);
     }
 
-    details(hookerId, player) {
-        return this.findById(hookerId).then((hooker) => {
+    details(id, player, cacheOrThrow = false) {
+        return this.hookerCache.expired(cacheOrThrow, id) || this.findById(id).then((hooker) => {
             return new HookerMath(player, hooker).make()
         });
     }
@@ -34,15 +34,12 @@ module.exports = class HookerController extends Controller {
                     //Remove duplicate free positions
                     .filter((each, index, arr) => {
                         return !arr.some(e => {
-                            return (e._id != each._id) &&
+                            return (e !== each) &&
                                 (e.coins == each.coins) &&
                                 (e.coins == 0)
                         })
                     })
-                    //Shuffle the array
-                    .sort(() => Math.random() - 0.5)
-                    //Get only firsts positions
-                    .slice(0, 7)
+                    .random(7)
 
                 this.hookerCache.set(hookers)
             }

@@ -1,8 +1,3 @@
-
-
 require('dotenv').config()
-
-
-
 
 

@@ -12,10 +12,10 @@ module.exports = class RobberyAttempt {
     make(fullStamina) {
         const success = Num.lucky(100) <= this.place.successChance;
 
-        const thefts = fullStamina ? Math.trunc(this.player.stamina / this.place.staminaCost) : 1;
+        const theftsCount = fullStamina ? Math.trunc(this.player.stamina / this.place.staminaCost) : 1;
 
         return new PlayerUpdateModel(this.player)
-            .setMultiplier(thefts)
+            .setSuccessMultiplier(theftsCount)
             .validate((player, model) => {
                 model.check(player.arrested, prahse.PLAYER_ARRESTED)
                     .check(player.stamina < this.place.staminaCost, prahse.OUT_OF_STAMINA)

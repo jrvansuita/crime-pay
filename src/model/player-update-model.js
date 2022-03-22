@@ -29,7 +29,7 @@ module.exports = class PlayerUpdateModel {
     }
 
 
-    setMultiplier(multiplier) {
+    setSuccessMultiplier(multiplier = 1) {
         this.multiplier = multiplier;
         return this;
     }
@@ -53,7 +53,7 @@ module.exports = class PlayerUpdateModel {
                 value = Math.min(value, max - this.player[attr]);
             }
 
-            value = value * this.multiplier;
+
         } else {
             if (minOnDecrease) value = min;
 
@@ -64,7 +64,7 @@ module.exports = class PlayerUpdateModel {
             value = -value;
         }
 
-
+        if (!this.arrested) value = value * this.multiplier;
 
         this[attr] = value;
         return this;

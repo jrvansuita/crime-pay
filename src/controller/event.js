@@ -34,8 +34,5 @@ module.exports = class EventController extends Controller {
         return EventController.save(EventTypes.ROB, ...params)
     }
 
-    static clubHooker(...params) {
-        return EventController.save(EventTypes.CLUB_HOOKER, ...params)
-    }
 
 }
