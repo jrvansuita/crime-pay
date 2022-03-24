@@ -79,10 +79,14 @@ Next implementations:
 - [ ] test automation with jest
 
 
-### Screenshot
+### Screenshots
+<img src='/screenshots/1.png'  /></a>
+<img src='/screenshots/2.png'  /></a>
+<img src='/screenshots/3.png'  /></a>
+<img src='/screenshots/4.png'  /></a>
+<img src='/screenshots/5.png'  /></a>
 <img src='/screenshots/6.png'  /></a>
-
-
+<img src='/screenshots/7.png'  /></a>
 
 #
 
