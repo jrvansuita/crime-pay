@@ -1,0 +1,21 @@
+<div class="row align-items-center">
+  <h6 class="card-title"><%=text.MARKET.WANNA_BUY.format(data.name)%></h6>
+
+  <%- include('../single/label-item', { text: word.COINS_COST,  icon: 'coin', value: data?.coins.format(word.FREE, '-')}); %>
+
+  <%- include('../single/label-item', { text: word.RESPECT.concat(word.INCREASE),  icon: 'respect', showOnlyIf : data?.respect.abs().positive(), value: data.respect.sign()}); %>
+
+  <%- include('../single/label-item', { text: word.INTELLIGENCE.concat(word.INCREASE), showOnlyIf : data?.intelligence.abs().positive(), value: data.intelligence.sign()}); %>
+
+  <%- include('../single/label-item', { text: word.DEXTERITY.concat(word.INCREASE), showOnlyIf : data?.dexterity.abs().positive(), value: data.dexterity.sign()}); %>
+
+  <%- include('../single/label-item', { text: word.STRENGTH.concat(word.INCREASE), showOnlyIf : data?.strength.abs().positive(), value: data.strength.sign()}); %>
+
+  <%- include('../single/buttons/button-group', { id: 'submit', 
+                                      text: text.MARKET.ACTION_BUTTON,  
+                                      loadingButton : true, 
+                                      arrested: player.arrested, 
+                                      insufficientCoins : player.coins.smaller(data.coins.abs()),
+                                    }); %>
+
+</div>

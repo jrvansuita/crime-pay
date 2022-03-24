@@ -1,16 +1,16 @@
 const HookerController = require("../controller/hooker");
-const EventController = require('../controller/event');
-const PlayerController = require("../controller/player");
+const EventData = require('../db/data-access/event');
+const PlayerData = require("../db/data-access/player");
 const Phrase = require('../const/phrase');
 const ClubAttempt = require("../actions/club-attempt");
 const DrugController = require("../controller/drug");
-const { EventTypes } = require("../model/event");
+const EventTypes = require('../enum/event-types');
 
 
 module.exports = class ClubMecanics {
 
     constructor() {
-        this.playerController = new PlayerController();
+        this.playerData = new PlayerData();
         this.hookerController = new HookerController();
         this.drugController = new DrugController();
     }
@@ -32,9 +32,9 @@ module.exports = class ClubMecanics {
 
             var playerUpdate = new ClubAttempt(player, data).make();
 
-            return this.playerController.update(player._id, playerUpdate).then((updatedPlayer) => {
+            return this.playerData.update(player._id, playerUpdate).then((updatedPlayer) => {
 
-                return EventController.save(this.getEventType(type), player._id, playerUpdate, id, playerUpdate.stamina > 0, this.getEventMessage(type))
+                return EventData.save(this.getEventType(type), player._id, playerUpdate, id, playerUpdate.stamina > 0, this.getEventMessage(type))
                     .then((event) => { return { event: event, player: updatedPlayer } })
             });
         })

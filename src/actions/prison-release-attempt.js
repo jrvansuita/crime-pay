@@ -1,8 +1,8 @@
 const moment = require("moment");
 const phrase = require('../const/phrase');
+const EventTypes = require('../enum/event-types');
 const PlayerUpdateModel = require('../model/player-update');
 const { Num } = require('../lib/util');
-const { EventTypes } = require("../model/event");
 
 class PrisonReleaseAttempt {
 

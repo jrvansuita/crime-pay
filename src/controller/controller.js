@@ -1,80 +1,81 @@
-const mongojs = require('mongojs');
 
-module.exports = class Controller {
+const Cache = require("../cache/cache");
+const DataAccess = require("../db/data-access/data-access");
 
-    constructor(entityName) {
-        this.dataAccess = require('../db/db')[entityName];
-        this.promiseHandler = (resolve, reject) => {
-            return (err, data) => {
-                return err ? reject(err) : resolve(data);
+module.exports = class Controller extends DataAccess {
+
+    constructor(entityName, cacheStorage = null, cacheExpireMinutes = 15) {
+        super(entityName);
+
+        if (!!cacheStorage) this.cache = new Cache(cacheStorage, cacheExpireMinutes);
+    }
+
+    onDetails(player, data) {
+        //Abstract Method, look superior class.
+        return data;
+    }
+
+    details(id, player, cacheOrThrow = false) {
+        return this.cache?.expired(cacheOrThrow, id) || this.findById(id).then((data) => {
+            return this.onDetails(player, data);
+        });
+    }
+
+    getAll() {
+        return this.cache?.has() ? Promise.resolve(this.cache.get()) : this.all();
+    }
+
+    onPreview(player, data) {
+        //Abstract Method, look superior class.
+        return data;
+    }
+
+    onBeginSort(data) {
+        //Abstract Method, look superior class.
+        return data;
+    }
+
+    onFinalSort(data) {
+        //Abstract Method, look superior class.
+        return data;
+    }
+
+    onFilter(data) {
+        //Abstract Method, look superior class.
+        return data;
+    }
+
+    onFilterAfterPreview(data) {
+        //Abstract Method, look superior class.
+        return data;
+    }
+
+    for(player, loadAll = false) {
+        return this.getAll().then((data) => {
+
+            data = this.onBeginSort(data);
+
+            if (!loadAll && !this.cache?.has()) {
+
+                data = this.onFilter(data);
+                data = data.map(each => { return this.onPreview(player, each) })
+                data = this.onFilterAfterPreview(data, player);
+
+                this.cache?.set(data)
+
+                if (this.cache) {
+                    //Deep Copy the array, to keep primitive values stored on cache
+                    data = data.deepCopy();
+                }
             }
-        }
-    }
 
-    findById(_id) {
-        return new Promise((resolve, reject) => {
-            this.dataAccess.findOne({
-                _id: mongojs.ObjectId(_id)
-            }, this.promiseHandler(resolve, reject));
-        });
-    }
+            data = data.map(each => { return this.onDetails(player, each) });
+            data = this.onFinalSort(data);
 
-    findByIds(_ids) {
-        return this.findByQuery({
-            _id: { $in: _ids.map((e) => mongojs.ObjectId(e)) }
-        });
-    }
-
-    findByQuery(query) {
-        return new Promise((resolve, reject) => {
-            this.dataAccess.find(query, this.promiseHandler(resolve, reject));
-        });
-    }
-
-    all() {
-        return this.findByQuery({});
-    }
-
-    modify(_id, data) {
-        return new Promise((resolve, reject) => {
-            this.dataAccess.findAndModify({
-                query: { _id: mongojs.ObjectId(_id) },
-                update: { ...data },
-                new: true
-            }, this.promiseHandler(resolve, reject));
+            return data;
         });
     }
 
 
-    updateAll(query, data, multi) {
-        return new Promise((resolve, reject) => {
-            this.dataAccess.update(
-                query,
-                data,
-                { multi: multi }
-                , this.promiseHandler(resolve, reject));
-        });
-    }
-
-    save(data) {
-        return new Promise((resolve, reject) => {
-            this.dataAccess.save(data, this.promiseHandler(resolve, reject));
-        });
-    }
-
-
-    remove(query) {
-        return new Promise((resolve, reject) => {
-            this.dataAccess.remove(query, this.promiseHandler(resolve, reject));
-        });
-    }
-
-    page(filter = {}, sort = {}, page = 0, count = 10) {
-        return new Promise((resolve, reject) => {
-            this.dataAccess.find(filter).limit(count).skip(page * count).sort(sort).toArray(this.promiseHandler(resolve, reject))
-        });
-
-
-    }
 }
 

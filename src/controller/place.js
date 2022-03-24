@@ -5,42 +5,36 @@ const Controller = require("./controller");
 
 module.exports = class PlaceController extends Controller {
 
-
     constructor() {
         super('place');
     }
 
-    details(placeId, player) {
-        return this.findById(placeId).then((place) => {
-            return new RobberyMath(player, place).make();
-        });
+    onDetails(player, place) {
+        return new RobberyMath(player, place).make();
     }
 
-    for(player, loadAll = false, analytcs = false) {
-        return this.all().then((places) => {
-            places = places
-                //Sort by difficulty asc
-                .sort((a, b) => { return a.difficulty - b.difficulty })
+    onPreview(player, place) {
+        return new RobberyMath(player, place).preview();
+    }
 
-            if (!loadAll) {
-                places = places
-                    //Calculate the success chance for each place
-                    .map(each => { return new RobberyMath(player, each).preview() })
-                    //Remove places with zero success chances
-                    .filter(each => { return each.successChance > 0 })
-                    //Remove more than 1 places with 100% success chances
-                    .filter((each, index, arr) => {
-                        return !arr.some(e => {
-                            return (e !== each)
-                                && (e.successChance == each.successChance)
-                                && (each.successChance == 100 ? (each.difficulty < e.difficulty) : (each.difficulty > e.difficulty))
-                        })
-                    })
-                    .slice(0, 7)
-            }
+    onBeginSort(places) {
+        //Sort by difficulty asc
+        return places.sort((a, b) => { return a.difficulty - b.difficulty })
+    }
 
-            return places.map(each => { return new RobberyMath(player, each)[analytcs ? 'analytcs' : 'make']() });
-        });
+    onFilterAfterPreview(places) {
+        //Remove places with 0 success chance
+        //Remove more than 1 places with 100% success chances
+        return places
+            .filter(each => { return each.successChance > 0 })
+            .filter((each, index, arr) => {
+                return !arr.some(e => {
+                    return (e !== each)
+                        && (e.successChance == each.successChance)
+                        && (each.successChance == 100 ? (each.difficulty < e.difficulty) : (each.difficulty > e.difficulty))
+                })
+            })
+            .slice(0, 7);
     }
 }
 

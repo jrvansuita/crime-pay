@@ -1,16 +1,16 @@
 
-const PlayerController = require("../controller/player");
+const PlayerData = require("../db/data-access/player");
 
 module.exports = class Page {
 
     constructor(app) {
         this.app = app;
 
-        this.playerController = new PlayerController();
+        this.playerData = new PlayerData();
     }
 
     findPlayer(req) {
-        return this.playerController.get(req.session.playerId).then((player) => {
+        return this.playerData.get(req.session.playerId).then((player) => {
             return player;
         });
     }

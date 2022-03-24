@@ -1,0 +1,16 @@
+.market-form-holder, .market-form-placeholder {
+    width: 25em;
+    height: 100%;
+}
+
+
+.market-holder {
+    border-radius: 0.25rem !important;
+    width: 45em;
+    height: 100%;
+
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .125);
+
+}

@@ -1,0 +1,14 @@
+<% merchandises.forEach((merchandise)=>{%>
+
+<%- include('../single/mini-card-item', { key : merchandise._id, 
+                                          name : merchandise.name, 
+                                          img :  merchandise.name.image('merchandises','png'),  
+                                          title: merchandise.level.toString().concat(word.LEVEL), 
+                                          badgeText: merchandise.coins.abs().format(word.FREE), 
+                                          badgeImg:  merchandise.coins ? "/img/coin.png" :null,
+                                          imageClass: 'weapon-img' 
+                                        }); %>
+
+<%- include('../placeholders/mini-card-item.html'); %>
+
+<% }); %>

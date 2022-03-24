@@ -1,5 +1,5 @@
-const PlayerController = require("../controller/player");
-const EventController = require('../controller/event');
+const PlayerData = require("../db/data-access/player");
+const EventData = require('../db/data-access/event');
 const { PRISON_ESCAPE, PRISON_BRIBE } = require("../const/phrase");
 const { EscapeAttempt, BribeAttempt } = require("../actions/prison-release-attempt");
 
@@ -7,8 +7,8 @@ const { EscapeAttempt, BribeAttempt } = require("../actions/prison-release-attem
 module.exports = class PrisonMecanics {
 
     constructor() {
-        this.playerController = new PlayerController();
-        this.eventController = new EventController();
+        this.playerData = new PlayerData();
+        this.eventData = new EventData();
     }
 
     for(player) {
@@ -21,9 +21,9 @@ module.exports = class PrisonMecanics {
     makeAttempt(player, attempt, msg) {
         attempt.make();
 
-        return this.playerController.update(player._id, attempt.data).then((updatedPlayer) => {
+        return this.playerData.update(player._id, attempt.data).then((updatedPlayer) => {
 
-            return EventController.save(attempt.enventType, player._id, attempt.data, '', attempt.success, msg).then((event) => {
+            return EventData.save(attempt.enventType, player._id, attempt.data, '', attempt.success, msg).then((event) => {
                 return { player: updatedPlayer, event, newAttempt: this.for(updatedPlayer) };
             })
         });

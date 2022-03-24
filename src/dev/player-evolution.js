@@ -1,14 +1,15 @@
-const PlayerController = require("../controller/player");
+const PlayerData = require("../db/data-access/player");
 const PlaceController = require("../controller/place");
 const HookerController = require("../controller/hooker");
 const DrugController = require("../controller/drug");
+const MerchandiseController = require("../controller/merchandise");
 
 module.exports = class PlayerEvolution {
 
 
     constructor({ all, stats, id }) {
         this.modelPlayerId = id || "6230c97f40a4ff252550104f";
-        this.playerController = new PlayerController();
+        this.playerData = new PlayerData();
 
         this.showAll = all;
         this.mStats = stats;
@@ -29,7 +30,7 @@ module.exports = class PlayerEvolution {
     }
 
     findPlayers() {
-        return this.playerController.get(this.modelPlayerId).then(player => {
+        return this.playerData.get(this.modelPlayerId).then(player => {
             var players = [player];
 
             this.mStats?.split('-').forEach(m => {
@@ -44,7 +45,7 @@ module.exports = class PlayerEvolution {
         var data = [];
 
         const execute = (index) => {
-            return controller.for(players[index], this.showAll, true).then((eachGroup) => {
+            return controller.for(players[index], this.showAll).then((eachGroup) => {
                 data.push({ player: players[index], group: eachGroup })
                 return (++index) < players.length ? execute(index) : data;
             })
@@ -61,6 +62,19 @@ module.exports = class PlayerEvolution {
         })
     }
 
+    merchandises() {
+        const attributes = [
+            'playerFactor',
+            'coins',
+            'respect',
+            'gainPercentage',
+            'intelligence',
+            'dexterity',
+            'strength',
+        ];
+
+        return this.load(new MerchandiseController(), attributes);
+    }
 
     hookers() {
         const attributes = [

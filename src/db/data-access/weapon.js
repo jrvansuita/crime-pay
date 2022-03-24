@@ -1,6 +1,6 @@
-const Controller = require("./controller");
+const DataAccess = require("./data-access");
 
-module.exports = class WeaponController extends Controller {
+module.exports = class WeaponData extends DataAccess {
 
     constructor() {
         super('weapon');

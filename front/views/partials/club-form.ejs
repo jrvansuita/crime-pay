@@ -3,17 +3,13 @@
 
   <%- include('../single/label-item', { text: word.COINS_COST,  icon: 'coin', value: data?.coins.format(word.FREE, '-')}); %>
 
-  <%- include('../single/label-item', { text: word.RESPECT_REWARD,  icon: 'respect', showOnlyIf : data?.respect.abs().positive(), value: data.respect.sign()}); %>
+  <%- include('../single/label-item', { text: word.RESPECT.concat(word.INCREASE),  icon: 'respect', showOnlyIf : data?.respect.abs().positive(), value: data.respect.sign()}); %>
 
   <%- include('../single/label-item', { text: word.STAMINA_RESTORED,  icon: 'stamina', value: data?.stamina.percent() }); %>
 
   <%- include('../single/label-item', { text: word.INTOXICATION,  icon: 'intoxication', value: data?.intoxication.percent() }); %>
 
-
-  <div class="col-12">
-
-    <%
-        
+  <%    
   var failMessage = text.CLUB.CANT_FAIL;
   if (data.failChance) failMessage = text.CLUB.FAIL_CHANCE.format(data.failChance);
   if (data.jailChance) failMessage += text.CLUB.AND_ARREST_CHANCE.format(data.jailChance);
@@ -22,7 +18,7 @@
   %>
 
 
-    <%- include('../single/buttons/button-group', { id: 'submit', 
+  <%- include('../single/buttons/button-group', { id: 'submit', 
                                       text: text.CLUB.ACTION_BUTTON,  
                                       quoteText: failMessage, 
                                       loadingButton : true, 
@@ -31,5 +27,5 @@
                                       fullStamina: player.stamina == 100, 
                                       intoxicated: player.intoxication == 100
                                     }); %>
-  </div>
+
 </div>

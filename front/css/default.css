@@ -286,3 +286,9 @@ body {
 a .placeholder {
     min-width: 80px
 }
+
+.weapon-img {
+    object-fit: contain;
+    padding: 12px;
+    image-rendering: pixelated;
+}

@@ -9,7 +9,7 @@
     <div class="col-8">
       <%- include('../single/label-item', { id: 'escape-coins', text: word.COINS_COST,  icon: 'coin', showOnlyIf : escape.data.coins.abs().positive(), value: escape.data.coins.format()}); %>
 
-      <%- include('../single/label-item', { id: 'escape-respect', text: word.RESPECT_REWARD,  icon: 'respect', showOnlyIf : escape.data.respect.abs().positive(), value: escape.data.respect.sign()}); %>
+      <%- include('../single/label-item', { id: 'escape-respect', text: word.RESPECT.concat(word.INCREASE),  icon: 'respect', showOnlyIf : escape.data.respect.abs().positive(), value: escape.data.respect.sign()}); %>
 
       <%- include('../single/label-item', { id: 'escape-chance', text: word.ESCAPE_CHANCE,  icon: 'lucky', value: escape.escapeChance.percent()}); %>
 

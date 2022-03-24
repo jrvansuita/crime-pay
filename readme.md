@@ -38,7 +38,7 @@ Next implementations:
 
 
 #### Mecanics
-- [x] reset player setting
+- [x] reset player settings
 - [x] on reaload page, auto select last robbery place
 - [x] fix strength ups (beyond other stats)
 - [x] go to prison on failed robbery

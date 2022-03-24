@@ -50,8 +50,6 @@ const Protos = () => {
         return this.charAt(0).toUpperCase() + this.slice(1);
     }
 
-
-
     String.prototype.plus = function () {
         return '+' + this;
     }
@@ -107,7 +105,6 @@ const Protos = () => {
     Array.prototype.random = function (count = 1) {
         return this.sort(() => Math.random() - 0.5).slice(0, count)
     }
-
 
     Number.prototype.positive = function () {
         return this > 0;

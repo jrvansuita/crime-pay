@@ -1,13 +1,13 @@
-const Controller = require("./controller");
-const WeaponController = require("./weapon");
-const { PLAYER_NOT_FOUND } = require('../const/phrase');
+const WeaponData = require("./weapon");
+const { PLAYER_NOT_FOUND } = require("../../const/phrase");
+const DataAccess = require("./data-access");
 
 
-module.exports = class PlayerController extends Controller {
+module.exports = class PlayerData extends DataAccess {
 
     constructor() {
         super('player');
-        this.weaponController = new WeaponController();
+        this.weaponData = new WeaponData();
     }
 
     setVirtualAttributes(player, weapons) {
@@ -22,7 +22,7 @@ module.exports = class PlayerController extends Controller {
             .then(player => {
                 if (!player) throw new Error(PLAYER_NOT_FOUND);
 
-                return this.weaponController.findByIds(player.equipedWeapons).then(weapons => {
+                return this.weaponData.findByIds(player.equipedWeapons).then(weapons => {
                     return this.setVirtualAttributes(player, weapons);
                 });
             });

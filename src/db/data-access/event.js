@@ -1,9 +1,9 @@
-const { EventTypes, EventModel } = require("../model/event");
-const Controller = require("./controller");
-const { Util } = require("../lib/util");
+const EventModel = require("../../model/event");
+const EventTypes = require('../../enum/event-types');
+const { Util } = require("../../lib/util");
+const DataAccess = require("./data-access");
 
-module.exports = class EventController extends Controller {
-
+module.exports = class EventData extends DataAccess {
 
     constructor() {
         super('event');
@@ -23,7 +23,7 @@ module.exports = class EventController extends Controller {
             .setTypeItemId(typeItemId)
             .setSuccess(success)
 
-        return new EventController().save(event)
+        return new EventData().save(event)
             .then(event => {
                 event.message = event.success ? message?.SUCCESS?.randomOne() : message?.FAIL?.randomOne()
                 return event
@@ -31,7 +31,7 @@ module.exports = class EventController extends Controller {
     }
 
     static robbery(...params) {
-        return EventController.save(EventTypes.ROB, ...params)
+        return EventData.save(EventTypes.ROB, ...params)
     }
 
 

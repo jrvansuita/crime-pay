@@ -6,9 +6,10 @@ module.exports = Object.freeze({
     WEAPONS: 'Weapons',
     COINS: 'Coins',
     COINS_COST: 'Coins Cost',
-
+    LEVEL: 'Level',
     RESPECT: 'Respect',
-    RESPECT_REWARD: 'Respect Reward',
+
+    ON_EQUIPED: 'on equiped',
 
 
     INTELLIGENCE: 'Intelligence',
@@ -33,7 +34,7 @@ module.exports = Object.freeze({
     SETTINGS: 'Settings',
     ROBBERY_ATTEMPT: 'Robbery Attempt',
     COINS_REWARD: 'Coins Reward',
-    RESPECT_INCREASE: 'Respect Increase',
+    INCREASE: 'Increase',
 
     INTOXICATION: 'Intoxication',
 

@@ -1,13 +1,15 @@
 <div class="mini-card card" tabindex="-1" data-key="<%=key%>">
+
+  <%if (locals?.badgeText){%>
   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
     <%if (locals?.badgeImg){%>
     <img src="<%=badgeImg%>" class="mini-img" alt="<%=badgeImg%>" />
     <%}%>
     <span class="badge-text"><%=badgeText%></span>
   </span>
+  <%}%>
 
-
-  <img src="<%=img%>" class="card-img-top" alt="<%=name%>" />
+  <img src="<%=img%>" class="card-img-top <%=locals?.imageClass%>" alt="<%=name%>" />
   <div class="card-body ">
     <h5 class="card-title mini-card-name">
       <%=name%>

@@ -1,9 +1,17 @@
-<%if ((locals?.showOnlyIf == true) || (locals?.showOnlyIf == undefined )){%>
+<%if (locals?.showOnlyIf !== false){%>
 <div class="input-group">
+
   <span class="form-control"><%=text%></span>
-  <span class="input-group-text"><img class="mini-img" src="/img/<%=icon%>.png" /></span>
-  <span id="<%=locals?.id%>" class="input-group-text">
-    <%=value%>
+
+  <%if (locals?.icon){%>
+  <span class="input-group-text">
+    <img class="mini-img" src="/img/<%=icon%>.png" />
   </span>
+  <%}%>
+
+  <span id="<%=locals?.id%>" class="input-group-text">
+  <%=value%>
+  </span>
+
 </div>
 <%}%>

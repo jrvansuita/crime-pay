@@ -2,6 +2,11 @@
 
 <%- include('../default/head', {pageTitle: word.MARKET, css: 'market', js:['market','lib/mini-cards','lib/form-control']}); %>
 
+
+<script>
+  window.lastMarketItemSelected = '<%= session.lastMarketItemSelected %>'
+</script>
+
 <body>
   <div class="container main-content">
     <div class="flex-container">
@@ -16,25 +21,31 @@
           <div class="card-body">
             <h5 class="card-title"><%=text.MARKET.PAGE_TITLE%></h5>
             <p class="card-text text-secondary"><%=text.MARKET.DEFAULT_EXPLANATION%></p>
+
             <div class="mini-card-scroll-area">
-              <div class="weapons-holder mini-card-scroll-items">
-
+              <div class="merchandise-holder mini-card-scroll-items">
+                <%- include('../placeholders/mini-card-item.html', {count : 7}); %>
               </div>
-
             </div>
 
             <div class="flex-container">
 
               <div class="flex-painel">
-
+                <div class="mini-card-scroll-area">
+                  <div class="market-holder mini-card-scroll-items">
+                    <%- include('../placeholders/mini-card-item.html', {count : 5}); %>
+                  </div>
+                </div>
               </div>
 
               <div class="flex-right">
+                <div class="market-form-placeholder card-flat">
+                  <%- include('../placeholders/form.html'); %>
+                </div>
 
-
+                <div class="market-form-holder card-flat"> </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>

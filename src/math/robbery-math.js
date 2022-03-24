@@ -1,4 +1,4 @@
-const PlayerController = require("../controller/player");
+const PlayerData = require("../db/data-access/player");
 const { Num } = require("../lib/util");
 
 module.exports = class RobberyMath {
@@ -9,7 +9,7 @@ module.exports = class RobberyMath {
     }
 
     getWeaponsStats() {
-        return PlayerController.weaponsStatsMultiplier(this.player);
+        return PlayerData.weaponsStatsMultiplier(this.player);
     }
 
     getPlayerWeaponBasedAttibutes() {
@@ -210,16 +210,15 @@ module.exports = class RobberyMath {
         this.place.dexterity = this.getPlayerAttributeValue('dexterity');
         this.place.strength = this.getStrength()
 
+        //To Analyze purposes. Can be removed.
+        this.place.playerFactor = this.getPlayerFactor();
+        this.place.successFactor = this.getSuccessFactor();
+        this.place.coinsHolderBonus = this.getCoinsHolderBonus()
+        // ----------------------------------//
+
         return this.place;
     }
 
 
-    analytcs() {
-        this.place.playerFactor = this.getPlayerFactor();
-        this.place.successFactor = this.getSuccessFactor();
-        this.place.coinsHolderBonus = this.getCoinsHolderBonus()
-
-        return this.make();
-    }
 
 }
