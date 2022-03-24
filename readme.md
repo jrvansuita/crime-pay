@@ -34,7 +34,7 @@ Next implementations:
 - [x] club page (hookers)
 - [x] club page (drugs)
 - [x] historic page (player crime historic) 
-- [ ] market (weapons and special items)
+- [x] market (weapons and special items)
 
 
 #### Mecanics
