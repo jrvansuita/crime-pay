@@ -14,9 +14,10 @@ const Num = {
     },
 
     assert(value, trunc, min, max) {
-        if (trunc) value = Math.trunc(value)
         if (min !== undefined) value = Math.max(min, value)
         if (max !== undefined) value = Math.min(max, value)
+
+        if (trunc) value = Math.trunc(value)
 
         return value;
     }
@@ -106,6 +107,17 @@ const Protos = () => {
         return this.sort(() => Math.random() - 0.5).slice(0, count)
     }
 
+    Array.prototype.dual = function () {
+        if (this.length == 2) {
+            const min = this[0].sign();
+            const max = Math.abs(this[1]);
+            return (min !== max) ? min + '-' + max : min;
+        }
+
+        return '';
+    }
+
+
     Number.prototype.positive = function () {
         return this > 0;
     }
@@ -141,6 +153,7 @@ const Protos = () => {
     Number.prototype.sign = function () {
         return this > 0 ? this.format().plus() : this.format()
     }
+
 
     Number.prototype.abs = function () {
         return Math.abs(this);

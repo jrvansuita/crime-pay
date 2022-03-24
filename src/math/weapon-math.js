@@ -42,24 +42,6 @@ module.exports = class WeaponMath {
         return this.coins || 0;
     }
 
-    getRespect() {
-        if ((this.respect === undefined)) {
-            var respect = 0;
-
-            if ((this.merchandise.rarity >= 10) && (this.merchandise.intelligenceFactor > 0)) {
-                //Defining player respect bonus
-                const respectBonus = (this.player.respect * .055) + this.merchandise.coinsFactor;
-
-                //Define the respect gain based on elemnt rarity and coins factor plus player respect bonus
-                respect = (this.merchandise.coinsFactor * this.merchandise.rarity * .008) + respectBonus;
-            }
-
-            this.respect = Num.assert(respect, true);
-        }
-
-        return this.respect || 0;
-    }
-
     getGainPercentage() {
         if (this.gainPercentage === undefined) {
             //Define the attributes gain percentage of this weapon
@@ -88,6 +70,17 @@ module.exports = class WeaponMath {
         return this[attribute] || 0;
     }
 
+    getRespect() {
+        if (this.respect === undefined) {
+            const respect = this.getPlayerAttribute('respect', this.merchandise.bundle.respect);
+
+            this.respect = Num.assert(respect * .35, true, 0, (this.player.respect * .25));
+        }
+
+        return this.respect;
+
+    }
+
     getLevel() {
         return this.getPlayerFactor().toString().length - 1;
     }
@@ -103,12 +96,12 @@ module.exports = class WeaponMath {
         this.merchandise.gainPercentage = this.getGainPercentage();
         this.merchandise.playerFactor = this.getPlayerFactor();
         this.merchandise.coins = this.getCoins();
-        this.merchandise.respect = this.getRespect();
         this.merchandise.level = this.getLevel();
 
-        this.merchandise.intelligence = this.getPlayerAttribute('intelligence', this.merchandise.intelligenceFactor);
-        this.merchandise.dexterity = this.getPlayerAttribute('dexterity', this.merchandise.dexterityFactor);
-        this.merchandise.strength = this.getPlayerAttribute('strength', this.merchandise.strengthFactor);
+        this.merchandise.intelligence = this.getPlayerAttribute('intelligence', this.merchandise.bundle.intelligence);
+        this.merchandise.dexterity = this.getPlayerAttribute('dexterity', this.merchandise.bundle.dexterity);
+        this.merchandise.strength = this.getPlayerAttribute('strength', this.merchandise.bundle.strength);
+        this.merchandise.respect = this.getRespect();
 
         return this.merchandise;
     }

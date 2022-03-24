@@ -34,6 +34,7 @@ module.exports = Object.freeze({
     SETTINGS: 'Settings',
     ROBBERY_ATTEMPT: 'Robbery Attempt',
     COINS_REWARD: 'Coins Reward',
+    ON_ROBBERIES: 'on Robberies',
     INCREASE: 'Increase',
 
     INTOXICATION: 'Intoxication',

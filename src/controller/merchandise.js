@@ -7,7 +7,7 @@ var cache = {};
 module.exports = class MerchandiseController extends Controller {
 
     constructor() {
-        super('merchandise');
+        super('merchandise', cache, 30);
     }
 
     onDetails(player, merchandise) {
