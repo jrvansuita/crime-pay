@@ -7,18 +7,18 @@
     </div>
     <div class="col">
 
-      <%- include('../single/label-item', { id: 'bribe-coins', text: word.COINS_COST,  icon: 'coin', showOnlyIf : bribe.data.coins.abs().positive(), value: bribe.data.coins.format()}); %>
+      <%- include('../single/label-item', { id: 'bribe-coins', text: word.COINS_COST,  icon: 'coin', showOnlyIf : bribe.update.coins.abs().positive(), value: bribe.update.coins.format()}); %>
 
-      <%- include('../single/label-item', { id: 'bribe-respect', text: word.RESPECT.concat(word.INCREASE),  icon: 'respect', showOnlyIf : bribe.data.respect.positive(), value: bribe.data.respect.sign()}); %>
+      <%- include('../single/label-item', { id: 'bribe-respect', text: word.RESPECT.concat(word.INCREASE),  icon: 'respect', showOnlyIf : bribe.update.respect.positive(), value: bribe.update.respect.sign()}); %>
 
-      <%- include('../single/label-item', { id: 'bribe-stamina', text: word.STAMINA_COST,  icon: 'stamina', showOnlyIf : bribe.data.stamina.abs().positive(), value: bribe.data.stamina.abs().percent()}); %>
+      <%- include('../single/label-item', { id: 'bribe-stamina', text: word.STAMINA_COST,  icon: 'stamina', showOnlyIf : bribe.update.stamina.abs().positive(), value: bribe.update.stamina.abs().percent()}); %>
 
       <%- include('../single/buttons/button-group', { id: 'bribe', 
                                         text: word.BRIBE,  
                                         quoteText: text.PRISON.GET_OUT_CHANCE.format(bribe.escapeChance), 
                                         loadingButton: true, 
-                                        insufficientCoins: bribe.data.coins.abs().greater(player.coins),
-                                        noStamina: bribe.data.stamina.abs().greater(player.stamina),
+                                        insufficientCoins: bribe.update.coins.abs().greater(player.coins),
+                                        noStamina: bribe.update.stamina.abs().greater(player.stamina),
                                         lifeImprisonment: player.lifeImprisonment 
                                      }); %>
 

@@ -1,30 +1,37 @@
 const PlaceController = require("../controller/place");
-const PlayerData = require('../db/data-access/player');
 const EventData = require('../db/data-access/event');
 const RobberyAttempt = require('../actions/robbery-attempt');
-const PHRASE = require("../const/phrase");
+const Mecanics = require("./mecanics");
 
 
-module.exports = class RobberyMecanics {
+module.exports = class RobberyMecanics extends Mecanics {
 
     constructor() {
-        this.playerData = new PlayerData();
+        super();
         this.placeController = new PlaceController();
         this.eventData = new EventData();
     }
 
+
+
     submit(placeId, player, fullStamina) {
         return this.placeController.details(placeId, player).then((place) => {
 
-            var playerUpdate = new RobberyAttempt(player, place).make(fullStamina);
+            const action = new RobberyAttempt(player, place).make(fullStamina);
 
-            return this.playerData.update(player._id, playerUpdate).then((updatedPlayer) => {
+            return super.update(player, action, EventData.robbery);
 
-                return EventData.robbery(player._id, playerUpdate, placeId, !playerUpdate.arrested, PHRASE.ROBBERY).then((event) => {
+            // return this.playerData.update(player._id, playerUpdate).then((updatedPlayer) => {
 
-                    return { event, player: updatedPlayer }
-                })
-            })
+            //     return EventData
+            //         .robbery(!playerUpdate.arrested)
+            //         .setIds(player._id, placeId)
+            //         .setData(data)
+            //         .save()
+            //         .then((event) => {
+            //             return { event, player: updatedPlayer }
+            //         })
+            // })
         })
     }
 

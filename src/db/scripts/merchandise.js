@@ -24,29 +24,33 @@ module.exports = class MerchandiseScripts extends Script {
         this.create('Hockey Mask', MerchandiseTypes.MASK, .05, 55, 4, 0, 0, 2, 1);
         this.create('Steel Disguise Mask', MerchandiseTypes.MASK, .06, 60, 3, 0, 0, 3, 3, 1);
 
+
+        this.create('Branch Tree', MerchandiseTypes.DOMESTIC, .0001, 5, 0, 0, 1);
         this.create('Broom', MerchandiseTypes.DOMESTIC, .1, 15, 0, 0, 2, -1, -5, -10);
-        this.create('Razor Blade', MerchandiseTypes.DOMESTIC, .01, 40, 1, 1, 0);
-        this.create('Red Scissor', MerchandiseTypes.DOMESTIC, .01, 20, 2, 2, 0, 0, 0, -5);
-        this.create('Razor', MerchandiseTypes.DOMESTIC, .03, 55, 2, 3, 0);
+        this.create('Hair Dryer', MerchandiseTypes.DOMESTIC, .13, 18, 0, 1, 0, 0, 3, 0);
+        this.create('Razor Blade', MerchandiseTypes.DOMESTIC, .01, 40, 1, 0, 0);
+        this.create('Red Scissor', MerchandiseTypes.DOMESTIC, .01, 20, 0, 2, 0, 0, 0, -5);
+        this.create('Razor', MerchandiseTypes.DOMESTIC, .03, 55, 1, 3, 0);
         this.create('Shuriken', MerchandiseTypes.DOMESTIC, .09, 70, 1, 2, 1, 2);
         this.create('Wooden Sword', MerchandiseTypes.DOMESTIC, .01, 50, 0, 2, 2);
         this.create('Paintball Gun', MerchandiseTypes.DOMESTIC, .03, 65, 0, 3, 0);
         this.create('Bow & Arrow', MerchandiseTypes.DOMESTIC, .5, 35, 1, 3, 2, 2, 0, 0, -5);
+        this.create('Hammer', MerchandiseTypes.DOMESTIC, .46, 40, 0, 2, 6, 1, 0, 3);
         this.create('Spiked Stick', MerchandiseTypes.DOMESTIC, .5, 55, 2, 1, 3, 0, 4, 2);
 
-        this.create('Knife', MerchandiseTypes.BLADED, 0.7, 20, 2, 2, 2);
-        this.create('Red Axe', MerchandiseTypes.BLADED, 1, 25, 3, 2, 3, 1, 1);
-        this.create('Pirate Sword', MerchandiseTypes.BLADED, 1.2, 35, 4, 3, 2, 2, 2);
-        this.create('Katana', MerchandiseTypes.BLADED, 1.3, 42, 5, 5, 2, 8, 0, 5);
-        this.create('Double Edged Sword', MerchandiseTypes.BLADED, 1.4, 40, 4, 4, 6, 5, 0, 0, -5);
+        this.create('Knife', MerchandiseTypes.BLADED, 0.7, 20, 2, 2, 0);
+        this.create('Red Axe', MerchandiseTypes.BLADED, 1, 25, 0, 0, 3, 1, 1);
+        this.create('Pirate Sword', MerchandiseTypes.BLADED, 1.2, 35, 0, 3, 2, 2, 2);
+        this.create('Katana', MerchandiseTypes.BLADED, 1.3, 42, 5, 0, 0, 5, 0, 5);
+        this.create('Double Edged Sword', MerchandiseTypes.BLADED, 1.4, 40, 0, 0, 6, 5, 0, 0, -5);
 
         this.create('Antique Gun', MerchandiseTypes.PISTOL, 2, 44, 6, 3, 7, 100, 0, -5);
-        this.create('Taurus .22 Pistol', MerchandiseTypes.PISTOL, 2.8, 25, 7, 6, 7);
-        this.create('38 Revolver', MerchandiseTypes.PISTOL, 2.9, 40, 5, 7, 7);
-        this.create('Smith & Wesson 1911', MerchandiseTypes.PISTOL, 3.2, 45, 8, 7, 9);
-        this.create('Glock 9MM', MerchandiseTypes.PISTOL, 3.3, 45, 8, 7, 8, 0, 0, 4);
-        this.create('MAC-10 Pistol', MerchandiseTypes.PISTOL, 3.7, 50, 10, 11, 10, 0, 0, 8);
-        this.create('Mini Uzi Submachine', MerchandiseTypes.PISTOL, 3.9, 55, 12, 9, 14, 6, 0, 6);
+        this.create('Taurus .22 Pistol', MerchandiseTypes.PISTOL, 2.8, 25, 7, 6, 0);
+        this.create('38 Revolver', MerchandiseTypes.PISTOL, 2.9, 40, 5, 0, 7);
+        this.create('Smith & Wesson 1911', MerchandiseTypes.PISTOL, 3.2, 45, 8, 0, 9);
+        this.create('Glock 9MM', MerchandiseTypes.PISTOL, 3.3, 45, 8, 0, 8, 0, 0, 4);
+        this.create('MAC-10 Pistol', MerchandiseTypes.PISTOL, 3.7, 50, 0, 11, 10, 0, 0, 8);
+        this.create('Mini Uzi Submachine', MerchandiseTypes.PISTOL, 3.9, 55, 0, 9, 14, 6, 0, 6);
 
         this.create('Pump Action Shotgun', MerchandiseTypes.SHOTGUN, 4.1, 45, 10, 11, 16, 1, 0, 0, -3);
         this.create('Wooden Shotgun', MerchandiseTypes.SHOTGUN, 4.3, 55, 12, 11, 16);

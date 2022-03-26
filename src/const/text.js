@@ -87,6 +87,7 @@ module.exports = Object.freeze({
 
             4: ['You bribed a jailer at the prison.'],
             5: ['You tried to escape from the prison.', 'You tried to escape with some dude from jail.'],
+            6: ['You bought a new equipment on the market.'],
         }
     },
 

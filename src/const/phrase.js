@@ -11,6 +11,7 @@ module.exports = Object.freeze({
     NO_CACHE_STORAGE: "No cache storage defined.",
     CANT_FIND_ANYMORE: ["You took a long time to choose.", "Cant't find anymore.", "You lost the chance!", "Just reload the page!"],
     GOT_ARRESTED: 'Got Arrested',
+    NO_EVENT_MESSAGE: 'No Event Message Defined!',
 
     ROBBERY: {
         SUCCESS: [
@@ -49,6 +50,10 @@ module.exports = Object.freeze({
     CLUB_DRUG: {
         SUCCESS: ["You're drugged as fuck.", "Super drugged!", "You are a legend!", "The sky is your limit.", 'It feels you have super powers!'],
         FAIL: ["Whata fuck just happened?", "You are out of control!", "A bad trip got you.", "You fell into a trap.", "Monkeys bite me.", 'Did not have any effect.'],
+    },
+
+    MARKET: {
+        SUCCESS: ["You bought a new equipment on the market.", "You bought something new!"],
     }
 
 });

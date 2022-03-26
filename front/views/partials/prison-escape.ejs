@@ -7,13 +7,14 @@
     </div>
 
     <div class="col-8">
-      <%- include('../single/label-item', { id: 'escape-coins', text: word.COINS_COST,  icon: 'coin', showOnlyIf : escape.data.coins.abs().positive(), value: escape.data.coins.format()}); %>
 
-      <%- include('../single/label-item', { id: 'escape-respect', text: word.RESPECT.concat(word.INCREASE),  icon: 'respect', showOnlyIf : escape.data.respect.abs().positive(), value: escape.data.respect.sign()}); %>
+      <%- include('../single/label-item', { id: 'escape-coins', text: word.COINS_COST,  icon: 'coin', showOnlyIf : escape.update.coins.abs().positive(), value: escape.update.coins.format()}); %>
+
+      <%- include('../single/label-item', { id: 'escape-respect', text: word.RESPECT.concat(word.INCREASE),  icon: 'respect', showOnlyIf : escape.update.respect.abs().positive(), value: escape.update.respect.sign()}); %>
 
       <%- include('../single/label-item', { id: 'escape-chance', text: word.ESCAPE_CHANCE,  icon: 'lucky', value: escape.escapeChance.percent()}); %>
 
-      <%- include('../single/label-item', { id: 'escape-stamina', text: word.STAMINA_COST,  icon: 'stamina', showOnlyIf : escape.data.stamina.abs().positive(), value: escape.data.stamina.abs().percent()}); %>
+      <%- include('../single/label-item', { id: 'escape-stamina', text: word.STAMINA_COST,  icon: 'stamina', showOnlyIf : escape.update.stamina.abs().positive(), value: escape.update.stamina.abs().percent()}); %>
 
 
       <%- include('../single/buttons/button-group', { id: 'escape', 
@@ -21,8 +22,8 @@
                                         quoteText: text.PRISON.ADDING_DAYS_JAIL.format(escape?.daysIncOnFail, null), 
                                         quoteDefault : text.PRISON.ADDING_DAYS_JAIL,
                                         loadingButton : true, 
-                                        insufficientCoins: escape.data.coins.abs().greater(player.coins), 
-                                        noStamina: escape.data.stamina.abs().greater(player.stamina), 
+                                        insufficientCoins: escape.update.coins.abs().greater(player.coins), 
+                                        noStamina: escape.update.stamina.abs().greater(player.stamina), 
                                         lifeImprisonment: player.lifeImprisonment 
                                      }); %>
 

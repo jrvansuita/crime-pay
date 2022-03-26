@@ -6,7 +6,7 @@ const word = require("../const/word")
 const defaultImages = { coins: 'coin', respect: 'respect', stamina: 'stamina', intoxication: 'intoxication' }
 
 const valuesFormatter = {
-
+    title: value => { return value },
     arrested: () => { return phrase.GOT_ARRESTED },
     arrestRelease: (value) => { return word.RELEASE.concat(value.toDateDisplay()) }
 }
@@ -25,8 +25,8 @@ module.exports = class HistoricItem {
     buildInfos() {
         let infos = [];
 
-        Object.keys(this.event.playerUpdate).forEach((key) => {
-            const value = this.event.playerUpdate[key];
+        Object.keys(this.event.data).forEach((key) => {
+            const value = this.event.data[key];
 
             infos.push({
                 image: defaultImages[key],

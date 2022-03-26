@@ -10,11 +10,7 @@ $(document).ready(() => {
         .setSubmitOptions({
             submit: '#submit',
             success: (data) => {
-                if (data.event.success) {
-                    window.toast.success(data.event.message)
-                } else {
-                    window.toast.error(data.event.message)
-                }
+                window.toast.pop(data.event.message, data.event.success);
 
                 new PlayerStatusUpdater(data.player).all();
 

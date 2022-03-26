@@ -45,11 +45,11 @@ class RobberyLayoutManager {
         $('#result-message').text(event.message)
 
         $('#result-img').attr('src', ('/img/'.join(event.success ? 'thief-success' : 'police-arrested').join('.png')));
-        $('#result-coins').text(event.playerUpdate.coins.sign()).parent().toggle(!!event.playerUpdate.coins);
-        $('#result-respect').text(event.playerUpdate.respect.sign()).parent().toggle(!!event.playerUpdate.respect);
-        $('#result-intelligence').text(event.playerUpdate.intelligence.sign());
-        $('#result-dexterity').text(event.playerUpdate.dexterity.sign());
-        $('#result-strength').text(event.playerUpdate.strength.sign());
+        $('#result-coins').text(event.data.coins.sign()).parent().toggle(!!event.data.coins);
+        $('#result-respect').text(event.data.respect.sign()).parent().toggle(!!event.data.respect);
+        $('#result-intelligence').text(event.data.intelligence.sign());
+        $('#result-dexterity').text(event.data.dexterity.sign());
+        $('#result-strength').text(event.data.strength.sign());
     }
 
 

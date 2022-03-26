@@ -28,8 +28,8 @@ class PrisonLayoutManager {
     }
 
     attemptHasFailed({ player, newAttempt }) {
-        const escapeData = newAttempt.escape.data;
-        const bribeData = newAttempt.bribe.data;
+        const escapeData = newAttempt.escape.update;
+        const bribeData = newAttempt.bribe.update;
 
         $('#releaseTime').text(player.arrestRelease.toDateDisplay());
         $('#escape-coins').text(escapeData.coins?.sign());
@@ -56,15 +56,14 @@ class PrisonLayoutManager {
             setTimeout(() => {
                 $.post(path).done((data) => {
                     _this.toggleLoadingButton(button, false);
+                    window.toast.pop(data.event.message, data.event.success);
 
                     if (data.event.success) {
-                        window.toast.success(data.event.message)
                         _this.justReleasedFromPrison();
                         new PlayerStatusUpdater(data.player).all();
                     } else {
                         _this.attemptHasFailed(data);
                         new PlayerStatusUpdater(data.player).coins().bars();
-                        window.toast.error(data.event.message)
                     }
                 }).fail(function (r) {
                     _this.toggleLoadingButton(button, false);

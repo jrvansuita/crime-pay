@@ -26,6 +26,12 @@ module.exports = class MarketPage extends Page {
         });
 
 
+        this.post('/market-submit').then(({ player, req, res }) => {
+            return this.marketMecanics.submit(req.body.id, player).then(result => res.send(result))
+        });
+
+
+
         this.page('/dev/merchandises', false).then(({ req, res }) => {
             const PlayerEvolution = require("../dev/player-evolution");
             return new PlayerEvolution(req.query).merchandises().then(result => { return res.render('dev/player-evolution', result); })

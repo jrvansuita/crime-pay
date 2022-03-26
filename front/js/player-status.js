@@ -12,7 +12,7 @@ class PlayerStatusUpdater {
     badge() {
         $('.player-badge-img').attr('src', this.player.arrested ? '/img/lock.png' : '/img/respect.png')
         $('#player-badge-text').text(this.player.arrested ? $('#player-badge-text').data('def') : this.player.respect.format());
-        $('#player-badge-text').parent().toggleClass('bg-danger', this.player.arrested);
+        $('#player-badge-text').parent().toggleClass('bg-danger', this.player?.arrested || false);
 
         return this;
     }

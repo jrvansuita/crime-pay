@@ -1,43 +1,36 @@
-const PlayerData = require("../db/data-access/player");
 const EventData = require('../db/data-access/event');
-const { PRISON_ESCAPE, PRISON_BRIBE } = require("../const/phrase");
 const { EscapeAttempt, BribeAttempt } = require("../actions/prison-release-attempt");
+const Mecanics = require("./mecanics");
+const EventTypes = require("../enum/event-types");
 
 
-module.exports = class PrisonMecanics {
-
-    constructor() {
-        this.playerData = new PlayerData();
-        this.eventData = new EventData();
-    }
+module.exports = class PrisonMecanics extends Mecanics {
 
     for(player) {
+
         return player.arrested ? {
-            escape: new EscapeAttempt(player).get(),
-            bribe: new BribeAttempt(player).get()
+            escape: new EscapeAttempt(player).make(false),
+            bribe: new BribeAttempt(player).make(false)
         } : {};
     }
 
-    makeAttempt(player, attempt, msg) {
-        attempt.make();
+    makeAttempt(player, action, eventBuilder) {
+        action.make();
 
-        return this.playerData.update(player._id, attempt.data).then((updatedPlayer) => {
-
-            return EventData.save(attempt.enventType, player._id, attempt.data, '', attempt.success, msg).then((event) => {
-                return { player: updatedPlayer, event, newAttempt: this.for(updatedPlayer) };
-            })
-        });
+        return super.update(player, action, eventBuilder).then(({ event, player }) => {
+            return { event, player, newAttempt: this.for(player) };
+        })
     }
 
     escape(player) {
         return Promise.resolve().then(() => {
-            return this.makeAttempt(player, new EscapeAttempt(player), PRISON_ESCAPE);
-        });
+            return this.makeAttempt(player, new EscapeAttempt(player), EventData.escape);
+        })
     }
 
     bribe(player) {
         return Promise.resolve().then(() => {
-            return this.makeAttempt(player, new BribeAttempt(player), PRISON_BRIBE);
+            return this.makeAttempt(player, new BribeAttempt(player), EventData.bribe);
         });
     }
 

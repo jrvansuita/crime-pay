@@ -17,6 +17,7 @@ module.exports = class PlayerUpdateModel {
         this.multiplier = 1;
     }
 
+
     static build(player, coins, respect, stamina, intoxication, intelligence, dexterity, strength) {
         return new PlayerUpdateModel(player)
             .setCoins(coins)
@@ -122,13 +123,7 @@ module.exports = class PlayerUpdateModel {
         }
     }
 
-    check(condition, errorMessage) {
-        if (condition) throw new Error(errorMessage);
-
-        return this;
-    }
-
-    get() {
+    clear() {
         delete this.player;
         delete this.validations;
         delete this.multiplier;
@@ -136,9 +131,9 @@ module.exports = class PlayerUpdateModel {
     }
 
     build() {
-        this.validations()
+        this.validations?.()
 
-        return this.get()
+        return this.clear()
     }
 
 

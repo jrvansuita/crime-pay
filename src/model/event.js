@@ -1,6 +1,8 @@
 const moment = require("moment");
+const { Util } = require("../lib/util");
 
-const EventModel = class {
+module.exports = class EventModel {
+
     constructor(type) {
         this.setType(type).setSuccess(true);
         this.date = moment().toDate();
@@ -12,13 +14,17 @@ const EventModel = class {
         return this;
     }
 
+    setIds(playerId, typeItemId = null) {
+        return this.setPlayerId(playerId).setTypeItemId(typeItemId);
+    }
+
     setPlayerId(playerId) {
         this.playerId = playerId.toString();
         return this;
     }
 
-    setPlayerUpdate(playerUpdate) {
-        this.playerUpdate = playerUpdate;
+    setData(data) {
+        this.data = data;
         return this;
     }
 
@@ -27,13 +33,16 @@ const EventModel = class {
         return this;
     }
 
-    setSuccess(success = true) {
-        this.success = success;
+    setSuccess(success = undefined) {
+        if (success !== undefined) this.success = success
         return this;
     }
+
+    assert() {
+        Util.clearProps(this.data);
+        Util.clearProps(this);
+
+        return this;
+    }
+
 }
-
-
-
-
-module.exports = EventModel;
