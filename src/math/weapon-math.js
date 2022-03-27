@@ -82,7 +82,22 @@ module.exports = class WeaponMath {
     }
 
     getLevel() {
-        return this.getPlayerFactor().toString().length - 1;
+        if (this.level === undefined) {
+            this.level = this.getPlayerFactor().toString().length - 1;
+        }
+
+        return this.level;
+    }
+
+    getColor() {
+        if (this.color === undefined) {
+            const saturation = Num.assert(40 + (this.getLevel() * 5), true, 40, 55);
+            const lightness = Num.assert(85 - (this.getLevel() * 10), true, 25, 80);
+
+            this.color = this.merchandise.name.toColor(1, saturation, lightness);
+        }
+
+        return this.color;
     }
 
     preview() {
@@ -90,7 +105,6 @@ module.exports = class WeaponMath {
 
         return this.merchandise;
     }
-
 
     make() {
         this.merchandise.gainPercentage = this.getGainPercentage();
@@ -102,6 +116,8 @@ module.exports = class WeaponMath {
         this.merchandise.dexterity = this.getPlayerAttribute('dexterity', this.merchandise.bundle.dexterity);
         this.merchandise.strength = this.getPlayerAttribute('strength', this.merchandise.bundle.strength);
         this.merchandise.respect = this.getRespect();
+
+        this.merchandise.color = this.getColor();
 
         return this.merchandise;
     }

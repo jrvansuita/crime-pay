@@ -9,7 +9,7 @@
   </span>
   <%}%>
 
-  <img src="<%=img%>" class="card-img-top <%=locals?.imageClass%>" alt="<%=name%>" />
+  <img src="<%=img%>" class="card-img-top <%=locals?.imageClass%>" alt="<%=name%>" style="<%=locals?.imgColor ? 'background-color:' + locals?.imgColor   : ''%>" />
   <div class="card-body ">
     <h5 class="card-title mini-card-name">
       <%=name%>

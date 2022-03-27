@@ -35,7 +35,24 @@ const Util = {
 
     dateFormat: (value, concatString = '', defaultString = '') => {
         return value && moment ? concatString + moment(new Date(value)).calendar() : defaultString;
-    }
+    },
+
+    hashCode: (str) => {
+        if (str) {
+            str = str.toString().toLowerCase().trim()
+        }
+
+        var hash = 0
+        for (var i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash)
+        }
+        return hash
+    },
+
+    strToColor: function (str, alpha) {
+        var shortened = this.hashCode(str) % 160
+        return 'hsl(' + shortened + ', 45%, 60%' + (alpha ? ', ' + alpha : '') + ')'
+    },
 }
 
 
@@ -89,6 +106,16 @@ const Protos = () => {
 
     String.prototype.array = function () {
         return [this]
+    }
+
+    String.prototype.hash = function () {
+        return this.toLowerCase().trim().split('').reduce((hash, char) => {
+            return char.charCodeAt(0) + ((hash << 5) - hash)
+        }, 0);
+    }
+
+    String.prototype.toColor = function (alpha = 1, saturation = 40, lightness = 60) {
+        return 'hsl(' + this.hash() % 210 + ', ' + saturation + '%, ' + lightness + '%' + ', ' + alpha + ')'
     }
 
     Array.prototype.array = function () {
