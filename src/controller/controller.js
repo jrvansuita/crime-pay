@@ -62,11 +62,6 @@ module.exports = class Controller extends DataAccess {
                 data = this.onFilterAfterPreview(data, player);
 
                 this.cache?.set(data)
-
-                if (this.cache) {
-                    //Deep Copy the array, to keep primitive values stored on cache
-                    data = data.deepCopy();
-                }
             }
 
             data = data.map(each => { return this.onDetails(player, each) });

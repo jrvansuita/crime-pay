@@ -31,13 +31,13 @@ module.exports = class Cache {
     set(data, key = this.getDefaultKey()) {
         if (!this.has(key)) {
             this.clearLast();
-            this.storage[key] = data;
+            this.storage[key] = data.deepCopy();
             this.lastKey = key;
         }
     }
 
     get(key = this.getDefaultKey()) {
-        return this.storage[key];
+        return this.storage[key].deepCopy();
     }
 
     has(key = this.getDefaultKey()) {
