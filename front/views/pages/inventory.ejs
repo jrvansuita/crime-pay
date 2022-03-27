@@ -1,0 +1,28 @@
+<html lang="en">
+
+<%- include('../default/head', {pageTitle: word.INVENTORY, css: 'inventory', js:['inventory','lib/mini-cards','lib/form-control']}); %>
+
+
+<body>
+  <div class="container main-content">
+    <div class="flex-container">
+      <div class="flex-left">
+        <%- include('../partials/player-status'); %>
+      </div>
+
+      <div class="flex-painel content">
+        <div class="card">
+          <%- include('../partials/menu', {nav_inventory:true}); %>
+
+          <div class="card-body">
+            <h5 class="card-title"><%=text.INVENTORY.PAGE_TITLE%></h5>
+            <p class="card-text text-secondary"><%=text.INVENTORY.DEFAULT_EXPLANATION%></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

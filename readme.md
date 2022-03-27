@@ -35,7 +35,7 @@ Next implementations:
 - [x] club page (drugs)
 - [x] historic page (player crime historic) 
 - [x] market (weapons and special items)
-- [ ] player inventory (equip weapons and special items)
+- [ ] player inventory (equip weapons and special items) [IN DEVELOPMENT]
 
 
 #### Mecanics

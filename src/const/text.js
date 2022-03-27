@@ -59,6 +59,11 @@ module.exports = Object.freeze({
 
     },
 
+    INVENTORY: {
+        PAGE_TITLE: 'Your Inventory',
+        DEFAULT_EXPLANATION: '[Some Description]',
+    },
+
     HISTORIC: {
         PAGE_TITLE: 'Crime Historic',
         DEFAULT_EXPLANATION: 'Here you find the true criminal who you are. All your recent crime historic is shown here.',

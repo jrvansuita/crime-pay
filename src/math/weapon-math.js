@@ -91,8 +91,8 @@ module.exports = class WeaponMath {
 
     getColor() {
         if (this.color === undefined) {
-            const saturation = Num.assert(40 + (this.getLevel() * 5), true, 40, 55);
-            const lightness = Num.assert(85 - (this.getLevel() * 10), true, 25, 80);
+            const saturation = Num.assert(40 + (this.getLevel() * 5), true, 42, 55);
+            const lightness = Num.assert(85 - (this.getLevel() * 10), true, 30, 75);
 
             this.color = this.merchandise.name.toColor(1, saturation, lightness);
         }

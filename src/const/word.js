@@ -24,6 +24,7 @@ module.exports = Object.freeze({
     RELEASE: 'Release',
 
     PRISON: 'Prison',
+    INVENTORY: 'Inventory',
     HOME_PAGE: 'Home Page',
     ROBBERIES: 'Robberies',
     ROBBERY: 'Robbery',

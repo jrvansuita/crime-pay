@@ -33,7 +33,7 @@ module.exports = class AttributesBundle {
         if (value) {
             const max = value;
             const min = (max > 0 ? 1 : -1) * Num.assert(Math.abs(max) / divider, true, 1);
-            this[name] = [min, max];
+            this[name] = min !== max ? [min, max] : max;
         }
 
         return this;
