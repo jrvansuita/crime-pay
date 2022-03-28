@@ -22,6 +22,15 @@
 
   <title><%=word.APP_NAME + (locals?.pageTitle ? ' - '.join(locals?.pageTitle): '')%></title>
 
+
+  <% 
+  
+  if (locals?.carousel) locals.css = ['lib/cards-carousel', ...(locals?.css || [])];
+
+  if (locals?.carousel) locals.js = ['lib/cards-carousel','lib/box-control','lib/request-button', ...(locals?.js || [])];
+  
+  %>
+
   <% locals?.css?.array().forEach((each) => { %>
   <link rel="stylesheet" href="/css/<%=each%>.css">
   <%})%>

@@ -2,32 +2,27 @@
 $(document).ready(() => {
     const cardItems = new CardsCarousel();
 
+    const onSuccess = (data) => {
+        window.toast.pop(data.event.message, data.event.success);
 
-    const form = new FormControl()
-        .setFormUrl("/inventory-form")
-        //.setSubmitUrl("/club-submit")
-        .setFormHoldersSelectors(".inventory-form-holder", ".inventory-form-placeholder")
-        .setSubmitOptions({
-            submit: '#equip',
-            success: (data) => {
-                window.toast.pop(data.event.message, data.event.success);
+        new PlayerStatusUpdater(data.player).all();
 
-                new PlayerStatusUpdater(data.player).all();
+        cardItems.load();
+    };
 
-                cardItems.load();
-            }
-        })
-        .showPlaceholder();
+    const form = new BoxControl("/inventory-form")
+        .bind(".inventory-form-holder", ".inventory-form-placeholder")
+        .addAction('#equip', "/inventory-equip", onSuccess)
+        .addAction('#sell', "/inventory-sell", onSuccess)
+        .end().show();
 
     cardItems
         .setUrl("/inventory-weapons")
         .setHolderSelector(".weapons-holder")
         .setOnCardSelected(key => {
-            form.setRequestData({ id: key }).load()
+            form.setData({ id: key }).load()
         })
         .load();
-
-
 
 });
 

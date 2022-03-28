@@ -1,31 +1,24 @@
 $(document).ready(() => {
 
-    var cardItems = new CardsCarousel();
+    const cardItems = new CardsCarousel();
 
-    var formControl = new FormControl()
-        .setFormUrl("/robbery-form")
-        .setSubmitUrl("/robbery-submit")
-        .setFormHoldersSelectors(".robbery-form-holder", ".robbery-form-placeholder")
-        .setSubmitOptions({
-            submit: '#submit',
-            success: (data) => {
-                new RobberyLayoutManager().update(data)
-                new PlayerStatusUpdater(data.player).all();
-                cardItems.load();
-            }
-        })
-        .showPlaceholder();
+    const onSucess = (data) => {
+        new RobberyLayoutManager().update(data)
+        new PlayerStatusUpdater(data.player).all();
+        cardItems.load();
+    };
 
+    const form = new BoxControl("/robbery-form")
+        .bind(".robbery-form-holder", ".robbery-form-placeholder")
+        .addAction('#submit', "/robbery-submit", onSucess)
+        .addAction('#submit-full-stamina', "/robbery-submit", onSucess).putData({ fullStamina: true })
+        .end().show();
 
     cardItems.setUrl("/robbery-places")
         .setLastSelectedVar(lastPlaceItemSelected)
         .setHolderSelector(".places-holder")
         .setOnCardSelected(key => {
-
-            formControl.setRequestData({ id: key }).load(() => {
-                formControl.addSubmitItem('#submit-full-stamina', '', { fullStamina: true });
-            })
-
+            form.setData({ id: key }).load()
         })
         .load();
 });

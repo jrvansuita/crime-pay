@@ -1,31 +1,24 @@
 
 $(document).ready(() => {
-    var marchandiseCarousel = new CardsCarousel();
+    const carousel = new CardsCarousel();
 
 
-    var formControl = new FormControl()
-        .setFormUrl("/market-form")
-        .setSubmitUrl("/market-submit")
-        .setFormHoldersSelectors(".market-form-holder", ".market-form-placeholder")
-        .setSubmitOptions({
-            submit: '#submit',
-            success: (data) => {
-                window.toast.pop(data.event.message, data.event.success);
+    const form = new BoxControl("/market-form")
+        .bind(".market-form-holder", ".market-form-placeholder")
+        .addAction('#submit', "/market-submit", (data) => {
+            window.toast.pop(data.event.message, data.event.success);
 
-                new PlayerStatusUpdater(data.player).all();
-                marchandiseCarousel.load();
-            }
+            new PlayerStatusUpdater(data.player).all();
+            carousel.load();
         })
-        .showPlaceholder();
+        .end().show();
 
 
-    marchandiseCarousel.setUrl("/market-merchandise")
+    carousel.setUrl("/market-merchandise")
         .setLastSelectedVar(lastMarketItemSelected)
         .setHolderSelector(".merchandise-holder")
-        .setOnCardSelected(key => formControl.setRequestData({ id: key }).load())
+        .setOnCardSelected(key => form.setData({ id: key }).load())
         .load();
-
-
 
 });
 

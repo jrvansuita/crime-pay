@@ -1,6 +1,6 @@
 class FormControl {
 
-    setRequestData(data) {
+    setData(data) {
         this.requestData = data
         return this;
     }

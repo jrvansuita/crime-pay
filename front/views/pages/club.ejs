@@ -1,6 +1,6 @@
 <html lang="en">
 
-<%- include('../default/head', {pageTitle: word.CLUB, css: ['club','lib/cards-carousel'], js:['club','lib/cards-carousel','lib/form-control']}); %>
+<%- include('../default/head', {pageTitle: word.CLUB, carousel: true, css: ['club'], js:['club']}); %>
 
 <script>
   window.lastClubItemSelected = '<%= session.lastClubItemSelected %>'
