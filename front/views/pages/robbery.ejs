@@ -1,5 +1,5 @@
 <html lang="en">
-<%- include('../default/head', {pageTitle: word.ROBBERY, css: ['robbery','lib/cards'], js:['robbery','lib/card-items','lib/form-control', 'lib/tooltip']}); %>
+<%- include('../default/head', {pageTitle: word.ROBBERY, css: ['robbery','lib/cards-carousel'], js:['robbery','lib/cards-carousel','lib/form-control', 'lib/tooltip']}); %>
 <script>
   window.lastPlaceItemSelected = '<%= session.lastPlaceItemSelected %>'
 </script>
@@ -19,15 +19,15 @@
             <h5 class="card-title"><%=text.ROBBERY.PAGE_TITLE%></h5>
             <p class="card-text text-secondary"><%=text.ROBBERY.DEFAULT_EXPLANATION%></p>
 
-            <div class="card-items-scroll-area">
-              <div class="places-holder card-items">
+            <div class="card-carousel-scroll-area">
+              <div class="places-holder card-carousel">
                 <%- include('../placeholders/mini-card-item', {count : 7}); %>
               </div>
             </div>
 
             <div class="flex-container">
               <div class="flex-painel">
-                <div class="robbery-form-placeholder card-flat">
+                <div class="robbery-form-placeholder">
                   <%- include('../placeholders/form', {lines:5}); %>
                 </div>
 

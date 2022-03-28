@@ -8,9 +8,7 @@ const Num = {
     },
 
     lucky: (max, min = 1) => {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min;
+        return [min, max].sortBetween();
     },
 
     assert(value, trunc, min, max) {
@@ -109,6 +107,16 @@ const Protos = () => {
         return this.random();
     }
 
+    Array.prototype.sortBetween = function (def = 0) {
+        try {
+            const min = Math.ceil(this[0]);
+            const max = Math.floor(this[1]);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        } catch (e) {
+            return def
+        }
+    }
+
     Array.prototype.deepCopy = function () {
         return JSON.parse(JSON.stringify(this));
     }
@@ -127,6 +135,9 @@ const Protos = () => {
         return '';
     }
 
+    Number.prototype.array = function () {
+        return [...Array(this + 1).keys()].slice(1);
+    }
 
     Number.prototype.positive = function () {
         return this > 0;
@@ -172,7 +183,7 @@ const Protos = () => {
         return this.sign();
     }
 
-    Number.prototype.between = function (a, b) {
+    Number.prototype.isBetween = function (a, b) {
         var min = Math.min.apply(Math, [a, b]),
             max = Math.max.apply(Math, [a, b]);
         return this > min && this < max;

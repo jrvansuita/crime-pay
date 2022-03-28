@@ -1,6 +1,6 @@
 <html lang="en">
 
-<%- include('../default/head', {pageTitle: word.CLUB, css: ['club','lib/cards'], js:['club','lib/card-items','lib/form-control']}); %>
+<%- include('../default/head', {pageTitle: word.CLUB, css: ['club','lib/cards-carousel'], js:['club','lib/cards-carousel','lib/form-control']}); %>
 
 <script>
   window.lastClubItemSelected = '<%= session.lastClubItemSelected %>'
@@ -21,23 +21,23 @@
             <h5 class="card-title"><%=text.CLUB.PAGE_TITLE%></h5>
             <p class="card-text text-secondary"><%=text.CLUB.DEFAULT_EXPLANATION%></p>
 
-            <div class="card-items-scroll-area">
-              <div class="hookers-holder card-items">
+            <div class="card-carousel-scroll-area">
+              <div class="hookers-holder card-carousel">
                 <%- include('../placeholders/mini-card-item', {count : 7}); %>
               </div>
             </div>
 
             <div class="flex-container">
               <div class="flex-painel">
-                <div class="card-items-scroll-area">
-                  <div class="drugs-holder card-items">
+                <div class="card-carousel-scroll-area">
+                  <div class="drugs-holder card-carousel">
                     <%- include('../placeholders/mini-card-item', {count : 5}); %>
                   </div>
                 </div>
               </div>
 
               <div class="flex-right">
-                <div class="club-form-placeholder card-flat">
+                <div class="club-form-placeholder">
                   <%- include('../placeholders/form', {lines: 4}); %>
                 </div>
 

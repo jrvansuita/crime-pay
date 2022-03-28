@@ -1,6 +1,6 @@
 
 $(document).ready(() => {
-    var marchandiseCardItems = new CardItems();
+    var marchandiseCarousel = new CardsCarousel();
 
 
     var formControl = new FormControl()
@@ -13,13 +13,13 @@ $(document).ready(() => {
                 window.toast.pop(data.event.message, data.event.success);
 
                 new PlayerStatusUpdater(data.player).all();
-                marchandiseCardItems.load();
+                marchandiseCarousel.load();
             }
         })
         .showPlaceholder();
 
 
-    marchandiseCardItems.setUrl("/market-merchandise")
+    marchandiseCarousel.setUrl("/market-merchandise")
         .setLastSelectedVar(lastMarketItemSelected)
         .setHolderSelector(".merchandise-holder")
         .setOnCardSelected(key => formControl.setRequestData({ id: key }).load())

@@ -1,12 +1,21 @@
-.inventory-equip-form-holder, .inventory-equip-form-placeholder {
-    margin-right: 1.5em;
+.inventory-form-holder .card, .inventory-form-placeholder {
+    width: 100%;
+    min-width: 20em;
+    min-height: 13em;
 }
 
-.inventory-equip-form-holder, .inventory-sell-form-holder {
+.card-body .flex-container .flex-painel {
+    flex: .6;
+}
+
+.card-body .flex-container .flex-right {
+    flex: .4;
+}
+
+.inventory-form-holder {
     display: none;
 }
 
-
-.card-flat {
-    width: 25em;
+.card-carousel-scroll-area {
+    margin-top: 18px;
 }

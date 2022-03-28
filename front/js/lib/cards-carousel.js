@@ -1,4 +1,4 @@
-class CardItems {
+class CardsCarousel {
 
     constructor() {
         this.setLoadDelay(200);
@@ -55,7 +55,7 @@ class CardItems {
 
             if ((self.lastSelected !== currentSelected) || ($(self.cardsSelector).find('.selected').length == 0)) {
 
-                $('.card-items .card').removeClass('selected');
+                $('.card-carousel .card').removeClass('selected');
                 $(this).addClass('selected')
 
                 self.lastSelected = currentSelected;

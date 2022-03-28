@@ -1,12 +1,5 @@
 <% 
-
-var items = [1];
-
-if (locals.count) {
-  items = [...Array(locals.count+1).keys()].slice(1)
-}
-
-items.forEach(()=>{ %>
+(locals?.count?.array() || [1]).forEach(()=>{ %>
 
 
 <div class="mini-card ph card" aria-hidden="true">

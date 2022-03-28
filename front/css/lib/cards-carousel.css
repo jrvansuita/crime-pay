@@ -1,4 +1,4 @@
-.card-items-scroll-area {
+.card-carousel-scroll-area {
     width: 100%;
     padding-top: 5px;
     padding-bottom: 10px;
@@ -8,11 +8,11 @@
     min-height: 250px;
 }
 
-.card-items .translate-middle {
+.card-carousel .translate-middle {
     transform: translate(-80%, -25%) !important;
 }
 
-.card-items {
+.card-carousel {
     padding-left: 3px;
     padding-right: 3px;
     align-items: stretch;
@@ -21,23 +21,22 @@
     flex-wrap: nowrap;
 }
 
-.card-items>.card {
+.card-carousel>.card {
     flex-grow: 0;
     margin-right: 14px;
     min-width: 139px;
 }
 
-.card-items .card-title {
+.card-carousel .card-title {
     font-size: 0.9em;
     font-weight: 400;
+    text-align: start;
 }
 
 .badge.rounded-pill>.mini-img {
     margin-right: 2px;
     width: 16px;
 }
-
-
 
 .mini-card .card-body {
     min-height: 79px;
@@ -53,17 +52,17 @@
     background-color: #9da0a3;
 }
 
-.card-items .card:hover {
+.card-carousel .card:hover {
     cursor: pointer;
     background-color: rgb(240 236 236 / 46%);
 }
 
-.card-items .card.selected {
+.card-carousel .card.selected {
     background-color: rgb(240 236 236 / 46%);
     outline: 2px solid #599cff;
 }
 
-.card-items li {
+.card-carousel li {
     background-color: transparent;
 }
 

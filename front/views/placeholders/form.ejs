@@ -1,17 +1,38 @@
-<p aria-hidden="true">
-  <span class="placeholder placeholder-lg col-7"></span>
-</p>
+<div class="card">
 
-<% 
-const items = locals?.lines ? [...Array(locals.lines+1).keys()].slice(1) : [];
+  <%if (locals?.tabs){%>
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <%(locals?.tabs?.array() || [1]).forEach((e, i)=>{ %>
+      <li class="nav-item">
+        <a class="nav-link <%=i===0? 'active' : ''%>" aria-current="true" href="#">
+          <p class="card-text placeholder-glow" style="min-width:<%=[40,50].sortBetween()%>px">
+            <span class="placeholder placeholder-lg col-12"></span>
+          </p>
+        </a>
+      </li>
+      <% }); %>
+    </ul>
+  </div>
+  <%}%>
 
-items.forEach((e, i)=>{ %>
+  <div class="card-body">
 
-<p class="placeholder-glow">
-  <span class="placeholder col-<%=11-i-[1,-1].randomOne()%>"></span>
-</p>
+    <p aria-hidden="true">
+      <span class="placeholder placeholder-lg col-7"></span>
+    </p>
+    
+    <% (locals?.lines?.array() || [1]).forEach((e, i)=>{ %>
 
-<% }); %>
+  <p class="placeholder-glow">
+    <span class="placeholder col-<%=11-i-[1,-1].randomOne()%>"></span>
+  </p>
+
+  <% }); %>
 
 
-<a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-2"></a>
+  <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-2"></a>
+
+</div>
+
+</div>

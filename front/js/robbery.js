@@ -1,6 +1,6 @@
 $(document).ready(() => {
 
-    var cardItems = new CardItems();
+    var cardItems = new CardsCarousel();
 
     var formControl = new FormControl()
         .setFormUrl("/robbery-form")
