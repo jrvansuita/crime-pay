@@ -1,0 +1,13 @@
+<%if (locals?.showOnlyIf !== false){%>
+<div class="input-group">
+
+  <input id="<%=locals?.id%>" type="<%=locals?.inputType || 'text'%>" class="form-control" placeholder="<%=locals?.placeholder%>" value="<%=locals?.value%>" />
+
+  <%if (locals?.icon){%>
+  <span class="input-group-text">
+    <img class="mini-img" src="/img/<%=icon%>.png" />
+  </span>
+  <%}%>
+
+</div>
+<%}%>

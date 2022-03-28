@@ -10,8 +10,8 @@ class FormControl {
         return this;
     }
 
-    setResultUrl(url) {
-        this.resultUrl = url;
+    setSubmitUrl(url) {
+        this.submitUrl = url;
         return this;
     }
 
@@ -76,7 +76,7 @@ class FormControl {
 
             var data = { ...extraData, ...this.requestData };
 
-            $.post(path || this.resultUrl, data).done((data) => {
+            $.post(path || this.submitUrl, data).done((data) => {
                 this.toggleLoadingButton(false);
                 this.showPlaceholder()
                 if (this.onSuccess) this.onSuccess(data);

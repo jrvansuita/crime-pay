@@ -1,6 +1,6 @@
 <html lang="en">
 
-<%- include('../default/head', {pageTitle: word.INVENTORY, css: 'inventory', js:['inventory','lib/mini-cards','lib/form-control']}); %>
+<%- include('../default/head', {pageTitle: word.INVENTORY, css: ['inventory','lib/cards'], js:['inventory','lib/card-items','lib/form-control']}); %>
 
 
 <body>
@@ -17,6 +17,28 @@
           <div class="card-body">
             <h5 class="card-title"><%=text.INVENTORY.PAGE_TITLE%></h5>
             <p class="card-text text-secondary"><%=text.INVENTORY.DEFAULT_EXPLANATION%></p>
+
+            <div class="flex-container flex-inline">
+              <div class="inventory-equip-form-placeholder card-flat">
+                <%- include('../placeholders/form'); %>
+              </div>
+
+              <div class="inventory-equip-form-holder card-flat"></div>
+
+
+              <div class="inventory-sell-form-placeholder card-flat">
+                <%- include('../placeholders/form', {lines:1}); %>
+              </div>
+
+              <div class="inventory-sell-form-holder card-flat"></div>
+            </div>
+
+
+            <div class="card-items-scroll-area">
+              <div class="weapons-holder card-items">
+                <%- include('../placeholders/mini-card-item', {count : 7}); %>
+              </div>
+            </div>
 
           </div>
         </div>

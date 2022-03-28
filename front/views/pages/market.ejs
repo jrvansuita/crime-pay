@@ -1,6 +1,6 @@
 <html lang="en">
 
-<%- include('../default/head', {pageTitle: word.MARKET, css: 'market', js:['market','lib/mini-cards','lib/form-control']}); %>
+<%- include('../default/head', {pageTitle: word.MARKET, css: ['market','lib/cards'], js:['market','lib/card-items','lib/form-control']}); %>
 
 
 <script>
@@ -22,25 +22,25 @@
             <h5 class="card-title"><%=text.MARKET.PAGE_TITLE%></h5>
             <p class="card-text text-secondary"><%=text.MARKET.DEFAULT_EXPLANATION%></p>
 
-            <div class="mini-card-scroll-area">
-              <div class="merchandise-holder mini-card-scroll-items">
-                <%- include('../placeholders/mini-card-item.html', {count : 7}); %>
+            <div class="card-items-scroll-area">
+              <div class="merchandise-holder card-items">
+                <%- include('../placeholders/mini-card-item', {count : 7}); %>
               </div>
             </div>
 
             <div class="flex-container">
 
               <div class="flex-painel">
-                <div class="mini-card-scroll-area">
-                  <div class="market-holder mini-card-scroll-items">
-                    <%- include('../placeholders/mini-card-item.html', {count : 5}); %>
+                <div class="card-items-scroll-area">
+                  <div class="market-holder card-items">
+                    <%- include('../placeholders/mini-card-item', {count : 5}); %>
                   </div>
                 </div>
               </div>
 
               <div class="flex-right">
                 <div class="market-form-placeholder card-flat">
-                  <%- include('../placeholders/form.html'); %>
+                  <%- include('../placeholders/form', {lines:4}); %>
                 </div>
 
                 <div class="market-form-holder card-flat"> </div>

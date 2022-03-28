@@ -1,24 +1,23 @@
 $(document).ready(() => {
 
-
-    var miniCards = new MiniCards();
+    var cardItems = new CardItems();
 
     var formControl = new FormControl()
         .setFormUrl("/robbery-form")
-        .setResultUrl("/robbery-submit")
+        .setSubmitUrl("/robbery-submit")
         .setFormHoldersSelectors(".robbery-form-holder", ".robbery-form-placeholder")
         .setSubmitOptions({
             submit: '#submit',
             success: (data) => {
                 new RobberyLayoutManager().update(data)
                 new PlayerStatusUpdater(data.player).all();
-                miniCards.load();
+                cardItems.load();
             }
         })
         .showPlaceholder();
 
 
-    miniCards.setUrl("/robbery-places")
+    cardItems.setUrl("/robbery-places")
         .setLastSelectedVar(lastPlaceItemSelected)
         .setHolderSelector(".places-holder")
         .setOnCardSelected(key => {

@@ -1,4 +1,4 @@
-<div class="mini-card card" tabindex="-1" data-key="<%=key%>">
+<div class="big-card card" tabindex="-1" data-key="<%=key%>">
 
   <%if (locals?.badgeText){%>
   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
@@ -9,16 +9,26 @@
   </span>
   <%}%>
 
-  <img src="<%=img%>" class="mini-card-img <%=locals?.imageClass%>" alt="<%=name%>" style="<%=locals?.imgColor ? 'background-color:' + locals?.imgColor   : ''%>" />
+  <img src="<%=img%>" class="big-card-img <%=locals?.imageClass%>" alt="<%=name%>" style="<%=locals?.imgColor ? 'background-color:' + locals?.imgColor   : ''%>" />
   <div class="card-body ">
     <h5 class="card-title mini-card-name">
       <%=name%>
     </h5>
 
+
     <span class="card-item-title">
       <%=title%>
+
+      <span class="float-right"> <%=locals?.extraTitle%></span>
     </span>
 
-
   </div>
+
+  <%if (locals?.sectionData){%>
+  <ul class="list-group list-group-flush">
+    <%- include(locals?.customSectionLayout, {data:locals?.sectionData}); %>
+  </ul>
+  <%}%>
+
+  
 </div>

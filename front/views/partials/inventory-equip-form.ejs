@@ -1,0 +1,11 @@
+<div id="inventory-equip" class="row align-items-center">
+  <h6 class="card-title">
+    <%=text.INVENTORY.WANNA_EQUIP.format(weapon.name)%>
+  </h6>
+
+  <%- include('../single/buttons/button-group', {id: 'equip', 
+                                   text: word.EQUIP, 
+                                   arrested: player.arrested, 
+                                   loadingButton: true,
+                                   }); %>
+</div>

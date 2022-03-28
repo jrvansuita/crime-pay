@@ -10,6 +10,11 @@ module.exports = class Controller extends DataAccess {
         if (!!cacheStorage) this.cache = new Cache(cacheStorage, cacheExpireMinutes);
     }
 
+    onFindQuery(player) {
+        //Abstract Method, look superior class.
+        return {};
+    }
+
     onDetails(player, data) {
         //Abstract Method, look superior class.
         return data;
@@ -21,8 +26,8 @@ module.exports = class Controller extends DataAccess {
         });
     }
 
-    getAll() {
-        return this.cache?.has() ? Promise.resolve(this.cache.get()) : this.all();
+    getResults(player) {
+        return this.cache?.has() ? Promise.resolve(this.cache.get()) : this.findByQuery(this.onFindQuery(player));
     }
 
     onPreview(player, data) {
@@ -51,7 +56,7 @@ module.exports = class Controller extends DataAccess {
     }
 
     for(player, loadAll = false) {
-        return this.getAll().then((data) => {
+        return this.getResults(player).then((data) => {
 
             data = this.onBeginSort(data);
 

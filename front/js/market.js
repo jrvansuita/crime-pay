@@ -1,11 +1,11 @@
 
 $(document).ready(() => {
-    var marchandiseMiniCards = new MiniCards();
+    var marchandiseCardItems = new CardItems();
 
 
     var formControl = new FormControl()
         .setFormUrl("/market-form")
-        .setResultUrl("/market-submit")
+        .setSubmitUrl("/market-submit")
         .setFormHoldersSelectors(".market-form-holder", ".market-form-placeholder")
         .setSubmitOptions({
             submit: '#submit',
@@ -13,13 +13,13 @@ $(document).ready(() => {
                 window.toast.pop(data.event.message, data.event.success);
 
                 new PlayerStatusUpdater(data.player).all();
-                marchandiseMiniCards.load();
+                marchandiseCardItems.load();
             }
         })
         .showPlaceholder();
 
 
-    marchandiseMiniCards.setUrl("/market-merchandise")
+    marchandiseCardItems.setUrl("/market-merchandise")
         .setLastSelectedVar(lastMarketItemSelected)
         .setHolderSelector(".merchandise-holder")
         .setOnCardSelected(key => formControl.setRequestData({ id: key }).load())

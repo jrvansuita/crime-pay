@@ -9,7 +9,7 @@ body {
 }
 
 .main-content {
-    margin-top: 5em;
+    margin-top: 4em;
     min-width: 70%;
     min-height: 100%
 }
@@ -32,8 +32,7 @@ body {
     justify-content: space-around;
 }
 
-
-.img-thumbnail {
+.player-img {
     min-width: 120px;
     min-height: 120px;
 }
@@ -70,21 +69,15 @@ body {
 
 .placeholder.btn {
     height: 38px;
+    min-width: 100px
 }
 
 .no-display {
     display: none;
 }
 
-
-
 .badge.rounded-pill {
     display: flex;
-}
-
-.badge.rounded-pill>.mini-img {
-    margin-right: 2px;
-    width: 16px;
 }
 
 .badge-text {
@@ -96,6 +89,7 @@ body {
 
 .flex-inline {
     justify-content: start;
+    margin-bottom: 18px;
 }
 
 .flex-left {
@@ -121,83 +115,12 @@ body {
     margin-left: 1em;
 }
 
-.mini-card-scroll-area {
-    width: 100%;
-    padding-top: 5px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    min-height: 250px;
-}
-
-.mini-card-scroll-items .translate-middle {
-    transform: translate(-80%, -25%) !important;
-}
-
-.mini-card-scroll-items {
-    padding-left: 3px;
-    padding-right: 3px;
-    align-items: stretch;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-}
-
-.mini-card-scroll-items>.card {
-    flex-grow: 0;
-    margin-right: 14px;
-    min-width: 139px;
-}
-
-.mini-card-scroll-items .card-body {
-    min-height: 79px;
-    max-width: 137px;
-}
-
-.mini-card-scroll-items .card-img-top {
-    width: 137px;
-    height: 137px;
-}
-
-.mini-card-scroll-items .card-title {
-    font-size: 0.9em;
-    font-weight: 400;
-}
-
-.mini-card:hover {
-    cursor: pointer;
-    background-color: rgb(240 236 236 / 46%);
-}
-
-.mini-card.selected {
-    background-color: rgb(240 236 236 / 46%);
-    outline: 2px solid #599cff;
-}
-
-.mini-card .mini-card-title {
-    font-size: .875em;
-    color: #6c757d;
-}
-
-.card-img-top.ph {
-    background-color: #9da0a3;
-}
 
 .medium-img {
     vertical-align: text-bottom;
     width: 110px;
 }
 
-.big-img {
-    vertical-align: text-bottom;
-    width: 150px;
-}
-
-.mini-img {
-    vertical-align: text-bottom;
-    width: 20px;
-}
 
 .player-head {
     min-height: 290px;
@@ -238,9 +161,6 @@ body {
 .card-flat button {
     margin-top: 6px;
 }
-
-
-
 
 .blockquote-footer {
     margin-top: 0;
@@ -283,12 +203,15 @@ body {
     max-width: 50em;
 }
 
-a .placeholder {
-    min-width: 80px
-}
-
 .weapon-img {
     object-fit: contain;
     padding: 12px;
     image-rendering: pixelated;
+}
+
+
+
+.mini-img {
+    vertical-align: text-bottom;
+    width: 20px;
 }

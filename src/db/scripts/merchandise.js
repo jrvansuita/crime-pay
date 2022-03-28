@@ -1,6 +1,6 @@
 const MerchandiseController = require("../../controller/merchandise");
 const Script = require("./scripts");
-const MerchandiseTypes = require("../../enum/merchandise-types");
+const { MerchandiseTypes } = require("../../enum/merchandise");
 const AttributesBundle = require("../../enum/attributes-bundle");
 
 module.exports = class MerchandiseScripts extends Script {

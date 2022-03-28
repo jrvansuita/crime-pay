@@ -1,0 +1,12 @@
+.inventory-equip-form-holder, .inventory-equip-form-placeholder {
+    margin-right: 1.5em;
+}
+
+.inventory-equip-form-holder, .inventory-sell-form-holder {
+    display: none;
+}
+
+
+.card-flat {
+    width: 25em;
+}

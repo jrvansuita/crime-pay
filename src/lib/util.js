@@ -36,23 +36,6 @@ const Util = {
     dateFormat: (value, concatString = '', defaultString = '') => {
         return value && moment ? concatString + moment(new Date(value)).calendar() : defaultString;
     },
-
-    hashCode: (str) => {
-        if (str) {
-            str = str.toString().toLowerCase().trim()
-        }
-
-        var hash = 0
-        for (var i = 0; i < str.length; i++) {
-            hash = str.charCodeAt(i) + ((hash << 5) - hash)
-        }
-        return hash
-    },
-
-    strToColor: function (str, alpha) {
-        var shortened = this.hashCode(str) % 160
-        return 'hsl(' + shortened + ', 45%, 60%' + (alpha ? ', ' + alpha : '') + ')'
-    },
 }
 
 

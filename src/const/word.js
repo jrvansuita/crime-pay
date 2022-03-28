@@ -4,13 +4,17 @@ module.exports = Object.freeze({
     FREE: 'Free',
     ATTRIBUTES: 'Attributes',
     WEAPONS: 'Weapons',
+    WEAPON: 'Weapon',
+    SPECIAL_ITEM: 'Special Item',
     COINS: 'Coins',
     COINS_COST: 'Coins Cost',
     LEVEL: 'Level',
     RESPECT: 'Respect',
 
     ON_EQUIPED: 'on equiped',
-
+    EQUIP: 'Equip',
+    SELL: 'Sell',
+    PRICE: 'Price',
 
     INTELLIGENCE: 'Intelligence',
     DEXTERITY: 'Dexterity',

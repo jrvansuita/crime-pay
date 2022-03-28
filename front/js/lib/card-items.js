@@ -1,4 +1,4 @@
-class MiniCards {
+class CardItems {
 
     constructor() {
         this.setLoadDelay(200);
@@ -22,8 +22,7 @@ class MiniCards {
     setHolderSelector(selector) {
         this.holder = $(selector);
 
-        return this.setCardsSelector(selector + ' .mini-card')
-            .setPlaceHolderCardsSelector(selector + ' .mini-card-ph');
+        return this.setCardsSelector(selector + ' .card:not(.ph)');
     }
 
     setCardsSelector(selector) {
@@ -31,20 +30,14 @@ class MiniCards {
         return this;
     }
 
-    setPlaceHolderCardsSelector(selector) {
-        this.placeHolderItemsSelector = selector;
-        return this;
-    }
-
-
     onBeforeLoad() {
         $(this.cardsSelector).remove();
-        $(this.placeHolderItemsSelector).show();
+        this.holder.find('.ph.card').show();
     }
 
     onAfterLoad() {
         $(this.cardsSelector).hide().fadeIn();
-        $(this.placeHolderItemsSelector).hide();
+        this.holder.find('.ph.card').hide();
     }
 
     setOnCardSelected(onCardSelected) {
@@ -62,7 +55,7 @@ class MiniCards {
 
             if ((self.lastSelected !== currentSelected) || ($(self.cardsSelector).find('.selected').length == 0)) {
 
-                $('.mini-card-scroll-items .mini-card').removeClass('selected');
+                $('.card-items .card').removeClass('selected');
                 $(this).addClass('selected')
 
                 self.lastSelected = currentSelected;

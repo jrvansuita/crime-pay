@@ -29,33 +29,14 @@
     <%- include('../single/progress-bar', { textId: 'status-intoxication-percent', barId:'status-intoxication', colorClass: 'bg-purple', title: word.INTOXICATION, value: player.intoxication, tooltipText : text.ROBBERY.INTOXICATION_TOOLTIP }); %>
   </div>
 
-
   <div class="card-body">
-    <h6 class="label-sub-title">
-      <%=word.ATTRIBUTES%>
-    </h6>
+    <h6 class="label-sub-title"> <%=word.ATTRIBUTES%></h6>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%=word.INTELLIGENCE%>
-      <span id="status-intelligence" class="float-right">
-
-        <%=player.intelligence.format()%>
-      </span>
-    </li>
-    <li class="list-group-item"><%=word.DEXTERITY%>
-      <span id="status-dexterity" class="float-right">
-        <%=player.dexterity.format()%>
-      </span>
-    </li>
-    <li class="list-group-item"><%=word.STRENGTH%>
-      <span id="status-strength" class="float-right">
-        <%=player.strength.format()%>
-      </span>
-
-    </li>
+    <%- include('../single/section-line', { id: 'status-intelligence', text: word.INTELLIGENCE, value: player.intelligence.format() }); %>
+    <%- include('../single/section-line', { id: 'status-dexterity', text: word.DEXTERITY, value: player.dexterity.format() }); %>
+    <%- include('../single/section-line', { id: 'status-strength', text: word.STRENGTH, value: player.strength.format() }); %>
   </ul>
-
-
 
   <div class="card-body">
     <h6 class="label-sub-title" style="margin-top: .5rem!important;">
@@ -63,7 +44,7 @@
     </h6>
 
     <% for(let [index, weapon] of player.weapons.entries() || []){ %>
-    <img class="img-thumbnail" style="width: 120px;" src="<%=weapon.img%>">
+    <img class="player-img" style="width: 120px;" src="<%=weapon.img%>">
 
     <%} %>
 

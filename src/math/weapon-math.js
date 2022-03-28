@@ -7,6 +7,13 @@ module.exports = class WeaponMath {
         this.merchandise = merchandise;
     }
 
+    static color(weapon) {
+        const saturation = Num.assert(40 + (weapon.level * 5), true, 42, 55);
+        const lightness = Num.assert(85 - (weapon.level * 10), true, 30, 75);
+
+        return weapon.name.toColor(1, saturation, lightness);
+    }
+
     getPlayerFactor() {
         if (this.playerFactor === undefined) {
             const sumAttributes = (this.player.intelligence + this.player.dexterity + this.player.strength);
@@ -91,10 +98,7 @@ module.exports = class WeaponMath {
 
     getColor() {
         if (this.color === undefined) {
-            const saturation = Num.assert(40 + (this.getLevel() * 5), true, 42, 55);
-            const lightness = Num.assert(85 - (this.getLevel() * 10), true, 30, 75);
-
-            this.color = this.merchandise.name.toColor(1, saturation, lightness);
+            this.color = WeaponMath.color(this.merchandise);
         }
 
         return this.color;
