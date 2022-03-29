@@ -54,6 +54,10 @@ module.exports = Object.freeze({
 
     MARKET: {
         SUCCESS: ["You bought a new equipment on the market.", "You bought something new!"],
+    },
+
+    INVENTORY_BURN: {
+        FAIL: ["You successfully burned this equipment."],
     }
 
 });

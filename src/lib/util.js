@@ -89,14 +89,19 @@ const Protos = () => {
         return [this]
     }
 
+    String.prototype.elipse = function (n, def = '...') {
+        return this.length > n ? this.slice(0, n) + def : this;
+    }
+
+
     String.prototype.hash = function () {
         return this.toLowerCase().trim().split('').reduce((hash, char) => {
-            return char.charCodeAt(0) + ((hash << 5) - hash)
+            return char.charCodeAt(0) + ((hash << 4) - hash)
         }, 0);
     }
 
-    String.prototype.toColor = function (alpha = 1, saturation = 40, lightness = 60) {
-        return 'hsl(' + this.hash() % 210 + ', ' + saturation + '%, ' + lightness + '%' + ', ' + alpha + ')'
+    String.prototype.toColor = function (huePercent = 200, alpha = 1, saturation = 40, lightness = 60) {
+        return 'hsl(' + this.hash() % huePercent + ', ' + saturation + '%, ' + lightness + '%' + ', ' + alpha + ')'
     }
 
     Array.prototype.array = function () {
@@ -133,6 +138,10 @@ const Protos = () => {
         }
 
         return '';
+    }
+
+    Boolean.prototype.if = function (thenThis, elseThis) {
+        return this.valueOf() ? thenThis : elseThis;
     }
 
     Number.prototype.array = function () {
@@ -183,10 +192,10 @@ const Protos = () => {
         return this.sign();
     }
 
-    Number.prototype.isBetween = function (a, b) {
+    Number.prototype.isBetween = function (a, b, trueDef = true, falseDef = false) {
         var min = Math.min.apply(Math, [a, b]),
             max = Math.max.apply(Math, [a, b]);
-        return this > min && this < max;
+        return (this >= min && this <= max) ? trueDef : falseDef;
     };
 
     String.prototype.toDateDisplay = function (...params) {

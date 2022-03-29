@@ -1,0 +1,38 @@
+<% (locals?.count?.array() || [1]).forEach(()=>{ %>
+
+
+<div class="big-card ph card" aria-hidden="true">
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"> </span>
+
+  <span class="big-card-img ph"></span>
+
+  <div class="card-body">
+    <h3 class="card-title">
+      <span class="placeholder placeholder-lg col-12"></span>
+    </h3>
+
+    <h6 class="card-title placeholder-glow">
+      <span class="placeholder col-6"></span>
+    </h6>
+  </div>
+
+  <%
+  var lines = locals?.sectionLines;  
+    lines = Array.isArray(lines) ? lines : (lines?.array().map(e=>{return 12}) || null);
+
+  if (lines){%>
+  <ul class="list-group list-group-flush">
+    <% lines?.forEach((size)=>{ %>
+    <li class="list-group-item">
+
+      <p class="placeholder-glow">
+        <span class="placeholder col-<%=size%>"></span>
+      </p>
+    </li>
+    <%})%>
+  </ul>
+  <%}%>
+
+</div>
+
+<% }) %>

@@ -6,7 +6,7 @@
       <%(locals?.tabs?.array() || [1]).forEach((e, i)=>{ %>
       <li class="nav-item">
         <a class="nav-link <%=i===0? 'active' : ''%>" aria-current="true" href="#">
-          <p class="card-text placeholder-glow" style="min-width:<%=[40,50].sortBetween()%>px">
+          <p class="card-text placeholder-glow" style="width:40px">
             <span class="placeholder placeholder-lg col-12"></span>
           </p>
         </a>
@@ -22,17 +22,23 @@
       <span class="placeholder placeholder-lg col-7"></span>
     </p>
     
-    <% (locals?.lines?.array() || [1]).forEach((e, i)=>{ %>
+    <%  
+    var lines = locals?.lines;
+    lines = Array.isArray(lines) ? lines : (lines?.array().map(e=>{return [9,11].sortBetween()}) || []);
 
+    lines.forEach((size)=>{ %>
   <p class="placeholder-glow">
-    <span class="placeholder col-<%=11-i-[1,-1].randomOne()%>"></span>
+    <span class="placeholder col-<%=size%>"></span>
   </p>
 
   <% }); %>
 
 
-  <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-2"></a>
-
+  <div class="button-holder">
+    <% (locals?.buttons || [2]).forEach((size)=>{ %>
+    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-<%=size%>"></a>
+    <% }); %>
+  </div>
 </div>
 
 </div>

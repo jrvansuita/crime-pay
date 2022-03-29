@@ -1,33 +1,17 @@
 
 
 $(document).ready(function () {
-    new PrisonLayoutManager().initialize();
 
 
-});
-
-class PrisonLayoutManager {
-
-    initialize() {
-        $('#escape').on("click", this.onReleaseFromPrisonAttempt("/escape-attempt"));
-        $('#bribe').on("click", this.onReleaseFromPrisonAttempt("/bribe-attempt"));
-    }
-
-    toggleLoadingButton(button, show) {
-        $(button).prop('disabled', show);
-        $(button).find('.no-display').css('display', show ? 'inherit' : 'none');
-        $(button).find('.button-text').toggle(!show);
-    }
-
-
-    justReleasedFromPrison() {
+    const justReleasedFromPrison = () => {
         $('#releaseTime').parent().remove();
         $('#escape-holder').parent().remove();
         $('#bribe-holder').parent().remove();
         $('#free-holder').parent().hide().fadeIn();
-    }
+    };
 
-    attemptHasFailed({ player, newAttempt }) {
+
+    const attemptHasFailed = ({ player, newAttempt }) => {
         const escapeData = newAttempt.escape.update;
         const bribeData = newAttempt.bribe.update;
 
@@ -47,31 +31,18 @@ class PrisonLayoutManager {
 
     }
 
-    onReleaseFromPrisonAttempt(path) {
-        const _this = this;
-        return function () {
-            var button = this;
-            _this.toggleLoadingButton(button, true);
+    const onSuccess = (data) => {
+        window.toast.pop(data.event.message, data.event.success);
+        new PlayerStatusUpdater(data.player).all();
 
-            setTimeout(() => {
-                $.post(path).done((data) => {
-                    _this.toggleLoadingButton(button, false);
-                    window.toast.pop(data.event.message, data.event.success);
-
-                    if (data.event.success) {
-                        _this.justReleasedFromPrison();
-                        new PlayerStatusUpdater(data.player).all();
-                    } else {
-                        _this.attemptHasFailed(data);
-                        new PlayerStatusUpdater(data.player).coins().bars();
-                    }
-                }).fail(function (r) {
-                    _this.toggleLoadingButton(button, false);
-                    window.toast.error(r.responseText)
-                });
-            }, 400);
+        if (data.event.success) {
+            justReleasedFromPrison();
+        } else {
+            attemptHasFailed(data);
         }
-    }
+    };
 
 
-}
+    new RequestButton('#escape', "/escape-attempt", onSuccess).bindClick().delayed();
+    new RequestButton('#bribe', "/bribe-attempt", onSuccess).bindClick().delayed();
+});

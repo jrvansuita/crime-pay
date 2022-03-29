@@ -1,3 +1,5 @@
+const word = require("../const/word");
+
 const { Num } = require("../lib/util");
 
 module.exports = class WeaponMath {
@@ -8,10 +10,24 @@ module.exports = class WeaponMath {
     }
 
     static color(weapon) {
-        const saturation = Num.assert(40 + (weapon.level * 5), true, 42, 55);
-        const lightness = Num.assert(85 - (weapon.level * 10), true, 30, 75);
+        const name = weapon.name.replaceAll(' ', weapon.level * weapon.rarity);
 
-        return weapon.name.toColor(1, saturation, lightness);
+        const saturation = Num.assert((weapon.level * (weapon.rarity / 4)), true, 43, 65);
+        const lightness = Num.assert(90 - (weapon.rarity / 1.2), true, 40, 90);
+
+        return name.toColor(260, 1, saturation, lightness);
+    }
+
+    static rarity(weapon) {
+        const rarity = weapon.rarity;
+
+        var title = false;
+        // title = title || rarity.isBetween(0, 55, word.COMMON);
+        title = title || rarity.isBetween(56, 69, word.RARE);
+        title = title || rarity.isBetween(70, 94, word.EPIC);
+        title = title || rarity.isBetween(95, 100, word.LEGENDARY);
+
+        return title || '';
     }
 
     getPlayerFactor() {
@@ -104,6 +120,14 @@ module.exports = class WeaponMath {
         return this.color;
     }
 
+    getRarityTitle() {
+        if (this.rarityTitle === undefined) {
+            this.rarityTitle = WeaponMath.rarity(this.merchandise);
+        }
+
+        return this.rarityTitle;
+    }
+
     preview() {
         this.merchandise.coins = this.getCoins();
 
@@ -122,6 +146,7 @@ module.exports = class WeaponMath {
         this.merchandise.respect = this.getRespect();
 
         this.merchandise.color = this.getColor();
+        this.merchandise.rarityTitle = this.getRarityTitle();
 
         return this.merchandise;
     }

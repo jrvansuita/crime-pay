@@ -9,12 +9,14 @@ module.exports = Object.freeze({
     COINS: 'Coins',
     COINS_COST: 'Coins Cost',
     LEVEL: 'Level',
+    LVL: 'Lvl',
     RESPECT: 'Respect',
 
     ON_EQUIPED: 'on equiped',
     EQUIP: 'Equip',
     SELL: 'Sell',
     PRICE: 'Price',
+    BURN: 'Burn',
 
     INTELLIGENCE: 'Intelligence',
     DEXTERITY: 'Dexterity',
@@ -58,6 +60,11 @@ module.exports = Object.freeze({
     INSUFFICIENT_COINS: "Insufficient Coins",
     ARRESTED: "Arrested",
     LIFE_IMPRISONMENT: "Life Imprisonment",
+
+    COMMON: 'Common',
+    RARE: 'Rare',
+    EPIC: 'Epic',
+    LEGENDARY: 'Legendary'
 
 });
 

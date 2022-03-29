@@ -111,7 +111,7 @@ module.exports = class RobberyMath {
     }
 
     getCoinsLoss() {
-        if (this.getSuccessChance().isBetween(1, 99) && (this.coinsLoss === undefined)) {
+        if (this.getSuccessChance().isBetween(1, 100) && (this.coinsLoss === undefined)) {
             //Define the coins loss when fail
             const coinsLoss = (this.getCoinsReward() / 3.3) + this.getCoinsHolderBonus();
 

@@ -19,3 +19,11 @@
 .card-carousel-scroll-area {
     margin-top: 18px;
 }
+
+.button-holder {
+    margin-top: 22px;
+}
+
+.card-sub-title .float-right, .card-name .float-right, {
+    font-weight: 600;
+}

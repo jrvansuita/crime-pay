@@ -63,11 +63,14 @@ module.exports = class DataAccess {
         });
     }
 
-
     remove(query) {
         return new Promise((resolve, reject) => {
             this.entity.remove(query, this.promiseHandler(resolve, reject));
         });
+    }
+
+    removeById(id) {
+        return this.remove({ _id: mongojs.ObjectId(id.toString()) });
     }
 
     page(filter = {}, sort = {}, page = 0, count = 10) {

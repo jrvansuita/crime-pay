@@ -10,11 +10,16 @@ $(document).ready(() => {
         cardItems.load();
     };
 
-    const form = new BoxControl("/inventory-form")
+    const form = new FormControl("/inventory-form")
         .bind(".inventory-form-holder", ".inventory-form-placeholder")
         .addAction('#equip', "/inventory-equip", onSuccess)
+        .addAction('#burn', "/inventory-burn", (data) => {
+            window.toast.pop(data.event.message, data.event.success);
+            $(".card.selected").remove();
+            $(".card.ph").first().remove();
+        })
         .addAction('#sell', "/inventory-sell", onSuccess)
-        .end().show();
+        .show()
 
     cardItems
         .setUrl("/inventory-weapons")

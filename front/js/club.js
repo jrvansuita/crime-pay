@@ -3,7 +3,7 @@ $(document).ready(() => {
     var hookersCarousel = new CardsCarousel();
     var drugsCarousel = new CardsCarousel();
 
-    const form = new BoxControl("/club-form")
+    const form = new FormControl("/club-form")
         .bind(".club-form-holder", ".club-form-placeholder")
         .addAction('#submit', "/club-submit", (data) => {
             window.toast.pop(data.event.message, data.event.success);
@@ -13,7 +13,7 @@ $(document).ready(() => {
             hookersCarousel.load();
             drugsCarousel.load();
         })
-        .end().show();
+        .show()
 
     hookersCarousel.setUrl("/club-hookers")
         .setLastSelectedVar(lastClubItemSelected)

@@ -68,8 +68,8 @@ body {
 }
 
 .placeholder.btn {
-    height: 38px;
-    min-width: 100px
+    height: 36px;
+    /* min-width: 100px */
 }
 
 .no-display {
@@ -179,9 +179,17 @@ body {
     max-width: fit-content;
 }
 
-.button-holder blockquote {
-    margin-left: 12px;
-    margin-top: 18px;
+div:not(.btn-group)>.btn {
+    margin-right: 6px;
+}
+
+.blockquote {
+    margin-top: 14px;
+    margin-left: 6px;
+}
+
+.btn:not(.dropdown-toggle) {
+    min-width: 70px;
 }
 
 .min-fit, .min-fit .card, .min-fit .card-body, .min-fit .row, .min-fit .col {
@@ -208,8 +216,6 @@ body {
     padding: 12px;
     image-rendering: pixelated;
 }
-
-
 
 .mini-img {
     vertical-align: text-bottom;

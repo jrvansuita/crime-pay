@@ -6,6 +6,7 @@ const EventTypes = {
     PRISON_BRIBE: 4,
     PRISON_ESCAPE: 5,
     MARKET_BUY_ITEM: 6,
+    INVENTORY_BURN: 7,
 }
 
 

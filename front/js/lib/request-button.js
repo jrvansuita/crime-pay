@@ -6,13 +6,19 @@ class RequestButton {
             .setOnFail(onFail);
     }
 
-    setId(id) {
+    setId(id, loadingButton = true) {
         this.id = id;
+        this.isLoadingButton = loadingButton;
         return this;
     }
 
     setUrl(url) {
         this.url = url;
+        return this;
+    }
+
+    delayed(delay = 400) {
+        this.delay = delay;
         return this;
     }
 
@@ -41,9 +47,23 @@ class RequestButton {
     }
 
     loading(show) {
-        $(this.id).prop('disabled', show);
-        $(this.id + ' .no-display').css('display', show ? 'inline-block' : 'none');
-        $(this.id + ' .button-text').toggle(!show);
+        if (this.isLoadingButton) {
+            $(this.id).prop('disabled', show);
+            $(this.id + ' .no-display').css('display', show ? 'inline-block' : 'none');
+            $(this.id + ' .button-text').toggle(!show);
+        }
+    }
+
+    makeRequest() {
+        $.post(this.url, this.data)
+            .done(this.onSuccess)
+            .fail((error) => {
+                if (this.showError) window.toast.error(error.responseText);
+                if (this.onFail) this.onFail(error);
+            })
+            .always(() => {
+                this.loading(false);
+            });
     }
 
     onBindRequest(onClicked, action) {
@@ -56,20 +76,16 @@ class RequestButton {
 
             this.loading(true);
 
-            $.post(this.url, this.data)
-                .done(this.onSuccess)
-                .fail((error) => {
-                    if (this.showError) window.toast.error(error.responseText);
-                    if (this.onFail) this.onFail(error);
-                })
-                .always(() => {
-                    this.loading(false);
-                });
+            setTimeout(() => {
+                this.makeRequest()
+            }, this.delay || 0)
         }
     }
 
     bindClick(onClicked) {
         $(this.id).unbind().click(this.onBindRequest(onClicked, this));
+
+        return this;
     }
 
 }

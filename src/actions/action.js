@@ -18,7 +18,7 @@ module.exports = class Action {
 
     //By default, the player had success when not arrested
     success() {
-        return !this.update.arrested;
+        return !this?.update?.arrested;
     }
 
     setUpdate(update) {
@@ -26,7 +26,7 @@ module.exports = class Action {
         return this;
     }
 
-    make(update) {
+    make(update = {}) {
         return this.setUpdate(update);
     }
 

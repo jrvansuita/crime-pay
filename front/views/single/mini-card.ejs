@@ -9,14 +9,16 @@
   </span>
   <%}%>
 
-  <img src="<%=img%>" class="mini-card-img <%=locals?.imageClass%>" alt="<%=name%>" style="<%=locals?.imgColor ? 'background-color:' + locals?.imgColor   : ''%>" />
+  <img src="<%=img%>" class="mini-card-img <%=locals?.imageClass%>" alt="<%=title%>" style="<%=locals?.imgColor ? 'background-color:' + locals?.imgColor   : ''%>" />
   <div class="card-body ">
     <h5 class="card-title mini-card-name">
-      <%=name%>
+      <%=title%>
     </h5>
 
-    <span class="card-item-title">
-      <%=title%>
+    <span class="card-sub-title">
+      <%=subTitle%>
+
+      <span class="float-right"> <%=locals?.extraSubTitle%></span>
     </span>
 
 

@@ -42,7 +42,7 @@ module.exports = class HistoricItem {
         return {
             success: this.event.success,
             date: moment(this.event.date).fromNow(),
-            message: text.HISTORIC.EVENT_TYPE[this.event.type].randomOne(),
+            message: text.HISTORIC.EVENT_TYPE[this.event.type]?.randomOne() || phrase.NO_EVENT_MESSAGE,
             infos: this.buildInfos()
         };
     }

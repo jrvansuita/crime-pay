@@ -8,11 +8,11 @@ $(document).ready(() => {
         cardItems.load();
     };
 
-    const form = new BoxControl("/robbery-form")
+    const form = new FormControl("/robbery-form")
         .bind(".robbery-form-holder", ".robbery-form-placeholder")
         .addAction('#submit', "/robbery-submit", onSucess)
         .addAction('#submit-full-stamina', "/robbery-submit", onSucess).putData({ fullStamina: true })
-        .end().show();
+        .show()
 
     cardItems.setUrl("/robbery-places")
         .setLastSelectedVar(lastPlaceItemSelected)

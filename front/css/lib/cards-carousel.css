@@ -33,6 +33,12 @@
     text-align: start;
 }
 
+.ph.card .badge {
+    min-width: 45px;
+    min-height: 23px;
+    background-color: #797b7d !important;
+}
+
 .badge.rounded-pill>.mini-img {
     margin-right: 2px;
     width: 16px;
@@ -48,7 +54,7 @@
     height: 137px;
 }
 
-.mini-card-img.ph {
+.mini-card-img.ph, .big-card-img.ph {
     background-color: #9da0a3;
 }
 
@@ -66,7 +72,7 @@
     background-color: transparent;
 }
 
-.mini-card .card-item-title {
+.mini-card .card-sub-title {
     font-size: .875em;
     color: #6c757d;
 }
@@ -74,18 +80,20 @@
 
 .big-card.card {
     min-width: 200px;
+    width: fit-content;
+    max-width: 280px;
 }
 
 .big-card .card-title {
     font-weight: 500;
 }
 
-.big-card .card-item-title {
+.big-card .card-sub-title {
     color: #6d6d6d;
     font-weight: 500;
 }
 
-.big-card .card-item-title .float-right {
+.big-card .card-sub-title .float-right {
     font-weight: 400;
 }
 

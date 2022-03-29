@@ -13,6 +13,7 @@ module.exports = class WeaponModel {
         this.name = this.merchandise.name;
         this.type = this.merchandise.type;
         this.level = this.merchandise.level;
+        this.rarity = this.merchandise.rarity;
 
         if (this.merchandise.bundle) {
             this.bundle = {}

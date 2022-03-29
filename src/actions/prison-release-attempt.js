@@ -47,15 +47,12 @@ class EscapeAttempt extends PrisonReleaseAttempt {
         return word.PRISON.concat(word.ESCAPE);
     }
 
-
-
-
     applyUpdateAttributes(update, success) {
         update
             .setArrested(!success, this.daysIncOnFail)
             .setRespect((this.player.respect * .05 * (100 / (100 - this.escapeChance)) + 2), success, 0, true)
-            .setCoins(this.player.coins * ((Math.max(30, this.escapeChance) / 100) * .7), false)
-            .setStamina(((this.escapeChance * .5 * 100) / 60), false, 5, false, false)
+            .setCoins(this.player.coins * ((Math.max(30, this.escapeChance) / 100) * .7), false, 12)
+            .setStamina(((this.escapeChance * .5 * 100) / 60), false, 15, false, false)
     }
 }
 

@@ -4,4 +4,6 @@
 }
 
 
-.market-holder {}
+.card-sub-title .float-right {
+    font-weight: 600;
+}

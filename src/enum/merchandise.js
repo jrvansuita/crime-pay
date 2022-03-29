@@ -1,3 +1,6 @@
+
+
+
 const types = {
     DOMESTIC: 0,
     MASK: 2,
@@ -32,4 +35,4 @@ const classes = {
 
 
 
-module.exports = { MerchandiseTypes: types, MerchandiseClasses: classes };
+module.exports = { Types: types, Classes: classes };

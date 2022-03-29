@@ -1,13 +1,13 @@
 <% hookers.forEach((hooker)=>{%>
 
-<%- include('../single/mini-card-item', { key : hooker._id, 
-                                          name : hooker.name, 
+<%- include('../single/mini-card', { key : hooker._id, 
+                                          title : hooker.name, 
                                           img :  hooker.name.image('hookers'),  
-                                          title: hooker.stamina.sign().concat(word.STAMINA), 
+                                          subTitle: hooker.stamina.sign().concat(word.STAMINA), 
                                           badgeText: hooker.coins.abs().format(word.FREE), 
                                           badgeImg:  hooker.coins ? "/img/coin.png" :null 
                                         }); %>
 
-<%- include('../placeholders/mini-card-item'); %>
+<%- include('../placeholders/mini-card'); %>
 
 <% }); %>

@@ -1,17 +1,18 @@
 <% weapons.forEach((weapon)=>{%>
 
-<%- include('../single/big-card-item', { key : weapon._id, 
-                                          name : weapon.name, 
+<%- include('../single/big-card', { key : weapon._id, 
+                                          title : weapon.name.elipse(17), 
                                           img :  weapon.name.image('merchandises','png'),  
-                                          title: weapon.level.toString().concat(word.LEVEL), 
+                                          subTitle: weapon.level.toString().concat(word.LEVEL), 
                                           badgeText: 'Equiped',
                                           imageClass: 'weapon-img',
-                                          extraTitle : weapon.class,
+                                          extraTitle :  weapon.rarityTitle,
+                                          extraSubTitle : weapon.class,
                                           imgColor : weapon.color,
                                           sectionData: weapon.bundle,
                                           customSectionLayout: '../partials/weapon-card-section-lines'
                                         }); %>
 
-<%- include('../placeholders/mini-card-item'); %>
+<%- include('../placeholders/big-card', {sectionLines: 4}); %>
 
 <% }); %>

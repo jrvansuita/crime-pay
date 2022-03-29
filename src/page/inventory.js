@@ -23,9 +23,13 @@ module.exports = class InventoryPage extends Page {
             });
         });
 
+        this.post('/inventory-equip').then(({ player, req, res }) => {
+            return this.inventoryMecanics.equip(player, req.body.id).then(result => res.send(result));
+        });
 
-
-
+        this.post('/inventory-burn').then(({ player, req, res }) => {
+            return this.inventoryMecanics.burn(player, req.body.id).then(result => res.send(result));
+        });
 
     }
 }

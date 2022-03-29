@@ -14,19 +14,16 @@
     <div class="tab-pane fade show active" id="equip">
 
       <h6 class="card-title">
-        <%=text.INVENTORY.WANNA_EQUIP.format(weapon.name)%>
+        <%=text.INVENTORY.EQUIP_TITLE.format(weapon.name)%>
       </h6>
 
-      <%- include('../single/buttons/button-group', {id: 'equip', 
-                                       text: word.EQUIP, 
-                                       arrested: player.arrested, 
-                                       loadingButton: true,
-                                       }); %>
-
+      <div class="button-holder">
+        <%- include('../single/buttons/button', {id: 'equip',  text: word.EQUIP, loadingButton: true}); %>
+        <%- include('../single/buttons/button', {id: 'burn', colorClass: 'btn-danger', text: word.BURN, loadingButton: true}); %>
+      </div>
     </div>
+
     <div class="tab-pane fade" id="sell">
-
-
       <h6 class="card-title">
         <%=text.INVENTORY.WANNA_SELL.format(weapon.name)%>
       </h6>

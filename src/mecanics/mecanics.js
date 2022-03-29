@@ -7,16 +7,19 @@ module.exports = class Mecanics {
         this.playerData = new PlayerData();
     }
 
+    event(player, action, eventBuilder) {
+        return eventBuilder(action.success())
+            .setIds(player._id, action.getElementId())
+            .setData(action.eventData())
+            .save()
+            .then((event) => {
+                return { event, player: player }
+            })
+    }
+
     update(player, action, eventBuilder) {
         return this.playerData.update(player._id, action.get()).then((updatedPlayer) => {
-
-            return eventBuilder(action.success())
-                .setIds(player._id, action.getElementId())
-                .setData(action.eventData())
-                .save()
-                .then((event) => {
-                    return { event, player: updatedPlayer }
-                })
+            return this.event(updatedPlayer, action, eventBuilder);
         })
     }
 

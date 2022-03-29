@@ -1,110 +1,70 @@
 class FormControl {
 
-    setData(data) {
-        this.requestData = data
+    constructor(url, data = {}) {
+        this.setUrl(url).setData(data);
+        this.actions = [];
+    }
+
+    setUrl(url) {
+        this.url = url;
         return this;
     }
 
-    setFormUrl(url) {
-        this.formUrl = url;
-        return this;
-    }
+    setData(data, spreadForActions = true) {
+        this.data = data
 
-    setSubmitUrl(url) {
-        this.submitUrl = url;
-        return this;
-    }
-
-    setFormHoldersSelectors(formHolderSelector, formPlaceHolderSelector) {
-        this.holder = $(formHolderSelector);
-        this.formPlaceholder = $(formPlaceHolderSelector);
-        return this;
-    }
-
-    showPlaceholder() {
-        this.formPlaceholder.show();
-        this.holder.hide();
+        if (spreadForActions) this.actions?.forEach(a => { a.putData(data) });
 
         return this;
     }
 
-    onAfterLoad() {
-        this.holder.hide().fadeIn();
-        this.holder.data('key', this.key);
-        this.formPlaceholder.hide();
-
-    }
-
-    toggleLoadingButton(show) {
-        $(this.submitSelector).prop('disabled', show);
-        $(this.submitSelector + ' .no-display').css('display', show ? 'inline-block' : 'none');
-        $(this.submitSelector + ' .button-text').toggle(!show);
-    }
-
-    setSubmitOptions(options) {
-        return this
-            .setSubmitSelector(options.submit)
-            .setOnSuccess(options.success)
-            .setOnFailed(options.fail)
-    }
-
-    setSubmitSelector(selector) {
-        this.submitSelector = selector;
+    bind(holderSelector, placeHolderSelector) {
+        this.holder = $(holderSelector);
+        this.placeholder = $(placeHolderSelector);
         return this;
     }
 
-    addSubmitItem(buttonId, path = '', extraData = {}) {
-        $(buttonId).unbind().click(this.onSubmit(path, extraData));
+    addAction(name, url, onSuccess, onFail) {
+        const action = new RequestButton(name, url, onSuccess, onFail);
+        this.actions.push(action)
+
+        const self = this;
+
+        action.end = () => { return self };
+        action.addAction = (...p) => { return self.addAction(...p) };
+        action.show = (...p) => { return self.show(...p) };
+
+        return action;
     }
 
-    setOnSuccess(onSuccess) {
-        this.onSuccess = onSuccess;
-        return this;
-    }
-
-    setOnFailed(onFailed) {
-        this.onFailed = onFailed;
-        return this;
-    }
-
-    onSubmit(path = '', extraData = {}) {
-        return (event) => {
-            event.stopPropagation();
-            event.stopImmediatePropagation();
-
-            this.toggleLoadingButton(true);
-
-            var data = { ...extraData, ...this.requestData };
-
-            $.post(path || this.submitUrl, data).done((data) => {
-                this.toggleLoadingButton(false);
-                this.showPlaceholder()
-                if (this.onSuccess) this.onSuccess(data);
-
-            }).fail((r) => {
-                this.toggleLoadingButton(false);
-                window.toast.error(r.responseText)
-
-                if (this.onFailed) this.onFailed(r);
-            });
-
+    show(show = false) {
+        if (show) {
+            this.holder.hide().fadeIn()
+        } else {
+            this.holder.hide()
         }
-    }
 
+        this.placeholder.toggle(!show);
+
+        return this;
+    }
 
     load(onLoaded) {
-        var query = Object.keys(this.requestData).reduce((c, e) => { return c + e + '=' + this.requestData[e] + '&' }, '');
+        const query = Object.keys(this.data).reduce((c, e) => { return c + e + '=' + this.data[e] + '&' }, '');
 
-        this.holder.load(this.formUrl + "?" + query, () => {
-            this.onAfterLoad();
-            $(this.submitSelector).unbind().click(this.onSubmit());
+        this.holder.load(this.url + "?" + query, () => {
+            this.show(true);
+            //Bind all actions ids
+            this.actions.forEach(a => a.bindClick(() => {
+                this.show(false)
+            }));
 
-            if (onLoaded) onLoaded(this.requestData)
+            if (onLoaded) onLoaded(this.data)
         });
 
         return this;
     }
 
-
-
 }
+
+
