@@ -75,10 +75,12 @@ class CardsCarousel {
     }
 
     remove(key, onRemoved, selectOther = true) {
+        const self = this;
+
         this.holder.find("[data-key='" + key + "']").fadeOut(300, function () {
             $(this).remove()
 
-            if (selectOther) this.selectOne();
+            if (selectOther) self.selectOne();
             if (onRemoved) onRemoved();
         });
 

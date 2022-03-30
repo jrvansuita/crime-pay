@@ -17,9 +17,9 @@ module.exports = class Mecanics {
             })
     }
 
-    modifyDispatch(method, player, actionOrModel, eventBuilder) {
-        return this.playerData[method](player._id, (actionOrModel?.get?.() || actionOrModel)).then((updatedPlayer) => {
-            return eventBuilder ? this.event(updatedPlayer, action, eventBuilder) : updatedPlayer;
+    modifyDispatch(method, player, actionData, eventBuilder) {
+        return this.playerData[method](player._id, (actionData?.get?.() || actionData)).then((updatedPlayer) => {
+            return eventBuilder ? this.event(updatedPlayer, actionData, eventBuilder) : updatedPlayer;
         })
     }
 

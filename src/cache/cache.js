@@ -37,7 +37,7 @@ module.exports = class Cache {
     }
 
     get(key = this.getDefaultKey()) {
-        return this.storage[key].deepCopy();
+        return this.has().if(this.storage[key]?.deepCopy(), []);
     }
 
     has(key = this.getDefaultKey()) {

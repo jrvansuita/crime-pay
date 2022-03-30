@@ -1,4 +1,5 @@
 const moment = require("moment");
+const { LIFE_IMPRISONMENT } = require("../const/word");
 const { Num } = require("../lib/util");
 
 module.exports = class WeaponModel {
@@ -18,9 +19,12 @@ module.exports = class WeaponModel {
         if (this.merchandise.bundle) {
             this.bundle = {}
 
-            Object.keys(this.merchandise.bundle).forEach(key => {
-                const value = this.merchandise.bundle[key];
-                this.bundle[key] = (value?.[1] !== undefined) ? Num.lucky(value[1], value[0]) : value
+            const bundle = this.merchandise.bundle;
+
+            Object.keys(bundle).forEach(key => {
+                const value = bundle[key];
+
+                this.bundle[key] = Array.isArray(value) ? value.sortBetween() : value;
             });
         }
     }

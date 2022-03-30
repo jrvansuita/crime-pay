@@ -140,10 +140,10 @@ module.exports = class WeaponMath {
         this.merchandise.coins = this.getCoins();
         this.merchandise.level = this.getLevel();
 
-        this.merchandise.intelligence = this.getPlayerAttribute('intelligence', this.merchandise.bundle.intelligence);
-        this.merchandise.dexterity = this.getPlayerAttribute('dexterity', this.merchandise.bundle.dexterity);
-        this.merchandise.strength = this.getPlayerAttribute('strength', this.merchandise.bundle.strength);
-        this.merchandise.respect = this.getRespect();
+        this.merchandise.bundle.intelligence = this.getPlayerAttribute('intelligence', this.merchandise.bundle.intelligence);
+        this.merchandise.bundle.dexterity = this.getPlayerAttribute('dexterity', this.merchandise.bundle.dexterity);
+        this.merchandise.bundle.strength = this.getPlayerAttribute('strength', this.merchandise.bundle.strength);
+        this.merchandise.bundle.respect = this.getRespect();
 
         this.merchandise.color = this.getColor();
         this.merchandise.rarityTitle = this.getRarityTitle();

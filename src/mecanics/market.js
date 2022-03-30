@@ -15,6 +15,7 @@ module.exports = class MarketMecanics extends Mecanics {
 
     submit(id, player) {
         return this.merchandiseController.details(id, player, true).then((merchandise) => {
+
             const action = new MarketDeal(player, merchandise).make();
             return this.weaponData.save(action.weapon()).then(() => {
 
