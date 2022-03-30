@@ -70,6 +70,28 @@ class CardsCarousel {
     }
 
 
+    removeSelected(...p) {
+        this.remove(this.lastSelected, ...p);
+    }
+
+    remove(key, onRemoved, selectOther = true) {
+        this.holder.find("[data-key='" + key + "']").fadeOut(300, function () {
+            $(this).remove()
+
+            if (selectOther) this.selectOne();
+            if (onRemoved) onRemoved();
+        });
+
+        this.holder.find(".card.ph").first().remove();
+    }
+
+
+    selectOne() {
+        //Select the last chosen or the first one
+        $(this.cardsSelector).first().add("[data-key='" + this.lastSelected + "']").last().click();
+    }
+
+
     load(autoSelect = true) {
         this.onBeforeLoad();
 
@@ -80,8 +102,7 @@ class CardsCarousel {
                 $(this.cardsSelector).unbind().click(this.onInnerCardSelected());
 
                 if (autoSelect) {
-                    //Select the last chosen or the first one
-                    $(this.cardsSelector).first().add("[data-key='" + this.lastSelected + "']").last().click();
+                    this.selectOne();
                 }
             });
         }, this.loadDelay);

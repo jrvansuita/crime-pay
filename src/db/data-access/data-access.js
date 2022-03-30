@@ -12,28 +12,39 @@ module.exports = class DataAccess {
         }
     }
 
+    all() {
+        return this.find();
+    }
+
     findById(_id) {
-        return new Promise((resolve, reject) => {
-            this.entity.findOne({
-                _id: mongojs.ObjectId(_id)
-            }, this.promiseHandler(resolve, reject));
-        });
+        return this.find({ _id: mongojs.ObjectId(_id) });
     }
 
     findByIds(_ids) {
-        return this.findByQuery({
+        return this.find({
             _id: { $in: _ids.map((e) => mongojs.ObjectId(e)) }
         });
     }
 
-    findByQuery(query) {
+    find(query = {}) {
         return new Promise((resolve, reject) => {
-            this.entity.find(query, this.promiseHandler(resolve, reject));
+            this.entity.find(query, (err, data) => {
+                data = data[1] ? data : data[0];
+
+                return err ? reject(err) : resolve(this.onAfterFind(data));
+            });
         });
     }
 
-    all() {
-        return this.findByQuery({});
+    get(_id) {
+        return new Promise((resolve, reject) => {
+            this.entity.find({ _id: mongojs.ObjectId(_id) }, this.promiseHandler(resolve, reject));
+        });
+    }
+
+    onAfterFind(data) {
+        //Not implemented Here, look child
+        return data;
     }
 
     modify(_id, data) {
@@ -77,8 +88,6 @@ module.exports = class DataAccess {
         return new Promise((resolve, reject) => {
             this.entity.find(filter).limit(count).skip(page * count).sort(sort).toArray(this.promiseHandler(resolve, reject))
         });
-
-
     }
 }
 

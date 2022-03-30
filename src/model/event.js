@@ -39,8 +39,8 @@ module.exports = class EventModel {
     }
 
     assert() {
-        Util.clearProps(this.data);
-        Util.clearProps(this);
+        Util.neat(this.data);
+        Util.neat(this);
 
         return this;
     }

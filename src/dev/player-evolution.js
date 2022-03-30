@@ -30,7 +30,7 @@ module.exports = class PlayerEvolution {
     }
 
     findPlayers() {
-        return this.playerData.get(this.modelPlayerId).then(player => {
+        return this.playerData.findById(this.modelPlayerId).then(player => {
             var players = [player];
 
             this.mStats?.split('-').forEach(m => {

@@ -4,7 +4,7 @@
                                           title : weapon.name.elipse(17), 
                                           img :  weapon.name.image('merchandises','png'),  
                                           subTitle: weapon.level.toString().concat(word.LEVEL), 
-                                          badgeText: 'Equiped',
+                                          badgeText: player.isEquipped(weapon).if(word.EQUIPPED),
                                           imageClass: 'weapon-img',
                                           extraTitle :  weapon.rarityTitle,
                                           extraSubTitle : weapon.class,

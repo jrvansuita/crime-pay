@@ -27,7 +27,7 @@ module.exports = class Controller extends DataAccess {
     }
 
     getResults(player) {
-        return this.cache?.has() ? Promise.resolve(this.cache.get()) : this.findByQuery(this.onFindQuery(player));
+        return this.cache?.has() ? Promise.resolve(this.cache.get()) : this.find(this.onFindQuery(player));
     }
 
     onPreview(player, data) {

@@ -2,31 +2,9 @@ const moment = require("moment");
 
 module.exports = class PlayerUpdateModel {
 
-    constructor(player) {
+    constructor(player, multiplier = 1) {
         this.player = player;
-
-        this.coins = 0;
-        this.respect = 0;
-        this.stamina = 0;
-        this.intoxication = 0;
-
-        this.intelligence = 0;
-        this.dexterity = 0;
-        this.strength = 0;
-
-        this.multiplier = 1;
-    }
-
-
-    static build(player, coins, respect, stamina, intoxication, intelligence, dexterity, strength) {
-        return new PlayerUpdateModel(player)
-            .setCoins(coins)
-            .setRespect(respect)
-            .setStamina(stamina)
-            .setIntoxication(intoxication)
-            .setIntelligence(intelligence)
-            .setDexterity(dexterity)
-            .setStrength(strength)
+        this.multiplier = multiplier;
     }
 
 
@@ -44,6 +22,16 @@ module.exports = class PlayerUpdateModel {
         return this;
     }
 
+    setEquip(w, add = true) {
+        if (add) {
+            this.equip = [(w?._id?.toString() || w), ...(this.player.equip || [])];
+        } else {
+            this.equip = this.player.equip.filter((id) => { return id !== (w?._id?.toString() || w) });
+        }
+
+        return this;
+    }
+
     setPlayerAttr(attr, value, adding = true, min = 1, minOnDecrease = false, checkPlayerLimit = true, max = 999999999) {
         value = Math.trunc(Math.abs(value));
         value = Math.max(min, value);
@@ -51,7 +39,7 @@ module.exports = class PlayerUpdateModel {
 
         if (adding) {
             if (checkPlayerLimit) {
-                value = Math.min(value, max - this.player[attr]);
+                value = Math.min(value, max - (this.player[attr] || 0));
             }
 
 
@@ -59,7 +47,7 @@ module.exports = class PlayerUpdateModel {
             if (minOnDecrease) value = min;
 
             if (checkPlayerLimit) {
-                value = Math.min(value, this.player[attr]);
+                value = Math.min(value, (this.player[attr] || 0));
             }
 
             value = -value;
@@ -127,6 +115,7 @@ module.exports = class PlayerUpdateModel {
         delete this.player;
         delete this.validations;
         delete this.multiplier;
+
         return this
     }
 

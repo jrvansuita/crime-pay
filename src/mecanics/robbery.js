@@ -20,18 +20,6 @@ module.exports = class RobberyMecanics extends Mecanics {
             const action = new RobberyAttempt(player, place).make(fullStamina);
 
             return super.update(player, action, EventData.robbery);
-
-            // return this.playerData.update(player._id, playerUpdate).then((updatedPlayer) => {
-
-            //     return EventData
-            //         .robbery(!playerUpdate.arrested)
-            //         .setIds(player._id, placeId)
-            //         .setData(data)
-            //         .save()
-            //         .then((event) => {
-            //             return { event, player: updatedPlayer }
-            //         })
-            // })
         })
     }
 

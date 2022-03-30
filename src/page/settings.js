@@ -11,12 +11,12 @@ module.exports = class SettingsPage extends Page {
     routes() {
         this.page('/settings').then(({ res }) => { res.render('pages/settings') });
 
-        this.post('/settings-reset').then(({ req, res, session }) => {
-            return this.settingsMecanics.setInicialState(session.playerId, req.body.multiplier || 1).then(result => res.send(result));
+        this.post('/settings-reset').then(({ req, res, player }) => {
+            return this.settingsMecanics.setState(player, req.body.multiplier || 1).then(result => res.send(result));
         });
 
-        this.post('/settings-reset-prisoner').then(({ res, session }) => {
-            return this.settingsMecanics.setPrisoner(session.playerId).then(result => res.send(result));
+        this.post('/settings-reset-prisoner').then(({ res, player }) => {
+            return this.settingsMecanics.setPrisoner(player).then(result => res.send(result));
         });
     }
 }

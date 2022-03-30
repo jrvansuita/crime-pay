@@ -43,10 +43,10 @@
       <%=word.WEAPONS%>
     </h6>
 
-    <% for(let [index, weapon] of player.weapons.entries() || []){ %>
-    <img class="player-img" style="width: 120px;" src="<%=weapon.img%>">
+    <% ([...new Set(player?.items), ...new Set(player?.weapons)] || []).forEach((e)=>{ %>
+    <img class="player-img" style="width: 120px;" src="<%=e.name.image('merchandises','png')%>">
 
-    <%} %>
+    <%}) %>
 
   </div>
 

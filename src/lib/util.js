@@ -24,12 +24,14 @@ const Num = {
 
 
 const Util = {
-    //Clear empty and zero attributes
-    clearProps: (obj) => {
+    neat: function (obj) {
         Object.keys(obj).forEach(key => {
             if (!obj[key]) delete obj[key]
         })
+
+        return obj;
     },
+
 
     dateFormat: (value, concatString = '', defaultString = '') => {
         return value && moment ? concatString + moment(new Date(value)).calendar() : defaultString;

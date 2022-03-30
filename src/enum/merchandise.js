@@ -1,6 +1,3 @@
-
-
-
 const types = {
     DOMESTIC: 0,
     MASK: 2,

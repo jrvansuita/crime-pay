@@ -12,6 +12,9 @@ module.exports = Object.freeze({
     CANT_FIND_ANYMORE: ["You took a long time to choose.", "Cant't find anymore.", "You lost the chance!", "Just reload the page!"],
     GOT_ARRESTED: 'Got Arrested',
     NO_EVENT_MESSAGE: 'No Event Message Defined!',
+    WEAPON_ALREADY_EQUIPPED: 'Weapon already Equipped!',
+    EQUIP_NOT_FOUND: "Can't find this equipment anymore.",
+    CANT_BURN_EQUIPPED: "Can't burn equipped gears.",
 
     ROBBERY: {
         SUCCESS: [
@@ -57,7 +60,7 @@ module.exports = Object.freeze({
     },
 
     INVENTORY_BURN: {
-        FAIL: ["You successfully burned this equipment."],
+        FAIL: ["You burned this equipment."],
     }
 
 });

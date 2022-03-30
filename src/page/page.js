@@ -10,7 +10,7 @@ module.exports = class Page {
     }
 
     findPlayer(req) {
-        return this.playerData.get(req.session.playerId).then((player) => {
+        return this.playerData.findById(req.session.playerId).then((player) => {
             return player;
         });
     }
@@ -26,7 +26,7 @@ module.exports = class Page {
                         return result.resolve({ player, req, res, session: req.session });
                     })
                     .catch(handleReject ? (e) => {
-                        console.error(e);
+                        Error.handler(e)
                         res.status(500).send(e.message)
                     } : result.reject(e));
             } else {
@@ -51,13 +51,20 @@ module.exports = class Page {
 }
 
 
+class Error {
+    static handler(e) {
+        console.error(e);
+        return e;
+    }
+}
+
 class RequestResult {
 
     resolve(...params) {
         try {
             if (this.onThen) return this.onThen(...params)
         } catch (e) {
-            console.error(e);
+            Error.handler(e);
             this.reject(e);
         }
     }

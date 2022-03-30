@@ -3,7 +3,9 @@ class RequestButton {
         this.setId(id)
             .setUrl(url)
             .setOnSuccess(onSuccess)
-            .setOnFail(onFail);
+            .setOnFail(onFail)
+            .delayed()
+
     }
 
     setId(id, loadingButton = true) {
@@ -40,6 +42,12 @@ class RequestButton {
         return this;
     }
 
+    setOnAlways(onAlways) {
+        this.onAlways = onAlways;
+
+        return this;
+    }
+
     showErrorOnFail() {
         this.showError = true;
 
@@ -61,8 +69,9 @@ class RequestButton {
                 if (this.showError) window.toast.error(error.responseText);
                 if (this.onFail) this.onFail(error);
             })
-            .always(() => {
+            .always((data) => {
                 this.loading(false);
+                if (this.onAlways) this.onAlways(data);
             });
     }
 

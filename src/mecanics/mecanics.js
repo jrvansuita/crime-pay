@@ -17,10 +17,18 @@ module.exports = class Mecanics {
             })
     }
 
-    update(player, action, eventBuilder) {
-        return this.playerData.update(player._id, action.get()).then((updatedPlayer) => {
-            return this.event(updatedPlayer, action, eventBuilder);
+    modifyDispatch(method, player, actionOrModel, eventBuilder) {
+        return this.playerData[method](player._id, (actionOrModel?.get?.() || actionOrModel)).then((updatedPlayer) => {
+            return eventBuilder ? this.event(updatedPlayer, action, eventBuilder) : updatedPlayer;
         })
+    }
+
+    update(...p) {
+        return this.modifyDispatch('update', ...p)
+    }
+
+    set(...p) {
+        return this.modifyDispatch('set', ...p)
     }
 
 

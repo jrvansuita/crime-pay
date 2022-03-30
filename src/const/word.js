@@ -14,6 +14,8 @@ module.exports = Object.freeze({
 
     ON_EQUIPED: 'on equiped',
     EQUIP: 'Equip',
+    EQUIPPED: 'Equipped',
+    DROP: 'Drop',
     SELL: 'Sell',
     PRICE: 'Price',
     BURN: 'Burn',

@@ -64,6 +64,8 @@ module.exports = Object.freeze({
         DEFAULT_EXPLANATION: 'Here you have access to all your equipment. You can equip up to two weapons and three special items at the same time. It will became your thefts much easier and more profitable if you equip your bests inventory gears. Any equipment can be sell on the dark market at any time.',
         EQUIP_TITLE: "You selected the %s",
         WANNA_SELL: "Want to sell the %s?",
+        WEAPON_EQUIPPED: "You equipped %s!",
+
     },
 
     HISTORIC: {

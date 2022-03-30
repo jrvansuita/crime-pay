@@ -56,7 +56,7 @@ class FormControl {
             this.show(true);
             //Bind all actions ids
             this.actions.forEach(a => a.bindClick(() => {
-                this.show(false)
+                //this.show(false)
             }));
 
             if (onLoaded) onLoaded(this.data)

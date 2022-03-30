@@ -1,6 +1,7 @@
 const WeaponData = require("./weapon");
 const { PLAYER_NOT_FOUND } = require("../../const/phrase");
 const DataAccess = require("./data-access");
+const { Util } = require("../../lib/util");
 
 
 module.exports = class PlayerData extends DataAccess {
@@ -10,22 +11,22 @@ module.exports = class PlayerData extends DataAccess {
         this.weaponData = new WeaponData();
     }
 
-    setVirtualAttributes(player, weapons) {
-        player.weapons = weapons;
+    onAfterFind(player) {
+        if (!player) throw new Error(PLAYER_NOT_FOUND);
+
         player.lifeImprisonment = player.arrested && !player?.arrestRelease;
+        player.isEquipped = (e => { return player?.equip?.includes((e._id || e).toString()) || false });
 
-        return player
-    }
+        if (player?.equip?.length) {
+            return this.weaponData.findByIds(player.equip).then((weapons) => {
+                player.items = weapons.filter((w) => { return w.isItem; })
+                player.weapons = weapons.filter((w) => { return w.isWeapon; })
 
-    get(_id) {
-        return this.findById(_id)
-            .then(player => {
-                if (!player) throw new Error(PLAYER_NOT_FOUND);
+                return player;
+            })
+        }
 
-                return this.weaponData.findByIds(player.equipedWeapons).then(weapons => {
-                    return this.setVirtualAttributes(player, weapons);
-                });
-            });
+        return player;
     }
 
     static weaponsStatsMultiplier(player) {
@@ -49,28 +50,41 @@ module.exports = class PlayerData extends DataAccess {
     }
 
     update(playerId, model) {
-        const data = getDataFromModel(model);
-        return super.modify(playerId, { $inc: data.inc, $set: data.set })
-            .then(player => { return this.setVirtualAttributes(player) });
+        return super.modify(playerId, new ModelHandler(model).forUpdate())
+            .then(player => { return this.onAfterFind(player) });
     }
 
     set(playerId, model) {
-        const data = getDataFromModel(model);
-        return super.modify(playerId, { $set: { ...data.set, ...data.inc } });
+        return super.modify(playerId, new ModelHandler(model).forSet());
     }
-
-
-
 
 }
 
 
+class ModelHandler {
+    constructor(model) {
+        this.model = model;
 
-const getDataFromModel = (model) => {
-    const data = {};
+    }
 
-    data.inc = ['coins', 'respect', 'stamina', 'intoxication', 'intelligence', 'dexterity', 'strength'].reduce((a, e) => (a[e] = model[e], a), {});
-    data.set = ['arrested', 'arrestRelease'].reduce((a, e) => (a[e] = model[e], a), {});
+    handle(attrs) {
+        return attrs.reduce((a, e) => (a[e] = this.model[e], a), {});
+    }
 
-    return data;
+    set() {
+        return this.handle(['arrested', 'arrestRelease', 'equip']);
+    }
+
+    inc() {
+        return this.handle(['coins', 'respect', 'stamina', 'intoxication', 'intelligence', 'dexterity', 'strength']);
+    }
+
+    forUpdate() {
+        return { $inc: Util.neat(this.inc()), $set: Util.neat(this.set()) };
+    }
+
+    forSet() {
+        return { $set: { ...this.inc(), ...this.set() } };
+    }
+
 }

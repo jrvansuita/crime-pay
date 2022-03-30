@@ -1,23 +1,29 @@
-const PlayerData = require("../db/data-access/player");
 const PlayerUpdateModel = require('../model/player-update');
+const Mecanics = require("./mecanics");
 
 
-module.exports = class SettingsMecanics {
+module.exports = class SettingsMecanics extends Mecanics {
 
-    constructor() {
-        this.playerData = new PlayerData();
+    buildPlayerModel(player, multiplier, arrested) {
+        return new PlayerUpdateModel(player)
+            .setArrested(arrested, 1)
+            .setStamina(100)
+            .setIntoxication(0)
+            .setCoins(50 * multiplier)
+            .setRespect(15 * multiplier)
+            .setIntelligence(30 * multiplier)
+            .setDexterity(32 * multiplier)
+            .setStrength(35 * multiplier)
+            .clear()
     }
 
-    setInicialState(playerId, multiplier = 1) {
-        return this.playerData.get(playerId).then((player) => {
-            return this.playerData.set(playerId, PlayerUpdateModel.build(player, 15 * multiplier, 5 * multiplier, 100, 0, 25 * multiplier, 27 * multiplier, 23 * multiplier).clear());
-        })
+
+    setState(player, multiplier = 1) {
+        return this.set(player, this.buildPlayerModel(player, multiplier));
     }
 
-    setPrisoner(playerId) {
-        return this.playerData.get(playerId).then((player) => {
-            return this.playerData.set(playerId, PlayerUpdateModel.build(player, 15, 5, 100, 0, 25, 25, 25).setArrested(true, 1).clear());
-        })
+    setPrisoner(player) {
+        return this.set(player, this.buildPlayerModel(player, 1, true));
     }
 
 
