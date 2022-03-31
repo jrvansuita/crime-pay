@@ -1,5 +1,5 @@
 <html lang="en">
-<%- include('../default/head', {pageTitle: word.ROBBERY, carousel: true, css: ['robbery'], js:['robbery', 'lib/tooltip']}); %>
+<%- include('../default/head', {pageTitle: word.ROBBERY, player: true, carousel: true, css: ['robbery'], js:['robbery', 'lib/tooltip']}); %>
 <script>
   window.lastPlaceItemSelected = '<%= session.lastPlaceItemSelected %>'
 </script>
@@ -9,7 +9,7 @@
   <div class="container main-content">
     <div class="flex-container">
       <div class="flex-left">
-        <%- include('../partials/player-status'); %>
+        <%- include('../partials/player/main'); %>
       </div>
 
       <div class="flex-painel content">

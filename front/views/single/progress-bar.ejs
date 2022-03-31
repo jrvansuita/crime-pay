@@ -1,14 +1,14 @@
-<div class="progress-holder" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<%=tooltipText%>">
-  <h6 class="label-sub-title">
-    <%=title%>
-    <span id="<%=textId%>" class="progress-num float-right">
-      <%=value%>%
-    </span>
-  </h6>
-  <div class="progress">
-    <div id="<%=barId%>" class="progress-bar progress-bar-striped <%=colorClass%>" role="progressbar" style="width: <%=value%>%" aria-valuenow="<%=value%>" aria-valuemin="0" aria-valuemax="100">
+<div class="container progress-holder" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<%=tooltipText%>">
+  <div class="row ">
+    <div class="col col-4" style="width: 37%;">
+      <%=title%>
+    </div>
+    <div class="col col-8" style="width: 63%;">
+      <div class="progress">
+        <div id="<%=barId%>" class="progress-bar progress-bar-striped <%=colorClass%>" role="progressbar" style="width: <%=value%>%" aria-valuenow="<%=value%>" aria-valuemin="0" aria-valuemax="100">
+          <span id="<%=textId%>"> <%=value%>%</span>
+        </div>
+      </div>
     </div>
   </div>
-
-
 </div>

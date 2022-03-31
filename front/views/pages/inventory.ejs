@@ -1,15 +1,14 @@
 <html lang="en">
 
-<%- include('../default/head', {pageTitle: word.INVENTORY, carousel:true, css: ['inventory'], js:['inventory']}); %>
+<%- include('../default/head', {pageTitle: word.INVENTORY, player: true, carousel:true, css: ['inventory'], js:['inventory']}); %>
 
 
 <body>
   <div class="container main-content">
     <div class="flex-container">
       <div class="flex-left">
-        <%- include('../partials/player-status'); %>
+        <%- include('../partials/player/main'); %>
       </div>
-
       <div class="flex-painel content">
         <div class="card">
           <%- include('../partials/menu', {nav_inventory:true}); %>
@@ -22,6 +21,7 @@
                 <p class="card-text text-secondary"><%=text.INVENTORY.DEFAULT_EXPLANATION%></p>
               </div>
 
+
               <div class="flex-right">
                 <div class="inventory-form-placeholder">
                   <%- include('../placeholders/form', {  tabs: 2, buttons: [2,2] }); %>
@@ -29,11 +29,16 @@
 
                 <div class="inventory-form-holder"></div>
               </div>
+
+
             </div>
+
+
+            <%- include('../partials/inventory-empty'); %>
 
             <div class="card-carousel-scroll-area">
               <div class="weapons-holder card-carousel">
-                <%- include('../placeholders/big-card', {sectionLines: [9,6,11], count : 5}); %>
+                <%- include('../placeholders/big-card', {sectionLines: [9,6], count : 5}); %>
               </div>
             </div>
 

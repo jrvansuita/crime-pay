@@ -3,10 +3,13 @@ module.exports = Object.freeze({
 
     FREE: 'Free',
     ATTRIBUTES: 'Attributes',
+    BONUSES: 'Bonuses',
     WEAPONS: 'Weapons',
     WEAPON: 'Weapon',
     SPECIAL_ITEM: 'Special Item',
+    SPECIAL_ITEMS: 'Special Items',
     COINS: 'Coins',
+    COINS_FIND: 'Coins Find',
     COINS_COST: 'Coins Cost',
     LEVEL: 'Level',
     LVL: 'Lvl',

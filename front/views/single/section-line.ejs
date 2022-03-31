@@ -1,5 +1,9 @@
 <%if (locals?.showOnlyIf !== false){%>
-<li class="list-group-item"><%=text%>
-  <span id="<%=locals?.id%>" class="float-right"> <%=value%></span>
+<li class="list-group-item">
+  <%if (locals.sectionImg){%>
+  <img class="<%=locals?.sectionImgClass%>" src="<%=locals.sectionImg%>">
+  <%}%>
+  <%=text%>
+  <span id="<%=locals?.id%>" class="float-right"> <%=locals?.value%></span>
 </li>
 <%}%>

@@ -2,11 +2,13 @@ const WeaponData = require("./weapon");
 const { PLAYER_NOT_FOUND } = require("../../const/phrase");
 const DataAccess = require("./data-access");
 const { Util } = require("../../lib/util");
+const PlayerMutation = require("../../mutation/player");
 
 
 module.exports = class PlayerData extends DataAccess {
 
     constructor() {
+
         super('player');
         this.weaponData = new WeaponData();
     }
@@ -14,19 +16,15 @@ module.exports = class PlayerData extends DataAccess {
     onAfterFind(player) {
         if (!player) throw new Error(PLAYER_NOT_FOUND);
 
-        player.lifeImprisonment = player.arrested && !player?.arrestRelease;
-        player.isEquipped = (e => { return player?.equip?.includes((e._id || e).toString()) || false });
-
-        if (player?.equip?.length) {
+        if (player?.equip) {
             return this.weaponData.findByIds(player.equip).then((weapons) => {
-                player.items = weapons.filter((w) => { return w.isItem; })
-                player.weapons = weapons.filter((w) => { return w.isWeapon; })
+                player.equipments = weapons;
 
-                return player;
+                return new PlayerMutation(player);
             })
         }
 
-        return player;
+        return new PlayerMutation(player);
     }
 
     static weaponsStatsMultiplier(player) {
@@ -71,20 +69,24 @@ class ModelHandler {
         return attrs.reduce((a, e) => (a[e] = this.model[e], a), {});
     }
 
-    set() {
-        return this.handle(['arrested', 'arrestRelease', 'equip']);
+    arrest() {
+        return this.handle(['arrested', 'arrestRelease']);
     }
 
-    inc() {
+    attributes() {
         return this.handle(['coins', 'respect', 'stamina', 'intoxication', 'intelligence', 'dexterity', 'strength']);
     }
 
+    others() {
+        return this.handle(['equip']);
+    }
+
     forUpdate() {
-        return { $inc: Util.neat(this.inc()), $set: Util.neat(this.set()) };
+        return { $inc: Util.neat(this.attributes()), $set: Util.neat({ ...this.arrest(), ...this.others() }) };
     }
 
     forSet() {
-        return { $set: { ...this.inc(), ...this.set() } };
+        return { $set: { ...this.attributes(), ...this.arrest() } };
     }
 
 }

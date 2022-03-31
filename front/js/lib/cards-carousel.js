@@ -30,6 +30,11 @@ class CardsCarousel {
         return this;
     }
 
+    setOnEmpty(onEmpty) {
+        this.onEmpty = onEmpty;
+        return this;
+    }
+
     onBeforeLoad() {
         $(this.cardsSelector).remove();
         this.holder.find('.ph.card').show();
@@ -38,6 +43,9 @@ class CardsCarousel {
     onAfterLoad() {
         $(this.cardsSelector).hide().fadeIn();
         this.holder.find('.ph.card').hide();
+
+        if (!$(this.cardsSelector).length)
+            if (this.onEmpty) this.onEmpty()
     }
 
     setOnCardSelected(onCardSelected) {

@@ -8,7 +8,7 @@ module.exports = class SettingsMecanics extends Mecanics {
         return new PlayerUpdateModel(player)
             .setArrested(arrested, 1)
             .setStamina(100)
-            .setIntoxication(0)
+            .setIntoxication(0, true, 0)
             .setCoins(50 * multiplier)
             .setRespect(15 * multiplier)
             .setIntelligence(30 * multiplier)

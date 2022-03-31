@@ -1,11 +1,11 @@
 <html lang="en">
-<%- include('../default/head', {pageTitle: word.PRISON, css: 'prison', js:['prison','lib/request-button']}); %>
+<%- include('../default/head', {pageTitle: word.PRISON, player: true, css: 'prison', js:['prison','lib/request-button']}); %>
 
 <body>
   <div class="container main-content">
     <div class="flex-container">
       <div class="flex-left">
-        <%- include('../partials/player-status'); %>
+        <%- include('../partials/player/main'); %>
       </div>
 
       <div class="flex-painel content">

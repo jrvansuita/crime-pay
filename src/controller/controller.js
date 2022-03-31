@@ -57,6 +57,7 @@ module.exports = class Controller extends DataAccess {
 
     for(player, loadAll = false) {
         return this.getResults(player).then((data) => {
+            if (!data) return null;
 
             data = this.onBeginSort(data);
 

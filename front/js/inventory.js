@@ -6,8 +6,9 @@ $(document).ready(() => {
     const form = new FormControl("/inventory-form")
         .bind(".inventory-form-holder", ".inventory-form-placeholder")
         .addAction('#equip', "/inventory-equip", (data) => {
+            console.log(data);
             window.toast.success(data.message);
-            new PlayerStatusUpdater(data.player).all();
+            PlayerStatusUpdater.reload();
             cardItems.load();
         })
         .addAction('#burn', "/inventory-burn", (data) => {
@@ -23,6 +24,10 @@ $(document).ready(() => {
         .setHolderSelector(".weapons-holder")
         .setOnCardSelected(key => {
             form.setData({ id: key }).load()
+        })
+        .setOnEmpty(() => {
+            $('#empty-holder').fadeIn();
+            form.hide();
         })
         .load();
 

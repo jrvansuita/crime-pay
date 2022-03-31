@@ -32,6 +32,9 @@ const Util = {
         return obj;
     },
 
+    array: function (data, def = []) {
+        return data ? Array.isArray(data).if(data, (data?.array?.() || [data])) : def
+    },
 
     dateFormat: (value, concatString = '', defaultString = '') => {
         return value && moment ? concatString + moment(new Date(value)).calendar() : defaultString;

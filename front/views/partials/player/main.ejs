@@ -1,0 +1,38 @@
+<div class="card player-status-holder" style="width: 18rem;">
+  <img src="<%=player.head.image('heads','png')%>" class="card-img-top player-head" style="background-color:<%=player.name.toColor()%>" />
+
+  <span class="badge rounded-pill player-badge <%=player.arrested?'bg-danger' : ''%>">
+    <img src="/img/<%=player.arrested? 'lock' : 'respect'%>.png" class="player-badge-img">
+    <span id="player-badge-text" data-def="<%=word.ARRESTED%>">
+      <%=player.arrested? word.ARRESTED : player.getAttribute('respect').format()%>
+    </span>
+  </span>
+
+  <div class="player-status-card">
+    <h5 class="card-title">
+      <%=player.name%>
+      <span class="float-right"> <img class="mini-img" src="/img/coin.png"> <span id="status-coins"> <%=player.coins.format()%> </span> </span>
+    </h5>
+
+    <%- include('../../single/progress-bar', { textId: 'status-stamina-percent', barId:'status-stamina', colorClass: 'bg-success', title: word.STAMINA, value: player.stamina, tooltipText : text.ROBBERY.STAMINA_TOOLTIP }); %>
+    <%- include('../../single/progress-bar', { textId: 'status-intoxication-percent', barId:'status-intoxication', colorClass: 'bg-purple', title: word.INTOXICATION, value: player.intoxication, tooltipText : text.ROBBERY.INTOXICATION_TOOLTIP }); %>
+
+
+  </div>
+
+  <h6 class="label-sub-title"> <%=word.ATTRIBUTES%></h6>
+
+  <ul class="list-group list-group-flush">
+    <%- include('../../single/section-line', { id: 'status-intelligence', text: word.INTELLIGENCE, value: player.getAttribute('intelligence').format() }); %>
+    <%- include('../../single/section-line', { id: 'status-dexterity', text: word.DEXTERITY, value: player.getAttribute('dexterity').format() }); %>
+    <%- include('../../single/section-line', { id: 'status-strength', text: word.STRENGTH, value: player.getAttribute('strength').format() }); %>
+  </ul>
+
+  <%if (player.equip){%>
+  <%- include('./weapon-group', {title: word.WEAPONS, weapons: player.getWeapons() }); %>
+  <%- include('./weapon-group', {title: word.SPECIAL_ITEMS, weapons: player.getItems() }); %>
+  <%}%>
+
+  <%- include('./bonuses'); %>
+
+</div>

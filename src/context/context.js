@@ -95,6 +95,7 @@ module.exports = class Context {
         applyUse('/css', 'front/css');
         applyUse('/js', 'front/js');
         applyUse('/lib', 'src/lib');
+        applyUse('/js/mutation', 'src/mutation');
 
 
 

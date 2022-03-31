@@ -5,11 +5,11 @@
 
   <%- include('../single/label-item', { text: word.RESPECT.concat(word.INCREASE),  icon: 'respect', showOnlyIf : !!data?.bundle?.respect, value: data.bundle.respect.sign()}); %>
 
-  <%- include('../single/label-item', { text: word.SUCCESS_CHANCE.concat(word.ON_ROBBERIES),  icon: 'lucky', showOnlyIf : !!data?.bundle?.successChance, value: data.bundle?.successChance?.dual().percent()}); %>
+  <%- include('../single/label-item', { text: word.SUCCESS_CHANCE,  icon: 'lucky', showOnlyIf : !!data?.bundle?.successChance, value: data.bundle?.successChance?.dual().percent()}); %>
 
-  <%- include('../single/label-item', { text: word.STAMINA.concat(word.ON_ROBBERIES),  icon: 'stamina', showOnlyIf : !!data?.bundle?.staminaCost, value: data.bundle?.staminaCost?.dual().percent()}); %>
+  <%- include('../single/label-item', { text: word.STAMINA_COST,  icon: 'stamina', showOnlyIf : !!data?.bundle?.staminaCost, value: data.bundle?.staminaCost?.dual().percent()}); %>
 
-  <%- include('../single/label-item', { text: word.COINS.concat(word.ON_ROBBERIES),  icon: 'coin', showOnlyIf : !!data?.bundle?.coins, value: data.bundle?.coins?.dual().percent()}); %>
+  <%- include('../single/label-item', { text: word.COINS_FIND,  icon: 'coin', showOnlyIf : !!data?.bundle?.coins, value: data.bundle?.coins?.dual().percent()}); %>
 
   <%- include('../single/label-item', { text: word.INTELLIGENCE.concat(word.INCREASE), showOnlyIf : !!data?.bundle?.intelligence, value: data.bundle.intelligence.sign()}); %>
 

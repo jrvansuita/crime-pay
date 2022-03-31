@@ -1,6 +1,6 @@
 <html lang="en">
 
-<%- include('../default/head', {pageTitle: word.CLUB, carousel: true, css: ['club'], js:['club']}); %>
+<%- include('../default/head', {pageTitle: word.CLUB, player: true, carousel: true, css: ['club'], js:['club']}); %>
 
 <script>
   window.lastClubItemSelected = '<%= session.lastClubItemSelected %>'
@@ -10,7 +10,7 @@
   <div class="container main-content">
     <div class="flex-container">
       <div class="flex-left">
-        <%- include('../partials/player-status'); %>
+        <%- include('../partials/player/main'); %>
       </div>
 
       <div class="flex-painel content">

@@ -37,6 +37,11 @@ class FormControl {
         return action;
     }
 
+    hide() {
+        this.holder.hide()
+        this.placeholder.hide();
+    }
+
     show(show = false) {
         if (show) {
             this.holder.hide().fadeIn()

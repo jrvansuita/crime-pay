@@ -1,0 +1,17 @@
+<% const bunuses = player.getBonuses(['coins', 'successChance', 'staminaCost']); %>
+
+<%if (bunuses){%>
+<h6 class="label-sub-title"> <%=word.BONUSES%></h6>
+<%if (bunuses['coins']){%>
+<%- include('../../single/section-line', { text: word.COINS_FIND, value: bunuses['coins'].sign().percent() }); %>
+<%}%>
+
+  <%if (bunuses['successChance']){%>
+<%- include('../../single/section-line', { text: word.SUCCESS_CHANCE, value: bunuses['successChance'].sign().percent() }); %>
+<%}%>
+
+<%if (bunuses['staminaCost']){%>
+<%- include('../../single/section-line', { text: word.STAMINA_COST, value: bunuses['staminaCost'].sign().percent() }); %>
+<%}%>
+
+  <%}%>

@@ -29,7 +29,11 @@
 
   if (locals?.carousel) locals.js = ['lib/cards-carousel','lib/form-control','lib/request-button', ...(locals?.js || [])];
   
+  if (locals?.player) locals.css = ['player-status', ...(locals?.css || [])];
+
+  if (locals?.player) locals.js = ['player-status', 'mutation/player', ...(locals?.js || [])];
   %>
+
 
   <% locals?.css?.array().forEach((each) => { %>
   <link rel="stylesheet" href="/css/<%=each%>.css">

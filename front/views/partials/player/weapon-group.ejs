@@ -1,0 +1,18 @@
+<%if (weapons?.length) {%>
+<h6 class="label-sub-title">
+  <%=title%>
+</h6>
+
+<ul class="list-group list-group-flush weapon-list">
+  <% (weapons || []).forEach((w)=>{ %>
+  <%- include('../../single/section-line', { text: w.name, 
+                                         value: word.LEVEL.concat(w.level), 
+                                         //sectionImgClass: 'mini-weapon-img', 
+                                         //sectionImg: w.name.image('merchandises','png')
+                                          }); %>
+
+  <%}) %>
+</ul>
+
+<%}%>
+  

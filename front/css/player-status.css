@@ -1,32 +1,99 @@
-
-.coin-display{
+.player-status-holder .card-title>span.float-right {
   font-size: 11pt;
-    font-weight: 500;
-    line-height: 1.2;
+  font-weight: 500;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
 }
 
-.progress-num{
-    font-size: 10pt;
-  }
-  
+.player-status-holder .card-title>span.float-right>.mini-img {
+  margin-right: 4px;
+}
 
-.player-badge-img{
-  width: 20px;
+.player-badge-img {
+  width: 18px;
   margin-right: 6px;
 }
 
-.player-badge{
+.player-badge {
   width: fit-content;
-    align-self: center;
-    margin-top: -40px;
-    position: static;
-    font-size: 10pt;
-    vertical-align: middle;
-    white-space: normal;
-    word-break: break-word;
-    display: flex;
-    align-items: center;
-    padding-right: 14px;
-    text-transform: uppercase;
-    background-color: rgb(11 110 253 / 60%) ;
+  margin-top: -16px;
+  text-align: center;
+  align-self: center;
+  font-size: 10pt;
+  vertical-align: middle;
+  white-space: normal;
+  word-break: break-word;
+  align-items: center;
+  padding-right: 14px;
+  text-transform: uppercase;
+  background-color: rgb(11 110 253);
+}
+
+
+.player-status-holder .weapon-list .float-right {
+  font-size: 11pt;
+  font-weight: 500;
+  color: #848688;
+  display: flex;
+  align-items: center;
+}
+
+
+.mini-weapon-img {
+  width: 38px;
+  margin-right: 6px;
+  object-fit: contain;
+}
+
+.player-head {
+  height: 170px;
+  object-fit: contain;
+  padding: 30px;
+}
+
+.progress-holder {
+  font-size: 11.5pt;
+  margin: 0;
+  margin-bottom: 0.3rem;
+  padding: 0;
+  cursor: pointer;
+}
+
+.player-status-holder .player-status-card {
+  padding: 0 1rem;
+  padding-top: 0.5rem;
+}
+
+.player-status-holder .card-title {
+  margin-bottom: 0.8rem;
+}
+
+.player-status-holder .progress {
+  min-height: 19px;
+}
+
+.player-status-holder .progress-bar>span {
+  font-weight: 600;
+}
+
+.progress-holder .col:not(:first-child) {
+  padding-left: 2px;
+  align-self: center;
+}
+
+.progress-holder .col:not(:last-child) {
+  padding-right: 2px;
+  align-self: center;
+}
+
+
+
+.player-status-holder .label-sub-title {
+  margin-top: 2rem;
+  padding: 0 1rem;
+  color: #848688 !important;
+  font-size: 11pt;
+  font-weight: 400;
+  line-height: 1.2;
 }

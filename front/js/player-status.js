@@ -1,17 +1,23 @@
-
 class PlayerStatusUpdater {
 
     constructor(player) {
-        this.player = player;
+        this.player = new PlayerMutation(player);
 
         if (player.lifeImprisonment) {
             window.location.replace("/prison");
         }
     }
 
+    static reload() {
+        $('.player-status-holder').parent().load("/player-status", () => {
+
+        });
+
+    }
+
     badge() {
         $('.player-badge-img').attr('src', this.player.arrested ? '/img/lock.png' : '/img/respect.png')
-        $('#player-badge-text').text(this.player.arrested ? $('#player-badge-text').data('def') : this.player.respect.format());
+        $('#player-badge-text').text(this.player.arrested ? $('#player-badge-text').data('def') : this.player.getAttribute('respect').format());
         $('#player-badge-text').parent().toggleClass('bg-danger', this.player?.arrested || false);
 
         return this;
@@ -32,9 +38,9 @@ class PlayerStatusUpdater {
     }
 
     attributes() {
-        $('#status-intelligence').text(this.player.intelligence.format());
-        $('#status-dexterity').text(this.player.dexterity.format());
-        $('#status-strength').text(this.player.strength.format());
+        $('#status-intelligence').text(this.player.getAttribute('intelligence').format());
+        $('#status-dexterity').text(this.player.getAttribute('dexterity').format());
+        $('#status-strength').text(this.player.getAttribute('strength').format());
         return this;
     }
 

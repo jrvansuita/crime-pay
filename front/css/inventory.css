@@ -27,3 +27,9 @@
 .card-sub-title .float-right, .card-name .float-right, {
     font-weight: 600;
 }
+
+#empty-holder {
+    margin-top: 22px;
+    max-width: 28em;
+    display: none;
+}

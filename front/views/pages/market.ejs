@@ -1,6 +1,6 @@
 <html lang="en">
 
-<%- include('../default/head', {pageTitle: word.MARKET, carousel: true, css: ['market'], js:['market']}); %>
+<%- include('../default/head', {pageTitle: word.MARKET, player: true, carousel: true, css: ['market'], js:['market']}); %>
 
 
 <script>
@@ -11,7 +11,7 @@
   <div class="container main-content">
     <div class="flex-container">
       <div class="flex-left">
-        <%- include('../partials/player-status'); %>
+        <%- include('../partials/player/main'); %>
       </div>
 
       <div class="flex-painel content">

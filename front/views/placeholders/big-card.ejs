@@ -17,7 +17,8 @@
   </div>
 
   <%
-  var lines = locals?.sectionLines;  
+  var lines = locals?.sectionLines;   
+
     lines = Array.isArray(lines) ? lines : (lines?.array().map(e=>{return 12}) || null);
 
   if (lines){%>

@@ -16,8 +16,8 @@ module.exports = class InventoryMecanics extends Mecanics {
 
     equip(player, id) {
         return this.inventoryController.findById(id).then((weapon) => {
-            return super.update(player, new InventoryEquip(player, weapon).make()).then(() => {
-                return { player, message: text.INVENTORY.WEAPON_EQUIPPED.format(weapon.name) };
+            return super.update(player, new InventoryEquip(player, weapon).make()).then((updatedPlayer) => {
+                return { player: updatedPlayer, message: text.INVENTORY.WEAPON_EQUIPPED };
             });
         });
     }

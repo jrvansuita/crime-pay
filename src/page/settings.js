@@ -11,6 +11,8 @@ module.exports = class SettingsPage extends Page {
     routes() {
         this.page('/settings').then(({ res }) => { res.render('pages/settings') });
 
+        this.get('/player-status').then(({ res, player }) => { res.render('partials/player/main', { player }) });
+
         this.post('/settings-reset').then(({ req, res, player }) => {
             return this.settingsMecanics.setState(player, req.body.multiplier || 1).then(result => res.send(result));
         });

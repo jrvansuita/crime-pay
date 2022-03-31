@@ -55,17 +55,16 @@ Next implementations:
 - [x] Same Hookers need to stay in club for at least 10 min
 - [x] auto redirect to prison when in life imprisionament (Need Fix Player Session First)
 - [x] use full stamina option on robbery
-- [x] Players can equipe 2 Weapon and 3 other itens. 
 - [ ] settings option for player avatar and name update
 
 
 #### Features
 - [ ] Pison: Gym Session to upgrade Strength
 - [ ] Pison: Sports Session to upgrade Dexterity
-- [ ] Market: Merchandises Background Colors
-- [ ] Market: Player to Equipe Items
-
-
+- [x] Market: Merchandises Background Colors
+- [x] Market: Player to Equipe Items
+- [ ] Inventory: Prevent equipe same item (check name)
+- [ ] Inventory: Players can equipe 2 Weapon and 3 other itens. 
 
 #### Visual
 - [ ] Create a pixel logo
