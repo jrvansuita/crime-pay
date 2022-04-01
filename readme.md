@@ -55,7 +55,7 @@ Next implementations:
 - [x] Same Hookers need to stay in club for at least 10 min
 - [x] auto redirect to prison when in life imprisonment (Need Fix Player Session First)
 - [x] use full stamina option on robbery
-- [ ] settings option for player avatar and name update
+- [ ] settings option for player change avatar head and name
 
 
 #### Features
@@ -65,6 +65,8 @@ Next implementations:
 - [x] Market: Player to Equip Items
 - [x] Inventory: Prevent equip same item (check name)
 - [x] Inventory: Players can equip 2 Weapons and 3 other items. 
+- [ ] Inventory: sell an equipment
+- [ ] Market: buy an equipment
 
 #### Visual
 - [ ] Create a pixel logo
