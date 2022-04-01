@@ -18,7 +18,7 @@ module.exports = class HistoricItem {
         this.event = event;
     }
 
-    getFormatedText(key, value) {
+    getFormattedText(key, value) {
         return valuesFormatter[key] ? valuesFormatter[key](value) : ((value.format?.() || value) + ' ' + key.capitalize());
     }
 
@@ -30,7 +30,7 @@ module.exports = class HistoricItem {
 
             infos.push({
                 image: defaultImages[key],
-                text: this.getFormatedText(key, value)
+                text: this.getFormattedText(key, value)
             })
         });
 

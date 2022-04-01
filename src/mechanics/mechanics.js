@@ -1,7 +1,7 @@
 const EventData = require("../db/data-access/event")
 const PlayerData = require('../db/data-access/player');
 
-module.exports = class Mecanics {
+module.exports = class Mechanics {
 
     constructor() {
         this.playerData = new PlayerData();

@@ -2,10 +2,10 @@ const MarketDeal = require("../actions/market-buy");
 const MerchandiseController = require("../controller/merchandise");
 const WeaponData = require("../db/data-access/weapon");
 const EventData = require('../db/data-access/event');
-const Mecanics = require("./mecanics");
+const Mechanics = require("./mechanics");
 
 
-module.exports = class MarketMecanics extends Mecanics {
+module.exports = class MarketMechanics extends Mechanics {
 
     constructor() {
         super();

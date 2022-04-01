@@ -1,10 +1,10 @@
 const EventData = require('../db/data-access/event');
 const { EscapeAttempt, BribeAttempt } = require("../actions/prison-release-attempt");
-const Mecanics = require("./mecanics");
+const Mechanics = require("./mechanics");
 const EventTypes = require("../enum/event-types");
 
 
-module.exports = class PrisonMecanics extends Mecanics {
+module.exports = class PrisonMechanics extends Mechanics {
 
     for(player) {
 

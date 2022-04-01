@@ -25,12 +25,12 @@ body {
     min-width: 90%;
 }
 
-.flex-painel.content {
+.flex-panel.content {
     width: 100%;
     min-width: 80em;
 }
 
-.flex-painel .card, .card-body {
+.flex-panel .card, .card-body {
     height: -webkit-fill-available;
     position: relative;
 }
@@ -94,7 +94,7 @@ body {
     margin-right: 1em;
 }
 
-.flex-painel {
+.flex-panel {
     display: flex;
     flex-direction: column;
     flex: 3;

@@ -21,9 +21,9 @@ $(document).ready(function () {
         $('#escape-respect').text(escapeData.respect?.sign());
         $('#escape-chance').text(newAttempt.escape.escapeChance + '%');
 
-        let quoteUnformated = $('#escape-holder .blockquote-footer').data('def');
+        let quoteUnFormatted = $('#escape-holder .blockquote-footer').data('def');
 
-        $('#escape-holder .blockquote-footer').text(quoteUnformated.format(newAttempt.escape.daysIncOnFail));
+        $('#escape-holder .blockquote-footer').text(quoteUnFormatted.format(newAttempt.escape.daysIncOnFail));
 
         $('#bribe-coins').text(bribeData.coins?.format());
         $('#bribe-stamina').text(bribeData.stamina.abs() + '%').parent().toggle(bribeData.stamina.abs().positive());

@@ -35,7 +35,7 @@ module.exports = class WeaponMath {
             const sumAttributes = (this.player.intelligence + this.player.dexterity + this.player.strength);
 
             //Define a player factor based on all the player stats
-            //Each stats group is considered, each one with own percentage amout
+            //Each stats group is considered, each one with own percentage amount
             const playerFactor = (sumAttributes * .23) +
                 (this.player.respect * .2) +
                 (this.player.coins * .2);

@@ -1,4 +1,4 @@
-const mongojs = require('mongojs');
+const mongo = require('mongojs');
 
 module.exports = class DataAccess {
 
@@ -17,13 +17,13 @@ module.exports = class DataAccess {
     }
 
     findById(_id) {
-        return this.find({ _id: mongojs.ObjectId(_id) });
+        return this.find({ _id: mongo.ObjectId(_id) });
     }
 
     findByIds(_ids) {
 
         return this.find({
-            _id: { $in: _ids.map((e) => mongojs.ObjectId(e)) }
+            _id: { $in: _ids.map((e) => mongo.ObjectId(e)) }
         });
     }
 
@@ -39,7 +39,7 @@ module.exports = class DataAccess {
 
     get(_id) {
         return new Promise((resolve, reject) => {
-            this.entity.find({ _id: mongojs.ObjectId(_id) }, this.promiseHandler(resolve, reject));
+            this.entity.find({ _id: mongo.ObjectId(_id) }, this.promiseHandler(resolve, reject));
         });
     }
 
@@ -51,7 +51,7 @@ module.exports = class DataAccess {
     modify(_id, data) {
         return new Promise((resolve, reject) => {
             this.entity.findAndModify({
-                query: { _id: mongojs.ObjectId(_id) },
+                query: { _id: mongo.ObjectId(_id) },
                 update: { ...data },
                 new: true
             }, this.promiseHandler(resolve, reject));
@@ -82,7 +82,7 @@ module.exports = class DataAccess {
     }
 
     removeById(id) {
-        return this.remove({ _id: mongojs.ObjectId(id.toString()) });
+        return this.remove({ _id: mongo.ObjectId(id.toString()) });
     }
 
     page(filter = {}, sort = {}, page = 0, count = 10) {

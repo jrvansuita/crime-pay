@@ -1,8 +1,8 @@
 const PlayerUpdateModel = require('../model/player-update');
-const Mecanics = require("./mecanics");
+const Mechanics = require("./mechanics");
 
 
-module.exports = class SettingsMecanics extends Mecanics {
+module.exports = class SettingsMechanics extends Mechanics {
 
     buildPlayerModel(player, multiplier, arrested) {
         return new PlayerUpdateModel(player)

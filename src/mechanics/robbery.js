@@ -1,10 +1,10 @@
 const PlaceController = require("../controller/place");
 const EventData = require('../db/data-access/event');
 const RobberyAttempt = require('../actions/robbery-attempt');
-const Mecanics = require("./mecanics");
+const Mechanics = require("./mechanics");
 
 
-module.exports = class RobberyMecanics extends Mecanics {
+module.exports = class RobberyMechanics extends Mechanics {
 
     constructor() {
         super();

@@ -14,9 +14,9 @@ module.exports = class MerchandiseController extends Controller {
         return new WeaponMath(player, merchandise).make();
     }
 
-    onFilter(mershandises) {
+    onFilter(merchandises) {
         //First of all, filter the results by rarity in a lucky number
-        return mershandises.filter((mershandise) => { return Num.lucky(100) >= mershandise.rarity; })
+        return merchandises.filter((merchandises) => { return Num.lucky(100) >= merchandises.rarity; })
     }
 
     onPreview(player, merchandise) {

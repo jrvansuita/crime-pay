@@ -1,7 +1,7 @@
 const EventData = require("../db/data-access/event");
 const HistoricItem = require("../model/historic-item");
 
-module.exports = class HistoricMecanics {
+module.exports = class HistoricMechanics {
 
     constructor() {
         this.eventData = new EventData();

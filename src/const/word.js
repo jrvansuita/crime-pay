@@ -19,8 +19,6 @@ module.exports = Object.freeze({
     INITIAL_STATE: 'Initial State',
     PRISONER: 'Prisoner',
     PLAYER: 'Player',
-
-    ON_EQUIPED: 'on equiped',
     EQUIP: 'Equip',
     EQUIPPED: 'Equipped',
     DROP: 'Drop',

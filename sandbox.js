@@ -1,5 +1,5 @@
 require('dotenv').config()
-require('./src/lib/util').Protos();
+require('./src/lib/util').Prototypes();
 
 const PlayerData = require('./src/db/data-access/player');
 

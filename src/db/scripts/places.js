@@ -26,7 +26,7 @@ module.exports = class PlaceScripts extends Script {
         this.create("Tourist's Pockets", 26.5);
         this.create("Neighborhood Store", 30);
         this.create("Mountain Cabin", 34);
-        this.create("McDonalds", 37);
+        this.create("McDonald's", 37);
         this.create("Moored Boat", 40);
         this.create("Tiny House", 41.5);
         this.create("Random Pickup Car", 44.5);
@@ -59,7 +59,7 @@ module.exports = class PlaceScripts extends Script {
         this.create("King Castle", 99.91);
         this.create("Museum of Art", 99.95);
         this.create("Egypt's Ancient Treasure", 99.98);
-        this.create("Nacional Treasure", 99.999);
+        this.create("National Treasure", 99.999);
 
         this.execute();
     }
@@ -67,11 +67,5 @@ module.exports = class PlaceScripts extends Script {
     set(name, difficulty) {
         super.set({ name: name }, { difficulty: difficulty });
     }
-
-    // updateAll() {
-    //     this.set('Little Baby', 0);
-    //     //...
-    //     this.execute();
-    // }
 
 }

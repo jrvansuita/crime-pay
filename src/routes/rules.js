@@ -58,7 +58,7 @@ class Rules {
     }
 
     lifeImprisonmentPlayer() {
-        const excepcionalPaths = ['prison', 'settings', 'inventory', 'historic'];
+        const exceptionalPaths = ['prison', 'settings', 'inventory', 'historic'];
 
         //If player got life imprisonment, It can't access any page other than prison page
         this.app.use(function (req, res, next) {
@@ -67,7 +67,7 @@ class Rules {
             const lifeImprisonment = player && player?.arrested && !player?.arrestRelease;
 
             if (lifeImprisonment) {
-                if (req.url.containsAnyOf(excepcionalPaths)) {
+                if (req.url.containsAnyOf(exceptionalPaths)) {
                     next();
                 } else {
                     res.redirect('/prison')

@@ -38,9 +38,9 @@ Next implementations:
 - [ ] player inventory (equip weapons and special items) [IN DEVELOPMENT]
 
 
-#### Mecanics
+#### Mechanics
 - [x] reset player settings
-- [x] on reaload page, auto select last robbery place
+- [x] on reload page, auto select last robbery place
 - [x] fix strength ups (beyond other stats)
 - [x] go to prison on failed robbery
 - [x] free from prison (Escape or bribe)
@@ -53,18 +53,18 @@ Next implementations:
 - [x] the player gets for life prison when all attributes became 0 (Character loss)
 - [x] Keep Player data on session
 - [x] Same Hookers need to stay in club for at least 10 min
-- [x] auto redirect to prison when in life imprisionament (Need Fix Player Session First)
+- [x] auto redirect to prison when in life imprisonment (Need Fix Player Session First)
 - [x] use full stamina option on robbery
 - [ ] settings option for player avatar and name update
 
 
 #### Features
-- [ ] Pison: Gym Session to upgrade Strength
-- [ ] Pison: Sports Session to upgrade Dexterity
+- [ ] Prison: Gym Session to upgrade Strength
+- [ ] Prison: Sports Session to upgrade Dexterity
 - [x] Market: Merchandises Background Colors
-- [x] Market: Player to Equipe Items
-- [x] Inventory: Prevent equipe same item (check name)
-- [x] Inventory: Players can equipe 2 Weapon and 3 other itens. 
+- [x] Market: Player to Equip Items
+- [x] Inventory: Prevent equip same item (check name)
+- [x] Inventory: Players can equip 2 Weapons and 3 other items. 
 
 #### Visual
 - [ ] Create a pixel logo
@@ -75,7 +75,7 @@ Next implementations:
 
 
 #### Code & Deploy
-- [x] install code optmization github plugin 
+- [x] install code optimization github plugin 
 - [x] heroku instance for preview and tests
 - [x] centralized strings (Messages, texts, words, etc)
 - [x] custom not found page
@@ -84,13 +84,7 @@ Next implementations:
 
 
 ### Screenshots
-<img src='/screenshots/1.png'  /></a>
-<img src='/screenshots/2.png'  /></a>
 <img src='/screenshots/3.png'  /></a>
-<img src='/screenshots/4.png'  /></a>
-<img src='/screenshots/5.png'  /></a>
-<img src='/screenshots/6.png'  /></a>
-<img src='/screenshots/7.png'  /></a>
 
 #
 

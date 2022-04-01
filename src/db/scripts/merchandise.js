@@ -9,10 +9,10 @@ module.exports = class MerchandiseScripts extends Script {
         super(new MerchandiseController());
     }
 
-    create(name, type, coinsFactor, rarity, int, dex, str, resp, coins, succcessChance, staminaCost) {
+    create(name, type, coinsFactor, rarity, int, dex, str, resp, coins, successChance, staminaCost) {
         super.create({
             name, type, coinsFactor, rarity,
-            bundle: AttributesBundle.do().primary(int, dex, str).respect(resp).coins(coins).robbery(succcessChance, staminaCost)
+            bundle: AttributesBundle.do().primary(int, dex, str).respect(resp).coins(coins).robbery(successChance, staminaCost)
         });
     }
 

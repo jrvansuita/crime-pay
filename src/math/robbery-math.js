@@ -16,7 +16,7 @@ module.exports = class RobberyMath {
                 this.player.getAttribute('strength');
 
             //Define a player factor based on all the player stats
-            //Each stats group is considered, each one with own percentage amout
+            //Each stats group is considered, each one with own percentage amount
             const playerFactor = (sumAttributes * .37) +
                 (this.player.respect * .015) +
                 (this.player.coins * .010) +
@@ -42,7 +42,7 @@ module.exports = class RobberyMath {
 
     getSuccessChance() {
         if (this.successChance === undefined) {
-            //Dedine the place success chance. Based on the success factor and each place difficulty
+            //Define the place success chance. Based on the success factor and each place difficulty
             const successChance = (this.getSuccessFactor() / this.place.difficulty) || 0;
 
             //Weapon Success Chance Bonus
@@ -55,7 +55,7 @@ module.exports = class RobberyMath {
     }
 
     getCoinsPrintFactor() {
-        //Define a Coins Print Factor. The greater this value, more cois will be generated.
+        //Define a Coins Print Factor. The greater this value, more coins will be generated.
         return 1.9;
     }
 
@@ -146,7 +146,7 @@ module.exports = class RobberyMath {
             //Defining as min bonus, the weapons stats
             const minBonus = (this.place.difficulty || 1) * 2.5;
 
-            //Definig as max bonus a player attribute percentage
+            //Define as max bonus a player attribute percentage
             const maxBonus = this.player.getAttribute(attributeName) * 0.5;
 
             //Defining the bonus for keep playing

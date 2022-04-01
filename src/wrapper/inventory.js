@@ -1,6 +1,5 @@
 const { Classes } = require("../enum/merchandise");
 const word = require("../const/word");
-const { Num } = require("../lib/util");
 const WeaponMath = require("../math/weapon-math");
 
 module.exports = class InventoryWrapper {

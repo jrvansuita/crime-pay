@@ -2,9 +2,9 @@ const HookerController = require("../controller/hooker");
 const EventData = require('../db/data-access/event');
 const ClubAttempt = require("../actions/club-attempt");
 const DrugController = require("../controller/drug");
-const Mecanics = require("./mecanics");
+const Mechanics = require("./mechanics");
 
-module.exports = class ClubMecanics extends Mecanics {
+module.exports = class ClubMechanics extends Mechanics {
 
     constructor() {
         super();

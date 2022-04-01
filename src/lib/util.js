@@ -48,7 +48,7 @@ const Util = {
 
 
 
-const Protos = () => {
+const Prototypes = () => {
 
     String.prototype.image = function (folder = '', extension = 'jpg') {
         return "/img/" + folder + '/' + this.toLowerCase().trim().replaceAll(" ", "-") + '.' + extension;
@@ -98,7 +98,7 @@ const Protos = () => {
         return [this]
     }
 
-    String.prototype.elipse = function (n, def = '...') {
+    String.prototype.ellipse = function (n, def = '...') {
         return this.length > n ? this.slice(0, n) + def : this;
     }
 
@@ -224,8 +224,8 @@ const Protos = () => {
 
 
 if (typeof module !== 'undefined') {
-    module.exports = { Util, Num, Protos };
+    module.exports = { Util, Num, Prototypes };
 } else {
-    Protos();
+    Prototypes();
 }
 

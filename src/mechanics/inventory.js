@@ -6,9 +6,9 @@ const text = require("../const/text");
 const InventoryController = require("../controller/inventory");
 const EventData = require("../db/data-access/event");
 const WeaponData = require("../db/data-access/weapon");
-const Mecanics = require("./mecanics");
+const Mechanics = require("./mechanics");
 
-module.exports = class InventoryMecanics extends Mecanics {
+module.exports = class InventoryMechanics extends Mechanics {
 
     constructor() {
         super()

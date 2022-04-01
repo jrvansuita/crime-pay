@@ -1,12 +1,12 @@
 const MerchandiseController = require("../controller/merchandise");
-const MarketMecanics = require("../mecanics/market");
+const MarketMechanics = require("../mechanics/market");
 const Page = require("./page");
 
 module.exports = class MarketPage extends Page {
 
     constructor(app) {
         super(app);
-        this.marketMecanics = new MarketMecanics();
+        this.marketMechanics = new MarketMechanics();
         this.merchandiseController = new MerchandiseController();
 
     }
@@ -27,7 +27,7 @@ module.exports = class MarketPage extends Page {
 
 
         this.post('/market-submit').then(({ player, req, res }) => {
-            return this.marketMecanics.submit(req.body.id, player).then(result => res.send(result))
+            return this.marketMechanics.submit(req.body.id, player).then(result => res.send(result))
         });
 
 

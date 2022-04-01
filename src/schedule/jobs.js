@@ -3,7 +3,7 @@ const PlayerData = require('../db/data-access/player');
 
 
 
-//Updade +1 stamina point every hour for all player, evern the arrested ones
+//Update +1 stamina point every hour for all player, even the arrested ones
 schedule.scheduleJob('59 * * * *', function () {
     const controller = new PlayerData();
     controller.restoreStamina(1);

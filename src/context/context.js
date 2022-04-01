@@ -119,7 +119,7 @@ module.exports = class Context {
 
 
     definePrototypes() {
-        require('../lib/util').Protos();
+        require('../lib/util').Prototypes();
     }
 
     defineRoutes() {

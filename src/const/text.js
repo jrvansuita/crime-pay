@@ -4,7 +4,7 @@ module.exports = Object.freeze({
     PRISON: {
         PAGE_TITLE: 'Welcome to Prison',
         DEFAULT_EXPLANATION: "Prison is a place for weak criminals, who didn't succeed and got caught by the cops. If you are arrested, pay your jail time and be released. Or try your luck bribing a jailer to let you go.",
-        LIFE_IMPRESIONMENT_EXPLANATION: 'You got for life prison. It was a pleasure to capture you and lock you in forever. The streets are at peace without you.',
+        LIFE_IMPRISONMENT_EXPLANATION: 'You got for life prison. It was a pleasure to capture you and lock you in forever. The streets are at peace without you.',
         ARRESTED_TEXT: "You got arrested and will be released from prison ",
         NOT_ARRESTED_TEXT: "Enjoy your time out of prison. Be careful not to get caught and end up here.",
         FREE_MAN: "You are a free man!",
@@ -13,14 +13,14 @@ module.exports = Object.freeze({
         TRY_ESCAPE: 'Why not try to escape?',
         SOME_GUY_HELP: 'Hi Buddy, I can help you get out from here!',
         ADDING_DAYS_JAIL: "Adding %s jail day when fail.",
-        LOOKGIN_FOR: "What are you looking for?",
+        LOOKING_FOR: "What are you looking for?",
         CAN_TAKE_IT_EASY: "I can make it easy for you. Give me some coins.",
         GET_OUT_CHANCE: "%s% chance to get out.",
     },
 
     ROBBERY: {
         PAGE_TITLE: 'Making a Robbery',
-        DEFAULT_EXPLANATION: "Select a target and try your lucky! Each target places has a specific difficult and costs some amount of stamina to rober. Try not to get caught by the police, otherwise you'll go straight to prison.",
+        DEFAULT_EXPLANATION: "Select a target and try your lucky! Each target places has a specific difficult and costs some amount of stamina. Try not to get caught by the police, otherwise you'll go straight to prison.",
         WATCHING_YOU: "I'm watching you!",
         PAYING_TIME_IN_PRISON: "You're paying your time in prison.",
         BEHAVE_YOURSELF: "Behave yourself and I'll leave you alone.",
@@ -39,7 +39,7 @@ module.exports = Object.freeze({
         WANNA_TRY: "Wanna try %s?",
         CANT_FAIL: 'No chances to fail',
         FAIL_CHANCE: '%s% chance to fail',
-        AND_ARREST_CHANCE: ' and %s% chance to go arrasted',
+        AND_ARREST_CHANCE: ' and %s% chance to go arrested',
         ACTION_BUTTON: 'Enjoy the Vibe',
     },
 

@@ -2,7 +2,7 @@ $(document).ready(() => {
 
     const cardItems = new CardsCarousel();
 
-    const onSucess = (data) => {
+    const onSuccess = (data) => {
         new RobberyLayoutManager().update(data);
 
         const update = new PlayerStatusUpdater(data.player);
@@ -18,8 +18,8 @@ $(document).ready(() => {
 
     const form = new FormControl("/robbery-form")
         .bind(".robbery-form-holder", ".robbery-form-placeholder")
-        .addAction('#submit', "/robbery-submit", onSucess)
-        .addAction('#submit-full-stamina', "/robbery-submit", onSucess).putData({ fullStamina: true })
+        .addAction('#submit', "/robbery-submit", onSuccess)
+        .addAction('#submit-full-stamina', "/robbery-submit", onSuccess).putData({ fullStamina: true })
         .show()
 
     cardItems.setUrl("/robbery-places")

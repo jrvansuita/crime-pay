@@ -1,7 +1,7 @@
 <% weapons?.forEach((weapon)=>{%>
 
 <%- include('../single/big-card', { key : weapon._id, 
-                                          title : weapon.name.elipse(17), 
+                                          title : weapon.name.ellipse(17), 
                                           img :  weapon.name.image('merchandises','png'),  
                                           subTitle: word.LEVEL.concat(weapon.level), 
                                           badgeText: player.isEquipped(weapon).if(word.EQUIPPED),

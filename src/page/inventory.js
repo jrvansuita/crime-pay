@@ -1,12 +1,12 @@
 const Page = require("./page");
-const InventoryMecanics = require("../mecanics/inventory");
+const InventoryMechanics = require("../mechanics/inventory");
 const InventoryController = require("../controller/inventory");
 
 module.exports = class InventoryPage extends Page {
 
     constructor(app) {
         super(app)
-        this.inventoryMecanics = new InventoryMecanics();
+        this.inventoryMechanics = new InventoryMechanics();
         this.inventoryController = new InventoryController();
     }
 
@@ -24,11 +24,11 @@ module.exports = class InventoryPage extends Page {
         });
 
         this.post('/inventory-equip').then(({ player, req, res }) => {
-            return this.inventoryMecanics.equip(player, req.body.id).then(result => res.send(result));
+            return this.inventoryMechanics.equip(player, req.body.id).then(result => res.send(result));
         });
 
         this.post('/inventory-burn').then(({ player, req, res }) => {
-            return this.inventoryMecanics.burn(player, req.body.id).then(result => res.send(result));
+            return this.inventoryMechanics.burn(player, req.body.id).then(result => res.send(result));
         });
 
     }

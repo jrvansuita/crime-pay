@@ -1,6 +1,6 @@
-const mongojs = require('mongojs')
+const mongo = require('mongojs')
 
-const db = mongojs(process.env.CONN_DB, [])
+const db = mongo(process.env.CONN_DB, [])
 
 
 db.on('error', function () {

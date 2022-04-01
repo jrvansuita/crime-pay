@@ -26,7 +26,7 @@ module.exports = class HookerScripts extends Script {
         this.create('Suicide Girl', 1, 65, 25, 20);
         this.create('Stoned Hooker', 1, 5, 10, 10);
         this.create('Dyke', 1, 18, 3, 1);
-        this.create('Lesbic', 1, 56, 13, 6);
+        this.create('Lesbian', 1, 56, 13, 6);
         this.create('Weed Head', 1.1, 16, 15, 20);
         this.create('Menopause Woman', 1.5, 22, 9, 5);
         this.create('Weird Girl', 1.5, 60, 15, 9);

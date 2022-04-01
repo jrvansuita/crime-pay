@@ -1,5 +1,5 @@
 
-const RobberyMecanics = require("../mecanics/robbery");
+const RobberyMechanics = require("../mechanics/robbery");
 const PlaceController = require("../controller/place");
 const Page = require("./page");
 
@@ -7,7 +7,7 @@ module.exports = class RobberyPage extends Page {
 
     constructor(app) {
         super(app);
-        this.robberyMecanics = new RobberyMecanics();
+        this.robberyMechanics = new RobberyMechanics();
         this.placeController = new PlaceController();
     }
 
@@ -26,7 +26,7 @@ module.exports = class RobberyPage extends Page {
         });
 
         this.post('/robbery-submit').then(({ player, req, res }) => {
-            return this.robberyMecanics.submit(req.body.id, player, req.body.fullStamina).then(result => res.send(result))
+            return this.robberyMechanics.submit(req.body.id, player, req.body.fullStamina).then(result => res.send(result))
         });
 
         this.get('/dev/robberies', false).then(({ req, res }) => {

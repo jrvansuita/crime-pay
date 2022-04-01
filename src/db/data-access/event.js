@@ -1,6 +1,5 @@
 const EventModel = require("../../model/event");
 const EventTypes = require('../../enum/event-types');
-const { Util } = require("../../lib/util");
 const DataAccess = require("./data-access");
 const phrase = require("../../const/phrase");
 
