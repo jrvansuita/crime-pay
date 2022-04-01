@@ -1,6 +1,6 @@
 <% const bunuses = player.getBonuses(['coins', 'successChance', 'staminaCost']);%>
 
-<%if (Object.keys(bunuses).length){%>
+<%if (bunuses && Object.keys(bunuses).length){%>
 <h6 class="label-sub-title"> <%=word.BONUSES%></h6>
 <ul class="list-group list-group-flush">
   <%if (bunuses['coins']){%>
