@@ -14,6 +14,11 @@ module.exports = Object.freeze({
     LEVEL: 'Level',
     LVL: 'Lvl',
     RESPECT: 'Respect',
+    DROPPED_EQUIPS: 'Dropped Equipments',
+    RESET_PLAYER: 'Reset Player',
+    INITIAL_STATE: 'Initial State',
+    PRISONER: 'Prisoner',
+    PLAYER: 'Player',
 
     ON_EQUIPED: 'on equiped',
     EQUIP: 'Equip',

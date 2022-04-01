@@ -18,21 +18,13 @@ module.exports = class PlayerData extends DataAccess {
 
         if (player?.equip) {
             return this.weaponData.findByIds(player.equip).then((weapons) => {
-                player.equipments = weapons;
+                player.equipments = Util.array(weapons);
 
                 return new PlayerMutation(player);
             })
         }
 
         return new PlayerMutation(player);
-    }
-
-    static weaponsStatsMultiplier(player) {
-        /* Defining Weapons Intelligence and Dexterity Multiplier Bonus */
-        var intelligenceMultiplier = player?.weapons?.reduce((p, c) => p + c.intelligence, 0);
-        var dexterityMultiplier = player?.weapons?.reduce((p, c) => p + c.dexterity, 0);
-
-        return { intelligence: intelligenceMultiplier || 1, dexterity: dexterityMultiplier || 1 };
     }
 
     restoreStamina(points) {
@@ -69,24 +61,26 @@ class ModelHandler {
         return attrs.reduce((a, e) => (a[e] = this.model[e], a), {});
     }
 
-    arrest() {
+    setAlways() {
         return this.handle(['arrested', 'arrestRelease']);
     }
 
-    attributes() {
+    setIncs() {
         return this.handle(['coins', 'respect', 'stamina', 'intoxication', 'intelligence', 'dexterity', 'strength']);
     }
 
-    others() {
+    setWhenHasValues() {
         return this.handle(['equip']);
     }
 
     forUpdate() {
-        return { $inc: Util.neat(this.attributes()), $set: Util.neat({ ...this.arrest(), ...this.others() }) };
+        return {
+            $inc: Util.neat(this.setIncs()), $set: { ...this.setAlways(), ...Util.neat(this.setWhenHasValues()) }
+        };
     }
 
     forSet() {
-        return { $set: { ...this.attributes(), ...this.arrest() } };
+        return { $set: { ...this.setIncs(), ...this.setAlways() } };
     }
 
 }

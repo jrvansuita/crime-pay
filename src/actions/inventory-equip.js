@@ -1,4 +1,5 @@
 const phrase = require('../const/phrase');
+const word = require('../const/word');
 const PlayerUpdateModel = require('../model/player-update');
 const Action = require('./action');
 
@@ -10,11 +11,24 @@ module.exports = class InventoryEquip extends Action {
     }
 
     make() {
+        const isEquipping = !this.player.isEquipped(this.weapon);
+
         const update = new PlayerUpdateModel(this.player)
             .validate((player) => {
-                //this.check(player.isEquipped(this.weapon), phrase.WEAPON_ALREADY_EQUIPPED)
+                const itemsLimit = 3;
+                const weaponsLimit = 2;
+
+                this.check(isEquipping && player.isEquipped(this.weapon, 'name'), phrase.WEAPON_ALREADY_EQUIPPED);
+
+                if (isEquipping) {
+                    if (this.weapon.isItem)
+                        this.check(player.getItems().length == itemsLimit, phrase.EQUIP_LIMIT.format(itemsLimit, word.SPECIAL_ITEMS))
+
+                    if (this.weapon.isWeapon)
+                        this.check(player.getWeapons().length == weaponsLimit, phrase.EQUIP_LIMIT.format(weaponsLimit, word.WEAPONS))
+                }
             })
-            .setEquip(this.weapon, !this.player.isEquipped(this.weapon))
+            .setEquip(this.weapon, isEquipping)
             .build()
 
         return super.make(update);

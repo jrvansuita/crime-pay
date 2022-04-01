@@ -58,7 +58,7 @@ class Rules {
     }
 
     lifeImprisonmentPlayer() {
-        const excepcionalPaths = ['prison', 'settings'];
+        const excepcionalPaths = ['prison', 'settings', 'inventory', 'historic'];
 
         //If player got life imprisonment, It can't access any page other than prison page
         this.app.use(function (req, res, next) {

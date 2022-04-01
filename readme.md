@@ -63,8 +63,8 @@ Next implementations:
 - [ ] Pison: Sports Session to upgrade Dexterity
 - [x] Market: Merchandises Background Colors
 - [x] Market: Player to Equipe Items
-- [ ] Inventory: Prevent equipe same item (check name)
-- [ ] Inventory: Players can equipe 2 Weapon and 3 other itens. 
+- [x] Inventory: Prevent equipe same item (check name)
+- [x] Inventory: Players can equipe 2 Weapon and 3 other itens. 
 
 #### Visual
 - [ ] Create a pixel logo

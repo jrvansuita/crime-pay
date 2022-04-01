@@ -73,14 +73,14 @@ module.exports = class MerchandiseScripts extends Script {
 
         this.create('Scifi Plasma Gun', Types.FICTITIOUS, 8.5, 95, 58, 45, 65, 50, 20, 10,);
         this.create('Ultrasonic Gun', Types.FICTITIOUS, 8.9, 96, 61, 55, 43, 18, 6, 12);
-        this.create('Alien Rifle', Types.FICTITIOUS, 9.1, 98, 71, 70, 81, 300, 25, 20, -19);
-        this.create('Alien Sniper Rifle', Types.FICTITIOUS, 9.3, 99, 74, 59, 89, 500, 30, 23, -28);
+        this.create('Alien Rifle', Types.FICTITIOUS, 9.1, 98, 71, 70, 81, 300, 25, 20, 20);
+        this.create('Alien Sniper Rifle', Types.FICTITIOUS, 9.3, 99, 74, 59, 89, 500, 30, 23, 30);
 
-        this.create("Soviet Army Bazooka", Types.BOMB, 9, 94, 51, 42, 61, 90, 0, 20, -50);
-        this.create('US Army Bazooka', Types.BOMB, 9.2, 95, 54, 40, 59, 100, 0, 22, -55);
-        this.create('War Tank', Types.BOMB, 9.9, 99, 90, 0, 110, 250, 30, 15, -90);
-        this.create('Dynamite', Types.BOMB, 3, 80, 0, 0, 20, 8, 0, 3, 5);
-        this.create('TNT Bomb', Types.BOMB, 5, 85, 0, 0, 25, 15, 0, 6, -10);
+        this.create("Soviet Army Bazooka", Types.WAR, 9, 94, 51, 42, 61, 90, 0, 20, 15);
+        this.create('US Army Bazooka', Types.WAR, 9.2, 95, 54, 40, 59, 100, 0, 22, 16);
+        this.create('War Tank', Types.WAR, 9.9, 99, 90, 0, 110, 250, 30, 15, 12);
+        this.create('Dynamite', Types.BOMB, 3, 80, 0, 0, 20, 8, 0, 3, -6);
+        this.create('TNT Bomb', Types.BOMB, 5, 85, 0, 0, 25, 15, 0, 6, -8);
 
         this.execute();
     }

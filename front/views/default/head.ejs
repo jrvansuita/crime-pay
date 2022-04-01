@@ -27,8 +27,10 @@
   
   if (locals?.carousel) locals.css = ['lib/cards-carousel', ...(locals?.css || [])];
 
-  if (locals?.carousel) locals.js = ['lib/cards-carousel','lib/form-control','lib/request-button', ...(locals?.js || [])];
+  if (locals?.carousel) locals.js = ['lib/cards-carousel','lib/form-control', ...(locals?.js || [])];
   
+  if (locals?.buttons || locals?.carousel) locals.js = ['lib/request-button', ...(locals?.js || [])];
+
   if (locals?.player) locals.css = ['player-status', ...(locals?.css || [])];
 
   if (locals?.player) locals.js = ['player-status', 'mutation/player', ...(locals?.js || [])];

@@ -3,6 +3,7 @@ const PlaceController = require("../controller/place");
 const HookerController = require("../controller/hooker");
 const DrugController = require("../controller/drug");
 const MerchandiseController = require("../controller/merchandise");
+const PlayerMutation = require("../mutation/player");
 
 module.exports = class PlayerEvolution {
 
@@ -34,7 +35,7 @@ module.exports = class PlayerEvolution {
             var players = [player];
 
             this.mStats?.split('-').forEach(m => {
-                players.push(this.multiplyStats({ ...player }, m));
+                players.push(this.multiplyStats(new PlayerMutation(player), m));
             });
 
             return players;

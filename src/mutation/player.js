@@ -18,8 +18,8 @@ class PlayerMutation {
         return this?.equipments?.filter((w) => { return w.isWeapon; })
     }
 
-    isEquipped(e) {
-        return this?.equip?.includes((e._id || e).toString()) || false;
+    isEquipped(e, attr = '_id') {
+        return this?.equipments?.some((w) => { return (e[attr] || e).toString() === w[attr].toString(); })
     };
 
     getAttribute(attr) {
@@ -35,6 +35,10 @@ class PlayerMutation {
 
             return sum;
         }, {})
+    }
+
+    getBonusValue(attr, def = 0) {
+        return this.getBonuses([attr])?.[attr] || def
     }
 }
 

@@ -10,6 +10,7 @@ const types = {
     FICTITIOUS: 9,
     BOMB: 10,
     WAR: 11,
+
 }
 
 const classes = {
@@ -25,6 +26,7 @@ const classes = {
         types.SHOTGUN,
         types.SUBMACHINE,
         types.RIFFLE,
+        types.FICTITIOUS,
         types.FICTITIOUS,
         types.WAR,
     ]

@@ -1,5 +1,5 @@
 .historic-holder {
-    height: 42em;
+    height: 85%;
     width: 100%;
     padding-right: 20px;
     display: block;
@@ -28,7 +28,7 @@
 }
 
 
-.mini-img {
+.historic-items .mini-img {
     width: 16px;
     height: 16px;
 }

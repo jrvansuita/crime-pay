@@ -5,6 +5,7 @@ class PlayerStatusUpdater {
 
         if (player.lifeImprisonment) {
             window.location.replace("/prison");
+            return;
         }
     }
 
@@ -12,7 +13,6 @@ class PlayerStatusUpdater {
         $('.player-status-holder').parent().load("/player-status", () => {
 
         });
-
     }
 
     badge() {
@@ -29,10 +29,14 @@ class PlayerStatusUpdater {
     }
 
     bars() {
-        $('#status-stamina-percent').text(this.player.stamina + '%');
-        $('#status-stamina').css('width', this.player.stamina + '%').attr('aria-valuenow', this.player.stamina);
-        $('#status-intoxication-percent').text(this.player.intoxication + '%');
-        $('#status-intoxication').css('width', this.player.intoxication + '%').attr('aria-valuenow', this.player.intoxication);
+        const exec = (name, min = 40) => {
+            $('#status-' + name + '-percent').text(this.player[name] > min ? this.player[name] + '%' : '');
+            $("[data-id='status-" + name + "-percent']").text(this.player[name] + '%').toggle(this.player[name] <= min);
+            $('#status-' + name).css('width', this.player[name] + '%').attr('aria-valuenow', this.player[name]);
+        }
+
+        exec('stamina');
+        exec('intoxication');
 
         return this;
     }

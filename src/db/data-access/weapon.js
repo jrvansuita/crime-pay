@@ -8,17 +8,12 @@ module.exports = class WeaponData extends DataAccess {
         super('weapon');
     }
 
-
     onAfterFind(data) {
-        return Util.array(data).map(w => {
-            w.isItem = Classes.SPECIAL_ITEM.includes(w.type);
-            w.isWeapon = Classes.WEAPON.includes(w.type);
-
-            if (!w.isItem) delete w.isItem;
-            if (!w.isWeapon) delete w.isWeapon;
-
+        return Util.spread(Util.array(data).map(w => {
+            if (Classes.SPECIAL_ITEM.includes(w.type)) w.isItem = true;
+            if (Classes.WEAPON.includes(w.type)) w.isWeapon = true;
             return w;
-        });
+        }));
     }
 
 

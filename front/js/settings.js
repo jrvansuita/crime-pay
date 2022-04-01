@@ -1,29 +1,12 @@
 $(document).ready(() => {
 
-    function justClicked() {
-        $('#reset-player-dropdown .no-display').css('display', 'inherit');
-        $('#reset-player-dropdown span').last().hide();
+    const onSuccess = () => {
+        PlayerStatusUpdater.reload();
     }
 
-    function onFinished() {
-        $('#reset-player-dropdown .no-display').css('display', 'none');
-        $('#reset-player-dropdown span').last().show();
-    }
-
-    function onResetClick(path) {
-        return function() {
-            justClicked();
-            const multiplier = $(this).data('multiplier');
-
-            setTimeout(() => {
-                $.post(path, { multiplier: multiplier || 1 }).done(onFinished);
-            }, 400);
-        }
-    }
-
-
-    $('.reset').click(onResetClick("/settings-reset"));
-    $('.prisoner').click(onResetClick("/settings-reset-prisoner"));
-
-
+    new RequestButton('#reset', "/settings-reset", onSuccess).bindClick().delayed();
+    new RequestButton('#prisoner', "/settings-reset-prisoner", onSuccess).bindClick().delayed();
+    new RequestButton('#reset-10', "/settings-reset", onSuccess).putData({ multiplier: 10 }).bindClick().delayed();
+    new RequestButton('#reset-100', "/settings-reset", onSuccess).putData({ multiplier: 100 }).bindClick().delayed();
+    new RequestButton('#reset-1000', "/settings-reset", onSuccess).putData({ multiplier: 1000 }).bindClick().delayed();
 });

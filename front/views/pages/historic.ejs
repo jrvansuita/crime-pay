@@ -1,10 +1,11 @@
 <html lang="en">
 
-<%- include('../default/head', {pageTitle: word.HISTORIC, player: true, js:'historic', css:'historic'}); %>
+<%- include('../default/head', {pageTitle: word.HISTORIC, player: true, js:['historic'], css:['historic']}); %>
 
 <body>
   <div class="container main-content">
     <div class="flex-container">
+
       <div class="flex-left">
         <%- include('../partials/player/main'); %>
       </div>

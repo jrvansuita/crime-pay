@@ -31,10 +31,13 @@
 }
 
 
-.player-status-holder .weapon-list .float-right {
+.player-status-holder .weapon-list {
   font-size: 11pt;
-  font-weight: 500;
-  color: #848688;
+}
+
+.player-status-holder .weapon-list .float-right {
+  font-weight: 400;
+  color: #999a9b !important;
   display: flex;
   align-items: center;
 }
@@ -80,6 +83,7 @@
 .progress-holder .col:not(:first-child) {
   padding-left: 2px;
   align-self: center;
+  text-align: center;
 }
 
 .progress-holder .col:not(:last-child) {
@@ -87,13 +91,25 @@
   align-self: center;
 }
 
-
+.progress-holder .progress-back-value {
+  color: #999a9b !important;
+  font-size: 9.5pt;
+  font-weight: 600;
+  position: absolute;
+  margin: auto;
+  margin-left: -8px;
+}
 
 .player-status-holder .label-sub-title {
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding: 0 1rem;
-  color: #848688 !important;
+  color: #999a9b !important;
   font-size: 11pt;
-  font-weight: 400;
+  font-weight: inherit;
   line-height: 1.2;
+}
+
+
+.list-group-item .float-right {
+  font-weight: 500;
 }

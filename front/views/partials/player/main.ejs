@@ -28,11 +28,14 @@
     <%- include('../../single/section-line', { id: 'status-strength', text: word.STRENGTH, value: player.getAttribute('strength').format() }); %>
   </ul>
 
+
+  <%- include('./bonuses'); %>
+
   <%if (player.equip){%>
   <%- include('./weapon-group', {title: word.WEAPONS, weapons: player.getWeapons() }); %>
   <%- include('./weapon-group', {title: word.SPECIAL_ITEMS, weapons: player.getItems() }); %>
   <%}%>
 
-  <%- include('./bonuses'); %>
+  
 
 </div>

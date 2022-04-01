@@ -1,13 +1,17 @@
 <html lang="en">
 
-<%- include('../default/head', {pageTitle: word.SETTINGS, js:'settings'}); %>
+<%- include('../default/head', {pageTitle: word.SETTINGS, player:true, buttons:true, js:['settings']}); %>
 
 <body>
-  <div class="container main-content max-main-content">
+  <div class="container main-content">
 
     <div class="flex-container">
 
-      <div class="flex-painel">
+      <div class="flex-left">
+        <%- include('../partials/player/main'); %>
+      </div>
+
+      <div class="flex-painel content">
 
         <div class="card">
           <%- include('../partials/menu', {nav_settings:true}); %>
@@ -17,32 +21,19 @@
             <h5 class="card-title"><%=word.SETTINGS%></h5>
 
             <div class="col-md-2">
-              <label class="form-label">Reset Player Stats (Testing Porpouses)</label>
-
-              <div class="dropdown">
-                <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" id="reset-player-dropdown" aria-expanded="false">
-                  <span class="spinner-border spinner-border-sm no-display" role="status" aria-hidden="true"></span>
-                  <span class="no-display">Loading...</span>
-                  <span class="button-text">Reset Player</span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="reset-player-dropdown">
-                  <li><button class="dropdown-item reset" type="button" data-multiplier="1">Initial
-                      State</button>
-                  </li>
-                  <li><button class="dropdown-item prisoner" type="button">Prisoner</button>
-                  </li>
-                  <li><button class="dropdown-item reset" type="button" data-multiplier="10">10x
-                      Player</button>
-                  </li>
-
-                  <li><button class="dropdown-item reset" type="button" data-multiplier="100">100x
-                      Player</button>
-                  </li>
-
-                  <li><button class="dropdown-item reset" type="button" data-multiplier="1000">1000x Player</button>
-                  </li>
-                </ul>
-              </div>
+              <%- include('../single/buttons/button-group', {
+                id: 'reset-player-dropdown', 
+                text: word.RESET_PLAYER, 
+                loadingButton: true,
+                colorClass: 'btn-dark',
+                options: [
+                  {text: word.INITIAL_STATE, id: 'reset'},
+                  {text: word.PRISONER, id: 'prisoner'},
+                  {text: '10x'.concat(word.PLAYER), id: 'reset-10'},
+                  {text: '100x'.concat(word.PLAYER), id: 'reset-100'},
+                  {text: '1000x'.concat(word.PLAYER), id: 'reset-1000'}
+                ]
+              }); %>
             </div>
           </div>
         </div>

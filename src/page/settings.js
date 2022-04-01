@@ -9,7 +9,7 @@ module.exports = class SettingsPage extends Page {
     }
 
     routes() {
-        this.page('/settings').then(({ res }) => { res.render('pages/settings') });
+        this.page('/settings').then(({ res, player }) => { res.render('pages/settings', { player }) });
 
         this.get('/player-status').then(({ res, player }) => { res.render('partials/player/main', { player }) });
 

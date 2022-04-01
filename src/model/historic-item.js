@@ -8,18 +8,18 @@ const defaultImages = { coins: 'coin', respect: 'respect', stamina: 'stamina', i
 const valuesFormatter = {
     title: value => { return value },
     arrested: () => { return phrase.GOT_ARRESTED },
-    arrestRelease: (value) => { return word.RELEASE.concat(value.toDateDisplay()) }
+    arrestRelease: (value) => { return word.RELEASE.concat(value.toDateDisplay()) },
+    equip: () => { return word.DROPPED_EQUIPS }
 }
 
 
 module.exports = class HistoricItem {
     constructor(event) {
         this.event = event;
-
     }
 
     getFormatedText(key, value) {
-        return valuesFormatter[key] ? valuesFormatter[key](value) : (value + ' ' + key.capitalize());
+        return valuesFormatter[key] ? valuesFormatter[key](value) : ((value.format?.() || value) + ' ' + key.capitalize());
     }
 
     buildInfos() {

@@ -8,34 +8,12 @@ module.exports = class RobberyMath {
         this.place = place;
     }
 
-    getWeaponsStats() {
-        return PlayerData.weaponsStatsMultiplier(this.player);
-    }
-
-    getPlayerWeaponBasedAttibutes() {
-        if (this.playerAttributes === undefined) {
-
-            const weaponStats = {
-                intelligence: this.getWeaponsStats().intelligence,
-                dexterity: this.getWeaponsStats().dexterity,
-            }
-
-            const intelligence = this.player.intelligence * weaponStats.intelligence;
-            const dexterity = this.player.dexterity * weaponStats.dexterity;
-            const strength = this.player.strength;
-
-            this.playerAttributes = { intelligence, dexterity, strength, weaponStats };
-        }
-
-        return this.playerAttributes;
-    }
-
-
     getPlayerFactor() {
         if (this.playerFactor === undefined) {
-            const attributes = this.getPlayerWeaponBasedAttibutes();
 
-            const sumAttributes = (attributes.intelligence + attributes.dexterity + attributes.strength);
+            const sumAttributes = this.player.getAttribute('intelligence') +
+                this.player.getAttribute('dexterity') +
+                this.player.getAttribute('strength');
 
             //Define a player factor based on all the player stats
             //Each stats group is considered, each one with own percentage amout
@@ -67,7 +45,10 @@ module.exports = class RobberyMath {
             //Dedine the place success chance. Based on the success factor and each place difficulty
             const successChance = (this.getSuccessFactor() / this.place.difficulty) || 0;
 
-            this.successChance = Num.assert(successChance, true, 0, 100);
+            //Weapon Success Chance Bonus
+            const bonus = this.player.getBonusValue('successChance');
+
+            this.successChance = Num.assert(successChance + bonus, true, 0, 100);
         }
 
         return this.successChance;
@@ -124,14 +105,18 @@ module.exports = class RobberyMath {
 
     getStaminaCost() {
         if (this.staminaCost === undefined) {
+            const min = 15;
 
             const intoxicationIncrease = (this.player.intoxication * .33);
 
             //Define Stamina cost based on place success chance
             const staminaCost = ((100 - this.getSuccessChance()) * .75) + intoxicationIncrease;
 
+            //Weapon Stamina Cost Bonus
+            const bonus = this.player.getBonusValue('staminaCost');
+
             //Define min and max values
-            this.staminaCost = Num.assert(staminaCost, true, 12, 100);
+            this.staminaCost = Num.assert(staminaCost + bonus, true, min + bonus, 100);
         }
 
         return this.staminaCost;
@@ -155,16 +140,14 @@ module.exports = class RobberyMath {
     getPlayerAttributeValue(attributeName) {
         if ((this.getSuccessChance() > 0) && this[attributeName] === undefined) {
 
-            const attributes = this.getPlayerWeaponBasedAttibutes();
-
             //Defining attribute points
             const attributePoints = (100 - this.getSuccessChance()) * this.place.difficulty * .033;
 
             //Defining as min bonus, the weapons stats
-            const minBonus = attributes.weaponStats[attributeName] * 1.6;
+            const minBonus = (this.place.difficulty || 1) * 2.5;
 
             //Definig as max bonus a player attribute percentage
-            const maxBonus = attributes[attributeName] * 0.05;
+            const maxBonus = this.player.getAttribute(attributeName) * 0.5;
 
             //Defining the bonus for keep playing
             const bonus = Math.min(minBonus, maxBonus);

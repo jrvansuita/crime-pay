@@ -1,12 +1,15 @@
+<% const min = 40;%>
+
 <div class="container progress-holder" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<%=tooltipText%>">
   <div class="row ">
     <div class="col col-4" style="width: 37%;">
       <%=title%>
     </div>
     <div class="col col-8" style="width: 63%;">
+      <span data-id="<%=textId%>" class="progress-back-value" style="display: <%=(value <= min).if('inline','none')%>"> <%=value%>%</span>
       <div class="progress">
         <div id="<%=barId%>" class="progress-bar progress-bar-striped <%=colorClass%>" role="progressbar" style="width: <%=value%>%" aria-valuenow="<%=value%>" aria-valuemin="0" aria-valuemax="100">
-          <span id="<%=textId%>"> <%=value%>%</span>
+          <span id="<%=textId%>"> <%=(value > min).if(value.percent(),'')%></span>
         </div>
       </div>
     </div>

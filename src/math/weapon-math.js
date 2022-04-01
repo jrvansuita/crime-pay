@@ -12,10 +12,10 @@ module.exports = class WeaponMath {
     static color(weapon) {
         const name = weapon.name.replaceAll(' ', weapon.level * weapon.rarity);
 
-        const saturation = Num.assert((weapon.level * (weapon.rarity / 4)), true, 43, 65);
-        const lightness = Num.assert(90 - (weapon.rarity / 1.2), true, 40, 90);
+        const saturation = Num.assert((weapon.level * (weapon.rarity / 4)), true, 43, 60);
+        const lightness = Num.assert(90 - weapon.rarity, true, 45, 80);
 
-        return name.toColor(260, 1, saturation, lightness);
+        return name.toColor(220, 1, saturation, lightness);
     }
 
     static rarity(weapon) {

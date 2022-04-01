@@ -19,6 +19,13 @@ module.exports = class PlayerUpdateModel {
         const lastDate = this.player?.arrestRelease || new Date();
 
         this.arrestRelease = this.arrested ? moment(lastDate).add(arrestDays, 'days').minutes(0).toDate() : null;
+
+        if (this.arrested) this.clearEquip()
+        return this;
+    }
+
+    clearEquip() {
+        this.equip = []
         return this;
     }
 

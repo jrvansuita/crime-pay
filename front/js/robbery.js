@@ -3,8 +3,16 @@ $(document).ready(() => {
     const cardItems = new CardsCarousel();
 
     const onSucess = (data) => {
-        new RobberyLayoutManager().update(data)
-        new PlayerStatusUpdater(data.player).all();
+        new RobberyLayoutManager().update(data);
+
+        const update = new PlayerStatusUpdater(data.player);
+
+        if (data.player.arrested) {
+            PlayerStatusUpdater.reload()
+        } else {
+            update.all();
+        }
+
         cardItems.load();
     };
 

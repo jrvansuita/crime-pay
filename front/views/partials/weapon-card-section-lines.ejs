@@ -1,4 +1,4 @@
-<%- include('../single/section-line', { text: word.RESPECT.concat(word.INCREASE), showOnlyIf : !!data?.respect, value: data.respect?.sign()}); %>
+<%- include('../single/section-line', { text: word.RESPECT, showOnlyIf : !!data?.respect, value: data.respect?.sign()}); %>
 
 <%- include('../single/section-line', { text: word.SUCCESS_CHANCE, showOnlyIf : !!data?.successChance, value: data?.successChance?.sign().percent()}); %>
 
@@ -6,8 +6,8 @@
 
 <%- include('../single/section-line', { text: word.COINS_FIND, showOnlyIf : !!data?.coins, value: data.coins?.sign().percent()}); %>
 
-<%- include('../single/section-line', { text: word.INTELLIGENCE.concat(word.INCREASE), showOnlyIf : !!data?.intelligence, value: data.intelligence?.sign()}); %>
+<%- include('../single/section-line', { text: word.INTELLIGENCE, showOnlyIf : !!data?.intelligence, value: data.intelligence?.sign()}); %>
 
-<%- include('../single/section-line', { text: word.DEXTERITY.concat(word.INCREASE), showOnlyIf : !!data?.dexterity, value: data.dexterity?.sign()}); %>
+<%- include('../single/section-line', { text: word.DEXTERITY, showOnlyIf : !!data?.dexterity, value: data.dexterity?.sign()}); %>
 
-<%- include('../single/section-line', { text: word.STRENGTH.concat(word.INCREASE), showOnlyIf : !!data?.strength, value: data.strength?.sign()}); %>
+<%- include('../single/section-line', { text: word.STRENGTH, showOnlyIf : !!data?.strength, value: data.strength?.sign()}); %>

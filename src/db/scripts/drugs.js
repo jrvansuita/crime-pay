@@ -42,7 +42,7 @@ module.exports = class DrugScripts extends Script {
         this.create('Ecstasy Pill', 6.4, 45, 38, 17);
         this.create('Ghb', 8.2, 70, 49, 19);
         this.create('Ketamine', 8.7, 75, 62, 26);
-        this.create('Methamphetamine', 9.1, 85, 82, 31);
+        this.create('Meth', 9.1, 85, 82, 31);
         this.create('Heroine', 7.4, 70, 75, 36);
         this.create('LSD', 8.8, 85, 78, 39);
         this.create('Blue Meth', 9.4, 80, 90, 45);

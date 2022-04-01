@@ -36,6 +36,10 @@ const Util = {
         return data ? Array.isArray(data).if(data, (data?.array?.() || [data])) : def
     },
 
+    spread: function (data) {
+        return data.length === 1 ? data[0] : data;
+    },
+
     dateFormat: (value, concatString = '', defaultString = '') => {
         return value && moment ? concatString + moment(new Date(value)).calendar() : defaultString;
     },

@@ -56,9 +56,12 @@ class RequestButton {
 
     loading(show) {
         if (this.isLoadingButton) {
-            $(this.id).prop('disabled', show);
-            $(this.id + ' .no-display').css('display', show ? 'inline-block' : 'none');
-            $(this.id + ' .button-text').toggle(!show);
+            const dropdownMenu = $(this.id).parents('.dropdown-menu');
+            const button = dropdownMenu.length ? dropdownMenu.siblings('.btn').first() : $(this.id);
+
+            button.prop('disabled', show);
+            button.find('.no-display').css('display', show ? 'inline-block' : 'none');
+            button.find('.button-text').toggle(!show);
         }
     }
 

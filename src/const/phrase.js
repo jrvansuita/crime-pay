@@ -12,9 +12,12 @@ module.exports = Object.freeze({
     CANT_FIND_ANYMORE: ["You took a long time to choose.", "Cant't find anymore.", "You lost the chance!", "Just reload the page!"],
     GOT_ARRESTED: 'Got Arrested',
     NO_EVENT_MESSAGE: 'No Event Message Defined!',
-    WEAPON_ALREADY_EQUIPPED: 'Weapon already Equipped!',
+    WEAPON_ALREADY_EQUIPPED: 'Weapon model already being equipped!',
+    EQUIP_LIMIT: 'You only can equip up to %s %s.',
     EQUIP_NOT_FOUND: "Can't find this equipment anymore.",
     CANT_BURN_EQUIPPED: "Can't burn equipped gears.",
+
+
 
     ROBBERY: {
         SUCCESS: [
