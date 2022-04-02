@@ -7,6 +7,7 @@ module.exports = class HookerController extends Controller {
 
     constructor() {
         super('hooker', cache, 3);
+
     }
 
     onDetails(player, hooker) {

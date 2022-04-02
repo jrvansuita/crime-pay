@@ -33,3 +33,8 @@
     max-width: 28em;
     display: none;
 }
+
+.btn-toolbar{
+    position: absolute;
+    bottom: 0;
+}

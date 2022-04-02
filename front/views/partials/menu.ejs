@@ -10,7 +10,7 @@
   <%menuItems.forEach((each)=>{ %>
 
   <li class="nav-item">
-    <a class="nav-link <%=locals['nav_'+ each.toLowerCase()] ? 'active' : ''%>" aria-current="page" href="/<%=each.toLowerCase()%>" onclick="return location.href != this.href">
+    <a class="nav-link <%=locals['nav_'.join(each.toName())] ? 'active' : ''%>" aria-current="page" href="/<%=each.toName()%>" onclick="return location.href != this.href">
       <%=each%>
     </a>
   </li>

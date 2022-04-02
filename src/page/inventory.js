@@ -31,5 +31,9 @@ module.exports = class InventoryPage extends Page {
             return this.inventoryMechanics.burn(player, req.body.id).then(result => res.send(result));
         });
 
+        this.post('/inventory-sell').then(({ player, req, res }) => {
+            return this.inventoryMechanics.sell(player, req.body.id, req.body.price).then(result => res.send(result));
+        });
+
     }
 }

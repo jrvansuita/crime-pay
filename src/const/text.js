@@ -61,13 +61,19 @@ module.exports = Object.freeze({
 
     INVENTORY: {
         PAGE_TITLE: 'Your Inventory',
-        DEFAULT_EXPLANATION: 'Here you have access to all your equipment. You can equip up to two weapons and three special items at the same time. It will became your thefts much easier and more profitable if you equip your bests inventory gears. Any equipment can be sell on the dark market at any time.',
+        DEFAULT_EXPLANATION: 'Here you have access to all your equipment. You can equip up to two weapons and three special items at the same time. It will became your thefts much easier and more profitable if you equip your bests inventory gears.'
+            + " A non equipped item can be sold on the dark market without period restriction, and is automatic shown for other players who may have be interest for it.",
+
         EQUIP_TITLE: "You selected the %s",
         WANNA_SELL: "Want to sell the %s?",
         WEAPON_EQUIPPED: "Your equipped gears were updated!",
         EMPTY_TITLE: 'Empty Inventory',
         EMPTY_DESCRIPTION: "You don't have any weapon yet. Visit the market to buy one.",
-
+        SELL_TEXT: "You can sell this item on the market. The hood is begging for new equipments!",
+        SELLING_TEXT: "You are selling %s for %s coins. The price can be changed if you want.",
+        EQUIP_TEXT: "Waiting what? Equip it now and enjoy the next easy thefts.",
+        DROP_TEXT: "Drop it and you will be an easy prey for police.",
+        DROP_TO_SELL: "You need to drop this item first to be able to sell it.",
     },
 
     HISTORIC: {
@@ -99,7 +105,8 @@ module.exports = Object.freeze({
             4: ['You bribed a jailer at the prison.'],
             5: ['You tried to escape from the prison.', 'You tried to escape with some dude from jail.'],
             6: ['You bought a new equipment on the market.'],
-            7: ['You burned an equipment.']
+            7: ['You burned an equipment.'],
+            8: ['Equipment on the market got updated.', 'You just updated you equipment on the market']
 
         }
     },

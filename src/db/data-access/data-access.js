@@ -12,36 +12,29 @@ module.exports = class DataAccess {
         }
     }
 
-    all() {
-        return this.find();
-    }
-
     findById(_id) {
-        return this.find({ _id: mongo.ObjectId(_id) });
+        return this.find({ _id: mongo.ObjectId(_id) }, true);
     }
 
     findByIds(_ids) {
-
         return this.find({
             _id: { $in: _ids.map((e) => mongo.ObjectId(e)) }
         });
     }
 
-    find(query = {}) {
+    find(query = {}, one = false) {
         return new Promise((resolve, reject) => {
-            this.entity.find(query, (err, data) => {
-                data = data[1] ? data : data[0];
-
+            this.entity[one ? 'findOne' : 'find'](query, (err, data) => {
                 return err ? reject(err) : resolve(this.onAfterFind(data));
             });
         });
     }
 
-    get(_id) {
-        return new Promise((resolve, reject) => {
-            this.entity.find({ _id: mongo.ObjectId(_id) }, this.promiseHandler(resolve, reject));
-        });
-    }
+    // get(_id) {
+    //     return new Promise((resolve, reject) => {
+    //         this.entity.find({ _id: mongo.ObjectId(_id) }, true, this.promiseHandler(resolve, reject));
+    //     });
+    // }
 
     onAfterFind(data) {
         //Not implemented Here, look child
@@ -49,6 +42,10 @@ module.exports = class DataAccess {
     }
 
     modify(_id, data) {
+
+        //Set $set modifier identifier if not included
+        data = Object.keys(data).join().includes('$').if(data, { $set: data });
+
         return new Promise((resolve, reject) => {
             this.entity.findAndModify({
                 query: { _id: mongo.ObjectId(_id) },

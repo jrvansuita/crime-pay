@@ -1,7 +1,7 @@
-const phrase = require('../const/phrase');
-const PlayerUpdateModel = require('../model/player-update');
-const { Num } = require('../lib/util');
-const Action = require('./action');
+const phrase = require('../../const/phrase');
+const PlayerUpdateModel = require('../../model/player-update');
+const { Num } = require('../../lib/util');
+const Action = require('../action');
 
 module.exports = class RobberyAttempt extends Action {
 

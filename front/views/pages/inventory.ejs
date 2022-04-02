@@ -19,6 +19,16 @@
               <div class="flex-panel">
                 <h5 class="card-title"><%=text.INVENTORY.PAGE_TITLE%></h5>
                 <p class="card-text text-secondary"><%=text.INVENTORY.DEFAULT_EXPLANATION%></p>
+
+                <%- include('../single/buttons/buttons-bar',{
+                                                            id: 'weapon-types-filter',
+                                                            colorClass: 'btn-outline-secondary',
+                                                            buttons:[
+                                                                     {id: 'all', text: word.ALL },
+                                                                     {id: 'weapons', text: word.WEAPONS },
+                                                                     {id: 'items', text: word.SPECIAL_ITEMS },
+                                                                    ]
+                                                            }); %>
               </div>
 
 

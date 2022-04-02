@@ -1,5 +1,5 @@
 const EventData = require('../db/data-access/event');
-const { EscapeAttempt, BribeAttempt } = require("../actions/prison-release-attempt");
+const { EscapeAttempt, BribeAttempt } = require("../actions/prison/release-attempt");
 const Mechanics = require("./mechanics");
 const EventTypes = require("../enum/event-types");
 

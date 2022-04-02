@@ -1,6 +1,6 @@
 const PlaceController = require("../controller/place");
 const EventData = require('../db/data-access/event');
-const RobberyAttempt = require('../actions/robbery-attempt');
+const RobberyAttempt = require('../actions/robbery/attempt');
 const Mechanics = require("./mechanics");
 
 

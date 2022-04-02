@@ -1,6 +1,6 @@
 const HookerController = require("../controller/hooker");
 const EventData = require('../db/data-access/event');
-const ClubAttempt = require("../actions/club-attempt");
+const ClubAttempt = require("../actions/club/attempt");
 const DrugController = require("../controller/drug");
 const Mechanics = require("./mechanics");
 

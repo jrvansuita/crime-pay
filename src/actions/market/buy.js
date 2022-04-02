@@ -1,7 +1,7 @@
-const phrase = require('../const/phrase');
-const PlayerUpdateModel = require('../model/player-update');
-const WeaponModel = require('../model/weapon');
-const Action = require('./action');
+const phrase = require('../../const/phrase');
+const PlayerUpdateModel = require('../../model/player-update');
+const WeaponModel = require('../../model/weapon');
+const Action = require('../action');
 
 module.exports = class MarketDeal extends Action {
 
@@ -28,7 +28,9 @@ module.exports = class MarketDeal extends Action {
             .validate((player) => {
                 this.check(player.arrested, phrase.PLAYER_ARRESTED)
                     .check(player.coins < Math.abs(this.merchandise.coins), phrase.INSUFFICIENT_COINS)
-            }).build();
+            })
+            .createFromMerchandise()
+            .build();
 
 
         const update = new PlayerUpdateModel(this.player)

@@ -47,6 +47,10 @@ module.exports = class EventData extends DataAccess {
         return new EventData().one(EventTypes.INVENTORY_BURN, phrase.INVENTORY_BURN, success);
     }
 
+    static inventorySell(success) {
+        return new EventData().one(EventTypes.INVENTORY_SELL, phrase.INVENTORY_SELL, success);
+    }
+
     static clubHooker(success) {
         return new EventData().one(EventTypes.CLUB_HOOKER, phrase.CLUB_HOOKER, success);
     }

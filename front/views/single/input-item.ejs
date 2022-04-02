@@ -1,7 +1,10 @@
 <%if (locals?.showOnlyIf !== false){%>
+
+<%const keyValidator = (locals?.inputType == 'number').if('return Number.prototype.keyValidator(event)', '') %>
+
 <div class="input-group">
 
-  <input id="<%=locals?.id%>" type="<%=locals?.inputType || 'text'%>" class="form-control" placeholder="<%=locals?.placeholder%>" value="<%=locals?.value%>" />
+  <input id="<%=locals?.id%>" type="<%=locals?.inputType || 'text'%>" class="form-control" placeholder="<%=locals?.placeholder%>" value="<%=locals?.value%>" onkeypress="<%=keyValidator%>" />
 
   <%if (locals?.icon){%>
   <span class="input-group-text">

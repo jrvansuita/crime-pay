@@ -23,7 +23,7 @@ class PlayerMutation {
     };
 
     getAttribute(attr) {
-        return this[attr] + (this?.equipments?.reduce((s, e) => { return s + (e.bundle[attr] || 0); }, 0) || 0)
+        return this[attr] + (this?.equipments?.reduce((s, e) => { return s + (e?.bundle?.[attr] || 0); }, 0) || 0)
     }
 
     getBonuses(some) {

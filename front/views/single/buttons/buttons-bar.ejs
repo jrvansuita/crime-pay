@@ -1,0 +1,15 @@
+<%if (locals?.buttons){%>
+<%const name = locals?.id || 'radio-' + moment().milliseconds()%>
+
+<div id="<%=locals?.id%>" class="btn-toolbar" role="toolbar">
+  <div class="btn-group" role="group">
+    <% locals?.buttons.forEach((each, index)=>{%>
+
+    <%const id = each.id || 'radio-check-' + each.text.toName()%>
+
+    <input id="<%=id%>" type="radio" class="btn-check" name="<%=name%>" id="btnradio1" autocomplete="off" <%= index == 0 ?'checked' : ''%>>
+    <label class="btn <%=each.disabled ? 'btn-secondary' : each.colorClass || 'btn-outline-secondary'%>" for="<%=id%>"><%=each.text%></label>
+    <% }); %>
+  </div>
+</div>
+<% } %>

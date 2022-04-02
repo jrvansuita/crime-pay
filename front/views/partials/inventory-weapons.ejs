@@ -1,13 +1,14 @@
 <% weapons?.forEach((weapon)=>{%>
 
-<%- include('../single/big-card', { key : weapon._id, 
+<%- include('../single/big-card', {       dataKey : weapon._id, 
+                                          dataExtra : weapon.class.toName(), 
                                           title : weapon.name.ellipse(17), 
                                           img :  weapon.name.image('merchandises','png'),  
                                           subTitle: word.LEVEL.concat(weapon.level), 
-                                          badgeText: player.isEquipped(weapon).if(word.EQUIPPED),
+                                          badgeText: weapon.price ? word.MARKET : player.isEquipped(weapon).if(word.EQUIPPED),
                                           imageClass: 'weapon-img',
                                           extraTitle :  weapon.rarityTitle,
-                                          extraSubTitle : weapon.class,
+                                          extraSubTitle : weapon.price ? word.COINS.joinBefore(weapon.price.format(), 1) : weapon.class,
                                           imgColor : weapon.color,
                                           sectionData: weapon.bundle,
                                           customSectionLayout: '../partials/weapon-card-section-lines'

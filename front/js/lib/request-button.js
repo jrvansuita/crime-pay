@@ -5,7 +5,6 @@ class RequestButton {
             .setOnSuccess(onSuccess)
             .setOnFail(onFail)
             .delayed()
-
     }
 
     setId(id, loadingButton = true) {
@@ -26,6 +25,21 @@ class RequestButton {
 
     putData(data = {}) {
         this.data = { ...(this?.data || {}), ...data }
+        return this;
+    }
+
+    onData(onDataListener) {
+        this.onDataListener = onDataListener;
+        return this;
+    }
+
+    onValidate(validateListener) {
+        this.validateListener = validateListener;
+        return this;
+    }
+
+    setOnClick(onClick) {
+        this.onClick = onClick;
         return this;
     }
 
@@ -66,7 +80,10 @@ class RequestButton {
     }
 
     makeRequest() {
-        $.post(this.url, this.data)
+
+        const data = { ...this.data, ...(this?.onDataListener?.(this) || {}) };
+
+        $.post(this.url, data)
             .done(this.onSuccess)
             .fail((error) => {
                 if (this.showError) window.toast.error(error.responseText);
@@ -78,24 +95,27 @@ class RequestButton {
             });
     }
 
-    onBindRequest(onClicked, action) {
+    onBindRequest() {
+        const action = this;
+
         return (event) => {
+            if (this.onClick) this.onClick(action)
 
-            if (onClicked) onClicked(action);
+            if (!this.validateListener || this.validateListener(action)) {
+                event.stopPropagation();
+                event.stopImmediatePropagation();
 
-            event.stopPropagation();
-            event.stopImmediatePropagation();
+                this.loading(true);
 
-            this.loading(true);
-
-            setTimeout(() => {
-                this.makeRequest()
-            }, this.delay || 0)
+                setTimeout(() => {
+                    this.makeRequest()
+                }, this.delay || 0)
+            }
         }
     }
 
-    bindClick(onClicked) {
-        $(this.id).unbind().click(this.onBindRequest(onClicked, this));
+    bindClick() {
+        $(this.id).unbind().click(this.onBindRequest());
 
         return this;
     }

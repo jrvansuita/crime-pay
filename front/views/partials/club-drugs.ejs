@@ -1,6 +1,6 @@
 <% drugs.forEach((drug)=>{%>
 
-<%- include('../single/mini-card', { key : drug._id, 
+<%- include('../single/mini-card', {      dataKey : drug._id, 
                                           title : drug.name, 
                                           img :  drug.name.image('drugs'),  
                                           subTitle: drug.stamina.sign().concat(word.STAMINA), 

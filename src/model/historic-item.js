@@ -3,13 +3,14 @@ const phrase = require("../const/phrase")
 const text = require("../const/text")
 const word = require("../const/word")
 
-const defaultImages = { coins: 'coin', respect: 'respect', stamina: 'stamina', intoxication: 'intoxication' }
+const defaultImages = { coins: 'coin', price: 'coin', respect: 'respect', stamina: 'stamina', intoxication: 'intoxication' }
 
 const valuesFormatter = {
     title: value => { return value },
     arrested: () => { return phrase.GOT_ARRESTED },
     arrestRelease: (value) => { return word.RELEASE.concat(value.toDateDisplay()) },
     equip: () => { return word.DROPPED_EQUIPS }
+
 }
 
 

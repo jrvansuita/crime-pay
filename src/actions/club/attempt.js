@@ -1,7 +1,7 @@
-const phrase = require('../const/phrase');
-const Action = require('./action');
-const PlayerUpdateModel = require('../model/player-update');
-const { Num } = require('../lib/util');
+const phrase = require('../../const/phrase');
+const Action = require('../action');
+const PlayerUpdateModel = require('../../model/player-update');
+const { Num } = require('../../lib/util');
 
 module.exports = class ClubAttempt extends Action {
 
@@ -11,7 +11,7 @@ module.exports = class ClubAttempt extends Action {
     }
 
     success() {
-        return this.clubItem.stamina.abs().positive() && super.success();
+        return this.succeed;
     }
 
     make() {
@@ -19,7 +19,7 @@ module.exports = class ClubAttempt extends Action {
 
         const failed = lucky <= this.clubItem.failChance;
         const jailed = lucky <= this.clubItem.jailChance;
-        const succeed = !failed && !jailed;
+        this.succeed = !failed && !jailed;
 
         const update = new PlayerUpdateModel(this.player)
             .validate((player) => {
@@ -30,9 +30,9 @@ module.exports = class ClubAttempt extends Action {
             })
             .setArrested(jailed)
             .setCoins(this.clubItem.coins, false, 0, false, true)
-            .setRespect(this.clubItem.respect, succeed, 0, true)
-            .setStamina(this.clubItem.stamina, succeed, 0, true, true, 100)
-            .setIntoxication(this.clubItem.intoxication, succeed, 0, true, true, 100)
+            .setRespect(this.clubItem.respect, this.succeed, 0, true)
+            .setStamina(this.clubItem.stamina, this.succeed, 0, true, true, 100)
+            .setIntoxication(this.clubItem.intoxication, this.succeed, 0, true, true, 100)
             .build()
 
         return super.make(update);

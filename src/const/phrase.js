@@ -13,10 +13,13 @@ module.exports = Object.freeze({
     GOT_ARRESTED: 'Got Arrested',
     NO_EVENT_MESSAGE: 'No Event Message Defined!',
     WEAPON_ALREADY_EQUIPPED: 'Weapon model already being equipped!',
+    SELLING_ITEM: "This item is being selling on the market",
     EQUIP_LIMIT: 'You only can equip up to %s %s.',
     EQUIP_NOT_FOUND: "Can't find this equipment anymore.",
     CANT_BURN_EQUIPPED: "Can't burn equipped gears.",
-
+    CANT_SELL_EQUIPPED: "Can't sell equipped gears.",
+    INCORRECT_PRICE_VALUE: "Incorrect price value.",
+    ITEM_NOT_SELLING: "This item is not being selling.",
 
 
     ROBBERY: {
@@ -64,6 +67,11 @@ module.exports = Object.freeze({
 
     INVENTORY_BURN: {
         FAIL: ["You burned this equipment."],
+    },
+
+    INVENTORY_SELL: {
+        SUCCESS: ["You just advertised your gear in the hood.", "You just put a price on your equipment.", "Any buyer can see you gear now."],
+        FAIL: ["You removed the price from your equipment.", "You are not announcing this gear anymore."],
     }
 
 });

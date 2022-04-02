@@ -1,6 +1,6 @@
 <% merchandises.forEach((merchandise)=>{%>
 
-<%- include('../single/mini-card', { key : merchandise._id, 
+<%- include('../single/mini-card', {      dataKey : merchandise._id, 
                                           title : merchandise.name, 
                                           img :  merchandise.name.image('merchandises','png'),  
                                           subTitle: (merchandise.rarityTitle.length > 8).if(word.LVL, word.LEVEL).concat(merchandise.level), 

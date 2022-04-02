@@ -1,7 +1,7 @@
-const phrase = require('../const/phrase');
-const word = require('../const/word');
-const PlayerUpdateModel = require('../model/player-update');
-const Action = require('./action');
+const phrase = require('../../const/phrase');
+const word = require('../../const/word');
+const PlayerUpdateModel = require('../../model/player-update');
+const Action = require('../action');
 
 module.exports = class InventoryEquip extends Action {
 
@@ -18,7 +18,8 @@ module.exports = class InventoryEquip extends Action {
                 const itemsLimit = 3;
                 const weaponsLimit = 2;
 
-                this.check(isEquipping && player.isEquipped(this.weapon, 'name'), phrase.WEAPON_ALREADY_EQUIPPED);
+                this.check(isEquipping && player.isEquipped(this.weapon, 'name'), phrase.WEAPON_ALREADY_EQUIPPED)
+                    .check(this.weapon.price, phrase.SELLING_ITEM)
 
                 if (isEquipping) {
                     if (this.weapon.isItem)

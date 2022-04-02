@@ -1,6 +1,6 @@
-const phrase = require('../const/phrase');
-const { Num } = require('../lib/util');
-const Action = require('./action');
+const phrase = require('../../const/phrase');
+const { Num } = require('../../lib/util');
+const Action = require('../action');
 
 module.exports = class InventoryBurn extends Action {
 

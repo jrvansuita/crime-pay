@@ -61,6 +61,8 @@ module.exports = Object.freeze({
     FULL_OF_STAMINA: "Full Of Stamina",
 
     SUCCESS_CHANCE: 'Success Chance',
+    REMOVE: 'Remove',
+    ALL: 'All',
 
 
 

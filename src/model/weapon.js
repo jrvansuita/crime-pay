@@ -1,25 +1,26 @@
-const moment = require("moment");
-const { LIFE_IMPRISONMENT } = require("../const/word");
-const { Num } = require("../lib/util");
-
 module.exports = class WeaponModel {
 
-    constructor(player, merchandise) {
+    constructor(player, weapon) {
         this.player = player;
-        this.merchandise = merchandise;
+        this.weapon = weapon;
     }
 
-    execute() {
-        this.playerId = this.player._id.toString();
-        this.name = this.merchandise.name;
-        this.type = this.merchandise.type;
-        this.level = this.merchandise.level;
-        this.rarity = this.merchandise.rarity;
+    setPrice(price = 0) {
+        this.price = Math.trunc(price);
+        return this;
+    }
 
-        if (this.merchandise.bundle) {
+    createFromMerchandise() {
+        this.playerId = this.player._id.toString();
+        this.name = this.weapon.name;
+        this.type = this.weapon.type;
+        this.level = this.weapon.level;
+        this.rarity = this.weapon.rarity;
+
+        if (this.weapon.bundle) {
             this.bundle = {}
 
-            const bundle = this.merchandise.bundle;
+            const bundle = this.weapon.bundle;
 
             Object.keys(bundle).forEach(key => {
                 const value = bundle[key];
@@ -27,12 +28,14 @@ module.exports = class WeaponModel {
                 this.bundle[key] = Array.isArray(value) ? value.sortBetween() : value;
             });
         }
+
+        return this;
     }
 
     clear() {
         delete this.player;
         delete this.validations;
-        delete this.merchandise;
+        delete this.weapon;
 
         return this;
     }
@@ -47,8 +50,6 @@ module.exports = class WeaponModel {
 
 
     build() {
-        this.execute();
-
         this.validations()
 
         return this.clear();

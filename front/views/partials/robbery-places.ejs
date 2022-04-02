@@ -1,7 +1,7 @@
 <% places.forEach((place)=>{%>
 
 
-<%- include('../single/mini-card', { key : place._id, 
+<%- include('../single/mini-card', {      dataKey : place._id, 
                                           title : place.name, 
                                           img : place.name.image('places'), 
                                           subTitle: place.staminaCost.format().concat(word.STAMINA), 

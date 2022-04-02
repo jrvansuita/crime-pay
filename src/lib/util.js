@@ -51,11 +51,15 @@ const Util = {
 const Prototypes = () => {
 
     String.prototype.image = function (folder = '', extension = 'jpg') {
-        return "/img/" + folder + '/' + this.toLowerCase().trim().replaceAll(" ", "-") + '.' + extension;
+        return "/img/" + folder + '/' + this.toName() + '.' + extension;
     }
 
     String.prototype.capitalize = function () {
         return this.charAt(0).toUpperCase() + this.slice(1);
+    }
+
+    String.prototype.toNumber = function () {
+        return parseInt(this);
     }
 
     String.prototype.plus = function () {
@@ -72,6 +76,14 @@ const Prototypes = () => {
 
     String.prototype.replaceAll = function (search, replacement) {
         return this.replace(new RegExp(search, 'g'), replacement)
+    }
+
+    String.prototype.noSpaces = function (def = '-') {
+        return this.trim().replaceAll(' ', def);
+    }
+
+    String.prototype.toName = function (def = '-') {
+        return this.noSpaces().toLowerCase();
     }
 
     String.prototype.joinBefore = function (str, n = 0) {
@@ -111,6 +123,14 @@ const Prototypes = () => {
 
     String.prototype.toColor = function (huePercent = 200, alpha = 1, saturation = 40, lightness = 60) {
         return 'hsl(' + this.hash() % huePercent + ', ' + saturation + '%, ' + lightness + '%' + ', ' + alpha + ')'
+    }
+
+    String.prototype.toDateDisplay = function (...params) {
+        return Util.dateFormat(this, ...params)
+    }
+
+    String.prototype.containsAnyOf = function (arr, match) {
+        return arr.some(each => { return match ? this == each.toString() : this.includes(each.toString()) });
     }
 
     Array.prototype.array = function () {
@@ -205,20 +225,17 @@ const Prototypes = () => {
         var min = Math.min.apply(Math, [a, b]),
             max = Math.max.apply(Math, [a, b]);
         return (this >= min && this <= max) ? trueDef : falseDef;
-    };
-
-    String.prototype.toDateDisplay = function (...params) {
-        return Util.dateFormat(this, ...params)
     }
 
-    String.prototype.containsAnyOf = function (arr, match) {
-        return arr.some(each => { return match ? this == each.toString() : this.includes(each.toString()) });
+    Number.prototype.keyValidator = function (e) {
+        e = e || window.event;
+        var charCode = e.which ? e.which : e.keyCode;
+        return /[0-9*$]/.test(String.fromCharCode(charCode));
     }
 
     Date.prototype.toDateDisplay = function (...params) {
         return Util.dateFormat(this, ...params)
     }
-
 
 }
 

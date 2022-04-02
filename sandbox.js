@@ -7,8 +7,9 @@ const PlayerData = require('./src/db/data-access/player');
 
 
 
-const MerchandiseScripts = require('./src/db/scripts/merchandise');
-new MerchandiseScripts().createAll()
+// const MerchandiseScripts = require('./src/db/scripts/merchandise');
+// new MerchandiseScripts().createAll()
+
 
 
 

@@ -39,7 +39,7 @@ module.exports = class PlayerUpdateModel {
         return this;
     }
 
-    setPlayerAttr(attr, value, adding = true, min = 1, minOnDecrease = false, checkPlayerLimit = true, max = 999999999) {
+    setAttr(attr, value, adding = true, min = 1, minOnDecrease = false, checkPlayerLimit = true, max = 999999999) {
         value = Math.trunc(Math.abs(value));
         value = Math.max(min, value);
         value = Math.min(max, value);
@@ -67,31 +67,31 @@ module.exports = class PlayerUpdateModel {
     }
 
     setCoins(...params) {
-        return this.setPlayerAttr('coins', ...params);
+        return this.setAttr('coins', ...params);
     }
 
     setRespect(...params) {
-        return this.setPlayerAttr('respect', ...params);
+        return this.setAttr('respect', ...params);
     }
 
     setStamina(...params) {
-        return this.setPlayerAttr('stamina', ...params);
+        return this.setAttr('stamina', ...params);
     }
 
     setIntoxication(...params) {
-        return this.setPlayerAttr('intoxication', ...params);
+        return this.setAttr('intoxication', ...params);
     }
 
     setIntelligence(...params) {
-        return this.setPlayerAttr('intelligence', ...params);
+        return this.setAttr('intelligence', ...params);
     }
 
     setDexterity(...params) {
-        return this.setPlayerAttr('dexterity', ...params);
+        return this.setAttr('dexterity', ...params);
     }
 
     setStrength(...params) {
-        return this.setPlayerAttr('strength', ...params);
+        return this.setAttr('strength', ...params);
     }
 
     validate(validations) {

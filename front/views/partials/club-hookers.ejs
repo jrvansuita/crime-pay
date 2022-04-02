@@ -1,6 +1,6 @@
 <% hookers.forEach((hooker)=>{%>
 
-<%- include('../single/mini-card', { key : hooker._id, 
+<%- include('../single/mini-card', {      dataKey : hooker._id, 
                                           title : hooker.name, 
                                           img :  hooker.name.image('hookers'),  
                                           subTitle: hooker.stamina.sign().concat(word.STAMINA), 
