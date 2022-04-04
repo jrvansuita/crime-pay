@@ -10,16 +10,16 @@ class PlayerMutation {
         this.lifeImprisonment = this.arrested && !this?.arrestRelease;
     }
 
-    getItems() {
-        return this?.equipments?.filter((w) => { return w.isItem; })
+    getItems(def = []) {
+        return this?.equipments?.filter((w) => { return w.isItem; }) || def
     }
 
-    getWeapons() {
-        return this?.equipments?.filter((w) => { return w.isWeapon; })
+    getWeapons(def = []) {
+        return this?.equipments?.filter((w) => { return w.isWeapon; }) || def;
     }
 
     isEquipped(e, attr = '_id') {
-        return this?.equipments?.some((w) => { return (e[attr] || e).toString() === w[attr].toString(); })
+        return this?.equipments?.some((w) => { return (e[attr] || e).toString() === w[attr].toString(); }) || false;
     };
 
     getAttribute(attr) {

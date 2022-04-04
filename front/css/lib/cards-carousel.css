@@ -81,9 +81,9 @@
 
 
 .big-card.card {
-    min-width: 200px;
-    width: fit-content;
-    max-width: 280px;
+        min-width: 200px;
+        width: fit-content;
+        max-width: 250px;
 }
 
 .big-card .card-title {
@@ -100,6 +100,7 @@
 }
 
 .big-card-img {
+    padding: 30px;
     width: 100%;
     height: 150px;
     border-top-left-radius: 4px;

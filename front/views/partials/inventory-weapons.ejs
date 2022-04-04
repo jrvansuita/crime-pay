@@ -1,5 +1,8 @@
 <% weapons?.forEach((weapon)=>{%>
 
+
+
+
 <%- include('../single/big-card', {       dataKey : weapon._id, 
                                           dataExtra : weapon.class.toName(), 
                                           title : weapon.name.ellipse(17), 
