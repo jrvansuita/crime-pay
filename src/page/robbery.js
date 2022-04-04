@@ -20,7 +20,6 @@ module.exports = class RobberyPage extends Page {
 
         this.get('/robbery-form').then(({ player, req, res, session }) => {
             return this.placeController.details(req.query.id, player).then(place => {
-                session.lastPlaceItemSelected = place._id;
                 res.render('partials/robbery-form', { place, player })
             });
         });

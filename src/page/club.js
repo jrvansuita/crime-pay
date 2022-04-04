@@ -27,7 +27,6 @@ module.exports = class ClubPage extends Page {
             const dispatcher = req.query.type == 'hooker' ? this.hookerController : this.drugController;
 
             return dispatcher.details(req.query.id, player).then(element => {
-                session.lastClubItemSelected = element._id;
                 res.render('partials/club-form', { data: element, player })
             });
         });

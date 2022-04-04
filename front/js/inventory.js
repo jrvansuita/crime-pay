@@ -2,7 +2,6 @@
 $(document).ready(() => {
     const cardItems = new CardsCarousel();
 
-
     const form = new FormControl("/inventory-form")
         .bind(".inventory-form-holder", ".inventory-form-placeholder")
         .addAction('#equip', "/inventory-equip", (data) => {

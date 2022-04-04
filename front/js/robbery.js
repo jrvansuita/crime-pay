@@ -23,7 +23,6 @@ $(document).ready(() => {
         .show()
 
     cardItems.setUrl("/robbery-places")
-        .setLastSelectedVar(lastPlaceItemSelected)
         .setHolderSelector(".places-holder")
         .setOnCardSelected(key => {
             form.setData({ id: key }).load()

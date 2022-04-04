@@ -1,7 +1,10 @@
 
 $(document).ready(() => {
-    const carousel = new CardsCarousel();
-
+    const keepTag = 'market';
+    const merchandises = new CardsCarousel(keepTag)
+        .setUrl("/market-merchandise")
+        .setHolderSelector(".merchandise-holder")
+        .setOnCardSelected(key => form.setData({ id: key, newItem: true }).load())
 
     const form = new FormControl("/market-form")
         .bind(".market-form-holder", ".market-form-placeholder")
@@ -9,16 +12,19 @@ $(document).ready(() => {
             window.toast.pop(data.event.message, data.event.success);
 
             new PlayerStatusUpdater(data.player).all();
-            carousel.load();
+            merchandises.load();
         })
         .show()
 
 
-    carousel.setUrl("/market-merchandise")
-        .setLastSelectedVar(lastMarketItemSelected)
-        .setHolderSelector(".merchandise-holder")
-        .setOnCardSelected(key => form.setData({ id: key }).load())
-        .load();
+
+    merchandises.load();
+
+    new CardsCarousel(keepTag)
+        .setUrl("/market-items")
+        .setHolderSelector(".market-holder")
+        .setOnCardSelected(key => form.setData({ id: key, newItem: false }).load())
+        .load()
 
 });
 

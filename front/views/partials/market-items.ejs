@@ -1,0 +1,16 @@
+<% items.forEach((each)=>{%>
+
+<%- include('../single/mini-card', {      dataKey : each._id, 
+                                          title : each.name, 
+                                          img :  each.name.image('merchandises','png'),  
+                                          subTitle: (each.rarityTitle.length > 8).if(word.LVL, word.LEVEL).concat(each.level), 
+                                          badgeText: each.price.abs().format(word.FREE), 
+                                          badgeImg:  each.price ? "/img/coin.png" :null,
+                                          imageClass: 'weapon-img',
+                                          imgColor : each.color,
+                                          extraSubTitle : each.rarityTitle,
+                                        }); %>
+
+<%- include('../placeholders/mini-card'); %>
+
+<% }); %>

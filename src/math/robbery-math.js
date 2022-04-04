@@ -74,7 +74,6 @@ module.exports = class RobberyMath {
     getCoinsReward() {
 
         if ((this.getSuccessChance() > 0) && (this.coinsReward === undefined)) {
-
             //Define the Rewards Factor
             const factor = this.getPlayerFactor() / this.getSuccessFactor();
 
@@ -84,8 +83,11 @@ module.exports = class RobberyMath {
             //Adding Coins Bonus for Holding coins
             const coinsReward = coins + this.getCoinsHolderBonus();
 
+            //Weapon Stamina Coins Bonus
+            const bonus = (coinsReward * this.player.getBonusValue('coins')) / 100;
+
             //Remove decimal values and define min value
-            this.coinsReward = Num.assert(coinsReward, true, 1);
+            this.coinsReward = Num.assert(coinsReward + bonus, true, 1);
         }
 
         return this.coinsReward || 0;

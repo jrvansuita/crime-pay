@@ -13,9 +13,9 @@ module.exports = class InventoryWrapper {
         this.weapon.color = WeaponMath.color(this.weapon);
         this.weapon.rarityTitle = WeaponMath.rarity(this.weapon);
         this.weapon.class = Classes.SPECIAL_ITEM.includes(this.weapon.type) ? word.SPECIAL_ITEM : word.WEAPON;
-
         return this.weapon;
     }
+
 
 
 }

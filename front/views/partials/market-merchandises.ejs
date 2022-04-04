@@ -1,15 +1,15 @@
-<% merchandises.forEach((merchandise)=>{%>
+<% merchandises.forEach((each)=>{%>
 
-<%- include('../single/mini-card', {      dataKey : merchandise._id, 
-                                          title : merchandise.name, 
-                                          img :  merchandise.name.image('merchandises','png'),  
-                                          subTitle: (merchandise.rarityTitle.length > 8).if(word.LVL, word.LEVEL).concat(merchandise.level), 
-                                          badgeText: merchandise.coins.abs().format(word.FREE), 
-                                          badgeImg:  merchandise.coins ? "/img/coin.png" :null,
-                                          imageClass: 'weapon-img',
-                                          imgColor : merchandise.color,
-                                          extraSubTitle : merchandise.rarityTitle,
-                                        }); %>
+<%- include('../single/mini-card', {      dataKey : each._id, 
+                                            title : each.name, 
+                                            img :  each.name.image('merchandises','png'),  
+                                            subTitle: (each.rarityTitle.length > 8).if(word.LVL, word.LEVEL).concat(each.level), 
+                                            badgeText: each.coins.abs().format(word.FREE), 
+                                            badgeImg:  each.coins ? "/img/coin.png" :null,
+                                            imageClass: 'weapon-img',
+                                            imgColor : each.color,
+                                            extraSubTitle : each.rarityTitle,
+                                          }); %>
 
 <%- include('../placeholders/mini-card'); %>
 

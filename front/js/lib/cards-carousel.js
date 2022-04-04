@@ -1,12 +1,8 @@
 class CardsCarousel {
 
-    constructor() {
+    constructor(tag) {
+        this.keep = new Keep(tag);
         this.setLoadDelay(200);
-    }
-
-    setLastSelectedVar(lastSelectedVar) {
-        this.lastSelected = lastSelectedVar;
-        return this;
     }
 
     setLoadDelay(loadDelay) {
@@ -21,6 +17,8 @@ class CardsCarousel {
 
     setHolderSelector(selector) {
         this.holder = $(selector);
+
+        if (!this.keep.tag) this.keep.setTag(selector);
 
         return this.setCardsSelector(selector + ' .card:not(.ph)');
     }
@@ -59,17 +57,19 @@ class CardsCarousel {
             event.stopPropagation();
             event.stopImmediatePropagation();
 
-            const currentSelected = $(this).data('key');
+            const currentCardSelected = $(this).data('key');
+            const lastCardSelected = self.keep.get();
+            const hasSelectedAnother = lastCardSelected !== currentCardSelected;
 
-            if ((self.lastSelected !== currentSelected) || ($(self.cardsSelector).find('.selected').length == 0)) {
+            if (hasSelectedAnother || ($(self.cardsSelector + '.selected').length === 0)) {
 
                 $('.card-carousel .card').removeClass('selected');
                 $(this).addClass('selected')
 
-                self.lastSelected = currentSelected;
+                self.keep.set(currentCardSelected);
 
                 if (self.onCardSelected) {
-                    self.onCardSelected(self.lastSelected);
+                    self.onCardSelected(currentCardSelected);
                 }
             }
 
@@ -79,7 +79,7 @@ class CardsCarousel {
 
 
     removeSelected(...p) {
-        this.remove(this.lastSelected, ...p);
+        this.remove(this.keep.get(), ...p);
     }
 
     remove(key, onRemoved, selectOther = true) {
@@ -88,7 +88,7 @@ class CardsCarousel {
         this.holder.find("[data-key='" + key + "']").fadeOut(300, function () {
             $(this).remove()
 
-            if (selectOther) self.selectOne();
+            if (selectOther) self.autoSelectOne();
             if (onRemoved) onRemoved();
         });
 
@@ -96,9 +96,15 @@ class CardsCarousel {
     }
 
 
-    selectOne() {
+    autoSelectOne() {
         //Select the last chosen or the first one
-        $(this.cardsSelector).first().add("[data-key='" + this.lastSelected + "']").last().click();
+        let choose = $(this.cardsSelector).first();
+
+        if (this.keep.has()) {
+            choose = $(this.cardsSelector + "[data-key='" + this.keep.get() + "']")
+        }
+
+        choose.last().click();
     }
 
 
@@ -112,7 +118,7 @@ class CardsCarousel {
                 $(this.cardsSelector).unbind().click(this.onInnerCardSelected());
 
                 if (autoSelect) {
-                    this.selectOne();
+                    this.autoSelectOne();
                 }
             });
         }, this.loadDelay);

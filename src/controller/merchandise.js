@@ -23,7 +23,7 @@ module.exports = class MerchandiseController extends Controller {
         return new WeaponMath(player, merchandise).preview();
     }
 
-    onFilterAfterPreview(merchandises, player) {
+    onFilterAfterPreview(merchandises) {
         //Split by merchandises types
         const types = merchandises.reduce((data, e) => {
             data[e.type] = [e, ...(data?.[e.type] || [])];

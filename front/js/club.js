@@ -1,7 +1,9 @@
 
 $(document).ready(() => {
-    var hookersCarousel = new CardsCarousel();
-    var drugsCarousel = new CardsCarousel();
+    const keepTag = 'club';
+
+    const hookersCarousel = new CardsCarousel(keepTag);
+    const drugsCarousel = new CardsCarousel(keepTag);
 
     const form = new FormControl("/club-form")
         .bind(".club-form-holder", ".club-form-placeholder")
@@ -16,16 +18,14 @@ $(document).ready(() => {
         .show()
 
     hookersCarousel.setUrl("/club-hookers")
-        .setLastSelectedVar(lastClubItemSelected)
         .setHolderSelector(".hookers-holder")
         .setOnCardSelected(key => form.setData({ id: key, type: 'hooker' }).load())
         .load();
 
     drugsCarousel.setUrl("/club-drugs")
-        .setLastSelectedVar(lastClubItemSelected)
         .setHolderSelector(".drugs-holder")
         .setOnCardSelected(key => form.setData({ id: key, type: 'drug' }).load())
-        .load(false);
+        .load();
 
 
 });
