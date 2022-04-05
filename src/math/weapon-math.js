@@ -32,15 +32,7 @@ module.exports = class WeaponMath {
 
     getPlayerFactor() {
         if (this.playerFactor === undefined) {
-            const sumAttributes = (this.player.intelligence + this.player.dexterity + this.player.strength);
-
-            //Define a player factor based on all the player stats
-            //Each stats group is considered, each one with own percentage amount
-            const playerFactor = (sumAttributes * .23) +
-                (this.player.respect * .2) +
-                (this.player.coins * .2);
-
-            this.playerFactor = Num.assert(playerFactor, true);
+            this.playerFactor = this.player.getFactor();
         }
 
         return this.playerFactor;
@@ -106,7 +98,7 @@ module.exports = class WeaponMath {
 
     getLevel() {
         if (this.level === undefined) {
-            this.level = this.getPlayerFactor().toString().length - 1;
+            this.level = this.player.getLevel();
         }
 
         return this.level;

@@ -17,14 +17,15 @@ $(document).ready(() => {
         .show()
 
 
-
     merchandises.load();
 
     new CardsCarousel(keepTag)
         .setUrl("/market-items")
         .setHolderSelector(".market-holder")
         .setOnCardSelected(key => form.setData({ id: key, newItem: false }).load())
+        .setOnEmpty(() => {
+            $('.market-holder').parent().siblings('.card-title').hide();
+        })
         .load()
-
 });
 

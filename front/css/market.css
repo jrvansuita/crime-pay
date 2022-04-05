@@ -7,3 +7,16 @@
 .card-sub-title .float-right {
     font-weight: 600;
 }
+
+
+.card-body .flex-container .flex-panel {
+    flex: .65;
+}
+
+.card-body .flex-container .flex-right {
+    flex: .35;
+}
+
+.card-carousel-scroll-area > .market-holder{
+    max-width: 49em;
+}

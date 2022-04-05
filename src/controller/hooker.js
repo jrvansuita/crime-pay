@@ -10,7 +10,7 @@ module.exports = class HookerController extends Controller {
 
     }
 
-    onDetails(player, hooker) {
+    onDetails(hooker, player) {
         return new HookerMath(player, hooker).make()
     }
 
@@ -18,7 +18,7 @@ module.exports = class HookerController extends Controller {
         return hookers.filter((hooker) => { return Num.lucky(100) >= hooker.rarity; })
     }
 
-    onPreview(player, hooker) {
+    onPreview(hooker, player) {
         return new HookerMath(player, hooker).preview();
     }
 

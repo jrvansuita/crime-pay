@@ -40,6 +40,31 @@ class PlayerMutation {
     getBonusValue(attr, def = 0) {
         return this.getBonuses([attr])?.[attr] || def
     }
+
+
+    getFactor() {
+        if (!this.factor) {
+            const sumAttributes = this.intelligence + this.dexterity + this.strength;
+
+            //Define a player factor based on all the player stats
+            //Each stats group is considered, each one with own percentage amount
+            const playerFactor = (sumAttributes * .23) +
+                (this.respect * .2) +
+                (this.coins * .2);
+
+            this.factor = Math.trunc(playerFactor);
+        }
+
+        return this.factor;
+    }
+
+    getLevel() {
+        if (!this.level) {
+            this.level = this.getFactor().toString().length - 1;
+        }
+
+        return this.level;
+    }
 }
 
 

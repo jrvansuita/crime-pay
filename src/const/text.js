@@ -55,7 +55,8 @@ module.exports = Object.freeze({
         PAGE_TITLE: 'Welcome to the Dark Market',
         DEFAULT_EXPLANATION: 'Here you can find something to help you in your day-to-day life. Being a thief is tough, and you need buy some tools to make your life easy. Other thieves can also show up with some merchandise to sell in this area! ',
         WANNA_BUY: "Want to buy the %s?",
-        ACTION_BUTTON: "Buy Now"
+        ACTION_BUTTON: "Buy Now",
+        MARKET_FROM_PLAYERS: 'Equipments from the Hood'
 
     },
 

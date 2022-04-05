@@ -15,14 +15,14 @@ module.exports = class Controller extends DataAccess {
         return {};
     }
 
-    onDetails(player, data) {
+    onDetails(data) {
         //Abstract Method, look superior class.
         return data;
     }
 
     details(id, player, cacheOrThrow = false) {
         return this.cache?.expired(cacheOrThrow, id) || this.findById(id).then((data) => {
-            return this.onDetails(player, data);
+            return this.onDetails(data, player);
         });
     }
 
@@ -30,7 +30,7 @@ module.exports = class Controller extends DataAccess {
         return this.cache?.has() ? Promise.resolve(this.cache.get()) : this.find(this.onFindQuery(player));
     }
 
-    onPreview(player, data) {
+    onPreview(data) {
         //Abstract Method, look superior class.
         return data;
     }
@@ -59,19 +59,19 @@ module.exports = class Controller extends DataAccess {
         return this.getResults(player).then((data) => {
             if (!data) return null;
 
-            data = this.onBeginSort(data);
+            data = this.onBeginSort(data, player);
 
             if (!loadAll && !this.cache?.has()) {
 
-                data = this.onFilter(data);
-                data = data.map(each => { return this.onPreview(player, each) })
+                data = this.onFilter(data, player);
+                data = data.map(each => { return this.onPreview(each, player) })
                 data = this.onFilterAfterPreview(data, player);
 
                 this.cache?.set(data)
             }
 
-            data = data.map(each => { return this.onDetails(player, each) });
-            data = this.onFinalSort(data);
+            data = data.map(each => { return this.onDetails(each, player) });
+            data = this.onFinalSort(data, player);
 
             return data;
         });

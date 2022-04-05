@@ -1,8 +1,6 @@
 class Keep {
     constructor(tag) {
         this.setTag(tag);
-
-        console.log('Has ' + tag + ' - ' + this.get());
     }
 
     setTag(tag) {
@@ -12,8 +10,6 @@ class Keep {
 
     set(value, tag = this.tag) {
         sessionStorage.setItem(tag, value);
-
-        console.log('Selected ' + tag + ' - ' + value);
         return this;
     }
 

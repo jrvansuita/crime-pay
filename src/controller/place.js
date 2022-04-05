@@ -9,11 +9,11 @@ module.exports = class PlaceController extends Controller {
         super('place');
     }
 
-    onDetails(player, place) {
+    onDetails(place, player) {
         return new RobberyMath(player, place).make();
     }
 
-    onPreview(player, place) {
+    onPreview(place, player) {
         return new RobberyMath(player, place).preview();
     }
 

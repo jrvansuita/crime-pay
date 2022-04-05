@@ -1,27 +1,32 @@
 const { Num } = require("../lib/util");
+const mongo = require('mongojs');
 const Controller = require("./controller");
 const InventoryWrapper = require("../wrapper/inventory");
-
-var cache = {};
+const PlayerMutation = require("../mutation/player");
 
 module.exports = class MarketController extends Controller {
 
     constructor() {
-        super('weapon', cache, 30);
+        super('weapon');
     }
 
-    onFindQuery() {
-        return { price: { $gt: 0 } };
+    onFindQuery(player) {
+        return { price: { $gt: 0 }, level: player.getLevel(), playerId: { $ne: player._id.toString() } };
     }
 
-    onDetails(player, item) {
+    onBeginSort(items, player) {
+        return items.random(5);
+    }
+
+    onDetails(item, player) {
         item.coins = item.price;
         return item;
     }
 
-    onPreview(player, weapon) {
-        return new InventoryWrapper(player, weapon).preview();
+    onPreview(item, player) {
+        return new InventoryWrapper(player, item).preview();
     }
+
 
     onFinalSort(merchandises) {
         //Sort by coins cost

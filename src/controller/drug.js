@@ -10,7 +10,7 @@ module.exports = class DrugController extends Controller {
         super('drug', cache, 2);
     }
 
-    onDetails(player, drug) {
+    onDetails(drug, player) {
         return new DrugMath(player, drug).make()
     }
 
@@ -18,7 +18,7 @@ module.exports = class DrugController extends Controller {
         return drugs.filter((drug) => { return Num.lucky(100) >= drug.rarity; })
     }
 
-    onPreview(player, drug) {
+    onPreview(drug, player) {
         return new DrugMath(player, drug).preview();
     }
 

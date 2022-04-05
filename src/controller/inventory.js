@@ -12,7 +12,7 @@ module.exports = class InventoryController extends Controller {
         return { playerId: player._id.toString() }
     }
 
-    onPreview(player, weapon) {
+    onPreview(weapon, player) {
         return new InventoryWrapper(player, weapon).preview();
     }
 

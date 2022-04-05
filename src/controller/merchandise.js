@@ -1,3 +1,4 @@
+
 const { Num } = require("../lib/util");
 const Controller = require("./controller");
 const WeaponMath = require("../math/weapon-math");
@@ -10,7 +11,7 @@ module.exports = class MerchandiseController extends Controller {
         super('merchandise', cache, 30);
     }
 
-    onDetails(player, merchandise) {
+    onDetails(merchandise, player) {
         return new WeaponMath(player, merchandise).make();
     }
 
@@ -19,7 +20,7 @@ module.exports = class MerchandiseController extends Controller {
         return merchandises.filter((merchandises) => { return Num.lucky(100) >= merchandises.rarity; })
     }
 
-    onPreview(player, merchandise) {
+    onPreview(merchandise, player) {
         return new WeaponMath(player, merchandise).preview();
     }
 
