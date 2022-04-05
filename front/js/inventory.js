@@ -1,3 +1,7 @@
+import { ButtonsBar } from "./lib/buttons-bar.js";
+import { CardsCarousel } from "./lib/cards-carousel.js";
+import { FormControl } from "./lib/form-control.js";
+import { PlayerStatusUpdater } from "./player-status.js";
 
 $(document).ready(() => {
     const cardItems = new CardsCarousel();

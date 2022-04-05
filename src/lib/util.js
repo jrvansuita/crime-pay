@@ -18,7 +18,9 @@ const Num = {
         if (trunc) value = Math.trunc(value)
 
         return value;
-    }
+    },
+
+
 
 }
 
@@ -43,6 +45,12 @@ const Util = {
     dateFormat: (value, concatString = '', defaultString = '') => {
         return value && moment ? concatString + moment(new Date(value)).calendar() : defaultString;
     },
+
+    sleep(duration) {
+        return new Promise((resolve) => {
+            setTimeout(resolve, duration);
+        })
+    }
 }
 
 

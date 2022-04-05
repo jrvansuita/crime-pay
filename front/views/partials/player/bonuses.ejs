@@ -1,18 +1,18 @@
-<% const bunuses = player.getBonuses(['coins', 'successChance', 'staminaCost']);%>
+<% const bonuses = player.getBonuses(['coins', 'successChance', 'staminaCost']);%>
 
-<%if (bunuses && Object.keys(bunuses).length){%>
+<%if (bonuses && Object.keys(bonuses).length){%>
 <h6 class="label-sub-title"> <%=word.BONUSES%></h6>
 <ul class="list-group list-group-flush">
-  <%if (bunuses['coins']){%>
-  <%- include('../../single/section-line', { text: word.COINS_FIND, value: bunuses['coins'].sign().percent() }); %>
+  <%if (bonuses['coins']){%>
+  <%- include('../../single/section-line', { text: word.COINS_FIND, value: bonuses['coins'].sign().percent() }); %>
   <%}%>
 
-  <%if (bunuses['successChance']){%>
-  <%- include('../../single/section-line', { text: word.SUCCESS_CHANCE, value: bunuses['successChance'].sign().percent() }); %>
+  <%if (bonuses['successChance']){%>
+  <%- include('../../single/section-line', { text: word.SUCCESS_CHANCE, value: bonuses['successChance'].sign().percent() }); %>
   <%}%>
 
-<%if (bunuses['staminaCost']){%>
-  <%- include('../../single/section-line', { text: word.STAMINA_COST, value: bunuses['staminaCost'].sign().percent() }); %>
+<%if (bonuses['staminaCost']){%>
+  <%- include('../../single/section-line', { text: word.STAMINA_COST, value: bonuses['staminaCost'].sign().percent() }); %>
   <%}%>
 </ul>
   <%}%>

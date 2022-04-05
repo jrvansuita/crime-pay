@@ -1,4 +1,4 @@
-class RequestButton {
+export class RequestButton {
     constructor(id, url, onSuccess, onFail) {
         this.setId(id)
             .setUrl(url)

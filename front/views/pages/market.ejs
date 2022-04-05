@@ -1,11 +1,6 @@
 <html lang="en">
 
-<%- include('../default/head', {pageTitle: word.MARKET, player: true, carousel: true, css: ['market'], js:['market']}); %>
-
-
-<script>
-  window.lastMarketItemSelected = '<%= session.lastMarketItemSelected %>'
-</script>
+<%- include('../default/head', {pageTitle: word.MARKET, css: ['market'], js:['market']}); %>
 
 <body>
   <div class="container main-content">
@@ -31,7 +26,7 @@
             <div class="flex-container">
 
               <div class="flex-panel">
-                <h6 class="card-title"><%=text.MARKET.MARKET_FROM_PLAYERS%></h6>
+                <h6 class="card-title hood-equip-title"><%=text.MARKET.MARKET_FROM_PLAYERS%></h6>
 
                 <div class="card-carousel-scroll-area">
                   <div class="market-holder card-carousel">

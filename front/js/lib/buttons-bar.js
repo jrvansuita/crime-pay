@@ -1,4 +1,4 @@
-class ButtonsBar {
+export class ButtonsBar {
 
     constructor(selector) {
         this.setToolbar(selector)

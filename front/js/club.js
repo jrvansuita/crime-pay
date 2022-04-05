@@ -1,4 +1,8 @@
 
+import { CardsCarousel } from "./lib/cards-carousel.js";
+import { FormControl } from "./lib/form-control.js";
+import { PlayerStatusUpdater } from "./player-status.js";
+
 $(document).ready(() => {
     const keepTag = 'club';
 
@@ -25,7 +29,7 @@ $(document).ready(() => {
     drugsCarousel.setUrl("/club-drugs")
         .setHolderSelector(".drugs-holder")
         .setOnCardSelected(key => form.setData({ id: key, type: 'drug' }).load())
-        .load();
+        .load(false);
 
 
 });

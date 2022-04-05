@@ -1,4 +1,6 @@
-class FormControl {
+import { RequestButton } from "./request-button.js";
+
+export class FormControl {
 
     constructor(url, data = {}) {
         this.setUrl(url).setData(data);

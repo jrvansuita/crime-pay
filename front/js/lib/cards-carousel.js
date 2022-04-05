@@ -1,4 +1,7 @@
-class CardsCarousel {
+import { Keep } from './keep.js';
+
+
+export class CardsCarousel {
 
     constructor(tag) {
         this.keep = new Keep(tag);
@@ -33,6 +36,11 @@ class CardsCarousel {
         return this;
     }
 
+    setOnShowItems(onShowItems) {
+        this.onShowItems = onShowItems;
+        return this;
+    }
+
     onBeforeLoad() {
         $(this.cardsSelector).remove();
         this.holder.find('.ph.card').show();
@@ -42,8 +50,11 @@ class CardsCarousel {
         $(this.cardsSelector).hide().fadeIn();
         this.holder.find('.ph.card').hide();
 
-        if (!$(this.cardsSelector).length)
+        if ($(this.cardsSelector).length) {
+            if (this.onShowItems) this.onShowItems()
+        } else {
             if (this.onEmpty) this.onEmpty()
+        }
     }
 
     setOnCardSelected(onCardSelected) {
@@ -97,14 +108,9 @@ class CardsCarousel {
 
 
     autoSelectOne() {
-        //Select the last chosen or the first one
-        let choose = $(this.cardsSelector).first();
-
-        if (this.keep.has()) {
-            choose = $(this.cardsSelector + "[data-key='" + this.keep.get() + "']")
-        }
-
-        choose.last().click();
+        Util.sleep(100).then(() => {
+            $(this.cardsSelector).first().add("[data-key='" + this.keep.get() + "']").last().click()
+        })
     }
 
 

@@ -1,4 +1,8 @@
-class PlayerStatusUpdater {
+import { ToolTip } from "./lib/tooltip.js";
+
+ToolTip.init();
+
+export class PlayerStatusUpdater {
 
     constructor(player) {
         this.player = new PlayerMutation(player);

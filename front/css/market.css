@@ -20,3 +20,7 @@
 .card-carousel-scroll-area > .market-holder{
     max-width: 49em;
 }
+
+.hood-equip-title{
+    visibility: hidden;
+}

@@ -1,4 +1,4 @@
-class Keep {
+export class Keep {
     constructor(tag) {
         this.setTag(tag);
     }
@@ -20,6 +20,4 @@ class Keep {
     has(tag = this.tag) {
         return !!sessionStorage.getItem(tag);
     }
-
-
 }

@@ -16,7 +16,7 @@ module.exports = class MarketPage extends Page {
         this.page('/market').then(({ player, res }) => res.render('pages/market', { player }));
 
         this.get('/market-merchandise').then(({ player, res }) => {
-            return this.merchandiseController.for(player).then((merchandises) => res.render('partials/market-merchandises', { merchandises }));
+            return this.merchandiseController.for(player).then((items) => res.render('partials/market-items', { items }));
         });
 
         this.get('/market-items').then(({ res, player }) => {

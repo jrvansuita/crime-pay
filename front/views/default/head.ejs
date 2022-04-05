@@ -18,22 +18,13 @@
   <script src="https://momentjs.com/downloads/moment.min.js" crossorigin="anonymous"></script>
 
   <script type="text/javascript" src="/lib/util.js"></script>
+  <script type="text/javascript" src="js/mutation/player.js"></script>
 
 
   <title><%=word.APP_NAME + (locals?.pageTitle ? ' - '.join(locals?.pageTitle): '')%></title>
 
-
   <% 
-  
-  if (locals?.carousel) locals.css = ['lib/cards-carousel', ...(locals?.css || [])];
-
-  if (locals?.carousel) locals.js = ['lib/cards-carousel','lib/form-control', 'lib/keep', ...(locals?.js || [])];
-  
-  if (locals?.buttons || locals?.carousel) locals.js = ['lib/request-button','lib/buttons-bar', ...(locals?.js || [])];
-
-  if (locals?.player) locals.css = ['player-status', ...(locals?.css || [])];
-
-  if (locals?.player) locals.js = ['player-status', 'mutation/player', ...(locals?.js || [])];
+    locals.css = ['lib/cards-carousel', 'player-status', ...(locals?.css || [])];
   %>
 
 
@@ -42,7 +33,7 @@
   <%})%>
 
   <% locals?.js?.array().forEach((each) => { %>
-  <script src="/js/<%=each%>.js"></script>
+  <script type="module" src="/js/<%=each%>.js"></script>
   <%})%>
 
 
