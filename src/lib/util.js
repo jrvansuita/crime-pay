@@ -181,6 +181,12 @@ const Prototypes = () => {
         return this.valueOf() ? thenThis : elseThis;
     }
 
+    Boolean.prototype.throw = function (msg) {
+        if (this.valueOf()) throw new Error(msg);
+
+        return { and: (condition) => { return condition } }
+    }
+
     Number.prototype.array = function () {
         return [...Array(this + 1).keys()].slice(1);
     }

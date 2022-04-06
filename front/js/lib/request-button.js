@@ -80,10 +80,15 @@ export class RequestButton {
     }
 
     makeRequest() {
-
         const data = { ...this.data, ...(this?.onDataListener?.(this) || {}) };
 
-        $.post(this.url, data)
+        const settings = {
+            url: this.url,
+            contentType: "application/json",
+            data: JSON.stringify(data),
+        }
+
+        $.post(settings)
             .done(this.onSuccess)
             .fail((error) => {
                 if (this.showError) window.toast.error(error.responseText);

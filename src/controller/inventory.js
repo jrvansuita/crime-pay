@@ -1,6 +1,5 @@
+const WeaponMutation = require("../mutation/weapon");
 const Controller = require("./controller");
-const InventoryWrapper = require("../wrapper/inventory");
-
 
 module.exports = class InventoryController extends Controller {
 
@@ -12,8 +11,9 @@ module.exports = class InventoryController extends Controller {
         return { playerId: player._id.toString() }
     }
 
-    onPreview(weapon, player) {
-        return new InventoryWrapper(player, weapon).preview();
+
+    onPreview(item, player) {
+        return new WeaponMutation(item);
     }
 
     onFinalSort(weapons) {

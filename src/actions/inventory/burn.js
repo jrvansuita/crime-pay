@@ -13,7 +13,7 @@ module.exports = class InventoryBurn extends Action {
     }
 
     make() {
-        this.check(this.player.equip.includes(this.getElementId()), phrase.CANT_BURN_EQUIPPED);
+        this.player.equip.includes(this.getElementId()).throw(phrase.CANT_BURN_EQUIPPED)
 
         return super.make();
     }

@@ -18,9 +18,10 @@ module.exports = class RobberyAttempt extends Action {
         const update = new PlayerUpdateModel(this.player)
             .setSuccessMultiplier(theftsCount)
             .validate((player) => {
-                this.check(player.arrested, phrase.PLAYER_ARRESTED)
-                    .check(player.stamina < this.place.staminaCost, phrase.OUT_OF_STAMINA)
-                    .check(this.place.successChance == 0, phrase.ROBBERY_ZERO_CHANCES)
+                console.log(player);
+                player.isArrested().throw(phrase.PLAYER_ARRESTED)
+                    .and(player.stamina < this.place.staminaCost).throw(phrase.OUT_OF_STAMINA)
+                    .and(this.place.successChance == 0).throw(phrase.ROBBERY_ZERO_CHANCES)
             })
             .setArrested(!success)
             .setCoins(success ? this.place.coinsReward : this.place.coinsLoss, success)

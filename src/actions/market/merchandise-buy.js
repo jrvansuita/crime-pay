@@ -3,7 +3,7 @@ const PlayerUpdateModel = require('../../model/player-update');
 const WeaponModel = require('../../model/weapon');
 const Action = require('../action');
 
-module.exports = class MarketDeal extends Action {
+module.exports = class MerchandiseBuy extends Action {
 
     constructor(player, merchandise) {
         super(player, merchandise);
@@ -11,7 +11,11 @@ module.exports = class MarketDeal extends Action {
     }
 
     getExtraEventData() {
-        return { level: this.merchandise.level };
+        return {
+            level: this.merchandise.level,
+            rarity: this.merchandise.rarityTitle,
+            class: this.merchandise.class,
+        };
     }
 
     success() {
@@ -23,11 +27,10 @@ module.exports = class MarketDeal extends Action {
     }
 
     make() {
-
         this.weaponModel = new WeaponModel(this.player, this.merchandise)
             .validate((player) => {
-                this.check(player.arrested, phrase.PLAYER_ARRESTED)
-                    .check(player.coins < Math.abs(this.merchandise.coins), phrase.INSUFFICIENT_COINS)
+                player.isArrested().throw(phrase.PLAYER_ARRESTED)
+                    .and(player.coins < Math.abs(this.merchandise.coins)).throw(phrase.INSUFFICIENT_COINS)
             })
             .createFromMerchandise()
             .build();

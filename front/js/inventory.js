@@ -32,7 +32,6 @@ $(document).ready(() => {
             window.toast.pop(data.event.message, data.event.success);
             cardItems.load();
         })
-
         .show()
 
     cardItems

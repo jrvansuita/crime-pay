@@ -22,10 +22,10 @@ class PrisonReleaseAttempt extends Action {
 
         if (validate) {
             update.validate((player, model) => {
-                this.check(!player.arrested, phrase.PLAYER_NOT_ARRESTED)
-                    .check(player.arrestRelease == null, phrase.FOR_LIFE_PRISON)
-                    .check(player.stamina < Math.abs(model.stamina), phrase.OUT_OF_STAMINA)
-                    .check(player.coins < Math.abs(model.coins), phrase.INSUFFICIENT_COINS)
+                (!player.isArrested()).throw(phrase.PLAYER_NOT_ARRESTED)
+                    .and(player.arrestRelease == null).throw(phrase.FOR_LIFE_PRISON)
+                    .and(player.stamina < Math.abs(model.stamina)).throw(phrase.OUT_OF_STAMINA)
+                    .and(player.coins < Math.abs(model.coins)).throw(phrase.INSUFFICIENT_COINS)
             })
         }
 

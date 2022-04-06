@@ -107,7 +107,8 @@ module.exports = Object.freeze({
             5: ['You tried to escape from the prison.', 'You tried to escape with some dude from jail.'],
             6: ['You bought a new equipment on the market.'],
             7: ['You burned an equipment.'],
-            8: ['Equipment on the market got updated.', 'You just updated you equipment on the market']
+            8: ['Equipment on the market got updated.', 'You just updated you equipment on the market'],
+            9: ["You sold an equipment on the market."],
 
         }
     },

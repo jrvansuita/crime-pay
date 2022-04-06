@@ -23,10 +23,10 @@ module.exports = class ClubAttempt extends Action {
 
         const update = new PlayerUpdateModel(this.player)
             .validate((player) => {
-                this.check(player.arrested, phrase.PLAYER_ARRESTED)
-                    .check(player.coins < this.clubItem.coins, phrase.INSUFFICIENT_COINS)
-                    .check(player.stamina == 100, phrase.FULL_STAMINA)
-                    .check(player.intoxication == 100, phrase.FULL_INTOXICATION)
+                player.isArrested().throw(phrase.PLAYER_ARRESTED)
+                    .and(player.coins < this.clubItem.coins).throw(phrase.INSUFFICIENT_COINS)
+                    .and(player.stamina == 100).throw(phrase.FULL_STAMINA)
+                    .and(player.intoxication == 100).throw(phrase.FULL_INTOXICATION)
             })
             .setArrested(jailed)
             .setCoins(this.clubItem.coins, false, 0, false, true)

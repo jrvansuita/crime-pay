@@ -10,6 +10,13 @@ module.exports = class WeaponModel {
         return this;
     }
 
+
+    setAsNewOwner() {
+        this.price = 0;
+        this.playerId = this.player._id.toString();
+        return this;
+    }
+
     createFromMerchandise() {
         this.playerId = this.player._id.toString();
         this.name = this.weapon.name;

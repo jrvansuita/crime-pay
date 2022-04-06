@@ -2,6 +2,7 @@
 const { Num } = require("../lib/util");
 const Controller = require("./controller");
 const WeaponMath = require("../math/weapon-math");
+const WeaponMutation = require("../mutation/weapon");
 
 var cache = {};
 

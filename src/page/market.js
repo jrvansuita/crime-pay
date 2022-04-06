@@ -12,6 +12,14 @@ module.exports = class MarketPage extends Page {
         this.marketController = new MarketController();
     }
 
+    findController(req) {
+        return req.query.newItem ? this.merchandiseController : this.marketController;
+    }
+
+    findSubmit(req) {
+        return req.body.newItem ? this.marketMechanics.merchandise() : this.marketMechanics.weapon();
+    }
+
     routes() {
         this.page('/market').then(({ player, res }) => res.render('pages/market', { player }));
 
@@ -19,20 +27,18 @@ module.exports = class MarketPage extends Page {
             return this.merchandiseController.for(player).then((items) => res.render('partials/market-items', { items }));
         });
 
-        this.get('/market-items').then(({ res, player }) => {
+        this.get('/market-weapons').then(({ res, player }) => {
             return this.marketController.for(player).then((items) => res.render('partials/market-items', { items }));
         });
 
         this.get('/market-form').then(({ player, req, res, session }) => {
-            const dispatch = req.query.newItem ? this.merchandiseController : this.marketController;
-
-            return dispatch.details(req.query.id, player).then(data => {
+            return this.findController(req).details(req.query.id, player).then(data => {
                 res.render('partials/market-form', { data, player })
             });
         });
 
         this.post('/market-submit').then(({ player, req, res }) => {
-            return this.marketMechanics.submit(req.body.id, player).then(result => res.send(result))
+            return this.findSubmit(req).submit(req.body.id, player).then(result => res.send(result))
         });
 
         this.page('/dev/merchandises', false).then(({ req, res }) => {

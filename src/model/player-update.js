@@ -123,7 +123,7 @@ module.exports = class PlayerUpdateModel {
         delete this.validations;
         delete this.multiplier;
 
-        return this
+        return this;
     }
 
     build() {

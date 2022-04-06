@@ -67,6 +67,10 @@ class PlayerMutation {
 
         return this.level;
     }
+
+    isArrested() {
+        return this.arrested || false;
+    }
 }
 
 

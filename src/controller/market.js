@@ -1,8 +1,5 @@
-const { Num } = require("../lib/util");
-const mongo = require('mongojs');
+const WeaponMutation = require("../mutation/weapon");
 const Controller = require("./controller");
-const InventoryWrapper = require("../wrapper/inventory");
-const PlayerMutation = require("../mutation/player");
 
 module.exports = class MarketController extends Controller {
 
@@ -24,7 +21,7 @@ module.exports = class MarketController extends Controller {
     }
 
     onPreview(item, player) {
-        return new InventoryWrapper(player, item).preview();
+        return new WeaponMutation(item);
     }
 
 

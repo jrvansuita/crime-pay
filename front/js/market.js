@@ -5,13 +5,20 @@ import { PlayerStatusUpdater } from "./player-status.js";
 $(document).ready(() => {
 
 
-
-
     const keepTag = 'market';
     const merchandises = new CardsCarousel(keepTag)
         .setUrl("/market-merchandise")
         .setHolderSelector(".merchandise-holder")
         .setOnCardSelected(key => form.setData({ id: key, newItem: true }).load())
+
+    const weapons = new CardsCarousel(keepTag)
+        .setUrl("/market-weapons")
+        .setHolderSelector(".market-holder")
+        .setOnCardSelected(key => form.setData({ id: key, newItem: false }).load())
+        .setOnShowItems(() => {
+            $('.hood-equip-title').css('visibility', 'visible').hide().fadeIn();
+        })
+
 
     const form = new FormControl("/market-form")
         .bind(".market-form-holder", ".market-form-placeholder")
@@ -19,20 +26,18 @@ $(document).ready(() => {
             window.toast.pop(data.event.message, data.event.success);
 
             new PlayerStatusUpdater(data.player).all();
-            merchandises.load();
+
+            if (form.getData().newItem) {
+                merchandises.load();
+            } else {
+                weapons.load();
+            }
         })
         .show()
 
 
     merchandises.load();
+    weapons.load(false);
 
-    new CardsCarousel(keepTag)
-        .setUrl("/market-items")
-        .setHolderSelector(".market-holder")
-        .setOnCardSelected(key => form.setData({ id: key, newItem: false }).load())
-        .setOnShowItems(() => {
-            $('.hood-equip-title').css('visibility', 'visible').hide().fadeIn();
-        })
-        .load(false)
 });
 

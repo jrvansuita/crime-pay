@@ -42,10 +42,4 @@ module.exports = class Action {
         return this.update;
     }
 
-    check(condition, errorMessage) {
-        if (condition) throw new Error(errorMessage);
-
-        return this;
-    }
-
 }

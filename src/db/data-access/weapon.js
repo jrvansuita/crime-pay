@@ -1,6 +1,7 @@
 const phrase = require("../../const/phrase");
 const { Classes } = require("../../enum/merchandise");
 const { Util } = require("../../lib/util");
+const WeaponMutation = require("../../mutation/weapon");
 const DataAccess = require("./data-access");
 
 module.exports = class WeaponData extends DataAccess {
@@ -20,9 +21,7 @@ module.exports = class WeaponData extends DataAccess {
         const isArray = Array.isArray(data);
 
         data = Util.array(data).map(w => {
-            if (Classes.SPECIAL_ITEM.includes(w.type)) w.isItem = true;
-            if (Classes.WEAPON.includes(w.type)) w.isWeapon = true;
-            return w;
+            return new WeaponMutation(w);
         });
 
         return isArray ? data : Util.spread(data)

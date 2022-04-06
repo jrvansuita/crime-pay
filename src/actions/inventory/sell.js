@@ -20,9 +20,9 @@ module.exports = class InventorySell extends Action {
     make() {
         const weaponModel = new WeaponModel(this.player, this.weapon)
             .validate(() => {
-                this.check(!this.isRemoving && !this.price, phrase.INCORRECT_PRICE_VALUE)
-                    .check(this.isRemoving && !this.weapon.price, phrase.ITEM_NOT_SELLING)
-                    .check(this.player.isEquipped(this.weapon), phrase.CANT_SELL_EQUIPPED)
+                (!this.isRemoving && !this.price).throw(phrase.INCORRECT_PRICE_VALUE)
+                    .and(this.isRemoving && !this.weapon.price).throw(phrase.ITEM_NOT_SELLING)
+                    .and(this.player.isEquipped(this.weapon)).throw(phrase.CANT_SELL_EQUIPPED)
             })
             .setPrice(this.price)
             .build();

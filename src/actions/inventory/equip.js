@@ -18,15 +18,15 @@ module.exports = class InventoryEquip extends Action {
                 const itemsLimit = 3;
                 const weaponsLimit = 2;
 
-                this.check(isEquipping && player.isEquipped(this.weapon, 'name'), phrase.WEAPON_ALREADY_EQUIPPED)
-                    .check(this.weapon.price, phrase.SELLING_ITEM)
+                (isEquipping && player.isEquipped(this.weapon, 'name')).throw(phrase.WEAPON_ALREADY_EQUIPPED)
+                    .and(!!this.weapon.price).throw(phrase.SELLING_ITEM)
 
                 if (isEquipping) {
                     if (this.weapon.isItem)
-                        this.check(player.getItems().length == itemsLimit, phrase.EQUIP_LIMIT.format(itemsLimit, word.SPECIAL_ITEMS))
+                        (player.getItems().length == itemsLimit).throw(phrase.EQUIP_LIMIT.format(itemsLimit, word.SPECIAL_ITEMS))
 
                     if (this.weapon.isWeapon)
-                        this.check(player.getWeapons().length == weaponsLimit, phrase.EQUIP_LIMIT.format(weaponsLimit, word.WEAPONS))
+                        (player.getWeapons().length == weaponsLimit).throw(phrase.EQUIP_LIMIT.format(weaponsLimit, word.WEAPONS))
                 }
             })
             .setEquip(this.weapon, isEquipping)

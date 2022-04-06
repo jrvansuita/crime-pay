@@ -20,6 +20,10 @@ export class FormControl {
         return this;
     }
 
+    getData() {
+        return this.data;
+    }
+
     bind(holderSelector, placeHolderSelector) {
         this.holder = $(holderSelector);
         this.placeholder = $(placeHolderSelector);

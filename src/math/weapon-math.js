@@ -1,34 +1,15 @@
-const word = require("../const/word");
-
+const phrase = require("../const/phrase");
 const { Num } = require("../lib/util");
+const WeaponMutation = require("../mutation/weapon");
 
 module.exports = class WeaponMath {
 
     constructor(player, merchandise) {
         this.player = player;
+
         this.merchandise = merchandise;
     }
 
-    static color(weapon) {
-        const name = weapon.name.replaceAll(' ', weapon.level * weapon.rarity);
-
-        const saturation = Num.assert((weapon.level * (weapon.rarity / 4)), true, 43, 60);
-        const lightness = Num.assert(90 - weapon.rarity, true, 45, 80);
-
-        return name.toColor(220, 1, saturation, lightness);
-    }
-
-    static rarity(weapon) {
-        const rarity = weapon.rarity;
-
-        var title = false;
-        // title = title || rarity.isBetween(0, 55, word.COMMON);
-        title = title || rarity.isBetween(56, 69, word.RARE);
-        title = title || rarity.isBetween(70, 94, word.EPIC);
-        title = title || rarity.isBetween(95, 100, word.LEGENDARY);
-
-        return title || '';
-    }
 
     getPlayerFactor() {
         if (this.playerFactor === undefined) {
@@ -104,22 +85,6 @@ module.exports = class WeaponMath {
         return this.level;
     }
 
-    getColor() {
-        if (this.color === undefined) {
-            this.color = WeaponMath.color(this.merchandise);
-        }
-
-        return this.color;
-    }
-
-    getRarityTitle() {
-        if (this.rarityTitle === undefined) {
-            this.rarityTitle = WeaponMath.rarity(this.merchandise);
-        }
-
-        return this.rarityTitle;
-    }
-
     preview() {
         this.merchandise.coins = this.getCoins();
 
@@ -127,20 +92,21 @@ module.exports = class WeaponMath {
     }
 
     make() {
-        this.merchandise.gainPercentage = this.getGainPercentage();
-        this.merchandise.playerFactor = this.getPlayerFactor();
-        this.merchandise.coins = this.getCoins();
-        this.merchandise.level = this.getLevel();
+        try {
+            this.merchandise.gainPercentage = this.getGainPercentage();
+            this.merchandise.playerFactor = this.getPlayerFactor();
+            this.merchandise.coins = this.getCoins();
+            this.merchandise.level = this.getLevel();
 
-        this.merchandise.bundle.intelligence = this.getPlayerAttribute('intelligence', this.merchandise.bundle.intelligence);
-        this.merchandise.bundle.dexterity = this.getPlayerAttribute('dexterity', this.merchandise.bundle.dexterity);
-        this.merchandise.bundle.strength = this.getPlayerAttribute('strength', this.merchandise.bundle.strength);
-        this.merchandise.bundle.respect = this.getRespect();
+            this.merchandise.bundle.intelligence = this.getPlayerAttribute('intelligence', this.merchandise.bundle.intelligence);
+            this.merchandise.bundle.dexterity = this.getPlayerAttribute('dexterity', this.merchandise.bundle.dexterity);
+            this.merchandise.bundle.strength = this.getPlayerAttribute('strength', this.merchandise.bundle.strength);
+            this.merchandise.bundle.respect = this.getRespect();
+        } catch {
+            throw new Error(phrase.EQUIP_NOT_FOUND)
+        }
 
-        this.merchandise.color = this.getColor();
-        this.merchandise.rarityTitle = this.getRarityTitle();
-
-        return this.merchandise;
+        return new WeaponMutation(this.merchandise);
     }
 
 
