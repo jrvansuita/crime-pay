@@ -4,6 +4,7 @@ module.exports = Object.freeze({
     INSUFFICIENT_COINS: "You don't have sufficient coins!",
     FULL_STAMINA: "You're full of stamina.",
     FULL_INTOXICATION: "You're complete intoxicated.",
+    NOT_INTOXICATED: "You're not intoxicated.",
     PLAYER_ARRESTED: "You're under arrest!",
     PLAYER_NOT_ARRESTED: "You're not arrested!",
     ROBBERY_ZERO_CHANCES: "You can't rob this place yet.",

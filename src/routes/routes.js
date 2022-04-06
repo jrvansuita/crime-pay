@@ -6,6 +6,7 @@ const MarketPage = require('../page/market');
 const RouteRules = require('./rules');
 const HistoricPage = require('../page/historic');
 const InventoryPage = require('../page/inventory');
+const HospitalPage = require('../page/hospital');
 
 module.exports = {
 
@@ -21,6 +22,7 @@ module.exports = {
         new HistoricPage(app).routes();
         new SettingsPage(app).routes();
         new InventoryPage(app).routes();
+        new HospitalPage(app).routes();
 
         rules.end();
     }

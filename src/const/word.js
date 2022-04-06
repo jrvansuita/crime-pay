@@ -38,6 +38,7 @@ module.exports = Object.freeze({
     RELEASE: 'Release',
 
     PRISON: 'Prison',
+    HOSPITAL: 'Hospital',
     INVENTORY: 'Inventory',
     HOME_PAGE: 'Home Page',
     ROBBERIES: 'Robberies',
@@ -51,7 +52,7 @@ module.exports = Object.freeze({
     COINS_REWARD: 'Coins Reward',
     ON_ROBBERIES: 'on Robberies',
     INCREASE: 'Increase',
-
+    REGENERATE: 'Regenerate',
     INTOXICATION: 'Intoxication',
 
     STAMINA: 'Stamina',
@@ -67,6 +68,8 @@ module.exports = Object.freeze({
 
 
     INTOXICATED: "Intoxicated",
+    NOT_INTOXICATED: "Not Intoxicated",
+
     INSUFFICIENT_COINS: "Insufficient Coins",
     ARRESTED: "Arrested",
     LIFE_IMPRISONMENT: "Life Imprisonment",

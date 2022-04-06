@@ -71,6 +71,10 @@ class PlayerMutation {
     isArrested() {
         return this.arrested || false;
     }
+
+    isIntoxicated() {
+        return this.intoxication > 0;
+    }
 }
 
 

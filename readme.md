@@ -28,6 +28,7 @@ Next implementations:
 
 #### Layouts
 - [ ] Login page (Metamask integration)
+- [ ] Select character type
 - [x] tab menu with : Robbery, Prison, Club, Market and Settings
 - [x] prison page 
 - [x] settings page (as developing demand) 
@@ -35,7 +36,8 @@ Next implementations:
 - [x] club page (drugs)
 - [x] historic page (player crime historic) 
 - [x] market (weapons and special items)
-- [ ] player inventory (equip weapons and special items) [IN DEVELOPMENT]
+- [x] inventory (equip weapons and special items)
+- [x] hospital (recovery stamina and regenerate intoxication)
 
 
 #### Mechanics
@@ -65,8 +67,8 @@ Next implementations:
 - [x] Market: Player to Equip Items
 - [x] Inventory: Prevent equip same item (check name)
 - [x] Inventory: Players can equip 2 Weapons and 3 other items. 
-- [ ] Inventory: sell an equipment
-- [ ] Market: buy an equipment
+- [x] Inventory: sell an equipment
+- [x] Market: buy an equipment
 
 #### Visual
 - [ ] Create a pixel logo

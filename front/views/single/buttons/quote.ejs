@@ -1,4 +1,4 @@
-<%if (locals?.showQuote || locals?.quoteText){%>
+<%if (locals?.showQuote || (locals?.showQuote === undefined  && locals?.quoteText)){%>
 <blockquote class="blockquote mb-0">
   <footer class="blockquote-footer" data-def="<%=locals?.quoteDefault%>">
     <%=locals?.quoteText%>

@@ -1,0 +1,27 @@
+<div class="card-flat">
+  <div id="regenerate-holder" class="row">
+    <div class="col-5">
+      <h6 class="card-title"><%=text.HOSPITAL.INTOXICATED_TITLE%></h6>
+      <p class="card-text"><%=text.HOSPITAL.INTOXICATED_TEXT%></p>
+      <img src=" /img/nurse.png" class="card-img-top medium-img" />
+    </div>
+    <div class="col">
+
+      <%if (player.isIntoxicated() && !player.isArrested()){%>
+      <%- include('../single/label-item', { id: 'regenerate-coins', text: word.COINS_COST,  icon: 'coin', value: regenerate.update.coins}); %>
+      <%}%>
+      <%- include('../single/buttons/button-group', { id: 'regenerate', 
+                                        text: player.isIntoxicated() ? word.REGENERATE : word.NOT_INTOXICATED,  
+                                        quoteText: text.HOSPITAL.INTOXICATED_QUOTE.format(regenerate.update.intoxication.abs()), 
+                                        showQuote: player.isIntoxicated() && !player.isArrested(),
+                                        loadingButton: true, 
+                                        arrested: player.isArrested(),
+                                        disabled: !player.isIntoxicated(),
+                                        //insufficientCoins: bribe.update.coins.abs().greater(player.coins),
+                                        //noStamina: bribe.update.stamina.abs().greater(player.stamina),
+                                        //lifeImprisonment: player.lifeImprisonment 
+                                     }); %>
+
+    </div>
+  </div>
+</div>

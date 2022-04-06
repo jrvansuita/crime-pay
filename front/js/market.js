@@ -18,6 +18,9 @@ $(document).ready(() => {
         .setOnShowItems(() => {
             $('.hood-equip-title').css('visibility', 'visible').hide().fadeIn();
         })
+        .setOnEmpty(() => {
+            $('.hood-equip-title').css('visibility', 'hidden');
+        })
 
 
     const form = new FormControl("/market-form")

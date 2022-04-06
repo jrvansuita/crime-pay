@@ -18,6 +18,14 @@ module.exports = Object.freeze({
         GET_OUT_CHANCE: "%s% chance to get out.",
     },
 
+    HOSPITAL: {
+        PAGE_TITLE: 'The Hospital',
+        DEFAULT_EXPLANATION: "If you arrived here, it's because you are in really bad health. At the Hospital you will find the best medical care to help you get health again.",
+        INTOXICATED_TITLE: "You need Rehab Care!",
+        INTOXICATED_TEXT: "Come with me to take some medicine and reduce your intoxication.",
+        INTOXICATED_QUOTE: "%s% regenerate after medicine.",
+    },
+
     ROBBERY: {
         PAGE_TITLE: 'Making a Robbery',
         DEFAULT_EXPLANATION: "Select a target and try your lucky! Each target places has a specific difficult and costs some amount of stamina. Try not to get caught by the police, otherwise you'll go straight to prison.",
@@ -107,7 +115,7 @@ module.exports = Object.freeze({
             5: ['You tried to escape from the prison.', 'You tried to escape with some dude from jail.'],
             6: ['You bought a new equipment on the market.'],
             7: ['You burned an equipment.'],
-            8: ['Equipment on the market got updated.', 'You just updated you equipment on the market'],
+            8: ['Your equipment on the market got updated.', 'You updated your selling equipment'],
             9: ["You sold an equipment on the market."],
 
         }
