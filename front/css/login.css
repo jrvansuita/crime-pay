@@ -1,17 +1,35 @@
-#user-login-holder{
+.login-form-placeholder, .login-form-holder{
     padding: 26px;
     text-align: center;
     align-self: center;
     margin-top: -25%;
+    min-width: 20em;
+    display: none;
+    width: min-content;
+    height: min-content;
+}
+
+span.rounded-pill{
+    margin: auto;
+    width: 190px;
+    height: 190px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.login-form-placeholder{
+    display: block;
 }
 
 #play, #connect{
     display: none;
+    font-size: 13pt;
 }
 
 .player-img{
     width: 190px;
     margin: 8px;
+    padding: 35px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -23,14 +41,16 @@
     margin: auto;
 }
 
-#user-login-holder{
-    width: min-content;
-    height: min-content;
-
+#player-wallet{
+    width: fit-content;
+    font-size: 9pt;
+    line-height: 24px;
 }
 
-#player-wallet{
-    display: none;
-    width: fit-content;
-    font-size: 10pt;
+button{
+    font-size: 15pt;
+}
+
+.input-group{
+   padding: 0;
 }

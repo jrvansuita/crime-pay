@@ -10,9 +10,13 @@ module.exports = class LoginPage extends Page {
             res.render('pages/login')
         });
 
-        this.post('/login', false).then(({ req, res }) => {
-            console.log(req.body);
+        this.page('/login-form', false).then(({ res, req }) => {
+            return this.playerData.find({ wallet: req.query.wallet.slice(1) }, true).then((player) => {
+                res.render('partials/login-form', { player, })
+            });
+        });
 
+        this.post('/login', false).then(({ req, res }) => {
             const wallet = req.body?.wallet;
             const name = req.body?.name;
 

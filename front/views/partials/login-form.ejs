@@ -1,22 +1,27 @@
-<div class="row">
+<div class="card-flat">
 
-  <img src="<%=locals?.player?.head.image('heads','png') || '/img/thief-head.jpg'%>" class="player-img" style="background-color:<%=locals?.player?.name.toColor()%>" />
+  <div class="card-body">
+    <div class="row">
 
-  <%- include('../single/input-item', {id: 'player-name', inputType : 'text', placeholder : word.PLAYER_NAME}); %>
+      <img src="<%=locals?.player?.head.image('heads','png') || '/img/heads/1.png'%>" class="player-img" style="background-color:<%=(locals?.player?.name || 'znone').toColor()%>" />
 
-  <div class="input-group">
-    <p id="player-wallet" class="form-control"></p>
-  </div>
+      <%- include('../single/input-item', {id: 'player-name', inputType : 'text', placeholder : word.PLAYER_NAME, value:locals?.player?.name}); %>
 
-  <div class="button-holder">
-    <%- include('../single/buttons/button', {
+
+      <div class="input-group">
+        <p id="player-wallet" class="form-control"><%=locals?.player?.wallet%></p>
+      </div>
+
+
+
+      <%- include('../single/buttons/button', {
         id: 'play', 
         icon: 'metamask'.image(null, 'png'),
         text: text.LOGIN.PLAY_WITH_METAMASK, 
         loadingButton: true
        }); %>
 
-    <%- include('../single/buttons/button', {
+      <%- include('../single/buttons/button', {
         id: 'connect', 
         icon: 'metamask'.image(null, 'png'),
         text: text.LOGIN.CONNECT_WITH_METAMASK, 
@@ -24,7 +29,6 @@
       }); %>
 
 
+    </div>
   </div>
-
-
 </div>

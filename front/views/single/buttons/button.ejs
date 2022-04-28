@@ -1,10 +1,14 @@
 <button id="<%=locals?.id%>" class="btn <%=locals?.disabled ? 'btn-danger' : locals?.colorClass || 'btn-primary' %>" type="button" <%=locals?.disabled ? 'disabled' : '' %>>
+
+  <%if (locals?.icon){%>
+  <img class="mini-img" src="<%=icon%>" />
+  <%}%>
+  
   <%if (locals?.loadingButton){%>
   <span class="spinner-border spinner-border-sm no-display" role="status" aria-hidden="true"></span>
   <span class="no-display">Loading...</span>
   <%}%>
-  <%if (locals?.icon){%>
-  <img class="mini-img" src="<%=icon%>" />
-  <%}%>
+    
   <span class="button-text"><%=locals?.text%></span>
+
 </button>

@@ -36,6 +36,7 @@ export class Button {
             button.prop('disabled', show);
             button.find('.no-display').css('display', show ? 'inline-block' : 'none');
             button.find('.button-text').toggle(!show);
+            button.find('.mini-img').toggle(!show);
         }
     }
 
