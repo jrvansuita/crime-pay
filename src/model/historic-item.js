@@ -43,8 +43,6 @@ module.exports = class HistoricItem {
     }
 
     build() {
-
-        console.log(this.event.type);
         return {
             success: this.event.success,
             date: moment(this.event.date).fromNow(),

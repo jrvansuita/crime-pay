@@ -66,7 +66,7 @@ export class FormControl {
         this.holder.load(this.url + "?" + query, () => {
             this.show(true);
             //Bind all actions ids
-            this.actions.forEach(a => a.bindClick());
+            this.actions.forEach(a => a.bind());
 
             if (onLoaded) onLoaded(this.data)
         });

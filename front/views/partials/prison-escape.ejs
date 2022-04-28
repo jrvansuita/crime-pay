@@ -24,7 +24,7 @@
                                         loadingButton : true, 
                                         insufficientCoins: escape.update.coins.abs().greater(player.coins), 
                                         noStamina: escape.update.stamina.abs().greater(player.stamina), 
-                                        lifeImprisonment: player.lifeImprisonment 
+                                        lifeImprisonment: player.isLifeImprisoned() 
                                      }); %>
 
 

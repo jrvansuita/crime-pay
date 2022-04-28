@@ -19,7 +19,7 @@
                                         loadingButton: true, 
                                         insufficientCoins: bribe.update.coins.abs().greater(player.coins),
                                         noStamina: bribe.update.stamina.abs().greater(player.stamina),
-                                        lifeImprisonment: player.lifeImprisonment 
+                                        lifeImprisonment: player.isLifeImprisoned() 
                                      }); %>
 
     </div>

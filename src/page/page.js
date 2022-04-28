@@ -9,6 +9,18 @@ module.exports = class Page {
         this.playerData = new PlayerData();
     }
 
+    sessionClear(req) {
+        this.applySession({ req });
+        req.session = null;
+    }
+
+    applySession({ req, player = null, res }) {
+        req.session.playerId = player?._id?.toString();
+        req.session.player = player;
+
+        if (res) res.locals.session = req.session;
+    }
+
     findPlayer(req) {
         return this.playerData.findById(req.session.playerId).then((player) => {
             return player;
@@ -19,10 +31,11 @@ module.exports = class Page {
         const result = new RequestResult();
 
         this.app[method](path, (req, res) => {
+
             if (loadPlayer) {
                 this.findPlayer(req)
                     .then((player) => {
-                        req.session.player = player;
+                        this.applySession({ req, player, res })
                         return result.resolve({ player, req, res, session: req.session });
                     })
                     .catch(handleReject ? (e) => {

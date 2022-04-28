@@ -25,6 +25,7 @@ module.exports = Object.freeze({
     SELL: 'Sell',
     PRICE: 'Price',
     BURN: 'Burn',
+    PLAYER_NAME: 'Player Name',
 
     INTELLIGENCE: 'Intelligence',
     DEXTERITY: 'Dexterity',
@@ -64,7 +65,8 @@ module.exports = Object.freeze({
     SUCCESS_CHANCE: 'Success Chance',
     REMOVE: 'Remove',
     ALL: 'All',
-
+    LOGIN: 'Login',
+    CONNECT: 'Connect',
 
 
     INTOXICATED: "Intoxicated",

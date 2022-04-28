@@ -21,7 +21,8 @@ module.exports = Object.freeze({
     CANT_SELL_EQUIPPED: "Can't sell equipped gears.",
     INCORRECT_PRICE_VALUE: "Incorrect price value.",
     ITEM_NOT_SELLING: "This item is not being selling.",
-
+    NOT_WALLET_ADDRESS: "No wallet address found.",
+    PLAYER_NAME_NOT_INFORMED: "Player name was not informed.",
 
     ROBBERY: {
         SUCCESS: [

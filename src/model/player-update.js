@@ -16,7 +16,7 @@ module.exports = class PlayerUpdateModel {
     setArrested(arrested, arrestDays = 1) {
         this.arrested = arrested;
 
-        const lastDate = this.player?.arrestRelease || new Date();
+        const lastDate = this?.player?.arrestRelease || new Date();
 
         this.arrestRelease = this.arrested ? moment(lastDate).add(arrestDays, 'days').minutes(0).toDate() : null;
 
@@ -45,7 +45,7 @@ module.exports = class PlayerUpdateModel {
         value = Math.min(max, value);
 
         if (adding) {
-            if (checkPlayerLimit) {
+            if (checkPlayerLimit && this.player) {
                 value = Math.min(value, max - (this.player[attr] || 0));
             }
 
@@ -53,7 +53,7 @@ module.exports = class PlayerUpdateModel {
         } else {
             if (minOnDecrease) value = min;
 
-            if (checkPlayerLimit) {
+            if (checkPlayerLimit && this.player) {
                 value = Math.min(value, (this.player[attr] || 0));
             }
 

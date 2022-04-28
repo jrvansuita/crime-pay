@@ -9,6 +9,6 @@ $(document).ready(function () {
     };
 
 
-    new RequestButton('#regenerate', "/hospital-regenerate", onSuccess).bindClick().delayed();
+    new RequestButton('#regenerate', "/hospital-regenerate", onSuccess)
 
 });

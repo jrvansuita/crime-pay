@@ -1,25 +1,17 @@
-export class RequestButton {
+import { Button } from "./buttons.js";
+
+
+export class RequestButton extends Button {
+
     constructor(id, url, onSuccess, onFail) {
-        this.setId(id)
-            .setUrl(url)
+        super(id).setUrl(url)
             .setOnSuccess(onSuccess)
             .setOnFail(onFail)
-            .delayed()
-    }
-
-    setId(id, loadingButton = true) {
-        this.id = id;
-        this.isLoadingButton = loadingButton;
-        return this;
+            .setOnClick(this.request)
     }
 
     setUrl(url) {
         this.url = url;
-        return this;
-    }
-
-    delayed(delay = 400) {
-        this.delay = delay;
         return this;
     }
 
@@ -30,16 +22,6 @@ export class RequestButton {
 
     onData(onDataListener) {
         this.onDataListener = onDataListener;
-        return this;
-    }
-
-    onValidate(validateListener) {
-        this.validateListener = validateListener;
-        return this;
-    }
-
-    setOnClick(onClick) {
-        this.onClick = onClick;
         return this;
     }
 
@@ -68,18 +50,7 @@ export class RequestButton {
         return this;
     }
 
-    loading(show) {
-        if (this.isLoadingButton) {
-            const dropdownMenu = $(this.id).parents('.dropdown-menu');
-            const button = dropdownMenu.length ? dropdownMenu.siblings('.btn').first() : $(this.id);
-
-            button.prop('disabled', show);
-            button.find('.no-display').css('display', show ? 'inline-block' : 'none');
-            button.find('.button-text').toggle(!show);
-        }
-    }
-
-    makeRequest() {
+    request() {
         const data = { ...this.data, ...(this?.onDataListener?.(this) || {}) };
 
         const settings = {
@@ -100,29 +71,6 @@ export class RequestButton {
             });
     }
 
-    onBindRequest() {
-        const action = this;
 
-        return (event) => {
-            if (this.onClick) this.onClick(action)
-
-            if (!this.validateListener || this.validateListener(action)) {
-                event.stopPropagation();
-                event.stopImmediatePropagation();
-
-                this.loading(true);
-
-                setTimeout(() => {
-                    this.makeRequest()
-                }, this.delay || 0)
-            }
-        }
-    }
-
-    bindClick() {
-        $(this.id).unbind().click(this.onBindRequest());
-
-        return this;
-    }
 
 }

@@ -1,7 +1,5 @@
 <% items.forEach((each)=>{%>
 
-<%console.log(each)%>
-
 <%- include('../single/mini-card', {      dataKey : each._id, 
                                             title : each.name, 
                                             img :  each.name.image('merchandises','png'),  

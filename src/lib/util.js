@@ -58,8 +58,8 @@ const Util = {
 
 const Prototypes = () => {
 
-    String.prototype.image = function (folder = '', extension = 'jpg') {
-        return "/img/" + folder + '/' + this.toName() + '.' + extension;
+    String.prototype.image = function (folder = null, extension = 'jpg') {
+        return "/img/" + (folder?.join('/') || '') + this.toName() + '.' + extension;
     }
 
     String.prototype.capitalize = function () {

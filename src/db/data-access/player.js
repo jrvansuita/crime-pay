@@ -14,7 +14,7 @@ module.exports = class PlayerData extends DataAccess {
     }
 
     onAfterFind(player) {
-        if (!player) throw new Error(PLAYER_NOT_FOUND);
+        if (!player || (player.length == 0)) return null;
 
         if (player?.equip) {
             return this.weaponData.findByIds(player.equip).then((weapons) => {

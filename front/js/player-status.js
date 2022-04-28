@@ -7,7 +7,7 @@ export class PlayerStatusUpdater {
     constructor(player) {
         this.player = new PlayerMutation(player);
 
-        if (player.lifeImprisonment) {
+        if (this.player.isLifeImprisoned()) {
             window.location.replace("/prison");
             return;
         }

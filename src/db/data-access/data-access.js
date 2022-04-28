@@ -25,7 +25,11 @@ module.exports = class DataAccess {
     find(query = {}, one = false) {
         return new Promise((resolve, reject) => {
             this.entity[one ? 'findOne' : 'find'](query, (err, data) => {
-                return err ? reject(err) : resolve(this.onAfterFind(data));
+                try {
+                    return err ? reject(err) : resolve(this.onAfterFind(data));
+                } catch (e) {
+                    reject(e)
+                }
             });
         });
     }

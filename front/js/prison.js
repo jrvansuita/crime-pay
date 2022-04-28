@@ -44,6 +44,6 @@ $(document).ready(function () {
     };
 
 
-    new RequestButton('#escape', "/escape-attempt", onSuccess).bindClick().delayed();
-    new RequestButton('#bribe', "/bribe-attempt", onSuccess).bindClick().delayed();
+    new RequestButton('#escape', "/escape-attempt", onSuccess);
+    new RequestButton('#bribe', "/bribe-attempt", onSuccess);
 });

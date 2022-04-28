@@ -8,8 +8,8 @@ module.exports = class RouteRules {
     begin() {
         this.rules.voidRoutes();
         this.rules.devRoutes();
-        this.rules.sessionMiddleware();
-        this.rules.lifeImprisonmentPlayer();
+        this.rules.checkLogin();
+        this.rules.lifeImprisonment();
     }
 
     end() {
@@ -47,34 +47,29 @@ class Rules {
         });
     }
 
-    sessionMiddleware() {
+    checkLogin() {
         //Making session visible in all ejs files
         this.app.use(function (req, res, next) {
-            //Remove this line when login screen finished
-            req.session.playerId = process.env.USER_ID
-            res.locals.session = req.session;
-            next();
+
+            //console.log(req.url + ' - ' + req.session.playerId + ' : ' + (!req.url.includes('login') && !req.session.playerId));
+
+            if (!req.url.includes('login') && !req.session.playerId)
+                return res.redirect('/login')
+
+            return next()
         });
     }
 
-    lifeImprisonmentPlayer() {
+    lifeImprisonment() {
         const exceptionalPaths = ['prison', 'settings', 'inventory', 'historic'];
 
         //If player got life imprisonment, It can't access any page other than prison page
         this.app.use(function (req, res, next) {
 
-            const player = req.session.player;
-            const lifeImprisonment = player && player?.arrested && !player?.arrestRelease;
+            if (req.session?.player?.isLifeImprisoned?.() && !req.url.containsAnyOf(exceptionalPaths))
+                return res.redirect('/prison')
 
-            if (lifeImprisonment) {
-                if (req.url.containsAnyOf(exceptionalPaths)) {
-                    next();
-                } else {
-                    res.redirect('/prison')
-                }
-            } else {
-                next()
-            }
+            return next()
         });
     }
 

@@ -3,5 +3,8 @@
   <span class="spinner-border spinner-border-sm no-display" role="status" aria-hidden="true"></span>
   <span class="no-display">Loading...</span>
   <%}%>
+  <%if (locals?.icon){%>
+  <img class="mini-img" src="<%=icon%>" />
+  <%}%>
   <span class="button-text"><%=locals?.text%></span>
 </button>

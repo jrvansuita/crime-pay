@@ -1,0 +1,36 @@
+#user-login-holder{
+    padding: 26px;
+    text-align: center;
+    align-self: center;
+    margin-top: -25%;
+}
+
+#play, #connect{
+    display: none;
+}
+
+.player-img{
+    width: 190px;
+    margin: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 50%;
+    margin-bottom: 2em;
+}
+
+.button-holder{
+    margin: auto;
+}
+
+#user-login-holder{
+    width: min-content;
+    height: min-content;
+
+}
+
+#player-wallet{
+    display: none;
+    width: fit-content;
+    font-size: 10pt;
+}

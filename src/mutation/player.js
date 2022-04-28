@@ -5,12 +5,12 @@ class PlayerMutation {
     constructor(player) {
         Object.assign(this, player);
 
-        this.attributes();
+        // this.attributes();
     }
 
-    attributes() {
-        this.lifeImprisonment = this.arrested && !this?.arrestRelease;
-    }
+    // attributes() {
+    //     this.lifeImprisonment = this.arrested && !this?.arrestRelease;
+    // }
 
     getItems(def = []) {
         return this?.equipments?.filter((w) => { return w.isItem; }) || def
@@ -69,11 +69,16 @@ class PlayerMutation {
     }
 
     isArrested() {
-        return this.arrested || false;
+        return this.arrested === true;
     }
 
     isIntoxicated() {
         return this.intoxication > 0;
+    }
+
+
+    isLifeImprisoned() {
+        return this.isArrested() && !this.arrestRelease;
     }
 }
 

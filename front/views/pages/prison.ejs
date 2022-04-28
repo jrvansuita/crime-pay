@@ -13,9 +13,9 @@
           <%- include('../partials/menu', {nav_prison:true}); %>
           <div class="card-body">
             <h5 class="card-title"><%=text.PRISON.PAGE_TITLE%></h5>
-            <p class="card-text text-secondary"><%=player.lifeImprisonment ? text.PRISON.LIFE_IMPRISONMENT_EXPLANATION : text.PRISON.DEFAULT_EXPLANATION %></p>
+            <p class="card-text text-secondary"><%=player.isLifeImprisoned() ? text.PRISON.LIFE_IMPRISONMENT_EXPLANATION : text.PRISON.DEFAULT_EXPLANATION %></p>
             <p class="card-text text-secondary">
-              <%=!player.lifeImprisonment ? player.arrested ? text.PRISON.ARRESTED_TEXT: text.PRISON.NOT_ARRESTED_TEXT : ''%>
+              <%=!player.isLifeImprisoned() ? player.arrested ? text.PRISON.ARRESTED_TEXT: text.PRISON.NOT_ARRESTED_TEXT : ''%>
               <span id="releaseTime">
                 <%=player.arrestRelease?.toDateDisplay()%>
               </span>
@@ -23,7 +23,7 @@
 
             <div class="flex-container flex-inline">
               <%if (player.arrested){%>
-              <%if (player.lifeImprisonment){%>
+              <%if (player.isLifeImprisoned()){%>
               <%- include('../partials/prison-for-life'); %>
               <%}else{%>
 

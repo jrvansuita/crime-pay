@@ -17,9 +17,7 @@
                                         loadingButton: true, 
                                         arrested: player.isArrested(),
                                         disabled: !player.isIntoxicated(),
-                                        //insufficientCoins: bribe.update.coins.abs().greater(player.coins),
-                                        //noStamina: bribe.update.stamina.abs().greater(player.stamina),
-                                        //lifeImprisonment: player.lifeImprisonment 
+                                        insufficientCoins: regenerate.update.coins.abs().greater(player.coins)
                                      }); %>
 
     </div>

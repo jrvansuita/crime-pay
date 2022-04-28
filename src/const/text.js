@@ -1,5 +1,10 @@
 module.exports = Object.freeze({
 
+    LOGIN: {
+        CONNECT_WITH_METAMASK: 'Connect with Metamask',
+        PLAY_WITH_METAMASK: 'Play with Metamask',
+        PLAY_DEMO: 'Play Demo',
+    },
 
     PRISON: {
         PAGE_TITLE: 'Welcome to Prison',

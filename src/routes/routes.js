@@ -1,3 +1,4 @@
+const LoginPage = require('../page/login');
 const ClubPage = require('../page/club');
 const PrisonPage = require('../page/prison');
 const RobberyPage = require('../page/robbery');
@@ -15,6 +16,7 @@ module.exports = {
 
         rules.begin();
 
+        new LoginPage(app).routes();
         new RobberyPage(app).routes();
         new PrisonPage(app).routes();
         new ClubPage(app).routes();

@@ -58,7 +58,9 @@ Next implementations:
 - [x] auto redirect to prison when in life imprisonment (Need Fix Player Session First)
 - [x] use full stamina option on robbery
 - [ ] settings option for player change avatar head and name
-
+- [ ] Player Minter 
+- [ ] Login form load after page
+- [ ] Login placeholder while loading 
 
 #### Features
 - [ ] Prison: Gym Session to upgrade Strength

@@ -1,0 +1,30 @@
+<div class="row">
+
+  <img src="<%=locals?.player?.head.image('heads','png') || '/img/thief-head.jpg'%>" class="player-img" style="background-color:<%=locals?.player?.name.toColor()%>" />
+
+  <%- include('../single/input-item', {id: 'player-name', inputType : 'text', placeholder : word.PLAYER_NAME}); %>
+
+  <div class="input-group">
+    <p id="player-wallet" class="form-control"></p>
+  </div>
+
+  <div class="button-holder">
+    <%- include('../single/buttons/button', {
+        id: 'play', 
+        icon: 'metamask'.image(null, 'png'),
+        text: text.LOGIN.PLAY_WITH_METAMASK, 
+        loadingButton: true
+       }); %>
+
+    <%- include('../single/buttons/button', {
+        id: 'connect', 
+        icon: 'metamask'.image(null, 'png'),
+        text: text.LOGIN.CONNECT_WITH_METAMASK, 
+        loadingButton: true
+      }); %>
+
+
+  </div>
+
+
+</div>
